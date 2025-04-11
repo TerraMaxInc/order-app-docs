@@ -5,6 +5,4 @@
     quarto render docs/overview/architecture.qmd 
 -->
 
-# Overview
-
 This doc explains the high-level structure of the Order App System.

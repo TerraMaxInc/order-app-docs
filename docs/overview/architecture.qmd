@@ -7,6 +7,4 @@ title: "Architecture"
 format: gfm
 ---
 
-# Overview
-
 This doc explains the high-level structure of the Order App System.

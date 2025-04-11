@@ -2,10 +2,8 @@
 
 
 <!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render README.qmd 
+    quarto render index.qmd 
 -->
-
-# Documentation for the Ordering App System
 
 This repository contains all documentation for the Order App project,
 which consists of two main parts:
