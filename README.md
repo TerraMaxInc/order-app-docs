@@ -1,7 +1,26 @@
-# order-app-docs
+# Ordering App System Docs
 
-Documentation for the Ordering App
 
-This repository contains all documentation for the Order App project, which consists of two main parts:
+<!-- To regenerate the Markdown version of this file, enter in the terminal:
+    quarto render README.qmd 
+-->
 
--**ordering-app**: A React PWA for end users that is hosted in Azure Static Web Apps -**hubspot-service**: An Azure Functions backend that communicates with HubSpot
+# Documentation for the Ordering App System
+
+This repository contains all documentation for the Order App project,
+which consists of two main parts:
+
+\-**ordering-app**: A React PWA for end users, hosted in Azure Static
+Web Apps -**hubspot-service**: An Azure Functions backend that
+communicates with HubSpot
+
+This app allows end users to create and edit Deals in HubSpot via the
+ordering-app’s interface, which is more streamlined and intuitive for
+TerraMax business needs, and to automate emailing Work Orders to
+production as part of the entry process.
+
+------------------------------------------------------------------------
+
+## Quick Links
+
+\-[Architecture Overview](docs/overview/architecture.md)
