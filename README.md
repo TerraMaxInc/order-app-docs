@@ -8,9 +8,10 @@
 This repository contains all documentation for the Order App project,
 which consists of two main parts:
 
-\-**ordering-app**: A React PWA for end users, hosted in Azure Static
-Web Apps -**hubspot-service**: An Azure Functions backend that
-communicates with HubSpot
+- **ordering-app**: A React PWA for end users, hosted in Azure Static
+  Web Apps
+- **hubspot-service**: An Azure Functions backend that communicates with
+  HubSpot
 
 This app allows end users to create and edit Deals in HubSpot via the
 ordering-app’s interface, which is more streamlined and intuitive for
@@ -21,4 +22,4 @@ production as part of the entry process.
 
 ## Quick Links
 
-\-[Architecture Overview](docs/overview/architecture.md)
+- [Architecture Overview](docs/overview/architecture.md)
