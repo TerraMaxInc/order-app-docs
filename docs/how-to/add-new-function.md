@@ -16,7 +16,7 @@ into the existing app.
 
 ## 1. Create Function in ‘hubspot-service’ Codebase
 
-- The new `.ts` file should be in the `functions` directory.
+- In VSCode, he new `.ts` file should be in the `functions` directory.
 
 ## 2. Deploy to Live Azure Functions App
 
@@ -33,17 +33,76 @@ into the existing app.
   - Entra \> Manage \> App Registrations
 - Find and select `terramax-hubspot-service-registration` in the list of
   `Owned Applications`
+- In the app registration’s page, go to:
+  - Manage \> Expose an API
+- An page will open that shows all the currently exposed APIs; click
+  `Add a scope` to create, name, and describe a new one. Be sure that
+  the Scope name starts with `api.` followed by whatever is listed as
+  the handler in the function code. When done, click `Add scope`. This
+  creates the API within Azure so that permissiont o access it can now
+  be granted elsewhere.
 
 ## 4. Add Permission for the New Function
 
 - In the Azure Portal, go to:
   - Entra \> Manage \> App Registrations
-- Find and select `terramax-hubspot-service-registration` in the list of
+- Find and select `terramax-ordering-app-registration` in the list of
   `Owned Applications`
 - In the app registration’s page, go to:
   - Manage \> API permissions
+- click the `Add a permission` button
 - In the `Request API permissions` pop-up, select the `My APIs` tab
 - Select `terramax-hubspot-service-registration` from the list
 - It will then show a list of all possible API permissions, and your new
   function should appear in the list unchecked. Check it, then click
   `Add permission`
+- The newly added permission should now appear in the list, but its
+  Status is not yet Granted. To grant permission, click on the
+  `Grant admin consent for TerraMax, Inc` button, and then agree `yes`
+  to the confirmation pop-up. The new api should now also appear as
+  Granted.
+
+## 5. Add to Ordering App code
+
+- Open the `ordering-app` project in VSCode, and open the
+  `authConfig.ts` file in the `src` folder
+- Near the bottom of the file, add the new api to the section:
+
+``` ts
+export const loginRequest = {
+ scopes: [
+   `api://${FUNCTIONS_APP_ID}/api.AllDeals`,
+   `api://${FUNCTIONS_APP_ID}/api.DealById`,
+   `api://${FUNCTIONS_APP_ID}/api.AllOwners`,
+   `api://${FUNCTIONS_APP_ID}/api.AllContacts`,
+   `api://${FUNCTIONS_APP_ID}/api.AllCompanies`,
+   `api://${FUNCTIONS_APP_ID}/api.Client`,
+   `api://${FUNCTIONS_APP_ID}/api.AllCrops`,
+   `api://${FUNCTIONS_APP_ID}/api.AllSkus`,
+   `api://${FUNCTIONS_APP_ID}/api.LineItemsByDeal`,
+   `api://${FUNCTIONS_APP_ID}/api.ReceiveCompleteOrder`,
+   `api://${FUNCTIONS_APP_ID}/api.ReceiveIncompleteOrder`,
+ ],
+ audience: `api://${FUNCTIONS_APP_ID}`,
+};
+```
+
+- Also add the new api to the section at the very bottom of the file:
+
+``` ts
+export const hubspotConfig = {
+    dealsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllDeals`,
+    dealByIdEndpoint: `${FUNCTIONS_BASE_ENDPOINT}DealById`,
+    ownersEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllOwners`,
+    contactsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllContacts`,
+    companiesEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCompanies`,
+    clientEndpoint: `${FUNCTIONS_BASE_ENDPOINT}Client`,
+    cropsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCrops`,
+    skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,
+    lineItemsByDealEndpoint: `${FUNCTIONS_BASE_ENDPOINT}LineItemsByDeal`,
+    receiveCompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveCompleteOrder`,
+    receiveIncompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveIncompleteOrder`,
+};
+```
+
+## After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update
