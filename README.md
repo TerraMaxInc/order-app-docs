@@ -22,4 +22,5 @@ production as part of the entry process.
 
 ## Quick Links
 
+- [How-Tos](docs/how-to/how-to-contents.md)
 - [Architecture Overview](docs/overview/architecture.md)
