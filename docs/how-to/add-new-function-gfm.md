@@ -17,15 +17,34 @@ into the existing app.
 
 ## 1. Create Function in ‘hubspot-service’ Codebase
 
-    - The new `.ts` file should be in the `functions` directory.
+- The new `.ts` file should be in the `functions` directory.
 
 ## 2. Deploy to Live Azure Functions App
 
-- Make sure you are logged in to theTerraMax Azure account
+- Make sure you are logged in to the TerraMax Azure account
 - In VSCode, select `Azure Functions: Deploy to Function App...`
 - Select `terramax-hubspot-service` as the function app to deploy to. A
   pop-up will ask you if you want to deploy; click the `Deploy` button.
 - The terminal will display information about the deployment execution,
   and tell you if it was successful.
 
-## 3.
+## 3. Expose API for the New Function
+
+- In the Azure Portal, go to:
+  - Entra \> Manage \> App Registrations
+- Find and select `terramax-hubspot-service-registration` in the list of
+  `Owned Applications`
+
+## 4. Add Permission for the New Function
+
+- In the Azure Portal, go to:
+  - Entra \> Manage \> App Registrations
+- Find and select `terramax-hubspot-service-registration` in the list of
+  `Owned Applications`
+- In the app registration’s page, go to:
+  - Manage \> API permissions
+- In the `Request API permissions` pop-up, select the `My APIs` tab
+- Select `terramax-hubspot-service-registration` from the list
+- It will then show a list of all possible API permissions, and your new
+  function should appear in the list unchecked. Check it, then click
+  `Add permission`
