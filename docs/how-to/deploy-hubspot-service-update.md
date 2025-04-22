@@ -27,7 +27,7 @@ Functions](../azure/azure-functions.qmd)
   This process may catch errors that need to be addressed before you can
   ry to build again.
 
-## 2. Deploy with the VS Code COmmand Palette
+## 2. Deploy with the VS Code Command Palette
 
 - Find and select `Azure Functions: Deploy to Function app...` in the
   Command Palette. There may be a lag in response after you click.

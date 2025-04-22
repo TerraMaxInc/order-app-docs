@@ -6,3 +6,4 @@
 -->
 
 - [Add New Function](add-new-function.md)
+- [Deploy hubspot-service Update](deploy-hubspot-service-update.md)
