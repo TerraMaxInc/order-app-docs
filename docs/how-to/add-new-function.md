@@ -42,7 +42,16 @@ into the existing app.
   creates the API within Azure so that permissiont o access it can now
   be granted elsewhere.
 
-## 4. Add Permission for the New Function
+## 4. Add the New Function to the client app’s Scope
+
+- On the same page in the Azure Portal as step 3, beneath the apis is a
+  list of client applications. Click on the application with Client Id
+  `df62e6f2-df30-4e5c-b33e-87261d6e82ce`.
+- A popip will appear with a list of Authorized scopes; these are the
+  APIs specifically within the scope to the given app. The new API
+  should appear in the list unchecked; check it and save.
+
+## 5. Add Permission for the New Function
 
 - In the Azure Portal, go to:
   - Entra \> Manage \> App Registrations
@@ -62,7 +71,7 @@ into the existing app.
   to the confirmation pop-up. The new api should now also appear as
   Granted.
 
-## 5. Add to Ordering App code
+## 6. Add to Ordering App code
 
 - Open the `ordering-app` project in VSCode, and open the
   `authConfig.ts` file in the `src` folder
