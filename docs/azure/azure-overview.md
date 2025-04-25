@@ -20,9 +20,9 @@ infrastructure. These components include:
   - Written in **React + Typescript**
   - Uses **Microsoft Entra ID authentication** via MSAL, allowing only
     TerraMax users to log in
-- **HubSpot Service**\`\*\*: a backend API that connects the Ordering
-  App to both an internal product database, and HubSpot’s records of
-  customers and sales.
+- **HubSpot Service**: a backend API that connects the Ordering App to
+  both an internal product database, and HubSpot’s records of customers
+  and sales.
   - Hosted in **Azure Functions**
   - Written in **Typescript**
   - Uses **Microsoft Entra ID** to validate incoming requests and
@@ -43,7 +43,7 @@ Services, like *Static Web Apps* and *Azure Functions*, as well as the
 identity manager *Entra*. Below that you should see a list of all
 current resources.
 
-![Alt text](images/azure-portal-home.jpg)
+![Azure Portal Home Screen](../..\images/azure-portal-home.jpg)
 
 Core components of this project include:
 
