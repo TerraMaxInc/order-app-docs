@@ -19,7 +19,7 @@ This app allows end users to create and edit Deals in HubSpot via the ordering-a
 ## Quick Links
 
 - [How-Tos](docs/how-to/how-to-contents.md)
-- [Architecture Overview](docs/overview/architecture.md)
+- [Azure Overview](docs/azure/azure-overview.qmd)
 
 
 

@@ -11,7 +11,7 @@ This guide walks through the process of deploying an update to the `hubspot-serv
 
 This is NOT a guide to writing Azure Functions, but to updating them the existing app.  It assumes that you are using VS Code and are logged in to the TerraMax Azure account.
 
-The `hubspot-service` app is deployed in Azure Functions; more aobut this resource can be found in [Azure Functions](../azure/azure-functions.qmd)
+The `hubspot-service` app is deployed in Azure Functions; more aobut this resource can be found in [Azure Functions](../azure/azure-functions.md)
 
 ---
 

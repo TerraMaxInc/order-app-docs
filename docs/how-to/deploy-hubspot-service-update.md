@@ -15,7 +15,7 @@ the TerraMax Azure account.
 
 The `hubspot-service` app is deployed in Azure Functions; more aobut
 this resource can be found in [Azure
-Functions](../azure/azure-functions.qmd)
+Functions](../azure/azure-functions.md)
 
 ------------------------------------------------------------------------
 
