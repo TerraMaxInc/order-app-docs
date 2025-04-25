@@ -1,8 +1,7 @@
 # Ordering App System Docs
 
-
 <!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render index.qmd 
+    quarto render index.qmd
 -->
 
 This repository contains all documentation for the Order App project,
@@ -18,9 +17,9 @@ ordering-app’s interface, which is more streamlined and intuitive for
 TerraMax business needs, and to automate emailing Work Orders to
 production as part of the entry process.
 
-------------------------------------------------------------------------
+---
 
 ## Quick Links
 
 - [How-Tos](docs/how-to/how-to-contents.md)
-- [Azure Overview](docs/azure/azure-overview.qmd)
+- [Azure Overview](docs/azure/azure-overview.md)
