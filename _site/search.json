@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "how-to/how-to-contents.html",
+    "href": "how-to/how-to-contents.html",
+    "title": "How-Tos",
+    "section": "",
+    "text": "Add New Function\nDeploy hubspot-service Update\nDeploy ordering-app Update"
+  },
+  {
+    "objectID": "how-to/deploy-hubspot-service-update.html",
+    "href": "how-to/deploy-hubspot-service-update.html",
+    "title": "Deploy an Update to the hubspot-service app",
+    "section": "",
+    "text": "This guide walks through the process of deploying an update to the hubspot-service app where it is hosted in Azure Functions, so that it will become live and available to users.\nThis is NOT a guide to writing Azure Functions, but to updating them the existing app. It assumes that you are using VS Code and are logged in to the TerraMax Azure account.\nThe hubspot-service app is deployed in Azure Functions; more aobut this resource can be found in Azure Functions"
+  },
+  {
+    "objectID": "how-to/deploy-hubspot-service-update.html#finalize-and-build-update",
+    "href": "how-to/deploy-hubspot-service-update.html#finalize-and-build-update",
+    "title": "Deploy an Update to the hubspot-service app",
+    "section": "1. Finalize and Build Update",
+    "text": "1. Finalize and Build Update\n\nOnce you are satisfied with your changes and are ready to deploy, you need to build to convert the Typescript files into Javascript. In Vs Code, in the project folder, open a terminal and run npm run build. This process may catch errors that need to be addressed before you can ry to build again."
+  },
+  {
+    "objectID": "how-to/deploy-hubspot-service-update.html#deploy-with-the-vs-code-command-palette",
+    "href": "how-to/deploy-hubspot-service-update.html#deploy-with-the-vs-code-command-palette",
+    "title": "Deploy an Update to the hubspot-service app",
+    "section": "2. Deploy with the VS Code Command Palette",
+    "text": "2. Deploy with the VS Code Command Palette\n\nFind and select Azure Functions: Deploy to Function app... in the Command Palette. There may be a lag in response after you click.\nSelect the function app you are deploying from the dropdown list that appears: terramax-hubspot-service.\nA popup will ask if you are sure you want to deploy and overwrite the previous deployment. Click Deploy.\nthe Terminal will display the status of the deployment process, which may take some time."
+  },
+  {
+    "objectID": "architecture/github/github-account.html",
+    "href": "architecture/github/github-account.html",
+    "title": "GitHub Account",
+    "section": "",
+    "text": "Stuff about the Guthub account…."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html",
+    "href": "architecture/azure/azure-overview.html",
+    "title": "Azure Overview",
+    "section": "",
+    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same tenant id as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure. They can be viewed and managed through the Azure Portal."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#azure-portal",
+    "href": "architecture/azure/azure-overview.html#azure-portal",
+    "title": "Azure Overview",
+    "section": "Azure Portal",
+    "text": "Azure Portal\nWhen logged in to the home page, you should see a row of icons of Azure Services, like Static Web Apps and Azure Functions, and below that a list of current resources.\n\n\n\nAzure Portal Home Screen\n\n\nMost of the icons in the row of Services will take you to a page that displays all current resources of the service type. You can also create new recources, either within the page dedicated to the specific type, or by clicking on the Create a resource plus sign button in the home screen.\nOther services of note in the top row are:\n\nMicrosoft Entra: manages identity across all accounts within the TerraMax organization. The App Registration section is important for managing security and communication between the Ordering App and HubSpot Service.\nCost Management: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached.\n\nBelow the row of services, you should see a list of current resouces."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#project-specific-resources",
+    "href": "architecture/azure/azure-overview.html#project-specific-resources",
+    "title": "Azure Overview",
+    "section": "Project-Specific Resources",
+    "text": "Project-Specific Resources\nCore components of this project include:\n\nOrdering App (terramax-ordering-app): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.\n\nHosted in Azure Static Web Apps\nWritten in React + Typescript\nUses Microsoft Entra ID authentication via MSAL, allowing only TerraMax users to log in\n\nHubSpot Service (terramax-hubspot-service): a backend API that connects the Ordering App to both an internal product database, and HubSpot’s records of customers and sales.\n\nHosted in Azure Functions\nWritten in Typescript\nUses Microsoft Entra ID to validate incoming requests and restrict access to approved applications\n\nTerraMax Data (terramax-data): a SQL database that holds the masterlist of product information, and a log of transactions that have passed through the server app.\n\nHosted in Azure SQL database\nAccessed only through the server app, not directly by the client\n\n\nOther relevant resources:\n\nterramax-hubspot-service-app-insights\n\nApplication Insights instance connected to the terramax-hubspot-serviceFunction App, which logs data about the app’s use.\n\nterramax-db-server\n\nLogical SQL Server that contains the terramax-data database. Azure requires a server to exist, even if it only hosts a single DB.\n\nTestResourceGroup\n\nThe main Resource Group that contains all parts of the project in Azure. The name comes from its origin during the beginning phase of the project, but to rename and restructure would require recreating resources.\n\nASP-TestResourceGroup-b475\n\nThe App Service Plan associated with the Function App terramax-hubspot-service. It defines the underlying compute environment, and was auto-generated (and named) by Azure.\n\ntestresourcegroup8e0c\n\nThe storage account automatically created to support the Function App terramax-hubspot-service, used for things like\n\nordering-app_group\n\nAn organizational group that Azure auto-generated, not structurally important. It overlaps imperfectly with the TestResourceGroup"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/azure-functions.html",
+    "href": "architecture/azure/hubspot-service/azure-functions.html",
+    "title": "Azure Fnctions",
+    "section": "",
+    "text": "Azure Functions is a hosting service for backend apps…"
+  },
+  {
+    "objectID": "how-to/add-new-function.html",
+    "href": "how-to/add-new-function.html",
+    "title": "Adding a New Function",
+    "section": "",
+    "text": "This guide walks through all the necessary steps to add a new Azure Function to the hubspot-service backend and make it accessible to the client app.\nThis is NOT a guide to writing Azure Functions, but to integrating them into the existing app."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",
+    "href": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",
+    "title": "Adding a New Function",
+    "section": "1. Create Function in ‘hubspot-service’ Codebase",
+    "text": "1. Create Function in ‘hubspot-service’ Codebase\n\nIn VSCode, he new .ts file should be in the functions directory."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#deploy-to-live-azure-functions-app",
+    "href": "how-to/add-new-function.html#deploy-to-live-azure-functions-app",
+    "title": "Adding a New Function",
+    "section": "2. Deploy to Live Azure Functions App",
+    "text": "2. Deploy to Live Azure Functions App\n\nMake sure you are logged in to the TerraMax Azure account\nIn VSCode, select Azure Functions: Deploy to Function App...\nSelect terramax-hubspot-service as the function app to deploy to. A pop-up will ask you if you want to deploy; click the Deploy button.\nThe terminal will display information about the deployment execution, and tell you if it was successful."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#expose-api-for-the-new-function",
+    "href": "how-to/add-new-function.html#expose-api-for-the-new-function",
+    "title": "Adding a New Function",
+    "section": "3. Expose API for the New Function",
+    "text": "3. Expose API for the New Function\n\nIn the Azure Portal, go to:\n\nEntra &gt; Manage &gt; App Registrations\n\nFind and select terramax-hubspot-service-registration in the list of Owned Applications\nIn the app registration’s page, go to:\n\nManage &gt; Expose an API\n\nAn page will open that shows all the currently exposed APIs; click Add a scope to create, name, and describe a new one. Be sure that the Scope name starts with api. followed by whatever is listed as the handler in the function code. When done, click Add scope. This creates the API within Azure so that permissiont o access it can now be granted elsewhere."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#add-the-new-function-to-the-client-apps-scope",
+    "href": "how-to/add-new-function.html#add-the-new-function-to-the-client-apps-scope",
+    "title": "Adding a New Function",
+    "section": "4. Add the New Function to the client app’s Scope",
+    "text": "4. Add the New Function to the client app’s Scope\n\nOn the same page in the Azure Portal as step 3, beneath the apis is a list of client applications. Click on the application with Client Id df62e6f2-df30-4e5c-b33e-87261d6e82ce.\nA popip will appear with a list of Authorized scopes; these are the APIs specifically within the scope to the given app. The new API should appear in the list unchecked; check it and save."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#add-permission-for-the-new-function",
+    "href": "how-to/add-new-function.html#add-permission-for-the-new-function",
+    "title": "Adding a New Function",
+    "section": "5. Add Permission for the New Function",
+    "text": "5. Add Permission for the New Function\n\nIn the Azure Portal, go to:\n\nEntra &gt; Manage &gt; App Registrations\n\nFind and select terramax-ordering-app-registration in the list of Owned Applications\nIn the app registration’s page, go to:\n\nManage &gt; API permissions\n\nclick the Add a permission button\nIn the Request API permissions pop-up, select the My APIs tab\nSelect terramax-hubspot-service-registration from the list\nIt will then show a list of all possible API permissions, and your new function should appear in the list unchecked. Check it, then click Add permission\nThe newly added permission should now appear in the list, but its Status is not yet Granted. To grant permission, click on the Grant admin consent for TerraMax, Inc button, and then agree yes to the confirmation pop-up. The new api should now also appear as Granted."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#add-to-ordering-app-code",
+    "href": "how-to/add-new-function.html#add-to-ordering-app-code",
+    "title": "Adding a New Function",
+    "section": "6. Add to Ordering App code",
+    "text": "6. Add to Ordering App code\n\nOpen the ordering-app project in VSCode, and open the authConfig.ts file in the src folder\nNear the bottom of the file, add the new api to the section:\n\nexport const loginRequest = {\n scopes: [\n   `api://${FUNCTIONS_APP_ID}/api.AllDeals`,\n   `api://${FUNCTIONS_APP_ID}/api.DealById`,\n   `api://${FUNCTIONS_APP_ID}/api.AllOwners`,\n   `api://${FUNCTIONS_APP_ID}/api.AllContacts`,\n   `api://${FUNCTIONS_APP_ID}/api.AllCompanies`,\n   `api://${FUNCTIONS_APP_ID}/api.Client`,\n   `api://${FUNCTIONS_APP_ID}/api.AllCrops`,\n   `api://${FUNCTIONS_APP_ID}/api.AllSkus`,\n   `api://${FUNCTIONS_APP_ID}/api.LineItemsByDeal`,\n   `api://${FUNCTIONS_APP_ID}/api.ReceiveCompleteOrder`,\n   `api://${FUNCTIONS_APP_ID}/api.ReceiveIncompleteOrder`,\n ],\n audience: `api://${FUNCTIONS_APP_ID}`,\n};\n\nAlso add the new api to the section at the very bottom of the file:\n\nexport const hubspotConfig = {\n    dealsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllDeals`,\n    dealByIdEndpoint: `${FUNCTIONS_BASE_ENDPOINT}DealById`,\n    ownersEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllOwners`,\n    contactsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllContacts`,\n    companiesEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCompanies`,\n    clientEndpoint: `${FUNCTIONS_BASE_ENDPOINT}Client`,\n    cropsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCrops`,\n    skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,\n    lineItemsByDealEndpoint: `${FUNCTIONS_BASE_ENDPOINT}LineItemsByDeal`,\n    receiveCompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveCompleteOrder`,\n    receiveIncompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveIncompleteOrder`,\n};"
+  },
+  {
+    "objectID": "how-to/add-new-function.html#after-completing-these-steps-the-new-function-should-be-available-to-use-within-the-rest-of-the-ordering-app-code-and-to-users-when-you-next-deploy-an-app-update",
+    "href": "how-to/add-new-function.html#after-completing-these-steps-the-new-function-should-be-available-to-use-within-the-rest-of-the-ordering-app-code-and-to-users-when-you-next-deploy-an-app-update",
+    "title": "Adding a New Function",
+    "section": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update",
+    "text": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update"
+  },
+  {
+    "objectID": "how-to/deploy-ordering-app-update.html",
+    "href": "how-to/deploy-ordering-app-update.html",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "",
+    "text": "This guide walks through the process of deploying an update to the ordering-app where it is hosted in Azure Static Webapps, so that it will become live and available to users.\nThis is NOT a guide to writing React or Typescript, but to deploying updates the existing app. It assumes that you are using VS Code and are logged in to the GitHub account that hosts the codebase. It deploys via GitHub actions, and as of the writing of this document cannot be deployed any other way.\nFor this project, I have set up a deploy branch to be the one that triggers the necessary GitHub action. Changes can be made, committed and synced to other branches including main without triggering an update."
+  },
+  {
+    "objectID": "how-to/deploy-ordering-app-update.html#finalize-and-build-update",
+    "href": "how-to/deploy-ordering-app-update.html#finalize-and-build-update",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "1. Finalize and Build Update",
+    "text": "1. Finalize and Build Update\n\nOnce you are satisfied with your changes and are ready to deploy, you need to build to convert the Typescript files into Javascript. In Vs Code, in the project folder, open a terminal and run npm run build. This process may catch errors that need to be addressed before you can try to build again."
+  },
+  {
+    "objectID": "how-to/deploy-ordering-app-update.html#commit-and-sync-to-github",
+    "href": "how-to/deploy-ordering-app-update.html#commit-and-sync-to-github",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "2. Commit and Sync to GitHub",
+    "text": "2. Commit and Sync to GitHub\n\nCommit all changes to the branch you’re working on, and then sync those changes to GitHub."
+  },
+  {
+    "objectID": "how-to/deploy-ordering-app-update.html#push-changes-to-the-deploy-branch",
+    "href": "how-to/deploy-ordering-app-update.html#push-changes-to-the-deploy-branch",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "3. Push Changes to the deploy Branch",
+    "text": "3. Push Changes to the deploy Branch\n\nIn a terminal enter github push origin (branch):deploy, replacing (branch) with the nameo fthe branch that has the changes you want to deploy. Example:\n\ngithub push origin auth:deploy\n\nThis should be a quick process in Vs Code. It will authomatically trigger the GitHub workflow to deploy the update, which will take longer."
+  },
+  {
+    "objectID": "how-to/deploy-ordering-app-update.html#check-status-in-github-actions",
+    "href": "how-to/deploy-ordering-app-update.html#check-status-in-github-actions",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "4. Check Status in GitHub Actions",
+    "text": "4. Check Status in GitHub Actions\n\nIn the GitHub account:\n\nopen the ordering-app repo\ngo to the Actions tab\nSelect All workflows from the Actions sidebar (it may already be selected)\n\nIn the All workflows section, you will see a list of past workflows, and the date they were attempted. You may need to refresh to see the one you just triggered. You may see a yellow circle to indicate that it’s in progress; it will automatically change to show when it’s complete.\nIf it turns red to indicate failure, click on the entry to view the error details. Sometimes they are transient and you can try again; try rebuilding the app, re-committing, and redeploying."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ordering App System Docs",
+    "section": "",
+    "text": "This repository contains all documentation for the Order App project, which consists of two main parts:\nThis app allows end users to create and edit Deals in HubSpot via the ordering-app’s interface, which is more streamlined and intuitive for TerraMax business needs, and to automate emailing Work Orders to production as part of the entry process."
+  },
+  {
+    "objectID": "index.html#quick-links",
+    "href": "index.html#quick-links",
+    "title": "Ordering App System Docs",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nHow-Tos\nAzure Overview"
+  }
+]
