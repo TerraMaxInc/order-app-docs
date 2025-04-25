@@ -1,0 +1,6 @@
+---
+title: "Azure Fnctions"
+format: html
+---
+
+**Azure Functions** is a hosting service for backend apps...

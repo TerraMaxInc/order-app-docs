@@ -4,7 +4,7 @@
 
 ---
 title: "Adding a New Function"
-format: gfm
+format: html
 ---
 
 This guide walks through all the necessary steps to add a new Azure Function to the hubspot-service backend and make it accessible to the client app.

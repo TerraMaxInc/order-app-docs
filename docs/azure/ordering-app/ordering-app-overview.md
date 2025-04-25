@@ -1,3 +1,0 @@
-# Ordering App Overview
-
-

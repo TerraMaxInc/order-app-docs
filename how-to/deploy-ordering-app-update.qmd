@@ -4,12 +4,12 @@
 
 ---
 title: "Deploy an Update to the ordering-app"
-format: gfm
+format: html
 ---
 
 This guide walks through the process of deploying an update to the `ordering-app` where it is hosted in Azure Static Webapps, so that it will become live and available to users.  
 
-This is NOT a guide to writing React or Typescript, but to deploying updates the existing app.  It assumes that you are using VS Code and are logged in to the [GitHub account](../github/github-account.qmd) that hosts the codebase.  It deploys via GitHub actions, and as of the writing of this document cannot be deployed any other way.
+This is NOT a guide to writing React or Typescript, but to deploying updates the existing app.  It assumes that you are using VS Code and are logged in to the [GitHub account](../architecture/github/github-account.html) that hosts the codebase.  It deploys via GitHub actions, and as of the writing of this document cannot be deployed any other way.
 
 For this project, I have set up a `deploy` branch to be the one that triggers the necessary GitHub action.  Changes can be made, committed and synced to other branches including `main` without triggering an update.
 
@@ -32,7 +32,7 @@ For this project, I have set up a `deploy` branch to be the one that triggers th
 
 ## 4. Check Status in GitHub Actions
 
-- In the [GitHub account](../github/github-account.qmd): 
+- In the [GitHub account](../architecture/github/github-account.html): 
     - open the `ordering-app` repo
     - go to the `Actions` tab
     - Select `All workflows` from the Actions sidebar (it may already be selected)

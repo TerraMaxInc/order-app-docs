@@ -1,6 +1,21 @@
 project:
-  type: default
+  type: website
+
+website:
+  title: "Ordering App Project Docs"
+  navbar:
+    left:
+      - href: index.html  # Point to the rendered .html file, not .qmd
+        text: Home
+      - href: architecture/azure/azure-overview.html
+        text: Azure
+      - href: how-to/how-to-contents.html
+        text: How-to's
+      - href: reference/glossary.html
+        text: Glossary
 
 format:
-  gfm:
-    output-dir: "."
+  html: 
+    output-dir: _site
+    embed-resources: true
+    toc: true

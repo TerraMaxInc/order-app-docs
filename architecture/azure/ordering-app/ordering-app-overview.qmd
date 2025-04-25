@@ -1,5 +1,5 @@
 ---
 title: "Ordering App Overview"
-format: gfm
+format: html
 ---
 

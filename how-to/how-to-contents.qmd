@@ -4,8 +4,9 @@
 
 ---
 title: "How-Tos"
-format: gfm
+format: html
 ---
 
-- [Add New Function](add-new-function.md)
-- [Deploy hubspot-service Update](deploy-hubspot-service-update.md)
+- [Add New Function](add-new-function.html)
+- [Deploy hubspot-service Update](deploy-hubspot-service-update.html)
+- [Deploy ordering-app Update](deploy-ordering-app-update.html)

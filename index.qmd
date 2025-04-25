@@ -4,7 +4,7 @@
 
 ---
 title: "Ordering App System Docs"
-format: gfm
+format: html
 ---
 
 This repository contains all documentation for the Order App project, which consists of two main parts:
@@ -18,8 +18,8 @@ This app allows end users to create and edit Deals in HubSpot via the ordering-a
 
 ## Quick Links
 
-- [How-Tos](docs/how-to/how-to-contents.md)
-- [Azure Overview](docs/azure/azure-overview.md)
+- [How-Tos](how-to/how-to-contents.html)
+- [Azure Overview](architecture/azure/azure-overview.html)
 
 
 

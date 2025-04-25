@@ -1,6 +1,6 @@
 ---
 title: "Azure Overview"
-format: gfm
+format: html
 ---
 
 Azure is a cloud platform owned by Microsoft that offers a variety of online resources.  TerraMax has a single Azure account, which uses the same **tenant id** as the TerraMax *Microsoft 365* account (which supplies resources like Word, Excel and SharePoint).  This means that both the Azure and Microsoft 365 accounts are part of the same *organization*, share access to user identities and security settings, and are both managed through **Microsoft Entra**.
@@ -28,7 +28,7 @@ Below the row of services, you should see a list of current resouces.
 
 Core components of this project include:
 
-- **Ordering App** ([`terramax-ordering-app`](ordering-app/ordering-app-overview.md)): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.  
+- **Ordering App** ([`terramax-ordering-app`](ordering-app/ordering-app-overview.html)): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.  
     - Hosted in **Azure Static Web Apps**
     - Written in **React + Typescript**
     - Uses **Microsoft Entra ID authentication** via MSAL, allowing only TerraMax users to log in
