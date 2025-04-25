@@ -43,7 +43,7 @@ Services, like *Static Web Apps* and *Azure Functions*, as well as the
 identity manager *Entra*. Below that you should see a list of all
 current resources.
 
-![Azure Portal Home Screen](../..\images/azure-portal-home.jpg)
+![Azure Portal Home Screen](../../images/azure-portal-home.jpg)
 
 Core components of this project include:
 
