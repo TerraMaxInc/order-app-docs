@@ -1,0 +1,11 @@
+<!-- To regenerate the Markdown version of this file, enter in the terminal:
+    quarto render docs/how-to/how-to-contents.qmd 
+-->
+
+---
+title: "How-Tos"
+format: gfm
+---
+
+- [Add New Function](add-new-function.md)
+- [Deploy hubspot-service Update](deploy-hubspot-service-update.md)
