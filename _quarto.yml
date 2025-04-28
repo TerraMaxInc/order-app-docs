@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Ordering App Project Docs"
@@ -16,6 +17,5 @@ website:
 
 format:
   html: 
-    output-dir: _site
     embed-resources: true
     toc: true
