@@ -8,8 +8,21 @@ website:
     left:
       - href: index.html  # Point to the rendered .html file, not .qmd
         text: Home
-      - href: architecture/azure/azure-overview.html
-        text: Azure
+      # - href: architecture/azure/azure-overview.html
+      - text: Azure
+        menu:
+          - text: Overview
+            href: architecture/azure/azure-overview.html
+          - text: Ordering App
+            href: architecture/azure/ordering-app/ordering-app.html
+          - text: HubSpot Service
+            href: architecture/azure/hubspot-service/hubspot-service.html
+          - text: SQL Database
+            href: architecture/azure/terramax-data/terramax-data.html
+      - href: architecture/github/github-overview.html
+        text: Github
+      - href: architecture/hubspot/hubspot-overview.html
+        text: HubSpot
       - href: how-to/how-to-contents.html
         text: How-to's
       - href: reference/glossary.html

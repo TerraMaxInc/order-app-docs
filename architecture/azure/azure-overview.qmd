@@ -28,7 +28,7 @@ Below the row of services, you should see a list of current resouces.
 
 Core components of this project include:
 
-- **Ordering App** ([`terramax-ordering-app`](ordering-app/ordering-app-overview.html)): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.  
+- **Ordering App** ([`terramax-ordering-app`](ordering-app/ordering-app.html)): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.  
     - Hosted in **Azure Static Web Apps**
     - Written in **React + Typescript**
     - Uses **Microsoft Entra ID authentication** via MSAL, allowing only TerraMax users to log in

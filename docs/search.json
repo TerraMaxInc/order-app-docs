@@ -84,8 +84,8 @@
     "text": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update"
   },
   {
-    "objectID": "architecture/github/github-account.html",
-    "href": "architecture/github/github-account.html",
+    "objectID": "architecture/github/github-overview.html",
+    "href": "architecture/github/github-overview.html",
     "title": "GitHub Account",
     "section": "",
     "text": "Stuff about the Guthub account…."
