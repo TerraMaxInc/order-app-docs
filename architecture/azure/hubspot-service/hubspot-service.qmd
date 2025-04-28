@@ -1,0 +1,32 @@
+---
+title: "HubSpot Service"
+format: html
+---
+
+The **HubSpot Service** is the intermediary that connects the user-facing [Ordering App](../ordering-app/ordering-app.html) to the [HubSpot Accout](../../hubspot/hubspot-overview.qmd). Because a client application isn't sufficiently secure to hold the `hubspot api token`, a backend service was needed to manage authentication and API requests securely.
+
+This is a Node.js app written in Typescript, and hosted in [Azure Functions](azure-functions.html).  It makes heavy use of the environmental variables in Azure Functions.  
+
+## Environmental Variables
+Environmental variables are a way to store data necessary to the functioning of the app without putting it directly into the code, either because it's too sensitive to be exposed in code, or because someone might want to change it at some point without digging directly into the code.  There is a set in the codebase, in a file at the root called `.env`, and a near-matching set in the Azure Functions 
+
+  This is the full list of environmental variables:
+
+- **HUBSPOT_API_TOKEN** - the key that allows the app to connect with TerraMax's HubSpot account.
+- **ADMIN_EMAIL** - the app filters out orders from this account and doesn't email them to anyone else, since they're just tests
+- **MANAGER_EMAILS** - the csv list of emails that all orders should be sent to when closed/won
+- **AZURE_SQL_SERVER** - the location the Azure server that holds the [SQL database](../terramax-data/terramax-data.html)
+- **AZURE_SQL_DATABASE** - the name of the [SQL database](../terramax-data/terramax-data.html)
+- **AZURE_FUNCTIONS_ENVIRONMENT** - tells the app it's running it "Production" and not "Development", to control bevahior that should only happen while testing
+
+- **AZURE_SQL_CONNECTION_STRING** - the full connection string to the [SQL database](../terramax-data/terramax-data.html)
+
+TENANT_ID = 
+CLIENT_ID = 
+CLIENT_SECRET =   # Needs to be changed every 6 months; this will expire 8/30/25
+SENDER_EMAIL = 
+TARGET_EMAIL = 
+MANAGER_EMAILS =
+
+## Other settings
+

@@ -1,0 +1,16 @@
+---
+title: Azure Cost Management
+format: html
+---
+
+You can access the Cost Management section by going to the [Azure Portal](../architecture/azure/azure-overview.html#portal) and clicking on the green **Cost Management** icon in the top row of services.  This will take you to a the Cost Management Overview page
+
+![Cost Management Overview](images/azure-cost-management.jpg)
+
+From here, click on `Go to billing account` in the top center of the page, right below the scope.  This will take you to a summary of all costs associated with the Azure resources being uses.
+
+![Billing Account Summary](images/billing-account.jpg)
+
+At the time of writing (April 28, 2025), the only resource that is not free is the [SQL Database](../architecture/azure/terramax-data/terramax-data.html), which should cost $4.99/month.  This may be subject to change, and should be checked periodically.
+
+The budget for Azure is currently set to $5.00/month, and emails me a notice when it reaches 80% of that limit.

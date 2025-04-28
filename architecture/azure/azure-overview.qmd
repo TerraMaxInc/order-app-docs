@@ -9,8 +9,8 @@ This project uses Azure to host several components in a secure and centralized w
 
 ---
 
-## Azure Portal
-When logged in to the home page, you should see a row of icons of Azure Services, like *Static Web Apps* and *Azure Functions*, and below that a list of current resources.  
+## Azure Portal {#portal}
+Logging in to the Azure Portal should take you to the home page.  There you should see a row of icons of Azure Services, like *Static Web Apps* and *Azure Functions*, and below that a list of current resources.  
 
 ![Azure Portal Home Screen](../../images/azure-portal-home.jpg)
 
@@ -20,7 +20,7 @@ Other services of note in the top row are:
 
 - **Microsoft Entra**: manages identity across all accounts within the TerraMax organization.  The `App Registration` section is important for managing security and communication between the Ordering App and HubSpot Service.
 
-- **Cost Management**: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached.
+- **Cost Management**: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached. See [how to check costs](../../how-to/check-costs.html)
 
 Below the row of services, you should see a list of current resouces.
 

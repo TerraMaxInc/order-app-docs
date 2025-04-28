@@ -1,6 +1,6 @@
 ---
 title: "Azure Static Web Apps Overview"
-format: gfm
+format: html
 ---
 
 **Azure Static Web Apps** is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt.  Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.

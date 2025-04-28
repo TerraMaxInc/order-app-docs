@@ -3879,9 +3879,6 @@ vertical-align: -.125em;
 </header>
 
 
-<!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render docs/how-to/deploy-ordering-app-update.qmd 
--->
 <p>This guide walks through the process of deploying an update to the <code>ordering-app</code> where it is hosted in Azure Static Webapps, so that it will become live and available to users.</p>
 <p>This is NOT a guide to writing React or Typescript, but to deploying updates the existing app. It assumes that you are using VS Code and are logged in to the <a href="../architecture/github/github-account.html">GitHub account</a> that hosts the codebase. It deploys via GitHub actions, and as of the writing of this document cannot be deployed any other way.</p>
 <p>For this project, I have set up a <code>deploy</code> branch to be the one that triggers the necessary GitHub action. Changes can be made, committed and synced to other branches including <code>main</code> without triggering an update.</p>

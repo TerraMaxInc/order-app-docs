@@ -16,7 +16,7 @@ This is NOT a guide to writing Azure Functions, but to integrating them into the
 
 ## 1. Create Function in 'hubspot-service' Codebase
 
-- In VSCode, he new `.ts` file should be in the `functions` directory.
+- In VSCode, the new `.ts` file should be in the `functions` directory.
 
 ## 2. Deploy to Live Azure Functions App
 
@@ -37,7 +37,7 @@ This is NOT a guide to writing Azure Functions, but to integrating them into the
 ## 4. Add the New Function to the client app's Scope
 
 - On the same page in the Azure Portal as step 3, beneath the apis is a list of client applications.  Click on the application with Client Id `df62e6f2-df30-4e5c-b33e-87261d6e82ce`.
-- A popip will appear with a list of Authorized scopes; these are the APIs specifically within the scope to the given app.  The new API should appear in the list unchecked; check it and save.
+- A popup will appear with a list of Authorized scopes; these are the APIs specifically within the scope to the given app.  The new API should appear in the list unchecked; check it and save.
 
 ## 5. Add Permission for the New Function 
 

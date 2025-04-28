@@ -1,7 +1,3 @@
-<!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render docs/how-to/deploy-ordering-app-update.qmd 
--->
-
 ---
 title: "Deploy an Update to the ordering-app"
 format: html
