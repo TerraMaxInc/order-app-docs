@@ -2,6 +2,9 @@ project:
   type: website
   output-dir: docs
 
+metadata:
+  project-root: "."
+
 website:
   title: "Ordering App Project Docs"
   navbar:
@@ -32,3 +35,7 @@ format:
   html: 
     embed-resources: true
     toc: true
+    css: styles/glossary.css
+
+filters: 
+  - filters/tooltip.lua

@@ -3,7 +3,7 @@ title: "Azure Overview"
 format: html
 ---
 
-Azure is a cloud platform owned by Microsoft that offers a variety of online resources.  TerraMax has a single Azure account, which uses the same **tenant id** as the TerraMax *Microsoft 365* account (which supplies resources like Word, Excel and SharePoint).  This means that both the Azure and Microsoft 365 accounts are part of the same *organization*, share access to user identities and security settings, and are both managed through **Microsoft Entra**.
+Azure is a cloud platform owned by Microsoft that offers a variety of online resources.  TerraMax has a single Azure account, which uses the same @tenant-id as the TerraMax *Microsoft 365* account (which supplies resources like Word, Excel and SharePoint).  This means that both the Azure and Microsoft 365 accounts are part of the same *organization*, share access to user identities and security settings, and are both managed through **Microsoft Entra**.
 
 This project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure.  They can be viewed and managed through the **Azure Portal**.
 

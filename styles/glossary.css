@@ -1,0 +1,12 @@
+a.glossary-term {
+    border-bottom: 1px dotted #999;
+    text-decoration: none;
+    cursor: help;
+    color: inherit;
+    position: relative;
+}
+
+a.glossary-term:hover {
+    color: #05a;
+    border-bottom-color: #05a;
+}

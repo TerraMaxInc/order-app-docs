@@ -3,4 +3,6 @@ title: "GitHub Account"
 format: html
 ---
 
-Stuff about the Guthub account....
+Stuff about the Github account....
+- Github actions
+- how these docs are hosted

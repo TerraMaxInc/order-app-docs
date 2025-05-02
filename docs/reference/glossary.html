@@ -3799,6 +3799,7 @@ vertical-align: -.125em;
 }</script>
 
 
+<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}</style>
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -3855,7 +3856,7 @@ vertical-align: -.125em;
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../how-to/how-to-contents.html"> 
-<span class="menu-text">How-to’s</span></a>
+<span class="menu-text">How-to&#39;s</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../reference/glossary.html" aria-current="page"> 
@@ -3872,8 +3873,16 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#application-permission" id="toc-application-permission" class="nav-link active" data-scroll-target="#application-permission">Application Permission</a></li>
+  <li><a href="#delegated-permission" id="toc-delegated-permission" class="nav-link" data-scroll-target="#delegated-permission">Delegated Permission</a></li>
+  <li><a href="#tenant-id" id="toc-tenant-id" class="nav-link" data-scroll-target="#tenant-id">Tenant ID</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -3897,8 +3906,18 @@ vertical-align: -.125em;
 </header>
 
 
-
-
+<section id="application-permission" class="level2">
+<h2 class="anchored" data-anchor-id="application-permission">Application Permission</h2>
+<p>On contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user&#39;s.</p>
+</section>
+<section id="delegated-permission" class="level2">
+<h2 class="anchored" data-anchor-id="delegated-permission">Delegated Permission</h2>
+<p>On contrast with application permission, the app acts on behalf of a signed-in user, and uses that user&#39;s credentials.  What the app can do is limited to what permissions the user has.</p>
+</section>
+<section id="tenant-id" class="level2">
+<h2 class="anchored" data-anchor-id="tenant-id">Tenant ID</h2>
+<p>the overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.</p>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

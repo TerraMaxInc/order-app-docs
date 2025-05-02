@@ -1,2 +1,5 @@
 /.quarto/
 **/*-gfm.md
+*.pdf
+*_files/
+/.luarc.json

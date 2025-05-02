@@ -32,7 +32,7 @@ This is NOT a guide to writing Azure Functions, but to integrating them into the
 - Find and select `terramax-hubspot-service-registration` in the list of `Owned Applications`
 - In the app registration's page, go to:
     - Manage > Expose an API
-- An page will open that shows all the currently exposed APIs; click `Add a scope` to create, name, and describe a new one.  Be sure that the Scope name starts with `api.` followed by whatever is listed as the handler in the function code.  When done, click `Add scope`.  This creates the API within Azure so that permissiont o access it can now be granted elsewhere.
+- An page will open that shows all the currently exposed APIs; click `Add a scope` to create, name, and describe a new one.  Be sure that the Scope name starts with `api.` followed by whatever is listed as the handler in the function code.  When done, click `Add scope`.  This creates the API within Azure so that permission to access it can now be granted elsewhere.
 
 ## 4. Add the New Function to the client app's Scope
 

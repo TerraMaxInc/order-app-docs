@@ -4,3 +4,5 @@ format: html
 ---
 
 Stuff about the db...
+- each table
+- idempotency log

@@ -1,0 +1,6 @@
+---
+title: "HubSpot Service Registration"
+format: html
+---
+
+All Apps have to be **registered** in Entra...

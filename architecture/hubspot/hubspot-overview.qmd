@@ -3,4 +3,6 @@ title: "HubSpot"
 format: html
 ---
 
-Stuff about HubSpot
+Stuff about HubSpot...
+- api token
+- added properties
