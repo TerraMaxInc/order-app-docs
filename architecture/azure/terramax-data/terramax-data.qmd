@@ -3,6 +3,14 @@ title: "TerraMax Data"
 format: html
 ---
 
-Stuff about the db...
+Most of the data relevant to this project is stored in the TerraMax [HubSpot account](../../hubspot/hubspot-overview.html), but not all data was a good fit for the HubSpot data structure.  
+
+It wasn't possible within HubSpot's **Products** object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed.  Once in place, the database was also useful later on as a place to store transaction data as part of a system for preventing duplicate transactions.
+
+HubSpot contains Product data that *mirrors* this SQL database data, in flattened form, for the sake of reporting within HubSpot.  It can be updated programmatically to synch with any changes made to the SQL database, using the `updateHSProducts` function in the HubSpot Service.
+
+The [HubSpot Service](../hubspot-service/hubspot-service.qmd) interfaces with this database when it needs to store or retrieve information.  The front end user never interacts wirth it directly.
+
+
 - each table
 - idempotency log

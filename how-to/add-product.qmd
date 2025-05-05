@@ -1,0 +1,46 @@
+---
+title: "Add Product"
+format: html
+---
+
+The list of Products is effectively stored in two locations:
+- The *master list* in the [TerraMax Data SQL Database](../architecture/azure/terramax-data/terramax-data.qmd)
+- The *Products* object in [HubSpot](../architecture/hubspot/hubspot-overview.qmd)
+
+Both locations need to be updated, but you should start with the TerraMax Data SQL database.  The structure of the data in the SQL db is [more complex](../architecture/azure/terramax-data/product-structure.qmd), and there is a function in the [HubSpot Service](../architecture/azure/hubspot-service/hubspot-service.qmd) that will synch the HubSpot version to match the SQL version.
+
+Adding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the `SQL SERVER` extension, or directly in the Azure Portal. This guide assumes that you are able to use at least one of those tools.
+
+---
+
+## 1. Add New Properties to SUpporting Tables
+- Check that the `Application`, `Crop`, and `Type` tables already contain the values that you need, and insert them if needed.
+
+## 2. Insert the Product in TerraMax Data
+- If the new product is simply a different size of an existing product, you can skip this step.  Otherwise, insert the new Product into the `Products` table:
+```sql
+INSERT INTO Products (name, type, crop, application, green)
+    VALUES ('TerraMax Dry Soybean Inoculant', 'Dry', 'Soybean', 'ST', false);
+```
+
+- name: The full name you want to appear in the Ordering App.
+- type: Liquid or Dry.  Must match spelling and case in `Types` table exactly.
+- crop: Target crop.  Can only include one, but there is a Multi-Crop option if needed.  Must match spelling and case from the `crop` column in `Crops` table exactly.
+- application: ST, IF, etc.  Must match spelling and case in `Applications` table exactly.
+- green: boolean value: true = green, false = conventional
+
+## 3. Insert the Sku into Skus
+- Using the system-generated `id` number for the desired product, insert the sku with its size and prices:
+```sql
+INSERT INTO Skus (product_id, size, distributor_price, dealer_price, msrp)
+    VALUES(5, '5 lbs', '29.60', '47.75', '59.20');
+```
+
+- product_id: Foreign key that references the `id` int he `Product` table.
+- size: Size of the product sku.  Must match spelling and case in `Sizes` table exactly.
+- distributor_price, dealer_price, msrp: the pruce values.  
+
+## 4. Sync HubSpot Products
+
+- Open the hubspot-service project in VSCode and run the project locally wuth `npm start`.
+- When the terminal displays a list of all Functions, ctrl + click on `UpdateHSProducts`.  This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL.  It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted.

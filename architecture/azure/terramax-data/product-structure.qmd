@@ -1,0 +1,11 @@
+---
+title: Product Data Structure
+format: html
+---
+
+The structure of *Product* data in the TerraMax SQL Database is more complex than the flattened *Product* object in [HubSpot](../../hubspot/hubspot-overview.qmd).  It involves six tables, four of which simply contain single field sets of data to populate tho main tables, and two of which assemble the data into more complex objects.
+
+This database differentiates between the `Sku`: the item a customer purchases with a specific size and price, and the `Product`: the actual material inside the item.  One Product may come in multiple sizes, and thus have mutliple skus.  The `Applications`, `Crops`, and `Types` tables are associated with the `Product` table, and the `Sizes` table is associated with the `Skus` table.
+
+![Product Data Structure](../../../images/product-data-structure.jpg)
+

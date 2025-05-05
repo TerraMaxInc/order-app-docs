@@ -1,0 +1,7 @@
+---
+title: Azure SQL Database
+format: html
+---
+
+An **Azure SQL Database** is one of many database options available in Azure.  It's a cloud-based, fully managed, relational database.  I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance.
+

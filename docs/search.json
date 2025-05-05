@@ -32,7 +32,7 @@
     "href": "how-to/how-to-contents.html",
     "title": "How-Tos",
     "section": "",
-    "text": "Add New Function\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update"
+    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update"
   },
   {
     "objectID": "how-to/deploy-hubspot-service-update.html",
@@ -54,6 +54,167 @@
     "title": "Deploy an Update to the hubspot-service app",
     "section": "2. Deploy with the VS Code Command Palette",
     "text": "2. Deploy with the VS Code Command Palette\n\nFind and select Azure Functions: Deploy to Function app... in the Command Palette. There may be a lag in response after you click.\nSelect the function app you are deploying from the dropdown list that appears: terramax-hubspot-service.\nA popup will ask if you are sure you want to deploy and overwrite the previous deployment. Click Deploy.\nthe Terminal will display the status of the deployment process, which may take some time."
+  },
+  {
+    "objectID": "how-to/add-product.html",
+    "href": "how-to/add-product.html",
+    "title": "Add Product",
+    "section": "",
+    "text": "The list of Products is effectively stored in two locations: - The master list in the TerraMax Data SQL Database - The Products object in HubSpot\nBoth locations need to be updated, but you should start with the TerraMax Data SQL database. The structure of the data in the SQL db is more complex, and there is a function in the HubSpot Service that will synch the HubSpot version to match the SQL version.\nAdding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the SQL SERVER extension, or directly in the Azure Portal. This guide assumes that you are able to use at least one of those tools."
+  },
+  {
+    "objectID": "how-to/add-product.html#add-new-properties-to-supporting-tables",
+    "href": "how-to/add-product.html#add-new-properties-to-supporting-tables",
+    "title": "Add Product",
+    "section": "1. Add New Properties to SUpporting Tables",
+    "text": "1. Add New Properties to SUpporting Tables\n\nCheck that the Application, Crop, and Type tables already contain the values that you need, and insert them if needed."
+  },
+  {
+    "objectID": "how-to/add-product.html#insert-the-product-in-terramax-data",
+    "href": "how-to/add-product.html#insert-the-product-in-terramax-data",
+    "title": "Add Product",
+    "section": "2. Insert the Product in TerraMax Data",
+    "text": "2. Insert the Product in TerraMax Data\n\nIf the new product is simply a different size of an existing product, you can skip this step. Otherwise, insert the new Product into the Products table:\n\nINSERT INTO Products (name, type, crop, application, green)\n    VALUES ('TerraMax Dry Soybean Inoculant', 'Dry', 'Soybean', 'ST', false);\n\nname: The full name you want to appear in the Ordering App.\ntype: Liquid or Dry. Must match spelling and case in Types table exactly.\ncrop: Target crop. Can only include one, but there is a Multi-Crop option if needed. Must match spelling and case from the crop column in Crops table exactly.\napplication: ST, IF, etc. Must match spelling and case in Applications table exactly.\ngreen: boolean value: true = green, false = conventional"
+  },
+  {
+    "objectID": "how-to/add-product.html#insert-the-sku-into-skus",
+    "href": "how-to/add-product.html#insert-the-sku-into-skus",
+    "title": "Add Product",
+    "section": "3. Insert the Sku into Skus",
+    "text": "3. Insert the Sku into Skus\n\nUsing the system-generated id number for the desired product, insert the sku with its size and prices:\n\nINSERT INTO Skus (product_id, size, distributor_price, dealer_price, msrp)\n    VALUES(5, '5 lbs', '29.60', '47.75', '59.20');\n\nproduct_id: Foreign key that references the id int he Product table.\nsize: Size of the product sku. Must match spelling and case in Sizes table exactly.\ndistributor_price, dealer_price, msrp: the pruce values."
+  },
+  {
+    "objectID": "how-to/add-product.html#sync-hubspot-products",
+    "href": "how-to/add-product.html#sync-hubspot-products",
+    "title": "Add Product",
+    "section": "4. Sync HubSpot Products",
+    "text": "4. Sync HubSpot Products\n\nOpen the hubspot-service project in VSCode and run the project locally wuth npm start.\nWhen the terminal displays a list of all Functions, ctrl + click on UpdateHSProducts. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted."
+  },
+  {
+    "objectID": "architecture/hubspot/hubspot-overview.html",
+    "href": "architecture/hubspot/hubspot-overview.html",
+    "title": "HubSpot",
+    "section": "",
+    "text": "Stuff about HubSpot… - api token - added properties"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/terramax-data.html",
+    "href": "architecture/azure/terramax-data/terramax-data.html",
+    "title": "TerraMax Data",
+    "section": "",
+    "text": "Most of the data relevant to this project is stored in the TerraMax HubSpot account, but not all data was a good fit for the HubSpot data structure.\nIt wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, the database was also useful later on as a place to store transaction data as part of a system for preventing duplicate transactions.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts wirth it directly.\n\neach table\nidempotency log"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/azure-sql.html",
+    "href": "architecture/azure/terramax-data/azure-sql.html",
+    "title": "Azure SQL Database",
+    "section": "",
+    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service-registration.html",
+    "href": "architecture/azure/hubspot-service/hubspot-service-registration.html",
+    "title": "HubSpot Service Registration",
+    "section": "",
+    "text": "All Apps have to be registered in Entra…"
+  },
+  {
+    "objectID": "architecture/azure/entra/entra-overview.html",
+    "href": "architecture/azure/entra/entra-overview.html",
+    "title": "Microsoft Entra Overview",
+    "section": "",
+    "text": "Stuff about Entra…"
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html",
+    "href": "architecture/azure/azure-overview.html",
+    "title": "Azure Overview",
+    "section": "",
+    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same Tenant ID as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure. They can be viewed and managed through the Azure Portal."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#portal",
+    "href": "architecture/azure/azure-overview.html#portal",
+    "title": "Azure Overview",
+    "section": "Azure Portal",
+    "text": "Azure Portal\nLogging in to the Azure Portal should take you to the home page. There you should see a row of icons of Azure Services, like Static Web Apps and Azure Functions, and below that a list of current resources.\n\n\n\nAzure Portal Home Screen\n\n\nMost of the icons in the row of Services will take you to a page that displays all current resources of the service type. You can also create new recources, either within the page dedicated to the specific type, or by clicking on the Create a resource plus sign button in the home screen.\nOther services of note in the top row are:\n\nMicrosoft Entra: manages identity across all accounts within the TerraMax organization. The App Registration section is important for managing security and communication between the Ordering App and HubSpot Service.\nCost Management: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached. See how to check costs\n\nBelow the row of services, you should see a list of current resouces."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#project-specific-resources",
+    "href": "architecture/azure/azure-overview.html#project-specific-resources",
+    "title": "Azure Overview",
+    "section": "Project-Specific Resources",
+    "text": "Project-Specific Resources\nCore components of this project include:\n\nOrdering App (terramax-ordering-app): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.\n\nHosted in Azure Static Web Apps\nWritten in React + Typescript\nUses Microsoft Entra ID authentication via MSAL, allowing only TerraMax users to log in\n\nHubSpot Service (terramax-hubspot-service): a backend API that connects the Ordering App to both an internal product database, and HubSpot’s records of customers and sales.\n\nHosted in Azure Functions\nWritten in Typescript\nUses Microsoft Entra ID to validate incoming requests and restrict access to approved applications\n\nTerraMax Data (terramax-data): a SQL database that holds the masterlist of product information, and a log of transactions that have passed through the server app.\n\nHosted in Azure SQL database\nAccessed only through the server app, not directly by the client\n\n\nOther relevant resources:\n\nterramax-hubspot-service-app-insights\n\nApplication Insights instance connected to the terramax-hubspot-serviceFunction App, which logs data about the app’s use.\n\nterramax-db-server\n\nLogical SQL Server that contains the terramax-data database. Azure requires a server to exist, even if it only hosts a single DB.\n\nTestResourceGroup\n\nThe main Resource Group that contains all parts of the project in Azure. The name comes from its origin during the beginning phase of the project, but to rename and restructure would require recreating resources.\n\nASP-TestResourceGroup-b475\n\nThe App Service Plan associated with the Function App terramax-hubspot-service. It defines the underlying compute environment, and was auto-generated (and named) by Azure.\n\ntestresourcegroup8e0c\n\nThe storage account automatically created to support the Function App terramax-hubspot-service, used for things like\n\nordering-app_group\n\nAn organizational group that Azure auto-generated, not structurally important. It overlaps imperfectly with the TestResourceGroup"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/azure-functions.html",
+    "href": "architecture/azure/hubspot-service/azure-functions.html",
+    "title": "Azure Fnctions",
+    "section": "",
+    "text": "Azure Functions is a hosting service for backend apps…"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html",
+    "title": "HubSpot Service",
+    "section": "",
+    "text": "The HubSpot Service is the intermediary that connects the user-facing Ordering App to the HubSpot Accout. Because a client application isn’t sufficiently secure to hold the hubspot api token, a backend service was needed to manage authentication and API requests securely.\nThis is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables in Azure Functions."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#environmental-variables",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html#environmental-variables",
+    "title": "HubSpot Service",
+    "section": "Environmental Variables",
+    "text": "Environmental Variables\nEnvironmental variables store important padd data separately from the code for two main reasons: - Security: sentitive information like API tokens should not be hard-coded where it can be exposed. - Configurability: values that might change over time, like email addresses, can be updated without modifying and redeploying code.\nThe HubSpot Sercive uses two sets of these variables, depending on the location: - A local .env file for developement - Azure functions environmental variables for production\nThis is the full list of environmental variables found in Azure that correspond of variables in the .env file:"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#email-settings",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html#email-settings",
+    "title": "HubSpot Service",
+    "section": "Email Settings:",
+    "text": "Email Settings:\nThe app uses these variables to control who is notified when an order is submitted.\n\n\n\n\n\n\n\nVariable\nPurpose\n\n\n\n\nTARGET_EMAIL\nPrimary recipient who will process the order when closed/won.\n\n\nMANAGER_EMAILS\nCSV list of additional recipients who should be notified when an order is closed/won, beyond the “TARGET_EMAIL”.\n\n\nADMIN_EMAIL\nFilters out test orders sent by the\n\n\nadministrator from from being emailed to the TARGET or MANAGERS.\n\n\n\nSENDER_EMAIL\nEmail address that appears as the sender of automated emails sent by the app."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#authentication-and-environment-settings",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html#authentication-and-environment-settings",
+    "title": "HubSpot Service",
+    "section": "Authentication and Environment Settings",
+    "text": "Authentication and Environment Settings\n\n\n\nVariable\nPurpose\n\n\n\n\nAZURE_FUNCTIONS_ENVIRONMENT\nTells the app whetherit’s running in “Production” or “Development”.\n\n\nAZURE_SQL_CONNECTION_STRING\nGives credentials and connection information to access the SQL database.\n\n\nCLIENT_ID\nIdentifies the registered Azure app. This must match the Application (client) ID of the terramax-hubspot-service-registration in Entra, or else authentication will fail.\n\n\nCLIENT_SECRET\nSecret key used to authenticate the backend (terramax-hubspot-service) directly to Microsoft Graph using Application Permission. Needed in order to send emails from a fixed address independent of who calls the api. Secret needs to be updated every six months, and the current one will expire on 8/30/25.\n\n\nHUBSPOT_API_TOKEN\nToken used to authenticate API requests to TerraMax’s HubSpot account.\n\n\nTENANT_ID\nTenant ID identifies the TerraMax Microsoft tenant for authentication purposes."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#system-settings",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html#system-settings",
+    "title": "HubSpot Service",
+    "section": "System Settings:",
+    "text": "System Settings:\nThese variables were auto-generated by Azure and do not appear in the .env file:\n\nAPPINSIGHTS_INSTRUMENTATIONKEY - Key for sending telemetry data to Azure Application Insights.\nAPPLICATIONINSIGHTS_CONNECTION_STRING - Connection string for the Application Insights resource.\nAzureWebJobsStorage - Storage account used internally by Azure Functions (for function state).\nFUNCTIONS_EXTENSION_VERSION - Specifies the version of the Azure Functions runtime.\nFUNCTIONS_WORKER_RUNTIME - Defines the language worker used (“node” for Node.js apps).\nMICROSOFT_PROVIDER_AUTHENTICATION_SECRET - Secret used internally for Microsoft authentication flows.\nWEBSITE_AUTH_AAD_ALLOWED_TENANTS - Lists tenants allowed to authenticate if AAD authentication is enabled.\nWEBSITE_NODE_DEFAULT_VERSION - Specifies the Node.js version used by the app.\nWEBSITE_RUN_FROM_PACKAGE - Indicates whether the app is deployed via a package file."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
+    "title": "HubSpot Service",
+    "section": "Other settings",
+    "text": "Other settings"
+  },
+  {
+    "objectID": "architecture/azure/ordering-app/static-web-apps.html",
+    "href": "architecture/azure/ordering-app/static-web-apps.html",
+    "title": "Azure Static Web Apps Overview",
+    "section": "",
+    "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/product-structure.html",
+    "href": "architecture/azure/terramax-data/product-structure.html",
+    "title": "Product Data Structure",
+    "section": "",
+    "text": "The structure of Product data in the TerraMax SQL Database is more complex than the flattened Product object in HubSpot. It involves six tables, four of which simply contain single field sets of data to populate tho main tables, and two of which assemble the data into more complex objects.\nThis database differentiates between the Sku: the item a customer purchases with a specific size and price, and the Product: the actual material inside the item. One Product may come in multiple sizes, and thus have mutliple skus. The Applications, Crops, and Types tables are associated with the Product table, and the Sizes table is associated with the Skus table.\n\n\n\nProduct Data Structure"
+  },
+  {
+    "objectID": "architecture/github/github-overview.html",
+    "href": "architecture/github/github-overview.html",
+    "title": "GitHub Account",
+    "section": "",
+    "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
   },
   {
     "objectID": "how-to/add-new-function.html",
@@ -110,118 +271,6 @@
     "title": "Adding a New Function",
     "section": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update",
     "text": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update"
-  },
-  {
-    "objectID": "architecture/github/github-overview.html",
-    "href": "architecture/github/github-overview.html",
-    "title": "GitHub Account",
-    "section": "",
-    "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
-  },
-  {
-    "objectID": "architecture/azure/ordering-app/static-web-apps.html",
-    "href": "architecture/azure/ordering-app/static-web-apps.html",
-    "title": "Azure Static Web Apps Overview",
-    "section": "",
-    "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html",
-    "title": "HubSpot Service",
-    "section": "",
-    "text": "The HubSpot Service is the intermediary that connects the user-facing Ordering App to the HubSpot Accout. Because a client application isn’t sufficiently secure to hold the hubspot api token, a backend service was needed to manage authentication and API requests securely.\nThis is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables in Azure Functions."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#environmental-variables",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#environmental-variables",
-    "title": "HubSpot Service",
-    "section": "Environmental Variables",
-    "text": "Environmental Variables\nEnvironmental variables store important padd data separately from the code for two main reasons: - Security: sentitive information like API tokens should not be hard-coded where it can be exposed. - Configurability: values that might change over time, like email addresses, can be updated without modifying and redeploying code.\nThe HubSpot Sercive uses two sets of these variables, depending on the location: - A local .env file for developement - Azure functions environmental variables for production\nThis is the full list of environmental variables found in Azure that correspond of variables in the .env file:"
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#email-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#email-settings",
-    "title": "HubSpot Service",
-    "section": "Email Settings:",
-    "text": "Email Settings:\nThe app uses these variables to control who is notified when an order is submitted.\n\n\n\n\n\n\n\nVariable\nPurpose\n\n\n\n\nTARGET_EMAIL\nPrimary recipient who will process the order when closed/won.\n\n\nMANAGER_EMAILS\nCSV list of additional recipients who should be notified when an order is closed/won, beyond the “TARGET_EMAIL”.\n\n\nADMIN_EMAIL\nFilters out test orders sent by the\n\n\nadministrator from from being emailed to the TARGET or MANAGERS.\n\n\n\nSENDER_EMAIL\nEmail address that appears as the sender of automated emails sent by the app."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#authentication-and-environment-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#authentication-and-environment-settings",
-    "title": "HubSpot Service",
-    "section": "Authentication and Environment Settings",
-    "text": "Authentication and Environment Settings\n\n\n\nVariable\nPurpose\n\n\n\n\nAZURE_FUNCTIONS_ENVIRONMENT\nTells the app whetherit’s running in “Production” or “Development”.\n\n\nAZURE_SQL_CONNECTION_STRING\nGives credentials and connection information to access the SQL database.\n\n\nCLIENT_ID\nIdentifies the registered Azure app. This must match the Application (client) ID of the terramax-hubspot-service-registration in Entra, or else authentication will fail.\n\n\nCLIENT_SECRET\nSecret key used to authenticate the backend (terramax-hubspot-service) directly to Microsoft Graph using Application Permission. Needed in order to send emails from a fixed address independent of who calls the api. Secret needs to be updated every six months, and the current one will expire on 8/30/25.\n\n\nHUBSPOT_API_TOKEN\nToken used to authenticate API requests to TerraMax’s HubSpot account.\n\n\nTENANT_ID\nTenant ID identifies the TerraMax Microsoft tenant for authentication purposes."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#system-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#system-settings",
-    "title": "HubSpot Service",
-    "section": "System Settings:",
-    "text": "System Settings:\nThese variables were auto-generated by Azure and do not appear in the .env file:\n\nAPPINSIGHTS_INSTRUMENTATIONKEY - Key for sending telemetry data to Azure Application Insights.\nAPPLICATIONINSIGHTS_CONNECTION_STRING - Connection string for the Application Insights resource.\nAzureWebJobsStorage - Storage account used internally by Azure Functions (for function state).\nFUNCTIONS_EXTENSION_VERSION - Specifies the version of the Azure Functions runtime.\nFUNCTIONS_WORKER_RUNTIME - Defines the language worker used (“node” for Node.js apps).\nMICROSOFT_PROVIDER_AUTHENTICATION_SECRET - Secret used internally for Microsoft authentication flows.\nWEBSITE_AUTH_AAD_ALLOWED_TENANTS - Lists tenants allowed to authenticate if AAD authentication is enabled.\nWEBSITE_NODE_DEFAULT_VERSION - Specifies the Node.js version used by the app.\nWEBSITE_RUN_FROM_PACKAGE - Indicates whether the app is deployed via a package file."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
-    "title": "HubSpot Service",
-    "section": "Other settings",
-    "text": "Other settings"
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/azure-functions.html",
-    "href": "architecture/azure/hubspot-service/azure-functions.html",
-    "title": "Azure Fnctions",
-    "section": "",
-    "text": "Azure Functions is a hosting service for backend apps…"
-  },
-  {
-    "objectID": "architecture/azure/azure-overview.html",
-    "href": "architecture/azure/azure-overview.html",
-    "title": "Azure Overview",
-    "section": "",
-    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same Tenant ID as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure. They can be viewed and managed through the Azure Portal."
-  },
-  {
-    "objectID": "architecture/azure/azure-overview.html#portal",
-    "href": "architecture/azure/azure-overview.html#portal",
-    "title": "Azure Overview",
-    "section": "Azure Portal",
-    "text": "Azure Portal\nLogging in to the Azure Portal should take you to the home page. There you should see a row of icons of Azure Services, like Static Web Apps and Azure Functions, and below that a list of current resources.\n\n\n\nAzure Portal Home Screen\n\n\nMost of the icons in the row of Services will take you to a page that displays all current resources of the service type. You can also create new recources, either within the page dedicated to the specific type, or by clicking on the Create a resource plus sign button in the home screen.\nOther services of note in the top row are:\n\nMicrosoft Entra: manages identity across all accounts within the TerraMax organization. The App Registration section is important for managing security and communication between the Ordering App and HubSpot Service.\nCost Management: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached. See how to check costs\n\nBelow the row of services, you should see a list of current resouces."
-  },
-  {
-    "objectID": "architecture/azure/azure-overview.html#project-specific-resources",
-    "href": "architecture/azure/azure-overview.html#project-specific-resources",
-    "title": "Azure Overview",
-    "section": "Project-Specific Resources",
-    "text": "Project-Specific Resources\nCore components of this project include:\n\nOrdering App (terramax-ordering-app): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.\n\nHosted in Azure Static Web Apps\nWritten in React + Typescript\nUses Microsoft Entra ID authentication via MSAL, allowing only TerraMax users to log in\n\nHubSpot Service (terramax-hubspot-service): a backend API that connects the Ordering App to both an internal product database, and HubSpot’s records of customers and sales.\n\nHosted in Azure Functions\nWritten in Typescript\nUses Microsoft Entra ID to validate incoming requests and restrict access to approved applications\n\nTerraMax Data (terramax-data): a SQL database that holds the masterlist of product information, and a log of transactions that have passed through the server app.\n\nHosted in Azure SQL database\nAccessed only through the server app, not directly by the client\n\n\nOther relevant resources:\n\nterramax-hubspot-service-app-insights\n\nApplication Insights instance connected to the terramax-hubspot-serviceFunction App, which logs data about the app’s use.\n\nterramax-db-server\n\nLogical SQL Server that contains the terramax-data database. Azure requires a server to exist, even if it only hosts a single DB.\n\nTestResourceGroup\n\nThe main Resource Group that contains all parts of the project in Azure. The name comes from its origin during the beginning phase of the project, but to rename and restructure would require recreating resources.\n\nASP-TestResourceGroup-b475\n\nThe App Service Plan associated with the Function App terramax-hubspot-service. It defines the underlying compute environment, and was auto-generated (and named) by Azure.\n\ntestresourcegroup8e0c\n\nThe storage account automatically created to support the Function App terramax-hubspot-service, used for things like\n\nordering-app_group\n\nAn organizational group that Azure auto-generated, not structurally important. It overlaps imperfectly with the TestResourceGroup"
-  },
-  {
-    "objectID": "architecture/azure/entra/entra-overview.html",
-    "href": "architecture/azure/entra/entra-overview.html",
-    "title": "Microsoft Entra Overview",
-    "section": "",
-    "text": "Stuff about Entra…"
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service-registration.html",
-    "href": "architecture/azure/hubspot-service/hubspot-service-registration.html",
-    "title": "HubSpot Service Registration",
-    "section": "",
-    "text": "All Apps have to be registered in Entra…"
-  },
-  {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html",
-    "href": "architecture/azure/terramax-data/terramax-data.html",
-    "title": "TerraMax Data",
-    "section": "",
-    "text": "Stuff about the db… - each table - idempotency log"
-  },
-  {
-    "objectID": "architecture/hubspot/hubspot-overview.html",
-    "href": "architecture/hubspot/hubspot-overview.html",
-    "title": "HubSpot",
-    "section": "",
-    "text": "Stuff about HubSpot… - api token - added properties"
   },
   {
     "objectID": "how-to/check-costs.html",

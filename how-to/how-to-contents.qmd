@@ -8,6 +8,7 @@ format: html
 ---
 
 - [Add New Function](add-new-function.html)
+- [Add Product](add-product.html)
 - [Check Costs](check-costs.html)
 - [Deploy hubspot-service Update](deploy-hubspot-service-update.html)
 - [Deploy ordering-app Update](deploy-ordering-app-update.html)
