@@ -3905,7 +3905,7 @@ vertical-align: -.125em;
 </header>
 
 
-<p><code>hubspot_transactions</code> is an <span class="citation" data-cites="event-table">@event-table</span> which stores logs of all transactions processed by the <a href="../hubspot-service/receiveOrder.html"><code>receiveOrder</code></a> function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events.</p>
+<p><code>hubspot_transactions</code> is an <a href="../../../reference/glossary.html#event-table" class="glossary-term" title="A database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.">Event Table</a> which stores logs of all transactions processed by the <a href="../hubspot-service/receiveOrder.html"><code>receiveOrder</code></a> function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events.</p>
 <section id="ids" class="level2">
 <h2 class="anchored" data-anchor-id="ids">IDs</h2>
 <p>There are a number of IDs tracked in this table, which serve different purposes.</p>

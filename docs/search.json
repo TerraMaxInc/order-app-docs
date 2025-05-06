@@ -28,8 +28,8 @@
     "text": "Entity Table\nA database table that represents business entities, often with with complex relationships and properties, central to the data model."
   },
   {
-    "objectID": "reference/glossary.html#transaction-table",
-    "href": "reference/glossary.html#transaction-table",
+    "objectID": "reference/glossary.html#event-table",
+    "href": "reference/glossary.html#event-table",
     "title": "Glossary of Terms",
     "section": "Event Table",
     "text": "Event Table\nA database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur."
@@ -165,28 +165,28 @@
     "href": "architecture/azure/terramax-data/terramax-data.html",
     "title": "TerraMax Data",
     "section": "",
-    "text": "Most of the data relevant to this project is stored in the TerraMax HubSpot account, but not all data was a good fit for the HubSpot data structure.\nIt wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, the database was also useful later on as a place to store transaction data as part of a system for preventing duplicate transactions.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history."
+    "text": "This is an Azure SQL Database that stores data not suited to HubSpot‘s structural limitation’. It wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history."
   },
   {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html#tables",
-    "href": "architecture/azure/terramax-data/terramax-data.html#tables",
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#sections",
+    "href": "architecture/azure/terramax-data/terramax-data.html#sections",
     "title": "TerraMax Data",
-    "section": "Tables",
-    "text": "Tables\nThere are six core data tables that create the structured product data and supply information to the client app:\n\nSkus\nProducts\nApplications\nCrops\nTypes\nSizes\n\nThere are two tables which save the history of the product data. These allow for easy backup and recovery, and enable tracking changes over time:\n\nSkus_history\nProducts_history\n\nAnd there is one table that logs user transactions in order to prevent duplication:\n\nhubspot_transactions"
-  },
-  {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html#stored-procedures",
-    "href": "architecture/azure/terramax-data/terramax-data.html#stored-procedures",
-    "title": "TerraMax Data",
-    "section": "Stored Procedures",
-    "text": "Stored Procedures"
+    "section": "Sections:",
+    "text": "Sections:\n\nProduct Data:\n\nThe six tables that make up the structure of Product data and how the relate\n\nProduct History and Backup:\n\nThe two tables that store historical product data and can be used for backup\n\nHubSpot Transaction Log:\n\nThe one table that logs edits to HubSpot, to prevent duplication and track usage\n\nAzure SQL Database:\n\nA summary of the Azure Resource being used"
   },
   {
     "objectID": "architecture/azure/terramax-data/backup.html",
     "href": "architecture/azure/terramax-data/backup.html",
     "title": "Backup",
     "section": "",
-    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the even a SQL quesy goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields: - id: an auto-generated id for the row - backup_event_id: a GUID generated at the time of the backup, shared by all rows inserted at the time of that specific backup - backup_timestamp: the date-time of the backup event\nThe id serves as an easy primary key for each record, but the combination of backup_event_id and produdt_id or sku should also be unique within the tables.\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
+    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the event a SQL query goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields.\n-Skus_history containsa ll other fields in Skus using the same column names. The combination of backup_event_id and sku should also be unique within the tables."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/backup.html#actions",
+    "href": "architecture/azure/terramax-data/backup.html#actions",
+    "title": "Backup",
+    "section": "Actions",
+    "text": "Actions\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
   },
   {
     "objectID": "architecture/azure/ordering-app/static-web-apps.html",
@@ -318,15 +318,15 @@
     "objectID": "architecture/azure/terramax-data/product-structure.html#see-also",
     "href": "architecture/azure/terramax-data/product-structure.html#see-also",
     "title": "Product Data Structure",
-    "section": "See Also:",
-    "text": "See Also:\n\nAdd New Product\nEdit Product Information"
+    "section": "See Also",
+    "text": "See Also\n\nAdd New Product\nEdit Product Information"
   },
   {
     "objectID": "architecture/azure/terramax-data/transactions.html",
     "href": "architecture/azure/terramax-data/transactions.html",
     "title": "Hubspot Transactions Logging",
     "section": "",
-    "text": "hubspot_transactions is an @event-table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
+    "text": "hubspot_transactions is an Event Table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
   },
   {
     "objectID": "architecture/azure/terramax-data/transactions.html#ids",

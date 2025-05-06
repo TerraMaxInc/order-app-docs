@@ -60,7 +60,7 @@ This database differentiates between the `Sku`: the item a customer purchases wi
 |:-------|:----------|:--------|
 | `type` | PK, varchar(255), not null | "Liquid" or "Dry". |
 
-## See Also:
+## See Also
 
 - [Add New Product](../../../how-to/add-product.qmd)
 - [Edit Product Information](../../../how-to/edit-product.qmd)

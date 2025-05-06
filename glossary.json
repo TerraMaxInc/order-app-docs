@@ -19,7 +19,7 @@
     },
     {
         "term": "Event Table",
-        "key": "transaction-table",
+        "key": "event-table",
         "definition": "A database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.",
         "category": "default"
     },

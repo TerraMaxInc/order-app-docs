@@ -3873,8 +3873,14 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#actions" id="toc-actions" class="nav-link active" data-scroll-target="#actions">Actions</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -3899,11 +3905,51 @@ vertical-align: -.125em;
 
 
 <p>Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the <em>TerraMax Data SQL Database</em> has internal tables to track change history for the <code>Products</code> and <code>Skus</code> tables.</p>
-<p>These history tables can be used both for restoring pervious data in the even a SQL quesy goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables <code>Products</code> and <code>Skus</code> with added fields: - <code>id</code>: an auto-generated id for the row - <code>backup_event_id</code>: a GUID generated at the time of the backup, shared by all rows inserted at the time of that specific backup - <code>backup_timestamp</code>: the date-time of the backup event</p>
-<p>The <code>id</code> serves as an easy primary key for each record, but the combination of <code>backup_event_id</code> and <code>produdt_id</code> or <code>sku</code> should also be unique within the tables.</p>
+<p>These history tables can be used both for restoring pervious data in the event a SQL query goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables <code>Products</code> and <code>Skus</code> with added fields.</p>
+<ul>
+<li><strong>Both Products_history and Skus_history contain:</strong></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;">PK, int, not null</td>
+<td style="text-align: left;">Auto-generated id for the row.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>backup_event_id</code></td>
+<td style="text-align: left;">uniqueidentifier, not null</td>
+<td style="text-align: left;">a GUID generated at the time of the backup, shared by all rows inserted at the time of that specific backup.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>backup_timestamp</code></td>
+<td style="text-align: left;">int, not null</td>
+<td style="text-align: left;">Date-time of the backup event.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>Products_history</code> contains all other fields in <code>Products</code> as well, with <code>Products.id</code> translated to <code>Products_history.product_id</code>. The combination of <code>backup_event_id</code> and <code>product_id</code> should also be unique within the tables.</li>
+</ul>
+<p>-<code>Skus_history</code> containsa ll other fields in <code>Skus</code> using the same column names. The combination of <code>backup_event_id</code> and <code>sku</code> should also be unique within the tables.</p>
+<section id="actions" class="level2">
+<h2 class="anchored" data-anchor-id="actions">Actions</h2>
 <p>These history tables can be managed via <em>stored procedures</em>: - <code>Backup_Products_And_Skus</code>: to be run before making changes to the <code>Products</code> or <code>Skus</code> tables, saves the current state of data to these history tables</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
