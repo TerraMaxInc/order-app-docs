@@ -3880,6 +3880,9 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#application-permission" id="toc-application-permission" class="nav-link active" data-scroll-target="#application-permission">Application Permission</a></li>
   <li><a href="#delegated-permission" id="toc-delegated-permission" class="nav-link" data-scroll-target="#delegated-permission">Delegated Permission</a></li>
+  <li><a href="#entity-table" id="toc-entity-table" class="nav-link" data-scroll-target="#entity-table">Entity Table</a></li>
+  <li><a href="#transaction-table" id="toc-transaction-table" class="nav-link" data-scroll-target="#transaction-table">Event Table</a></li>
+  <li><a href="#lookup-table" id="toc-lookup-table" class="nav-link" data-scroll-target="#lookup-table">Lookup Table</a></li>
   <li><a href="#tenant-id" id="toc-tenant-id" class="nav-link" data-scroll-target="#tenant-id">Tenant ID</a></li>
   </ul>
 </nav>
@@ -3908,15 +3911,27 @@ vertical-align: -.125em;
 
 <section id="application-permission" class="level2">
 <h2 class="anchored" data-anchor-id="application-permission">Application Permission</h2>
-<p>On contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user&#39;s.</p>
+<p>In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user&#39;s.</p>
 </section>
 <section id="delegated-permission" class="level2">
 <h2 class="anchored" data-anchor-id="delegated-permission">Delegated Permission</h2>
-<p>On contrast with application permission, the app acts on behalf of a signed-in user, and uses that user&#39;s credentials.  What the app can do is limited to what permissions the user has.</p>
+<p>In contrast with application permission, the app acts on behalf of a signed-in user, and uses that user&#39;s credentials.  What the app can do is limited to what permissions the user has.</p>
+</section>
+<section id="entity-table" class="level2">
+<h2 class="anchored" data-anchor-id="entity-table">Entity Table</h2>
+<p>A database table that represents business entities, often with with complex relationships and properties, central to the data model.</p>
+</section>
+<section id="transaction-table" class="level2">
+<h2 class="anchored" data-anchor-id="transaction-table">Event Table</h2>
+<p>A database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.</p>
+</section>
+<section id="lookup-table" class="level2">
+<h2 class="anchored" data-anchor-id="lookup-table">Lookup Table</h2>
+<p>A database table that contains a fixed set of reference values for other tables to ensure consistent data entry.</p>
 </section>
 <section id="tenant-id" class="level2">
 <h2 class="anchored" data-anchor-id="tenant-id">Tenant ID</h2>
-<p>the overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.</p>
+<p>The overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.</p>
 </section>
 
 </main> <!-- /main -->

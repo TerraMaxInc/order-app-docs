@@ -1,0 +1,6 @@
+---
+title: ReceiveOrder Function
+format: html
+---
+
+The major weight-bearing write function that does all the things.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HubSpot Service – Ordering App Project Docs</title>
+<title>Hubspot Transactions Logging – Ordering App Project Docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3878,11 +3878,8 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#environmental-variables" id="toc-environmental-variables" class="nav-link active" data-scroll-target="#environmental-variables">Environmental Variables</a></li>
-  <li><a href="#email-settings" id="toc-email-settings" class="nav-link" data-scroll-target="#email-settings">Email Settings:</a></li>
-  <li><a href="#authentication-and-environment-settings" id="toc-authentication-and-environment-settings" class="nav-link" data-scroll-target="#authentication-and-environment-settings">Authentication and Environment Settings</a></li>
-  <li><a href="#system-settings" id="toc-system-settings" class="nav-link" data-scroll-target="#system-settings">System Settings:</a></li>
-  <li><a href="#other-settings" id="toc-other-settings" class="nav-link" data-scroll-target="#other-settings">Other settings</a></li>
+  <li><a href="#ids" id="toc-ids" class="nav-link active" data-scroll-target="#ids">IDs</a></li>
+  <li><a href="#table-structure" id="toc-table-structure" class="nav-link" data-scroll-target="#table-structure">Table Structure</a></li>
   </ul>
 </nav>
     </div>
@@ -3891,7 +3888,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HubSpot Service</h1>
+<h1 class="title">Hubspot Transactions Logging</h1>
 </div>
 
 
@@ -3908,106 +3905,87 @@ vertical-align: -.125em;
 </header>
 
 
-<p>The <strong>HubSpot Service</strong> is the intermediary that connects the user-facing <a href="../ordering-app/ordering-app.html">Ordering App</a> to the <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot Accout</a>. Because a client application isn’t sufficiently secure to hold the <code>hubspot api token</code>, a backend service was needed to manage authentication and API requests securely.</p>
-<p>This is a Node.js app written in Typescript, and hosted in <a href="azure-functions.html">Azure Functions</a>. It makes heavy use of the environmental variables in Azure Functions.</p>
-<section id="environmental-variables" class="level2">
-<h2 class="anchored" data-anchor-id="environmental-variables">Environmental Variables</h2>
-<p>Environmental variables store important padd data separately from the code for two main reasons: - <strong>Security</strong>: sentitive information like API tokens should not be hard-coded where it can be exposed. - <strong>Configurability</strong>: values that might change over time, like email addresses, can be updated without modifying and redeploying code.</p>
-<p>The HubSpot Sercive uses two sets of these variables, depending on the location: - A local <code>.env</code> file for developement - Azure functions environmental variables for production</p>
-<p>This is the full list of environmental variables found in Azure that correspond of variables in the .env file:</p>
+<p><code>hubspot_transactions</code> is an <span class="citation" data-cites="event-table">@event-table</span> which stores logs of all transactions processed by the <a href="../hubspot-service/receiveOrder.html"><code>receiveOrder</code></a> function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events.</p>
+<section id="ids" class="level2">
+<h2 class="anchored" data-anchor-id="ids">IDs</h2>
+<p>There are a number of IDs tracked in this table, which serve different purposes.</p>
+<p>The <strong>idempotency id</strong> is the first line of defense in preventing the creation of duplicate Deals in HubSpot. Once a Deal is <em>successfully</em> written to HubSpot it is assigned an object id, but that only happens at the end of the first save. It is potentially possible that this HubSpot-based id might fail to be passed back to the <em>client app</em>, and the user might attempt to save again and create a duplticate. To head off this danger, the idempotency id is generated <em>in</em> the client app as soon as a user starts a new order. It is saved in the <code>hubspot_transactions</code> log so that the <code>hubspot_service</code> can check the id of an incoming deal against the log and ensure that it’s not a duplicate. This id is also saved to a custom property in <a href="../../hubspot/hubspot-overview.html">HubSpot</a> as part of the Deal’s data, so it can be used for reference in future edits to thet Deal.</p>
+<p>The <strong>transaction id</strong> exists not to prevent the creation of duplicate <em>Deals</em>, but duplicate actions done <em>for</em> a Deal. Most especially, it’s intended to prevent sending duplicate emails to Dave when the Deal is closed/won. This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.</p>
+<p>The <strong>dealID</strong> is the object id assigned to a Deal by HubSpot when first saved to their database. This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save.</p>
 </section>
-<section id="email-settings" class="level2">
-<h2 class="anchored" data-anchor-id="email-settings">Email Settings:</h2>
-<p>The app uses these variables to control who is notified when an order is submitted.</p>
+<section id="table-structure" class="level2">
+<h2 class="anchored" data-anchor-id="table-structure">Table Structure</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 52%">
-<col style="width: 47%">
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
 <th style="text-align: left;">Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>TARGET_EMAIL</strong></td>
-<td style="text-align: left;">Primary recipient who will process the order when closed/won.</td>
+<td style="text-align: left;"><code>eventID</code></td>
+<td style="text-align: left;">PK, int, not null</td>
+<td style="text-align: left;">Auto-generated id for the record.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>MANAGER_EMAILS</strong></td>
-<td style="text-align: left;">CSV list of additional recipients who should be notified when an order is closed/won, beyond the “TARGET_EMAIL”.</td>
+<td style="text-align: left;"><code>idempotencyID</code></td>
+<td style="text-align: left;">varchar(255), null</td>
+<td style="text-align: left;">Id for the Deal generated in the client app.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>ADMIN_EMAIL</strong></td>
-<td style="text-align: left;">Filters out test orders sent by the</td>
+<td style="text-align: left;"><code>transactionID</code></td>
+<td style="text-align: left;">varchar(255), null</td>
+<td style="text-align: left;">Id for the transaction generated in the client app.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">administrator from from being emailed to the TARGET or MANAGERS.</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>userEmail</code></td>
+<td style="text-align: left;">varchar(255), null</td>
+<td style="text-align: left;">Email of the user attempting the transaction, scraped from their auth credentials.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>SENDER_EMAIL</strong></td>
-<td style="text-align: left;">Email address that appears as the sender of automated emails sent by the app.</td>
+<td style="text-align: left;"><code>createdAt</code></td>
+<td style="text-align: left;">datetime2(7), null</td>
+<td style="text-align: left;">Date and time of the transaction.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>transaction_status</code></td>
+<td style="text-align: left;">varchar(100), null</td>
+<td style="text-align: left;">HTTP status code for the success of the transaction as a whole.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>transaction_message</code></td>
+<td style="text-align: left;">varchar(max), null</td>
+<td style="text-align: left;">Message sent back to describe the success of the transaction as a whole.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>deal_status</code></td>
+<td style="text-align: left;">varchar(100), null</td>
+<td style="text-align: left;">HTTP status code for the success of writing the Deal to HubSpot.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>lineitems_status</code></td>
+<td style="text-align: left;">varchar(100), null</td>
+<td style="text-align: left;">HTTP status code for the success of writing the LineItems to HubSpot.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>email_status</code></td>
+<td style="text-align: left;">varchar(100), null</td>
+<td style="text-align: left;">HTTP status code for the success of sending an email.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>dealID</code></td>
+<td style="text-align: left;">varchar(255), null</td>
+<td style="text-align: left;">The object id assigned to the deal by HubSpot.</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="authentication-and-environment-settings" class="level2">
-<h2 class="anchored" data-anchor-id="authentication-and-environment-settings">Authentication and Environment Settings</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>AZURE_FUNCTIONS_ENVIRONMENT</strong></td>
-<td style="text-align: left;">Tells the app whetherit’s running in “Production” or “Development”.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>AZURE_SQL_CONNECTION_STRING</strong></td>
-<td style="text-align: left;">Gives credentials and connection information to access the <a href="../terramax-data/terramax-data.html">SQL database</a>.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>CLIENT_ID</strong></td>
-<td style="text-align: left;">Identifies the registered Azure app. This must match the Application (client) ID of the <a href="hubspot-service-registration.html">terramax-hubspot-service-registration</a> in Entra, or else authentication will fail.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>CLIENT_SECRET</strong></td>
-<td style="text-align: left;">Secret key used to authenticate the backend (terramax-hubspot-service) directly to Microsoft Graph using <a href="../../../reference/glossary.html#application-permission" class="glossary-term" title="In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user&#39;s.">Application Permission</a>. Needed in order to send emails from a fixed address independent of who calls the api. Secret needs to be updated every six months, and the current one will expire on <strong>8/30/25</strong>.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>HUBSPOT_API_TOKEN</strong></td>
-<td style="text-align: left;">Token used to authenticate API requests to TerraMax’s HubSpot account.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>TENANT_ID</strong></td>
-<td style="text-align: left;"><a href="../../../reference/glossary.html#tenant-id" class="glossary-term" title="The overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.">Tenant ID</a> identifies the TerraMax Microsoft tenant for authentication purposes.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="system-settings" class="level2">
-<h2 class="anchored" data-anchor-id="system-settings">System Settings:</h2>
-<p>These variables were auto-generated by Azure and do not appear in the .env file:</p>
-<ul>
-<li><strong>APPINSIGHTS_INSTRUMENTATIONKEY</strong> - Key for sending telemetry data to Azure Application Insights.</li>
-<li><strong>APPLICATIONINSIGHTS_CONNECTION_STRING</strong> - Connection string for the Application Insights resource.</li>
-<li><strong>AzureWebJobsStorage</strong> - Storage account used internally by Azure Functions (for function state).</li>
-<li><strong>FUNCTIONS_EXTENSION_VERSION</strong> - Specifies the version of the Azure Functions runtime.</li>
-<li><strong>FUNCTIONS_WORKER_RUNTIME</strong> - Defines the language worker used (“node” for Node.js apps).</li>
-<li><strong>MICROSOFT_PROVIDER_AUTHENTICATION_SECRET</strong> - Secret used internally for Microsoft authentication flows.</li>
-<li><strong>WEBSITE_AUTH_AAD_ALLOWED_TENANTS</strong> - Lists tenants allowed to authenticate if AAD authentication is enabled.</li>
-<li><strong>WEBSITE_NODE_DEFAULT_VERSION</strong> - Specifies the Node.js version used by the app.</li>
-<li><strong>WEBSITE_RUN_FROM_PACKAGE</strong> - Indicates whether the app is deployed via a package file.</li>
-</ul>
-</section>
-<section id="other-settings" class="level2">
-<h2 class="anchored" data-anchor-id="other-settings">Other settings</h2>
 
 
 </section>

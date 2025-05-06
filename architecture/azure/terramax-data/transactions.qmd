@@ -1,0 +1,32 @@
+---
+title: Hubspot Transactions Logging
+format: html
+---
+
+`hubspot_transactions` is an @event-table which stores logs of all transactions processed by the [`receiveOrder`](../hubspot-service/receiveOrder.html) function: the function which writes Deals to HubSpot.  Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check.  It can also be used to review user activity and monitor for failure events.
+
+## IDs
+
+There are a number of IDs tracked in this table, which serve different purposes.
+
+The **idempotency id** is the first line of defense in preventing the creation of duplicate Deals in HubSpot.  Once a Deal is *successfully* written to HubSpot it is assigned an object id, but that only happens at the end of the first save.  It is potentially possible that this HubSpot-based id might fail to be passed back to the *client app*, and the user might attempt to save again and create a duplticate.  To head off this danger, the idempotency id is generated *in* the client app as soon as a user starts a new order.  It is saved in the `hubspot_transactions` log so that the `hubspot_service` can check the id of an incoming deal against the log and ensure that it's not a duplicate.  This id is also saved to a custom property in [HubSpot](../../hubspot/hubspot-overview.html) as part of the Deal's data, so it can be used for reference in future edits to thet Deal.
+
+The **transaction id** exists not to prevent the creation of duplicate *Deals*, but duplicate actions done *for* a Deal.  Most especially, it's intended to prevent sending duplicate emails to Dave when the Deal is closed/won.  This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.
+
+The **dealID** is the object id assigned to a Deal by HubSpot when first saved to their database.  This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save.
+
+## Table Structure
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `eventID` | PK, int, not null | Auto-generated id for the record. |
+| `idempotencyID` | varchar(255), null | Id for the Deal generated in the client app. |
+| `transactionID` | varchar(255), null | Id for the transaction generated in the client app. |
+| ` userEmail` | varchar(255), null | Email of the user attempting the transaction, scraped from their auth credentials. |
+| `createdAt` | datetime2(7), null | Date and time of the transaction. |
+| `transaction_status` | varchar(100), null | HTTP status code for the success of the transaction as a whole. |
+| `transaction_message` | varchar(max), null | Message sent back to describe the success of the transaction as a whole. |
+| `deal_status` | varchar(100), null | HTTP status code for the success of writing the Deal to HubSpot. |
+| `lineitems_status` | varchar(100), null | HTTP status code for the success of writing the LineItems to HubSpot. |
+| `email_status` | varchar(100), null | HTTP status code for the success of sending an email. |
+| `dealID` | varchar(255), null | The object id assigned to the deal by HubSpot. |

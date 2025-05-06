@@ -3913,10 +3913,11 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#add-new-properties-to-supporting-tables" id="toc-add-new-properties-to-supporting-tables" class="nav-link active" data-scroll-target="#add-new-properties-to-supporting-tables">1. Add New Properties to SUpporting Tables</a></li>
-  <li><a href="#insert-the-product-in-terramax-data" id="toc-insert-the-product-in-terramax-data" class="nav-link" data-scroll-target="#insert-the-product-in-terramax-data">2. Insert the Product in TerraMax Data</a></li>
-  <li><a href="#insert-the-sku-into-skus" id="toc-insert-the-sku-into-skus" class="nav-link" data-scroll-target="#insert-the-sku-into-skus">3. Insert the Sku into Skus</a></li>
-  <li><a href="#sync-hubspot-products" id="toc-sync-hubspot-products" class="nav-link" data-scroll-target="#sync-hubspot-products">4. Sync HubSpot Products</a></li>
+  <li><a href="#backup-current-data" id="toc-backup-current-data" class="nav-link active" data-scroll-target="#backup-current-data">1. Backup Current Data</a></li>
+  <li><a href="#add-new-properties-to-supporting-tables" id="toc-add-new-properties-to-supporting-tables" class="nav-link" data-scroll-target="#add-new-properties-to-supporting-tables">2. Add New Properties to Supporting Tables</a></li>
+  <li><a href="#insert-the-product-in-terramax-data" id="toc-insert-the-product-in-terramax-data" class="nav-link" data-scroll-target="#insert-the-product-in-terramax-data">3. Insert the Product in TerraMax Data</a></li>
+  <li><a href="#insert-the-sku-into-skus" id="toc-insert-the-sku-into-skus" class="nav-link" data-scroll-target="#insert-the-sku-into-skus">4. Insert the Sku into Skus</a></li>
+  <li><a href="#sync-hubspot-products" id="toc-sync-hubspot-products" class="nav-link" data-scroll-target="#sync-hubspot-products">5. Sync HubSpot Products</a></li>
   </ul>
 </nav>
     </div>
@@ -3946,19 +3947,26 @@ vertical-align: -.125em;
 <p>Both locations need to be updated, but you should start with the TerraMax Data SQL database. The structure of the data in the SQL db is <a href="../architecture/azure/terramax-data/product-structure.html">more complex</a>, and there is a function in the <a href="../architecture/azure/hubspot-service/hubspot-service.html">HubSpot Service</a> that will synch the HubSpot version to match the SQL version.</p>
 <p>Adding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the <code>SQL SERVER</code> extension, or directly in the Azure Portal. This guide assumes that you are able to use at least one of those tools.</p>
 <hr>
+<section id="backup-current-data" class="level2">
+<h2 class="anchored" data-anchor-id="backup-current-data">1. Backup Current Data</h2>
+<ul>
+<li>Run the <em>stored procedure</em> <code>Backup_Products_And_Skus</code> to save the current state of the <code>Products</code> and <code>Skus</code> tables to <code>Products_history</code> and <code>Skus_history</code>, so that you can recover the current data if anything goes wrong.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">EXEC</span> Backup_Products_And_Skus;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="add-new-properties-to-supporting-tables" class="level2">
-<h2 class="anchored" data-anchor-id="add-new-properties-to-supporting-tables">1. Add New Properties to SUpporting Tables</h2>
+<h2 class="anchored" data-anchor-id="add-new-properties-to-supporting-tables">2. Add New Properties to Supporting Tables</h2>
 <ul>
 <li>Check that the <code>Application</code>, <code>Crop</code>, and <code>Type</code> tables already contain the values that you need, and insert them if needed.</li>
 </ul>
 </section>
 <section id="insert-the-product-in-terramax-data" class="level2">
-<h2 class="anchored" data-anchor-id="insert-the-product-in-terramax-data">2. Insert the Product in TerraMax Data</h2>
+<h2 class="anchored" data-anchor-id="insert-the-product-in-terramax-data">3. Insert the Product in TerraMax Data</h2>
 <ul>
 <li>If the new product is simply a different size of an existing product, you can skip this step. Otherwise, insert the new Product into the <code>Products</code> table:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Products (name, <span class="kw">type</span>, crop, application, green)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">VALUES</span> (<span class="st">&#39;TerraMax Dry Soybean Inoculant&#39;</span>, <span class="st">&#39;Dry&#39;</span>, <span class="st">&#39;Soybean&#39;</span>, <span class="st">&#39;ST&#39;</span>, <span class="kw">false</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Products (name, <span class="kw">type</span>, crop, application, green)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">VALUES</span> (<span class="st">&#39;TerraMax Dry Soybean Inoculant&#39;</span>, <span class="st">&#39;Dry&#39;</span>, <span class="st">&#39;Soybean&#39;</span>, <span class="st">&#39;ST&#39;</span>, <span class="kw">false</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>name: The full name you want to appear in the Ordering App.</li>
 <li>type: Liquid or Dry. Must match spelling and case in <code>Types</code> table exactly.</li>
@@ -3968,12 +3976,12 @@ vertical-align: -.125em;
 </ul>
 </section>
 <section id="insert-the-sku-into-skus" class="level2">
-<h2 class="anchored" data-anchor-id="insert-the-sku-into-skus">3. Insert the Sku into Skus</h2>
+<h2 class="anchored" data-anchor-id="insert-the-sku-into-skus">4. Insert the Sku into Skus</h2>
 <ul>
 <li>Using the system-generated <code>id</code> number for the desired product, insert the sku with its size and prices:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Skus (product_id, <span class="kw">size</span>, distributor_price, dealer_price, msrp)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">VALUES</span>(<span class="dv">5</span>, <span class="st">&#39;5 lbs&#39;</span>, <span class="st">&#39;29.60&#39;</span>, <span class="st">&#39;47.75&#39;</span>, <span class="st">&#39;59.20&#39;</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Skus (product_id, <span class="kw">size</span>, distributor_price, dealer_price, msrp)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">VALUES</span>(<span class="dv">5</span>, <span class="st">&#39;5 lbs&#39;</span>, <span class="st">&#39;29.60&#39;</span>, <span class="st">&#39;47.75&#39;</span>, <span class="st">&#39;59.20&#39;</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>product_id: Foreign key that references the <code>id</code> int he <code>Product</code> table.</li>
 <li>size: Size of the product sku. Must match spelling and case in <code>Sizes</code> table exactly.</li>
@@ -3981,7 +3989,7 @@ vertical-align: -.125em;
 </ul>
 </section>
 <section id="sync-hubspot-products" class="level2">
-<h2 class="anchored" data-anchor-id="sync-hubspot-products">4. Sync HubSpot Products</h2>
+<h2 class="anchored" data-anchor-id="sync-hubspot-products">5. Sync HubSpot Products</h2>
 <ul>
 <li>Open the hubspot-service project in VSCode and run the project locally wuth <code>npm start</code>.</li>
 <li>When the terminal displays a list of all Functions, ctrl + click on <code>UpdateHSProducts</code>. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted.</li>

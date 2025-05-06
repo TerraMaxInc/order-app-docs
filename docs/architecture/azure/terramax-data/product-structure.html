@@ -3873,8 +3873,16 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#entity-tables" id="toc-entity-tables" class="nav-link active" data-scroll-target="#entity-tables">Entity Tables</a></li>
+  <li><a href="#lookup-tables" id="toc-lookup-tables" class="nav-link" data-scroll-target="#lookup-tables">Lookup Tables</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -3898,7 +3906,7 @@ vertical-align: -.125em;
 </header>
 
 
-<p>The structure of <em>Product</em> data in the TerraMax SQL Database is more complex than the flattened <em>Product</em> object in <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot</a>. It involves six tables, four of which simply contain single field sets of data to populate tho main tables, and two of which assemble the data into more complex objects.</p>
+<p>The structure of <em>Product</em> data in the TerraMax SQL Database is more complex than the flattened <em>Product</em> object in <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot</a>. It involves six tables, four of which are simple <a href="../../../reference/glossary.html#lookup-table" class="glossary-term" title="A database table that contains a fixed set of reference values for other tables to ensure consistent data entry.">Lookup Table</a> types, and two of which are <a href="../../../reference/glossary.html#entity-table" class="glossary-term" title="A database table that represents business entities, often with with complex relationships and properties, central to the data model.">Entity Table</a> types that assemble the data into more complex objects.</p>
 <p>This database differentiates between the <code>Sku</code>: the item a customer purchases with a specific size and price, and the <code>Product</code>: the actual material inside the item. One Product may come in multiple sizes, and thus have mutliple skus. The <code>Applications</code>, <code>Crops</code>, and <code>Types</code> tables are associated with the <code>Product</code> table, and the <code>Sizes</code> table is associated with the <code>Skus</code> table.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3906,8 +3914,215 @@ vertical-align: -.125em;
 <figcaption>Product Data Structure</figcaption>
 </figure>
 </div>
+<section id="entity-tables" class="level2">
+<h2 class="anchored" data-anchor-id="entity-tables">Entity Tables</h2>
+<ul>
+<li><strong>Skus</strong></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>sku</code></td>
+<td style="text-align: left;">PK, int, not null</td>
+<td style="text-align: left;">Unique identifier for the record/sku.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>product_id</code></td>
+<td style="text-align: left;">FK, int, not null</td>
+<td style="text-align: left;">Foreign key that associates with the <code>Products</code> table. The product contained in the sku.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>size</code></td>
+<td style="text-align: left;">FK, varchar(255), not null</td>
+<td style="text-align: left;">Foreign key that associates with the <code>Sizes</code> table. The volume or weight of the product.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>distributor_price</code></td>
+<td style="text-align: left;">decimal(8,3)</td>
+<td style="text-align: left;">The price distributors, the lowest possible price. Can be null here, but should not be left null for long or it will cause errors in the app.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>dealer_price</code></td>
+<td style="text-align: left;">decimal(8,3)</td>
+<td style="text-align: left;">The price for dealers, the middle price. Can be null here, but should not be left null for long or it will cause errors in the app.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>msrp</code></td>
+<td style="text-align: left;">decimal(8,3)</td>
+<td style="text-align: left;">Manufacturer suggested retail price, usually twice the distributor price. Can be null here, but should not be left null for long or it will cause errors in the app.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Products</strong></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;">PK, int, not null</td>
+<td style="text-align: left;">Unique identifier for the product.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">varchar(255), not null</td>
+<td style="text-align: left;">Full name that will display in the client app.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">FK, varchar(255), not null</td>
+<td style="text-align: left;">Foreign key that associates with the <code>Types</code> table. Actual values are just “Liquid” and “Dry”.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>crop</code></td>
+<td style="text-align: left;">FK, varchar(255), not null</td>
+<td style="text-align: left;">Foreign key that associates with the <code>Crops</code> table. List of crops.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>application</code></td>
+<td style="text-align: left;">FK, varchar(255), null</td>
+<td style="text-align: left;">Foreign key that associates with the <code>Applications</code> table. Values like “ST” and “IF”.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>green</code></td>
+<td style="text-align: left;">bit, null</td>
+<td style="text-align: left;">Boolean value where 1/true = green and 0/false = conventional.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lookup-tables" class="level2">
+<h2 class="anchored" data-anchor-id="lookup-tables">Lookup Tables</h2>
+<ul>
+<li><strong>Applications</strong></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>application</code></td>
+<td style="text-align: left;">PK, varchar(255), not null</td>
+<td style="text-align: left;">Abbreviations of application types: ST, IF, etc</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Crops</strong></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>crop</code></td>
+<td style="text-align: left;">PK, varchar(255), not null</td>
+<td style="text-align: left;">Singular form of the crop name and the primary key.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>plural</code></td>
+<td style="text-align: left;">varchar(255), null</td>
+<td style="text-align: left;">Plural form of the crop name.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Sizes</strong></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>size</code></td>
+<td style="text-align: left;">PK, varchar(255), not null</td>
+<td style="text-align: left;">Full text of size that will appear in the app: 5 lbs, 2.5 gal, etc.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Types</strong></li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">PK, varchar(255), not null</td>
+<td style="text-align: left;">“Liquid” or “Dry”.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also:</h2>
+<ul>
+<li><a href="../../../how-to/add-product.html">Add New Product</a></li>
+<li><a href="../../../how-to/edit-product.html">Edit Product Information</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

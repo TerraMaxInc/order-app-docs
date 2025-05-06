@@ -3873,8 +3873,15 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tables" id="toc-tables" class="nav-link active" data-scroll-target="#tables">Tables</a></li>
+  <li><a href="#stored-procedures" id="toc-stored-procedures" class="nav-link" data-scroll-target="#stored-procedures">Stored Procedures</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -3901,13 +3908,35 @@ vertical-align: -.125em;
 <p>Most of the data relevant to this project is stored in the TerraMax <a href="../../hubspot/hubspot-overview.html">HubSpot account</a>, but not all data was a good fit for the HubSpot data structure.</p>
 <p>It wasn’t possible within HubSpot’s <strong>Products</strong> object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, the database was also useful later on as a place to store transaction data as part of a system for preventing duplicate transactions.</p>
 <p>HubSpot contains Product data that <em>mirrors</em> this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the <code>updateHSProducts</code> function in the HubSpot Service.</p>
-<p>The <a href="../../../architecture/azure/hubspot-service/hubspot-service.html">HubSpot Service</a> interfaces with this database when it needs to store or retrieve information. The front end user never interacts wirth it directly.</p>
+<p>The <a href="../hubspot-service/hubspot-service.html">HubSpot Service</a> interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like <a href="../../../how-to/add-product.html">adding</a> or <a href="../../../how-to/edit-product.html">editing</a> products, or checking history.</p>
+<hr>
+<section id="tables" class="level2">
+<h2 class="anchored" data-anchor-id="tables">Tables</h2>
+<p>There are <strong>six</strong> core data tables that create the structured <a href="product-structure.html">product data</a> and supply information to the client app:</p>
 <ul>
-<li>each table</li>
-<li>idempotency log</li>
+<li>Skus</li>
+<li>Products</li>
+<li>Applications</li>
+<li>Crops</li>
+<li>Types</li>
+<li>Sizes</li>
 </ul>
+<p>There are <strong>two</strong> tables which save the <a href="backup.html">history</a> of the product data. These allow for easy backup and recovery, and enable tracking changes over time:</p>
+<ul>
+<li>Skus_history</li>
+<li>Products_history</li>
+</ul>
+<p>And there is <strong>one</strong> table that logs <a href="transactions.html">user transactions</a> in order to prevent duplication:</p>
+<ul>
+<li>hubspot_transactions</li>
+</ul>
+<hr>
+</section>
+<section id="stored-procedures" class="level2">
+<h2 class="anchored" data-anchor-id="stored-procedures">Stored Procedures</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

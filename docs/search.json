@@ -4,112 +4,203 @@
     "href": "reference/glossary.html",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "On contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's."
+    "text": "In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's."
   },
   {
     "objectID": "reference/glossary.html#application-permission",
     "href": "reference/glossary.html#application-permission",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "On contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's."
+    "text": "In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's."
   },
   {
     "objectID": "reference/glossary.html#delegated-permission",
     "href": "reference/glossary.html#delegated-permission",
     "title": "Glossary of Terms",
     "section": "Delegated Permission",
-    "text": "Delegated Permission\nOn contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has."
+    "text": "Delegated Permission\nIn contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has."
+  },
+  {
+    "objectID": "reference/glossary.html#entity-table",
+    "href": "reference/glossary.html#entity-table",
+    "title": "Glossary of Terms",
+    "section": "Entity Table",
+    "text": "Entity Table\nA database table that represents business entities, often with with complex relationships and properties, central to the data model."
+  },
+  {
+    "objectID": "reference/glossary.html#transaction-table",
+    "href": "reference/glossary.html#transaction-table",
+    "title": "Glossary of Terms",
+    "section": "Event Table",
+    "text": "Event Table\nA database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur."
+  },
+  {
+    "objectID": "reference/glossary.html#lookup-table",
+    "href": "reference/glossary.html#lookup-table",
+    "title": "Glossary of Terms",
+    "section": "Lookup Table",
+    "text": "Lookup Table\nA database table that contains a fixed set of reference values for other tables to ensure consistent data entry."
   },
   {
     "objectID": "reference/glossary.html#tenant-id",
     "href": "reference/glossary.html#tenant-id",
     "title": "Glossary of Terms",
     "section": "Tenant ID",
-    "text": "Tenant ID\nthe overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella."
+    "text": "Tenant ID\nThe overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella."
   },
   {
     "objectID": "how-to/how-to-contents.html",
     "href": "how-to/how-to-contents.html",
     "title": "How-Tos",
     "section": "",
-    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update"
+    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update\nEdit Product (Price)"
   },
   {
-    "objectID": "how-to/deploy-hubspot-service-update.html",
-    "href": "how-to/deploy-hubspot-service-update.html",
-    "title": "Deploy an Update to the hubspot-service app",
+    "objectID": "how-to/deploy-ordering-app-update.html",
+    "href": "how-to/deploy-ordering-app-update.html",
+    "title": "Deploy an Update to the ordering-app",
     "section": "",
-    "text": "This guide walks through the process of deploying an update to the hubspot-service app where it is hosted in Azure Functions, so that it will become live and available to users.\nThis is NOT a guide to writing Azure Functions, but to updating them the existing app. It assumes that you are using VS Code and are logged in to the TerraMax Azure account.\nThe hubspot-service app is deployed in Azure Functions; more aobut this resource can be found in Azure Functions"
+    "text": "This guide walks through the process of deploying an update to the ordering-app where it is hosted in Azure Static Webapps, so that it will become live and available to users.\nThis is NOT a guide to writing React or Typescript, but to deploying updates the existing app. It assumes that you are using VS Code and are logged in to the GitHub account that hosts the codebase. It deploys via GitHub actions, and as of the writing of this document cannot be deployed any other way.\nFor this project, I have set up a deploy branch to be the one that triggers the necessary GitHub action. Changes can be made, committed and synced to other branches including main without triggering an update."
   },
   {
-    "objectID": "how-to/deploy-hubspot-service-update.html#finalize-and-build-update",
-    "href": "how-to/deploy-hubspot-service-update.html#finalize-and-build-update",
-    "title": "Deploy an Update to the hubspot-service app",
+    "objectID": "how-to/deploy-ordering-app-update.html#finalize-and-build-update",
+    "href": "how-to/deploy-ordering-app-update.html#finalize-and-build-update",
+    "title": "Deploy an Update to the ordering-app",
     "section": "1. Finalize and Build Update",
-    "text": "1. Finalize and Build Update\n\nOnce you are satisfied with your changes and are ready to deploy, you need to build to convert the Typescript files into Javascript. In Vs Code, in the project folder, open a terminal and run npm run build. This process may catch errors that need to be addressed before you can ry to build again."
+    "text": "1. Finalize and Build Update\n\nOnce you are satisfied with your changes and are ready to deploy, you need to build to convert the Typescript files into Javascript. In Vs Code, in the project folder, open a terminal and run npm run build. This process may catch errors that need to be addressed before you can try to build again."
   },
   {
-    "objectID": "how-to/deploy-hubspot-service-update.html#deploy-with-the-vs-code-command-palette",
-    "href": "how-to/deploy-hubspot-service-update.html#deploy-with-the-vs-code-command-palette",
-    "title": "Deploy an Update to the hubspot-service app",
-    "section": "2. Deploy with the VS Code Command Palette",
-    "text": "2. Deploy with the VS Code Command Palette\n\nFind and select Azure Functions: Deploy to Function app... in the Command Palette. There may be a lag in response after you click.\nSelect the function app you are deploying from the dropdown list that appears: terramax-hubspot-service.\nA popup will ask if you are sure you want to deploy and overwrite the previous deployment. Click Deploy.\nthe Terminal will display the status of the deployment process, which may take some time."
+    "objectID": "how-to/deploy-ordering-app-update.html#commit-and-sync-to-github",
+    "href": "how-to/deploy-ordering-app-update.html#commit-and-sync-to-github",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "2. Commit and Sync to GitHub",
+    "text": "2. Commit and Sync to GitHub\n\nCommit all changes to the branch you’re working on, and then sync those changes to GitHub."
   },
   {
-    "objectID": "how-to/add-product.html",
-    "href": "how-to/add-product.html",
-    "title": "Add Product",
+    "objectID": "how-to/deploy-ordering-app-update.html#push-changes-to-the-deploy-branch",
+    "href": "how-to/deploy-ordering-app-update.html#push-changes-to-the-deploy-branch",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "3. Push Changes to the deploy Branch",
+    "text": "3. Push Changes to the deploy Branch\n\nIn a terminal enter github push origin (branch):deploy, replacing (branch) with the nameo fthe branch that has the changes you want to deploy. Example:\n\ngithub push origin auth:deploy\n\nThis should be a quick process in Vs Code. It will authomatically trigger the GitHub workflow to deploy the update, which will take longer."
+  },
+  {
+    "objectID": "how-to/deploy-ordering-app-update.html#check-status-in-github-actions",
+    "href": "how-to/deploy-ordering-app-update.html#check-status-in-github-actions",
+    "title": "Deploy an Update to the ordering-app",
+    "section": "4. Check Status in GitHub Actions",
+    "text": "4. Check Status in GitHub Actions\n\nIn the GitHub account:\n\nopen the ordering-app repo\ngo to the Actions tab\nSelect All workflows from the Actions sidebar (it may already be selected)\n\nIn the All workflows section, you will see a list of past workflows, and the date they were attempted. You may need to refresh to see the one you just triggered. You may see a yellow circle to indicate that it’s in progress; it will automatically change to show when it’s complete.\nIf it turns red to indicate failure, click on the entry to view the error details. Sometimes they are transient and you can try again; try rebuilding the app, re-committing, and redeploying."
+  },
+  {
+    "objectID": "how-to/check-costs.html",
+    "href": "how-to/check-costs.html",
+    "title": "Azure Cost Management",
     "section": "",
-    "text": "The list of Products is effectively stored in two locations: - The master list in the TerraMax Data SQL Database - The Products object in HubSpot\nBoth locations need to be updated, but you should start with the TerraMax Data SQL database. The structure of the data in the SQL db is more complex, and there is a function in the HubSpot Service that will synch the HubSpot version to match the SQL version.\nAdding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the SQL SERVER extension, or directly in the Azure Portal. This guide assumes that you are able to use at least one of those tools."
+    "text": "You can access the Cost Management section by going to the Azure Portal and clicking on the green Cost Management icon in the top row of services. This will take you to a the Cost Management Overview page\n\n\n\nCost Management Overview\n\n\nFrom here, click on Go to billing account in the top center of the page, right below the scope. This will take you to a summary of all costs associated with the Azure resources being uses.\n\n\n\nBilling Account Summary\n\n\nAt the time of writing (April 28, 2025), the only resource that is not free is the SQL Database, which should cost $4.99/month. This may be subject to change, and should be checked periodically.\nThe budget for Azure is currently set to $5.00/month, and emails me a notice when it reaches 80% of that limit."
   },
   {
-    "objectID": "how-to/add-product.html#add-new-properties-to-supporting-tables",
-    "href": "how-to/add-product.html#add-new-properties-to-supporting-tables",
-    "title": "Add Product",
-    "section": "1. Add New Properties to SUpporting Tables",
-    "text": "1. Add New Properties to SUpporting Tables\n\nCheck that the Application, Crop, and Type tables already contain the values that you need, and insert them if needed."
-  },
-  {
-    "objectID": "how-to/add-product.html#insert-the-product-in-terramax-data",
-    "href": "how-to/add-product.html#insert-the-product-in-terramax-data",
-    "title": "Add Product",
-    "section": "2. Insert the Product in TerraMax Data",
-    "text": "2. Insert the Product in TerraMax Data\n\nIf the new product is simply a different size of an existing product, you can skip this step. Otherwise, insert the new Product into the Products table:\n\nINSERT INTO Products (name, type, crop, application, green)\n    VALUES ('TerraMax Dry Soybean Inoculant', 'Dry', 'Soybean', 'ST', false);\n\nname: The full name you want to appear in the Ordering App.\ntype: Liquid or Dry. Must match spelling and case in Types table exactly.\ncrop: Target crop. Can only include one, but there is a Multi-Crop option if needed. Must match spelling and case from the crop column in Crops table exactly.\napplication: ST, IF, etc. Must match spelling and case in Applications table exactly.\ngreen: boolean value: true = green, false = conventional"
-  },
-  {
-    "objectID": "how-to/add-product.html#insert-the-sku-into-skus",
-    "href": "how-to/add-product.html#insert-the-sku-into-skus",
-    "title": "Add Product",
-    "section": "3. Insert the Sku into Skus",
-    "text": "3. Insert the Sku into Skus\n\nUsing the system-generated id number for the desired product, insert the sku with its size and prices:\n\nINSERT INTO Skus (product_id, size, distributor_price, dealer_price, msrp)\n    VALUES(5, '5 lbs', '29.60', '47.75', '59.20');\n\nproduct_id: Foreign key that references the id int he Product table.\nsize: Size of the product sku. Must match spelling and case in Sizes table exactly.\ndistributor_price, dealer_price, msrp: the pruce values."
-  },
-  {
-    "objectID": "how-to/add-product.html#sync-hubspot-products",
-    "href": "how-to/add-product.html#sync-hubspot-products",
-    "title": "Add Product",
-    "section": "4. Sync HubSpot Products",
-    "text": "4. Sync HubSpot Products\n\nOpen the hubspot-service project in VSCode and run the project locally wuth npm start.\nWhen the terminal displays a list of all Functions, ctrl + click on UpdateHSProducts. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted."
-  },
-  {
-    "objectID": "architecture/hubspot/hubspot-overview.html",
-    "href": "architecture/hubspot/hubspot-overview.html",
-    "title": "HubSpot",
+    "objectID": "how-to/add-new-function.html",
+    "href": "how-to/add-new-function.html",
+    "title": "Adding a New Function",
     "section": "",
-    "text": "Stuff about HubSpot… - api token - added properties"
+    "text": "This guide walks through all the necessary steps to add a new Azure Function to the hubspot-service backend and make it accessible to the client app.\nThis is NOT a guide to writing Azure Functions, but to integrating them into the existing app."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",
+    "href": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",
+    "title": "Adding a New Function",
+    "section": "1. Create Function in ‘hubspot-service’ Codebase",
+    "text": "1. Create Function in ‘hubspot-service’ Codebase\n\nIn VSCode, the new .ts file should be in the functions directory."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#deploy-to-live-azure-functions-app",
+    "href": "how-to/add-new-function.html#deploy-to-live-azure-functions-app",
+    "title": "Adding a New Function",
+    "section": "2. Deploy to Live Azure Functions App",
+    "text": "2. Deploy to Live Azure Functions App\n\nMake sure you are logged in to the TerraMax Azure account\nIn VSCode, select Azure Functions: Deploy to Function App...\nSelect terramax-hubspot-service as the function app to deploy to. A pop-up will ask you if you want to deploy; click the Deploy button.\nThe terminal will display information about the deployment execution, and tell you if it was successful."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#expose-api-for-the-new-function",
+    "href": "how-to/add-new-function.html#expose-api-for-the-new-function",
+    "title": "Adding a New Function",
+    "section": "3. Expose API for the New Function",
+    "text": "3. Expose API for the New Function\n\nIn the Azure Portal, go to:\n\nEntra &gt; Manage &gt; App Registrations\n\nFind and select terramax-hubspot-service-registration in the list of Owned Applications\nIn the app registration’s page, go to:\n\nManage &gt; Expose an API\n\nAn page will open that shows all the currently exposed APIs; click Add a scope to create, name, and describe a new one. Be sure that the Scope name starts with api. followed by whatever is listed as the handler in the function code. When done, click Add scope. This creates the API within Azure so that permission to access it can now be granted elsewhere."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#add-the-new-function-to-the-client-apps-scope",
+    "href": "how-to/add-new-function.html#add-the-new-function-to-the-client-apps-scope",
+    "title": "Adding a New Function",
+    "section": "4. Add the New Function to the client app’s Scope",
+    "text": "4. Add the New Function to the client app’s Scope\n\nOn the same page in the Azure Portal as step 3, beneath the apis is a list of client applications. Click on the application with Client Id df62e6f2-df30-4e5c-b33e-87261d6e82ce.\nA popup will appear with a list of Authorized scopes; these are the APIs specifically within the scope to the given app. The new API should appear in the list unchecked; check it and save."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#add-permission-for-the-new-function",
+    "href": "how-to/add-new-function.html#add-permission-for-the-new-function",
+    "title": "Adding a New Function",
+    "section": "5. Add Permission for the New Function",
+    "text": "5. Add Permission for the New Function\n\nIn the Azure Portal, go to:\n\nEntra &gt; Manage &gt; App Registrations\n\nFind and select terramax-ordering-app-registration in the list of Owned Applications\nIn the app registration’s page, go to:\n\nManage &gt; API permissions\n\nclick the Add a permission button\nIn the Request API permissions pop-up, select the My APIs tab\nSelect terramax-hubspot-service-registration from the list\nIt will then show a list of all possible API permissions, and your new function should appear in the list unchecked. Check it, then click Add permission\nThe newly added permission should now appear in the list, but its Status is not yet Granted. To grant permission, click on the Grant admin consent for TerraMax, Inc button, and then agree yes to the confirmation pop-up. The new api should now also appear as Granted."
+  },
+  {
+    "objectID": "how-to/add-new-function.html#add-to-ordering-app-code",
+    "href": "how-to/add-new-function.html#add-to-ordering-app-code",
+    "title": "Adding a New Function",
+    "section": "6. Add to Ordering App code",
+    "text": "6. Add to Ordering App code\n\nOpen the ordering-app project in VSCode, and open the authConfig.ts file in the src folder\nNear the bottom of the file, add the new api to the section:\n\nexport const loginRequest = {\n scopes: [\n   `api://${FUNCTIONS_APP_ID}/api.AllDeals`,\n   `api://${FUNCTIONS_APP_ID}/api.DealById`,\n   `api://${FUNCTIONS_APP_ID}/api.AllOwners`,\n   `api://${FUNCTIONS_APP_ID}/api.AllContacts`,\n   `api://${FUNCTIONS_APP_ID}/api.AllCompanies`,\n   `api://${FUNCTIONS_APP_ID}/api.Client`,\n   `api://${FUNCTIONS_APP_ID}/api.AllCrops`,\n   `api://${FUNCTIONS_APP_ID}/api.AllSkus`,\n   `api://${FUNCTIONS_APP_ID}/api.LineItemsByDeal`,\n   `api://${FUNCTIONS_APP_ID}/api.ReceiveCompleteOrder`,\n   `api://${FUNCTIONS_APP_ID}/api.ReceiveIncompleteOrder`,\n ],\n audience: `api://${FUNCTIONS_APP_ID}`,\n};\n\nAlso add the new api to the section at the very bottom of the file:\n\nexport const hubspotConfig = {\n    dealsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllDeals`,\n    dealByIdEndpoint: `${FUNCTIONS_BASE_ENDPOINT}DealById`,\n    ownersEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllOwners`,\n    contactsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllContacts`,\n    companiesEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCompanies`,\n    clientEndpoint: `${FUNCTIONS_BASE_ENDPOINT}Client`,\n    cropsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCrops`,\n    skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,\n    lineItemsByDealEndpoint: `${FUNCTIONS_BASE_ENDPOINT}LineItemsByDeal`,\n    receiveCompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveCompleteOrder`,\n    receiveIncompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveIncompleteOrder`,\n};"
+  },
+  {
+    "objectID": "how-to/add-new-function.html#after-completing-these-steps-the-new-function-should-be-available-to-use-within-the-rest-of-the-ordering-app-code-and-to-users-when-you-next-deploy-an-app-update",
+    "href": "how-to/add-new-function.html#after-completing-these-steps-the-new-function-should-be-available-to-use-within-the-rest-of-the-ordering-app-code-and-to-users-when-you-next-deploy-an-app-update",
+    "title": "Adding a New Function",
+    "section": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update",
+    "text": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update"
+  },
+  {
+    "objectID": "architecture/github/github-overview.html",
+    "href": "architecture/github/github-overview.html",
+    "title": "GitHub Account",
+    "section": "",
+    "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
   },
   {
     "objectID": "architecture/azure/terramax-data/terramax-data.html",
     "href": "architecture/azure/terramax-data/terramax-data.html",
     "title": "TerraMax Data",
     "section": "",
-    "text": "Most of the data relevant to this project is stored in the TerraMax HubSpot account, but not all data was a good fit for the HubSpot data structure.\nIt wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, the database was also useful later on as a place to store transaction data as part of a system for preventing duplicate transactions.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts wirth it directly.\n\neach table\nidempotency log"
+    "text": "Most of the data relevant to this project is stored in the TerraMax HubSpot account, but not all data was a good fit for the HubSpot data structure.\nIt wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, the database was also useful later on as a place to store transaction data as part of a system for preventing duplicate transactions.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history."
   },
   {
-    "objectID": "architecture/azure/terramax-data/azure-sql.html",
-    "href": "architecture/azure/terramax-data/azure-sql.html",
-    "title": "Azure SQL Database",
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#tables",
+    "href": "architecture/azure/terramax-data/terramax-data.html#tables",
+    "title": "TerraMax Data",
+    "section": "Tables",
+    "text": "Tables\nThere are six core data tables that create the structured product data and supply information to the client app:\n\nSkus\nProducts\nApplications\nCrops\nTypes\nSizes\n\nThere are two tables which save the history of the product data. These allow for easy backup and recovery, and enable tracking changes over time:\n\nSkus_history\nProducts_history\n\nAnd there is one table that logs user transactions in order to prevent duplication:\n\nhubspot_transactions"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#stored-procedures",
+    "href": "architecture/azure/terramax-data/terramax-data.html#stored-procedures",
+    "title": "TerraMax Data",
+    "section": "Stored Procedures",
+    "text": "Stored Procedures"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/backup.html",
+    "href": "architecture/azure/terramax-data/backup.html",
+    "title": "Backup",
     "section": "",
-    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
+    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the even a SQL quesy goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields: - id: an auto-generated id for the row - backup_event_id: a GUID generated at the time of the backup, shared by all rows inserted at the time of that specific backup - backup_timestamp: the date-time of the backup event\nThe id serves as an easy primary key for each record, but the combination of backup_event_id and produdt_id or sku should also be unique within the tables.\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
+  },
+  {
+    "objectID": "architecture/azure/ordering-app/static-web-apps.html",
+    "href": "architecture/azure/ordering-app/static-web-apps.html",
+    "title": "Azure Static Web Apps Overview",
+    "section": "",
+    "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/receiveOrder.html",
+    "href": "architecture/azure/hubspot-service/receiveOrder.html",
+    "title": "ReceiveOrder Function",
+    "section": "",
+    "text": "The major weight-bearing write function that does all the things."
   },
   {
     "objectID": "architecture/azure/hubspot-service/hubspot-service-registration.html",
@@ -196,123 +287,165 @@
     "text": "Other settings"
   },
   {
-    "objectID": "architecture/azure/ordering-app/static-web-apps.html",
-    "href": "architecture/azure/ordering-app/static-web-apps.html",
-    "title": "Azure Static Web Apps Overview",
+    "objectID": "architecture/azure/terramax-data/azure-sql.html",
+    "href": "architecture/azure/terramax-data/azure-sql.html",
+    "title": "Azure SQL Database",
     "section": "",
-    "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
+    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
   },
   {
     "objectID": "architecture/azure/terramax-data/product-structure.html",
     "href": "architecture/azure/terramax-data/product-structure.html",
     "title": "Product Data Structure",
     "section": "",
-    "text": "The structure of Product data in the TerraMax SQL Database is more complex than the flattened Product object in HubSpot. It involves six tables, four of which simply contain single field sets of data to populate tho main tables, and two of which assemble the data into more complex objects.\nThis database differentiates between the Sku: the item a customer purchases with a specific size and price, and the Product: the actual material inside the item. One Product may come in multiple sizes, and thus have mutliple skus. The Applications, Crops, and Types tables are associated with the Product table, and the Sizes table is associated with the Skus table.\n\n\n\nProduct Data Structure"
+    "text": "The structure of Product data in the TerraMax SQL Database is more complex than the flattened Product object in HubSpot. It involves six tables, four of which are simple Lookup Table types, and two of which are Entity Table types that assemble the data into more complex objects.\nThis database differentiates between the Sku: the item a customer purchases with a specific size and price, and the Product: the actual material inside the item. One Product may come in multiple sizes, and thus have mutliple skus. The Applications, Crops, and Types tables are associated with the Product table, and the Sizes table is associated with the Skus table."
   },
   {
-    "objectID": "architecture/github/github-overview.html",
-    "href": "architecture/github/github-overview.html",
-    "title": "GitHub Account",
+    "objectID": "architecture/azure/terramax-data/product-structure.html#entity-tables",
+    "href": "architecture/azure/terramax-data/product-structure.html#entity-tables",
+    "title": "Product Data Structure",
+    "section": "Entity Tables",
+    "text": "Entity Tables\n\nSkus\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nsku\nPK, int, not null\nUnique identifier for the record/sku.\n\n\nproduct_id\nFK, int, not null\nForeign key that associates with the Products table. The product contained in the sku.\n\n\nsize\nFK, varchar(255), not null\nForeign key that associates with the Sizes table. The volume or weight of the product.\n\n\ndistributor_price\ndecimal(8,3)\nThe price distributors, the lowest possible price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\ndealer_price\ndecimal(8,3)\nThe price for dealers, the middle price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\nmsrp\ndecimal(8,3)\nManufacturer suggested retail price, usually twice the distributor price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\n\n\nProducts\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nid\nPK, int, not null\nUnique identifier for the product.\n\n\nname\nvarchar(255), not null\nFull name that will display in the client app.\n\n\ntype\nFK, varchar(255), not null\nForeign key that associates with the Types table. Actual values are just “Liquid” and “Dry”.\n\n\ncrop\nFK, varchar(255), not null\nForeign key that associates with the Crops table. List of crops.\n\n\napplication\nFK, varchar(255), null\nForeign key that associates with the Applications table. Values like “ST” and “IF”.\n\n\ngreen\nbit, null\nBoolean value where 1/true = green and 0/false = conventional."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/product-structure.html#lookup-tables",
+    "href": "architecture/azure/terramax-data/product-structure.html#lookup-tables",
+    "title": "Product Data Structure",
+    "section": "Lookup Tables",
+    "text": "Lookup Tables\n\nApplications\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\napplication\nPK, varchar(255), not null\nAbbreviations of application types: ST, IF, etc\n\n\n\n\nCrops\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\ncrop\nPK, varchar(255), not null\nSingular form of the crop name and the primary key.\n\n\nplural\nvarchar(255), null\nPlural form of the crop name.\n\n\n\n\nSizes\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nsize\nPK, varchar(255), not null\nFull text of size that will appear in the app: 5 lbs, 2.5 gal, etc.\n\n\n\n\nTypes\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\ntype\nPK, varchar(255), not null\n“Liquid” or “Dry”."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/product-structure.html#see-also",
+    "href": "architecture/azure/terramax-data/product-structure.html#see-also",
+    "title": "Product Data Structure",
+    "section": "See Also:",
+    "text": "See Also:\n\nAdd New Product\nEdit Product Information"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/transactions.html",
+    "href": "architecture/azure/terramax-data/transactions.html",
+    "title": "Hubspot Transactions Logging",
     "section": "",
-    "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
+    "text": "hubspot_transactions is an @event-table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
   },
   {
-    "objectID": "how-to/add-new-function.html",
-    "href": "how-to/add-new-function.html",
-    "title": "Adding a New Function",
+    "objectID": "architecture/azure/terramax-data/transactions.html#ids",
+    "href": "architecture/azure/terramax-data/transactions.html#ids",
+    "title": "Hubspot Transactions Logging",
+    "section": "IDs",
+    "text": "IDs\nThere are a number of IDs tracked in this table, which serve different purposes.\nThe idempotency id is the first line of defense in preventing the creation of duplicate Deals in HubSpot. Once a Deal is successfully written to HubSpot it is assigned an object id, but that only happens at the end of the first save. It is potentially possible that this HubSpot-based id might fail to be passed back to the client app, and the user might attempt to save again and create a duplticate. To head off this danger, the idempotency id is generated in the client app as soon as a user starts a new order. It is saved in the hubspot_transactions log so that the hubspot_service can check the id of an incoming deal against the log and ensure that it’s not a duplicate. This id is also saved to a custom property in HubSpot as part of the Deal’s data, so it can be used for reference in future edits to thet Deal.\nThe transaction id exists not to prevent the creation of duplicate Deals, but duplicate actions done for a Deal. Most especially, it’s intended to prevent sending duplicate emails to Dave when the Deal is closed/won. This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.\nThe dealID is the object id assigned to a Deal by HubSpot when first saved to their database. This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/transactions.html#table-structure",
+    "href": "architecture/azure/terramax-data/transactions.html#table-structure",
+    "title": "Hubspot Transactions Logging",
+    "section": "Table Structure",
+    "text": "Table Structure\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\neventID\nPK, int, not null\nAuto-generated id for the record.\n\n\nidempotencyID\nvarchar(255), null\nId for the Deal generated in the client app.\n\n\ntransactionID\nvarchar(255), null\nId for the transaction generated in the client app.\n\n\nuserEmail\nvarchar(255), null\nEmail of the user attempting the transaction, scraped from their auth credentials.\n\n\ncreatedAt\ndatetime2(7), null\nDate and time of the transaction.\n\n\ntransaction_status\nvarchar(100), null\nHTTP status code for the success of the transaction as a whole.\n\n\ntransaction_message\nvarchar(max), null\nMessage sent back to describe the success of the transaction as a whole.\n\n\ndeal_status\nvarchar(100), null\nHTTP status code for the success of writing the Deal to HubSpot.\n\n\nlineitems_status\nvarchar(100), null\nHTTP status code for the success of writing the LineItems to HubSpot.\n\n\nemail_status\nvarchar(100), null\nHTTP status code for the success of sending an email.\n\n\ndealID\nvarchar(255), null\nThe object id assigned to the deal by HubSpot."
+  },
+  {
+    "objectID": "architecture/hubspot/hubspot-overview.html",
+    "href": "architecture/hubspot/hubspot-overview.html",
+    "title": "HubSpot",
     "section": "",
-    "text": "This guide walks through all the necessary steps to add a new Azure Function to the hubspot-service backend and make it accessible to the client app.\nThis is NOT a guide to writing Azure Functions, but to integrating them into the existing app."
+    "text": "Stuff about HubSpot… - api token - added properties"
   },
   {
-    "objectID": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",
-    "href": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",
-    "title": "Adding a New Function",
-    "section": "1. Create Function in ‘hubspot-service’ Codebase",
-    "text": "1. Create Function in ‘hubspot-service’ Codebase\n\nIn VSCode, the new .ts file should be in the functions directory."
-  },
-  {
-    "objectID": "how-to/add-new-function.html#deploy-to-live-azure-functions-app",
-    "href": "how-to/add-new-function.html#deploy-to-live-azure-functions-app",
-    "title": "Adding a New Function",
-    "section": "2. Deploy to Live Azure Functions App",
-    "text": "2. Deploy to Live Azure Functions App\n\nMake sure you are logged in to the TerraMax Azure account\nIn VSCode, select Azure Functions: Deploy to Function App...\nSelect terramax-hubspot-service as the function app to deploy to. A pop-up will ask you if you want to deploy; click the Deploy button.\nThe terminal will display information about the deployment execution, and tell you if it was successful."
-  },
-  {
-    "objectID": "how-to/add-new-function.html#expose-api-for-the-new-function",
-    "href": "how-to/add-new-function.html#expose-api-for-the-new-function",
-    "title": "Adding a New Function",
-    "section": "3. Expose API for the New Function",
-    "text": "3. Expose API for the New Function\n\nIn the Azure Portal, go to:\n\nEntra &gt; Manage &gt; App Registrations\n\nFind and select terramax-hubspot-service-registration in the list of Owned Applications\nIn the app registration’s page, go to:\n\nManage &gt; Expose an API\n\nAn page will open that shows all the currently exposed APIs; click Add a scope to create, name, and describe a new one. Be sure that the Scope name starts with api. followed by whatever is listed as the handler in the function code. When done, click Add scope. This creates the API within Azure so that permission to access it can now be granted elsewhere."
-  },
-  {
-    "objectID": "how-to/add-new-function.html#add-the-new-function-to-the-client-apps-scope",
-    "href": "how-to/add-new-function.html#add-the-new-function-to-the-client-apps-scope",
-    "title": "Adding a New Function",
-    "section": "4. Add the New Function to the client app’s Scope",
-    "text": "4. Add the New Function to the client app’s Scope\n\nOn the same page in the Azure Portal as step 3, beneath the apis is a list of client applications. Click on the application with Client Id df62e6f2-df30-4e5c-b33e-87261d6e82ce.\nA popup will appear with a list of Authorized scopes; these are the APIs specifically within the scope to the given app. The new API should appear in the list unchecked; check it and save."
-  },
-  {
-    "objectID": "how-to/add-new-function.html#add-permission-for-the-new-function",
-    "href": "how-to/add-new-function.html#add-permission-for-the-new-function",
-    "title": "Adding a New Function",
-    "section": "5. Add Permission for the New Function",
-    "text": "5. Add Permission for the New Function\n\nIn the Azure Portal, go to:\n\nEntra &gt; Manage &gt; App Registrations\n\nFind and select terramax-ordering-app-registration in the list of Owned Applications\nIn the app registration’s page, go to:\n\nManage &gt; API permissions\n\nclick the Add a permission button\nIn the Request API permissions pop-up, select the My APIs tab\nSelect terramax-hubspot-service-registration from the list\nIt will then show a list of all possible API permissions, and your new function should appear in the list unchecked. Check it, then click Add permission\nThe newly added permission should now appear in the list, but its Status is not yet Granted. To grant permission, click on the Grant admin consent for TerraMax, Inc button, and then agree yes to the confirmation pop-up. The new api should now also appear as Granted."
-  },
-  {
-    "objectID": "how-to/add-new-function.html#add-to-ordering-app-code",
-    "href": "how-to/add-new-function.html#add-to-ordering-app-code",
-    "title": "Adding a New Function",
-    "section": "6. Add to Ordering App code",
-    "text": "6. Add to Ordering App code\n\nOpen the ordering-app project in VSCode, and open the authConfig.ts file in the src folder\nNear the bottom of the file, add the new api to the section:\n\nexport const loginRequest = {\n scopes: [\n   `api://${FUNCTIONS_APP_ID}/api.AllDeals`,\n   `api://${FUNCTIONS_APP_ID}/api.DealById`,\n   `api://${FUNCTIONS_APP_ID}/api.AllOwners`,\n   `api://${FUNCTIONS_APP_ID}/api.AllContacts`,\n   `api://${FUNCTIONS_APP_ID}/api.AllCompanies`,\n   `api://${FUNCTIONS_APP_ID}/api.Client`,\n   `api://${FUNCTIONS_APP_ID}/api.AllCrops`,\n   `api://${FUNCTIONS_APP_ID}/api.AllSkus`,\n   `api://${FUNCTIONS_APP_ID}/api.LineItemsByDeal`,\n   `api://${FUNCTIONS_APP_ID}/api.ReceiveCompleteOrder`,\n   `api://${FUNCTIONS_APP_ID}/api.ReceiveIncompleteOrder`,\n ],\n audience: `api://${FUNCTIONS_APP_ID}`,\n};\n\nAlso add the new api to the section at the very bottom of the file:\n\nexport const hubspotConfig = {\n    dealsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllDeals`,\n    dealByIdEndpoint: `${FUNCTIONS_BASE_ENDPOINT}DealById`,\n    ownersEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllOwners`,\n    contactsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllContacts`,\n    companiesEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCompanies`,\n    clientEndpoint: `${FUNCTIONS_BASE_ENDPOINT}Client`,\n    cropsEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllCrops`,\n    skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,\n    lineItemsByDealEndpoint: `${FUNCTIONS_BASE_ENDPOINT}LineItemsByDeal`,\n    receiveCompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveCompleteOrder`,\n    receiveIncompleteOrderEndpoint: `${FUNCTIONS_BASE_ENDPOINT}ReceiveIncompleteOrder`,\n};"
-  },
-  {
-    "objectID": "how-to/add-new-function.html#after-completing-these-steps-the-new-function-should-be-available-to-use-within-the-rest-of-the-ordering-app-code-and-to-users-when-you-next-deploy-an-app-update",
-    "href": "how-to/add-new-function.html#after-completing-these-steps-the-new-function-should-be-available-to-use-within-the-rest-of-the-ordering-app-code-and-to-users-when-you-next-deploy-an-app-update",
-    "title": "Adding a New Function",
-    "section": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update",
-    "text": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update"
-  },
-  {
-    "objectID": "how-to/check-costs.html",
-    "href": "how-to/check-costs.html",
-    "title": "Azure Cost Management",
+    "objectID": "how-to/add-product.html",
+    "href": "how-to/add-product.html",
+    "title": "Add Product",
     "section": "",
-    "text": "You can access the Cost Management section by going to the Azure Portal and clicking on the green Cost Management icon in the top row of services. This will take you to a the Cost Management Overview page\n\n\n\nCost Management Overview\n\n\nFrom here, click on Go to billing account in the top center of the page, right below the scope. This will take you to a summary of all costs associated with the Azure resources being uses.\n\n\n\nBilling Account Summary\n\n\nAt the time of writing (April 28, 2025), the only resource that is not free is the SQL Database, which should cost $4.99/month. This may be subject to change, and should be checked periodically.\nThe budget for Azure is currently set to $5.00/month, and emails me a notice when it reaches 80% of that limit."
+    "text": "The list of Products is effectively stored in two locations: - The master list in the TerraMax Data SQL Database - The Products object in HubSpot\nBoth locations need to be updated, but you should start with the TerraMax Data SQL database. The structure of the data in the SQL db is more complex, and there is a function in the HubSpot Service that will synch the HubSpot version to match the SQL version.\nAdding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the SQL SERVER extension, or directly in the Azure Portal. This guide assumes that you are able to use at least one of those tools."
   },
   {
-    "objectID": "how-to/deploy-ordering-app-update.html",
-    "href": "how-to/deploy-ordering-app-update.html",
-    "title": "Deploy an Update to the ordering-app",
+    "objectID": "how-to/add-product.html#backup-current-data",
+    "href": "how-to/add-product.html#backup-current-data",
+    "title": "Add Product",
+    "section": "1. Backup Current Data",
+    "text": "1. Backup Current Data\n\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history, so that you can recover the current data if anything goes wrong.\n\nEXEC Backup_Products_And_Skus;"
+  },
+  {
+    "objectID": "how-to/add-product.html#add-new-properties-to-supporting-tables",
+    "href": "how-to/add-product.html#add-new-properties-to-supporting-tables",
+    "title": "Add Product",
+    "section": "2. Add New Properties to Supporting Tables",
+    "text": "2. Add New Properties to Supporting Tables\n\nCheck that the Application, Crop, and Type tables already contain the values that you need, and insert them if needed."
+  },
+  {
+    "objectID": "how-to/add-product.html#insert-the-product-in-terramax-data",
+    "href": "how-to/add-product.html#insert-the-product-in-terramax-data",
+    "title": "Add Product",
+    "section": "3. Insert the Product in TerraMax Data",
+    "text": "3. Insert the Product in TerraMax Data\n\nIf the new product is simply a different size of an existing product, you can skip this step. Otherwise, insert the new Product into the Products table:\n\nINSERT INTO Products (name, type, crop, application, green)\n    VALUES ('TerraMax Dry Soybean Inoculant', 'Dry', 'Soybean', 'ST', false);\n\nname: The full name you want to appear in the Ordering App.\ntype: Liquid or Dry. Must match spelling and case in Types table exactly.\ncrop: Target crop. Can only include one, but there is a Multi-Crop option if needed. Must match spelling and case from the crop column in Crops table exactly.\napplication: ST, IF, etc. Must match spelling and case in Applications table exactly.\ngreen: boolean value: true = green, false = conventional"
+  },
+  {
+    "objectID": "how-to/add-product.html#insert-the-sku-into-skus",
+    "href": "how-to/add-product.html#insert-the-sku-into-skus",
+    "title": "Add Product",
+    "section": "4. Insert the Sku into Skus",
+    "text": "4. Insert the Sku into Skus\n\nUsing the system-generated id number for the desired product, insert the sku with its size and prices:\n\nINSERT INTO Skus (product_id, size, distributor_price, dealer_price, msrp)\n    VALUES(5, '5 lbs', '29.60', '47.75', '59.20');\n\nproduct_id: Foreign key that references the id int he Product table.\nsize: Size of the product sku. Must match spelling and case in Sizes table exactly.\ndistributor_price, dealer_price, msrp: the pruce values."
+  },
+  {
+    "objectID": "how-to/add-product.html#sync-hubspot-products",
+    "href": "how-to/add-product.html#sync-hubspot-products",
+    "title": "Add Product",
+    "section": "5. Sync HubSpot Products",
+    "text": "5. Sync HubSpot Products\n\nOpen the hubspot-service project in VSCode and run the project locally wuth npm start.\nWhen the terminal displays a list of all Functions, ctrl + click on UpdateHSProducts. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted."
+  },
+  {
+    "objectID": "how-to/deploy-hubspot-service-update.html",
+    "href": "how-to/deploy-hubspot-service-update.html",
+    "title": "Deploy an Update to the hubspot-service app",
     "section": "",
-    "text": "This guide walks through the process of deploying an update to the ordering-app where it is hosted in Azure Static Webapps, so that it will become live and available to users.\nThis is NOT a guide to writing React or Typescript, but to deploying updates the existing app. It assumes that you are using VS Code and are logged in to the GitHub account that hosts the codebase. It deploys via GitHub actions, and as of the writing of this document cannot be deployed any other way.\nFor this project, I have set up a deploy branch to be the one that triggers the necessary GitHub action. Changes can be made, committed and synced to other branches including main without triggering an update."
+    "text": "This guide walks through the process of deploying an update to the hubspot-service app where it is hosted in Azure Functions, so that it will become live and available to users.\nThis is NOT a guide to writing Azure Functions, but to updating them the existing app. It assumes that you are using VS Code and are logged in to the TerraMax Azure account.\nThe hubspot-service app is deployed in Azure Functions; more aobut this resource can be found in Azure Functions"
   },
   {
-    "objectID": "how-to/deploy-ordering-app-update.html#finalize-and-build-update",
-    "href": "how-to/deploy-ordering-app-update.html#finalize-and-build-update",
-    "title": "Deploy an Update to the ordering-app",
+    "objectID": "how-to/deploy-hubspot-service-update.html#finalize-and-build-update",
+    "href": "how-to/deploy-hubspot-service-update.html#finalize-and-build-update",
+    "title": "Deploy an Update to the hubspot-service app",
     "section": "1. Finalize and Build Update",
-    "text": "1. Finalize and Build Update\n\nOnce you are satisfied with your changes and are ready to deploy, you need to build to convert the Typescript files into Javascript. In Vs Code, in the project folder, open a terminal and run npm run build. This process may catch errors that need to be addressed before you can try to build again."
+    "text": "1. Finalize and Build Update\n\nOnce you are satisfied with your changes and are ready to deploy, you need to build to convert the Typescript files into Javascript. In Vs Code, in the project folder, open a terminal and run npm run build. This process may catch errors that need to be addressed before you can ry to build again."
   },
   {
-    "objectID": "how-to/deploy-ordering-app-update.html#commit-and-sync-to-github",
-    "href": "how-to/deploy-ordering-app-update.html#commit-and-sync-to-github",
-    "title": "Deploy an Update to the ordering-app",
-    "section": "2. Commit and Sync to GitHub",
-    "text": "2. Commit and Sync to GitHub\n\nCommit all changes to the branch you’re working on, and then sync those changes to GitHub."
+    "objectID": "how-to/deploy-hubspot-service-update.html#deploy-with-the-vs-code-command-palette",
+    "href": "how-to/deploy-hubspot-service-update.html#deploy-with-the-vs-code-command-palette",
+    "title": "Deploy an Update to the hubspot-service app",
+    "section": "2. Deploy with the VS Code Command Palette",
+    "text": "2. Deploy with the VS Code Command Palette\n\nFind and select Azure Functions: Deploy to Function app... in the Command Palette. There may be a lag in response after you click.\nSelect the function app you are deploying from the dropdown list that appears: terramax-hubspot-service.\nA popup will ask if you are sure you want to deploy and overwrite the previous deployment. Click Deploy.\nthe Terminal will display the status of the deployment process, which may take some time."
   },
   {
-    "objectID": "how-to/deploy-ordering-app-update.html#push-changes-to-the-deploy-branch",
-    "href": "how-to/deploy-ordering-app-update.html#push-changes-to-the-deploy-branch",
-    "title": "Deploy an Update to the ordering-app",
-    "section": "3. Push Changes to the deploy Branch",
-    "text": "3. Push Changes to the deploy Branch\n\nIn a terminal enter github push origin (branch):deploy, replacing (branch) with the nameo fthe branch that has the changes you want to deploy. Example:\n\ngithub push origin auth:deploy\n\nThis should be a quick process in Vs Code. It will authomatically trigger the GitHub workflow to deploy the update, which will take longer."
+    "objectID": "how-to/edit-product.html",
+    "href": "how-to/edit-product.html",
+    "title": "Edit Product (Price)",
+    "section": "",
+    "text": "This guide shows how to edit the price of a product. The same logic can be extended to edit other properties within the Sku table of the TerraMax Data SQL Database, which include the product name and size. To edit other properties like application, crop or type, you need to edit the Product table. See the Product Data Structure.\nThe list of Products is effectively stored in two locations: - The master list in the TerraMax Data SQL Database - The Products object in HubSpot\nChanges should always begin in the SQL database, which is the source of truth. After editing there, the HubSpot data can be updated using the sync function in the HubSpot Service.\nAdding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the SQL SERVER extension, or directly in the Azure Portal. This guide assumes that you have the necessary permissions, login, and can access Azure through at least one of those tools."
   },
   {
-    "objectID": "how-to/deploy-ordering-app-update.html#check-status-in-github-actions",
-    "href": "how-to/deploy-ordering-app-update.html#check-status-in-github-actions",
-    "title": "Deploy an Update to the ordering-app",
-    "section": "4. Check Status in GitHub Actions",
-    "text": "4. Check Status in GitHub Actions\n\nIn the GitHub account:\n\nopen the ordering-app repo\ngo to the Actions tab\nSelect All workflows from the Actions sidebar (it may already be selected)\n\nIn the All workflows section, you will see a list of past workflows, and the date they were attempted. You may need to refresh to see the one you just triggered. You may see a yellow circle to indicate that it’s in progress; it will automatically change to show when it’s complete.\nIf it turns red to indicate failure, click on the entry to view the error details. Sometimes they are transient and you can try again; try rebuilding the app, re-committing, and redeploying."
+    "objectID": "how-to/edit-product.html#backup-current-data",
+    "href": "how-to/edit-product.html#backup-current-data",
+    "title": "Edit Product (Price)",
+    "section": "1. Backup Current Data",
+    "text": "1. Backup Current Data\n\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history, so that you can recover the current data if anything goes wrong.\n\nEXEC Backup_Products_And_Skus;"
+  },
+  {
+    "objectID": "how-to/edit-product.html#get-the-sku-number-for-the-target-record-in-table-skus",
+    "href": "how-to/edit-product.html#get-the-sku-number-for-the-target-record-in-table-skus",
+    "title": "Edit Product (Price)",
+    "section": "2. Get the sku Number for the Target Record in Table Skus",
+    "text": "2. Get the sku Number for the Target Record in Table Skus\nSELECT * FROM Skus;"
+  },
+  {
+    "objectID": "how-to/edit-product.html#update-the-target-record-in-table-skus",
+    "href": "how-to/edit-product.html#update-the-target-record-in-table-skus",
+    "title": "Edit Product (Price)",
+    "section": "3. Update the Target Record in Table Skus",
+    "text": "3. Update the Target Record in Table Skus\nUPDATE Skus SET distributor_price = 400, dealer_price = 577, msrp = 800\nWHERE sku = 1;"
+  },
+  {
+    "objectID": "how-to/edit-product.html#sync-hubspot-products",
+    "href": "how-to/edit-product.html#sync-hubspot-products",
+    "title": "Edit Product (Price)",
+    "section": "4. Sync HubSpot Products",
+    "text": "4. Sync HubSpot Products\n\nOpen the hubspot-service project in VSCode and run the project locally wuth npm start.\nWhen the terminal displays a list of all Functions, ctrl + click on UpdateHSProducts. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted."
   },
   {
     "objectID": "index.html",

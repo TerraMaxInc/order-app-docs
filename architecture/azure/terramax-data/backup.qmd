@@ -1,0 +1,16 @@
+---
+title: Backup
+format: html
+---
+
+Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance.  This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the *TerraMax Data SQL Database* has internal tables to track change history for the `Products` and `Skus` tables.
+
+These history tables can be used both for restoring pervious data in the even a SQL quesy goes wrong and damages data, and to simply view the state of the data in the past.  The tables both mirror the data structure of the working tables `Products` and `Skus` with added fields:
+- `id`: an auto-generated id for the row
+- `backup_event_id`: a GUID generated at the time of the backup, shared by all rows inserted at the time of that specific backup
+- `backup_timestamp`: the date-time of the backup event
+
+The `id` serves as an easy primary key for each record, but the combination of `backup_event_id` and `produdt_id` or `sku` should also be unique within the tables.
+
+These history tables can be managed via *stored procedures*:
+- `Backup_Products_And_Skus`: to be run before making changes to the `Products` or `Skus` tables, saves the current state of data to these history tables

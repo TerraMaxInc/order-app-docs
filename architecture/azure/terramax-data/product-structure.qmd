@@ -3,9 +3,64 @@ title: Product Data Structure
 format: html
 ---
 
-The structure of *Product* data in the TerraMax SQL Database is more complex than the flattened *Product* object in [HubSpot](../../hubspot/hubspot-overview.qmd).  It involves six tables, four of which simply contain single field sets of data to populate tho main tables, and two of which assemble the data into more complex objects.
+The structure of *Product* data in the TerraMax SQL Database is more complex than the flattened *Product* object in [HubSpot](../../hubspot/hubspot-overview.qmd).  It involves six tables, four of which are simple @lookup-table types, and two of which are @entity-table types that assemble the data into more complex objects.
 
 This database differentiates between the `Sku`: the item a customer purchases with a specific size and price, and the `Product`: the actual material inside the item.  One Product may come in multiple sizes, and thus have mutliple skus.  The `Applications`, `Crops`, and `Types` tables are associated with the `Product` table, and the `Sizes` table is associated with the `Skus` table.
 
 ![Product Data Structure](../../../images/product-data-structure.jpg)
 
+## Entity Tables
+
+- **Skus**
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `sku` | PK, int, not null | Unique identifier for the record/sku. |
+| `product_id` | FK, int, not null | Foreign key that associates with the `Products` table.  The product contained in the sku. |
+| `size` | FK, varchar(255), not null | Foreign key that associates with the `Sizes` table.  The volume or weight of the product. |
+| `distributor_price` | decimal(8,3) | The price distributors, the lowest possible price.  Can be null here, but should not be left null for long or it will cause errors in the app.
+| `dealer_price` | decimal(8,3) | The price for dealers, the middle price.  Can be null here, but should not be left null for long or it will cause errors in the app.
+| `msrp` | decimal(8,3) | Manufacturer suggested retail price, usually twice the distributor price.  Can be null here, but should not be left null for long or it will cause errors in the app.
+
+- **Products**
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `id` | PK, int, not null | Unique identifier for the product. |
+| `name` | varchar(255), not null | Full name that will display in the client app. |
+| `type` | FK, varchar(255), not null | Foreign key that associates with the `Types` table.  Actual values are just "Liquid" and "Dry". |
+| `crop` | FK, varchar(255), not null | Foreign key that associates with the `Crops` table.  List of crops. |
+| `application` | FK, varchar(255), null | Foreign key that associates with the `Applications` table.  Values like "ST" and "IF". |
+| `green` | bit, null | Boolean value where 1/true = green and 0/false = conventional.
+
+## Lookup Tables
+
+- **Applications** 
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `application` | PK, varchar(255), not null | Abbreviations of application types: ST, IF, etc |
+
+- **Crops**
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `crop` | PK, varchar(255), not null | Singular form of the crop name and the primary key. |
+| `plural` | varchar(255), null | Plural form of the crop name. |
+
+- **Sizes**
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `size` | PK, varchar(255), not null | Full text of size that will appear in the app: 5 lbs, 2.5 gal, etc. |
+
+- **Types**
+
+| Column | Data Type | Purpose |
+|:-------|:----------|:--------|
+| `type` | PK, varchar(255), not null | "Liquid" or "Dry". |
+
+## See Also:
+
+- [Add New Product](../../../how-to/add-product.qmd)
+- [Edit Product Information](../../../how-to/edit-product.qmd)

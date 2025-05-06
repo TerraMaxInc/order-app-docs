@@ -9,8 +9,30 @@ It wasn't possible within HubSpot's **Products** object to incorporate our three
 
 HubSpot contains Product data that *mirrors* this SQL database data, in flattened form, for the sake of reporting within HubSpot.  It can be updated programmatically to synch with any changes made to the SQL database, using the `updateHSProducts` function in the HubSpot Service.
 
-The [HubSpot Service](../hubspot-service/hubspot-service.qmd) interfaces with this database when it needs to store or retrieve information.  The front end user never interacts wirth it directly.
+The [HubSpot Service](../hubspot-service/hubspot-service.html) interfaces with this database when it needs to store or retrieve information.  The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function.  There are some tasks that require direct SQL queries to the database however, like [adding](../../../how-to/add-product.html) or [editing](../../../how-to/edit-product.html) products, or checking history.
 
+---
 
-- each table
-- idempotency log
+## Tables
+
+There are **six** core data tables that create the structured [product data](product-structure.html) and supply information to the client app:
+
+- Skus
+- Products
+- Applications
+- Crops
+- Types
+- Sizes
+
+There are **two** tables which save the [history](backup.html) of the product data.  These allow for easy backup and recovery, and enable tracking changes over time:
+
+- Skus_history
+- Products_history
+
+And there is **one** table that logs [user transactions](transactions.html) in order to prevent duplication:
+
+- hubspot_transactions
+
+---
+## Stored Procedures
+

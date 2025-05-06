@@ -1,0 +1,37 @@
+---
+title: "Edit Product (Price)"
+format: html
+---
+
+This guide shows how to edit the price of a product.  The same logic can be extended to edit other properties within the `Sku` table of the [TerraMax Data SQL Database](../architecture/azure/terramax-data/terramax-data.qmd), which include the product *name* and *size*.  To edit other properties like *application*, *crop* or *type*, you need to edit the `Product` table.  See the [Product Data Structure](../architecture/azure/terramax-data/product-structure.qmd).
+
+The list of Products is effectively stored in two locations:
+- The *master list* in the [TerraMax Data SQL Database](../architecture/azure/terramax-data/terramax-data.qmd)
+- The *Products* object in [HubSpot](../architecture/hubspot/hubspot-overview.qmd)
+
+Changes should always begin in the SQL database, which is the *source of truth*.  After editing there, the HubSpot data can be updated using the sync function in the [HubSpot Service](../architecture/azure/hubspot-service/hubspot-service.qmd).
+
+Adding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the `SQL SERVER` extension, or directly in the *Azure Portal*. This guide assumes that you have the necessary permissions, login, and can access Azure through at least one of those tools.
+
+---
+
+## 1. Backup Current Data
+- Run the *stored procedure* `Backup_Products_And_Skus` to save the current state of the `Products` and `Skus` tables to `Products_history` and `Skus_history`, so that you can recover the current data if anything goes wrong.
+```sql
+EXEC Backup_Products_And_Skus;
+```
+
+## 2. Get the *sku* Number for the Target Record in Table Skus
+```sql
+SELECT * FROM Skus;
+```
+
+## 3. Update the Target Record in Table Skus
+```sql
+UPDATE Skus SET distributor_price = 400, dealer_price = 577, msrp = 800
+WHERE sku = 1;
+```
+
+## 4. Sync HubSpot Products
+- Open the hubspot-service project in VSCode and run the project locally wuth `npm start`.
+- When the terminal displays a list of all Functions, ctrl + click on `UpdateHSProducts`.  This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL.  It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted.
