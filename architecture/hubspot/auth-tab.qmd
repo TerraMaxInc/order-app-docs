@@ -1,0 +1,35 @@
+---
+title: HubSpot Private App Auth
+format: html
+---
+
+The Auth tab for a Private App contains all the critical data that affects how the integration connects with the external [HubSpot Service](../azure/hubspot-service/hubspot-service.html) app.
+
+## Access Token
+
+This is the secret value that the external app uses as a password to access the integration.  Because it allows external access to private HubSpot data, it is important to keep this value sercet.  If you think it has been compromised, you can ask HubSpot to auto-generate a new one by selecting **Rotate**.  
+
+This value corresponds with the **HUBSPOT_ACCESS_TOKEN** and should be copy/pasted and stored in two other locations:
+
+- the local codebase's .env file, to make testing in dev possible
+- the HubSpot Service's [Environmental Variables](../azure/hubspot-service/environmental-variables.html) in the Azure Portal
+
+## Client Secret
+
+HubSpot generates a Client Secret automatically, but this project does not currently make any use of it.
+
+## Scopes
+
+Scopes define what HubSpot resources the connected app may access, and how.  The current scopes defined for the HubSpot Service are:
+
+| Scope Name | Purpose |
+|:-----------|---------|
+| crm.objects.contacts.read | read records from Contacts |
+| crm.objects.contacts.write | add, edit or delete records from Contacts |
+| crm.objects.companies.read | read records from Companies |
+| crm.objects.companies.write | add, edit or delete records from Companies |
+| crm.objects.deals.read | read records from Deals |
+| crm.objects.deals.write | add, edit or delete records from Deals |
+| crm.objects.line_items.read | read records from Line Items |
+| crm.objects.line_items.write | add, edit or delete records from Line Items |
+| e-commerce | read, add, edit or delete records from Products |

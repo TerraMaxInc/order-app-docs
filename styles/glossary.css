@@ -10,3 +10,9 @@ a.glossary-term:hover {
     color: #05a;
     border-bottom-color: #05a;
 }
+
+h3 {
+    color: #517699;
+    font-size: medium;
+    text-decoration: underline;
+}

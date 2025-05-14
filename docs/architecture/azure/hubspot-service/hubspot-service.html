@@ -3799,7 +3799,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}</style>
+<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}h3 {color: #517699;font-size: medium;text-decoration: underline;}</style>
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -3878,11 +3878,7 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#environmental-variables" id="toc-environmental-variables" class="nav-link active" data-scroll-target="#environmental-variables">Environmental Variables</a></li>
-  <li><a href="#email-settings" id="toc-email-settings" class="nav-link" data-scroll-target="#email-settings">Email Settings:</a></li>
-  <li><a href="#authentication-and-environment-settings" id="toc-authentication-and-environment-settings" class="nav-link" data-scroll-target="#authentication-and-environment-settings">Authentication and Environment Settings</a></li>
-  <li><a href="#system-settings" id="toc-system-settings" class="nav-link" data-scroll-target="#system-settings">System Settings:</a></li>
-  <li><a href="#other-settings" id="toc-other-settings" class="nav-link" data-scroll-target="#other-settings">Other settings</a></li>
+  <li><a href="#other-settings" id="toc-other-settings" class="nav-link active" data-scroll-target="#other-settings">Other settings</a></li>
   </ul>
 </nav>
     </div>
@@ -3909,103 +3905,12 @@ vertical-align: -.125em;
 
 
 <p>The <strong>HubSpot Service</strong> is the intermediary that connects the user-facing <a href="../ordering-app/ordering-app.html">Ordering App</a> to the <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot Accout</a>. Because a client application isn’t sufficiently secure to hold the <code>hubspot api token</code>, a backend service was needed to manage authentication and API requests securely.</p>
-<p>This is a Node.js app written in Typescript, and hosted in <a href="azure-functions.html">Azure Functions</a>. It makes heavy use of the environmental variables in Azure Functions.</p>
-<section id="environmental-variables" class="level2">
-<h2 class="anchored" data-anchor-id="environmental-variables">Environmental Variables</h2>
-<p>Environmental variables store important padd data separately from the code for two main reasons: - <strong>Security</strong>: sentitive information like API tokens should not be hard-coded where it can be exposed. - <strong>Configurability</strong>: values that might change over time, like email addresses, can be updated without modifying and redeploying code.</p>
-<p>The HubSpot Sercive uses two sets of these variables, depending on the location: - A local <code>.env</code> file for developement - Azure functions environmental variables for production</p>
-<p>This is the full list of environmental variables found in Azure that correspond of variables in the .env file:</p>
-</section>
-<section id="email-settings" class="level2">
-<h2 class="anchored" data-anchor-id="email-settings">Email Settings:</h2>
-<p>The app uses these variables to control who is notified when an order is submitted.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 52%">
-<col style="width: 47%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>TARGET_EMAIL</strong></td>
-<td style="text-align: left;">Primary recipient who will process the order when closed/won.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>MANAGER_EMAILS</strong></td>
-<td style="text-align: left;">CSV list of additional recipients who should be notified when an order is closed/won, beyond the “TARGET_EMAIL”.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>ADMIN_EMAIL</strong></td>
-<td style="text-align: left;">Filters out test orders sent by the</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">administrator from from being emailed to the TARGET or MANAGERS.</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>SENDER_EMAIL</strong></td>
-<td style="text-align: left;">Email address that appears as the sender of automated emails sent by the app.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="authentication-and-environment-settings" class="level2">
-<h2 class="anchored" data-anchor-id="authentication-and-environment-settings">Authentication and Environment Settings</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>AZURE_FUNCTIONS_ENVIRONMENT</strong></td>
-<td style="text-align: left;">Tells the app whetherit’s running in “Production” or “Development”.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>AZURE_SQL_CONNECTION_STRING</strong></td>
-<td style="text-align: left;">Gives credentials and connection information to access the <a href="../terramax-data/terramax-data.html">SQL database</a>.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>CLIENT_ID</strong></td>
-<td style="text-align: left;">Identifies the registered Azure app. This must match the Application (client) ID of the <a href="hubspot-service-registration.html">terramax-hubspot-service-registration</a> in Entra, or else authentication will fail.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>CLIENT_SECRET</strong></td>
-<td style="text-align: left;">Secret key used to authenticate the backend (terramax-hubspot-service) directly to Microsoft Graph using <a href="../../../reference/glossary.html#application-permission" class="glossary-term" title="In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user&#39;s.">Application Permission</a>. Needed in order to send emails from a fixed address independent of who calls the api. Secret needs to be updated every six months, and the current one will expire on <strong>8/30/25</strong>.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>HUBSPOT_API_TOKEN</strong></td>
-<td style="text-align: left;">Token used to authenticate API requests to TerraMax’s HubSpot account.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>TENANT_ID</strong></td>
-<td style="text-align: left;"><a href="../../../reference/glossary.html#tenant-id" class="glossary-term" title="The overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.">Tenant ID</a> identifies the TerraMax Microsoft tenant for authentication purposes.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="system-settings" class="level2">
-<h2 class="anchored" data-anchor-id="system-settings">System Settings:</h2>
-<p>These variables were auto-generated by Azure and do not appear in the .env file:</p>
+<p>This is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables for security and configurability.</p>
 <ul>
-<li><strong>APPINSIGHTS_INSTRUMENTATIONKEY</strong> - Key for sending telemetry data to Azure Application Insights.</li>
-<li><strong>APPLICATIONINSIGHTS_CONNECTION_STRING</strong> - Connection string for the Application Insights resource.</li>
-<li><strong>AzureWebJobsStorage</strong> - Storage account used internally by Azure Functions (for function state).</li>
-<li><strong>FUNCTIONS_EXTENSION_VERSION</strong> - Specifies the version of the Azure Functions runtime.</li>
-<li><strong>FUNCTIONS_WORKER_RUNTIME</strong> - Defines the language worker used (“node” for Node.js apps).</li>
-<li><strong>MICROSOFT_PROVIDER_AUTHENTICATION_SECRET</strong> - Secret used internally for Microsoft authentication flows.</li>
-<li><strong>WEBSITE_AUTH_AAD_ALLOWED_TENANTS</strong> - Lists tenants allowed to authenticate if AAD authentication is enabled.</li>
-<li><strong>WEBSITE_NODE_DEFAULT_VERSION</strong> - Specifies the Node.js version used by the app.</li>
-<li><strong>WEBSITE_RUN_FROM_PACKAGE</strong> - Indicates whether the app is deployed via a package file.</li>
+<li><a href="azure-functions.html">Azure Functions</a></li>
+<li><a href="environmental-variables.html">Environmental Variables</a></li>
+<li><a href="../../hubspot/integrations.html">HubSpot Integration</a></li>
 </ul>
-</section>
 <section id="other-settings" class="level2">
 <h2 class="anchored" data-anchor-id="other-settings">Other settings</h2>
 

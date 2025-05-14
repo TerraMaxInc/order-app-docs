@@ -3799,7 +3799,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}</style>
+<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}h3 {color: #517699;font-size: medium;text-decoration: underline;}</style>
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -3879,6 +3879,7 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#sections" id="toc-sections" class="nav-link active" data-scroll-target="#sections">Sections:</a></li>
+  <li><a href="#in-azure-portal" id="toc-in-azure-portal" class="nav-link" data-scroll-target="#in-azure-portal">In Azure Portal</a></li>
   </ul>
 </nav>
     </div>
@@ -3904,9 +3905,10 @@ vertical-align: -.125em;
 </header>
 
 
-<p>This is an <a href="../../../architecture/azure/terramax-data/azure-sql.html">Azure SQL Database</a> that stores data not suited to <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot</a>‘s structural limitation’. It wasn’t possible within HubSpot’s <strong>Products</strong> object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.</p>
+<p><code>terramax-data</code> is an <a href="../../../architecture/azure/terramax-data/azure-sql.html">Azure SQL Database</a> that stores data not suited to <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot</a>‘s structural limitation’. It wasn’t possible within HubSpot’s <strong>Products</strong> object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.</p>
 <p>HubSpot contains Product data that <em>mirrors</em> this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the <code>updateHSProducts</code> function in the HubSpot Service.</p>
 <p>The <a href="../hubspot-service/hubspot-service.html">HubSpot Service</a> interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like <a href="../../../how-to/add-product.html">adding</a> or <a href="../../../how-to/edit-product.html">editing</a> products, or checking history.</p>
+<p>Though it uses the cheapest pricing tier (Basic), this is the only part of the ordering app system that <strong>is no free</strong>. At the tie of writing, it cost $4.99/mo. <a href="../../../how-to/check-costs.html">See check costs</a>.</p>
 <section id="sections" class="level2">
 <h2 class="anchored" data-anchor-id="sections">Sections:</h2>
 <ul>
@@ -3927,6 +3929,12 @@ vertical-align: -.125em;
 <li>A summary of the Azure Resource being used</li>
 </ul></li>
 </ul>
+</section>
+<section id="in-azure-portal" class="level2">
+<h2 class="anchored" data-anchor-id="in-azure-portal">In Azure Portal</h2>
+<p>You can view and manage the database in the Azure Portal. From the homepage when you log in, in the list of resources, you will see both <code>terramax-data</code> and <code>terramax-db-server</code>.</p>
+<p><code>terramax-db-server</code> is a <em>SQL Server</em> that hosts the database, and <code>terramax-data</code> is the database itself. At present, the database uses the <em>Basic</em> price tier, because our needs are minimal.</p>
+<p>From within the <code>terramax-data</code> Resource Page, you can query the data itself directly through the <code>Query Editor</code>. It will require you to authenticate either through SQL server or Microsoft Entra authentication. I have been using Microsoft Entra auth. In order ot be able to use Entra auth to wuery the daatabase, you need to be ….</p>
 
 
 </section>

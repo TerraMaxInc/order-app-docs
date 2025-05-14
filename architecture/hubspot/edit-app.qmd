@@ -1,0 +1,12 @@
+---
+title: Edit HubSpot Private App
+format: html
+---
+
+Nearly all edits you might want to make will be from the Auth section. 
+
+In the Basic Info section you can change the app's name, give it a logo/icon, and write a description.  These things will appear in the *Private Apps* page to help you distinguish this app from others, but are otherwise cosmetic and don't affect the functioning.  You can change them without upsetting the way the app integrates.
+![HubSpot Service Edit Basic Info](images/azure-test-01-edit-basic.jpg)
+
+## Edit Scopes
+Editing scopes is more consequential.  If you delete any scopes, the app may cease to function.  

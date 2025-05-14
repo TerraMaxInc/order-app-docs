@@ -7,16 +7,3 @@ filters:
 ---
 
 
-
-<!-- ## **Tenant ID** {#tenant-id}
-- the overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella -->
-
-<!-- 
-## Application Permissions vs Delegated Permissions {#application-vs-delegated-permissions}
-
-There are two major permission types for applications authenticating through [Microsoft Entra](../architecture/azure/entra/entra-overview.html):
-
-### **Delegated Permissions** {#delegated-permissions}
-- The app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.
-### **Application Permissions** {#application-permissions}
-- The app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's. -->

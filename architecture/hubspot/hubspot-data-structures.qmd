@@ -1,0 +1,78 @@
+---
+title: HubSpot Native Data Structures
+format: html
+---
+
+HubSpot uses a relational database model, in which the four main data structures are **@hs-object**, **@hs-property**, **@hs-record** and **Associations**.  
+
+
+## Properties
+A property is like a column in a spreadsheet; a single field that can contain a single value for that specific row or record.  Every row will have one cell in each column, and every record will have one value for each property--though in some cases that value might be blank or 0.
+
+When creating or editing a property in HubSpot, the interface describes the types by their *input* method rather than by the nature of the data itself.  Under the hood, *all* data is stored as a @string, and the property type tells HubSpot how to translate it for display.  This is most important to know when dealing with it directly in its raw form in the [HubSpot Service](../azure/hubspot-service/hubspot-service.html), but it's useful to understand when using HubSpot, too. 
+
+| HubSpot Data Type | Raw Data Type | Functional Data Type | Limitations and Notes |
+|:------------------------|:--------------|:---------------------|:------------|
+| Single-line text | raw string | text | 65,536 characters, does not allow line breaks. |
+| Multi-line text | raw string | text | 65,536 characters, allows line breaks but they may not work in all tools. |
+| Rich text | string of html | rich text | 64 KB, Allows text with stylization, color, fonts and images.  Cannot be used in all tools. |
+| Phone number | string | formatted phone string | Standardizes format and validation according to country code. |
+| Number | string of numbers | integer or decimal | Optionally formats them for decimal, percentage, currency, or scientific notation.  Formated numbers can have 20 digits, and unformatted 38. |
+| Date picker | string of date in @unix-time format  | string of date in @iso-8601 format | HubSpot's internal database uses Unix, as do some older versions of the API.  The v3 API used by the HubSpot Service uses ISO 8601 format, with the time set to midnight/0, and the Unix is entirely invisible. |
+| Date and time picker | string of date and time in @unix-time format  | string of date in @iso-8601 format | HubSpot's internal database uses Unix, as do some older versions of the API.  The v3 API used by the HubSpot Service uses ISO 8601 format, and the Unix is entirely invisible. |
+| Single checkbox | string of boolean values | @boolean | "true" or "false". |
+| Multiple checkboxes | string of ; separated enumeration values | set of @enumeration values | One or many of several pre-defined options, stores values and displays labels. This comes closest to a functional array within HubSpot Object properties, but is limited by the fact that all values must be pre-defined and equally available to *all* records, and can't be filtered by other properties. |
+| Radio select | string of an enumeration value | single @enumeration value | One of several pre-defined options, stores value and displays label. Same function as dropdown. |
+| Dropdown select | string of an enumeration value | single @enumeration value | One of several pre-defined options, stores value and displays label. Same function as Radio select. |
+| Calculation | string of result | value derived from record | Calcluated from properties of the single record, cannot be used in all tools.  Stores and displays the calculated result, the equation itself is in the property's metadata and not individual records. |
+| Rollup | string of result | value aggregated from associations | Calculated from properties of associated records, cannot be used in all tools.  Stores and displays the calculated result, the equation itself is in the property's metadata and not individual records. |
+| Property sync | copied string | snapshot of reference | Stores a copy of the value from a property on another record at the time of syncing.  Not dynamically updated when the referenced value changes. |
+| File | string of file url | link | Actual file stored elsewhere and the property holds a link to the file location. |
+| HubSpot user | string of user id | Owner record | Uses the id to get readable user name directly from the Owner Object Record. |
+
+Properties **cannot** be true **arrays**; one property field cannot contain more than one value except in the case of *Multiple Checkboxes*, but that type is extremely limited.  
+
+If a Contact has a property like `Phone Number`, it can only contain *one* phone number.  To add a second phone number as a property, you'd need to create a *second* property, `Phone Number 2`, which would be an entirely separate property and not searchable together with the first `Phone Number` property.  
+
+If you instead tried to use *Multiple Checkboxes* for `Phone Number`, then you would have to enter *all possible* phone number values into the property *type* in advance, and require users to select the desired phone numbers from the *entire list* of *all* phone numbers for *all* Contacts or Companies.
+
+The best way to give a Record multiple values of the same type is with **Associations**.
+
+
+## Records
+A record is like a row in a spreadsheet; it represents a group of values that are all properties of a single thing.  In HubSpot, all records have a unique **object_id**, which can be used to allow one record to reference another for more complex data relationships, like associations.
+
+
+## Objects
+An object is like the spreadsheet itself; it is a collection of records and properties of the same type, like spreadsheets collect rows and columns.  You might have a spreadsheet of orders with columns for customer and date and shipping address, and another spreadsheet of products with columns for name and qty and price.
+
+The Ordering App makes use of **six** HubSpot Objects:
+
+| Object Name | Purpose |
+|:------------|:--------|
+| Owner | A HubSpot user with their own distinct account |
+| Contact | An individual person who may be associated with companies, or directly with deals. | 
+| Company | An organization that may be associated with many contacts, or with deals. |
+| Deal | A record of an ongoing or completed transaction that associates an individual order with a contacts, companies, line items, and a deal owner. |
+| Product | An item that can be purchased by a customer (contact or company).  The Product catalog in HubSpot represents the current, general information about a product.  It can only have one price, but that price can be overridden when used to create a line item.
+| Line Item | A snapshot of the specific information about a product being purchased by a customer in a particular, associated deal.  If information about the product change later, the data in the line item will remain the same.  The default price of the product can be overridden when creating a line item, which is how this project manages the needs of TerraMax's 3-tiered pricing system.
+
+Read more about these Objects here:
+- [Owners](owners.html)
+- [Contacts and Companies](contacts-and-companies.html)
+- [Deals](deals.html)
+- [Products and Line Items](products-and-lineitems.html)
+
+## Associations
+Associations are links between records.  The records might be of different object types, or the same object type.  This is where the real power of a relational database lies; one record can have many associations, and each associated record can then also have associations of its own, thus making it possible to build a variety of complex data relationships.  This is also the most fragile part of the data system, however, because the data structure must be set up well from the beginning and then followed consistently in order to work.
+
+There are some default associations that come built in to HubSpot, and there is also capacity to designate our own custom associations.  Even in the case of default associations, however, users must *implement them consistently* in order for them to work.
+
+### Default Associations
+- Contact to Company
+- Deal to Contact
+- Deal to Company
+- Deal to Line Item
+
+### Custom Associations
+- Deal to Deal, for Prepay

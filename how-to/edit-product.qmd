@@ -16,7 +16,8 @@ Adding and manipulating data in the TerraMax Data SQL Database can be done eithe
 ---
 
 ## 1. Backup Current Data
-- Run the *stored procedure* `Backup_Products_And_Skus` to save the current state of the `Products` and `Skus` tables to `Products_history` and `Skus_history`, so that you can recover the current data if anything goes wrong.
+- Backups should be run immeditately AFTER changes are made, so if you are confident that this has been done correctly and the backups are up-to-date, there's no need to do it now.  But if you're not confident, better safe than sorry:
+- Run the *stored procedure* `Backup_Products_And_Skus` to save the current state of the `Products` and `Skus` tables to `Products_history` and `Skus_history`, so that you can recover the current data if anything goes wrong in the following steps.
 ```sql
 EXEC Backup_Products_And_Skus;
 ```
@@ -35,3 +36,9 @@ WHERE sku = 1;
 ## 4. Sync HubSpot Products
 - Open the hubspot-service project in VSCode and run the project locally wuth `npm start`.
 - When the terminal displays a list of all Functions, ctrl + click on `UpdateHSProducts`.  This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL.  It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted.
+
+## 5. Backup Updated Data
+- Run the *stored procedure* `Backup_Products_And_Skus` to save the current state of the `Products` and `Skus` tables to `Products_history` and `Skus_history`.  This creates a snapshot of the new state of the data, so that you can recover it if anything goes wrong.
+```sql
+EXEC Backup_Products_And_Skus;
+```

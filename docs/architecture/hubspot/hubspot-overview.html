@@ -3799,7 +3799,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}</style>
+<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}h3 {color: #517699;font-size: medium;text-decoration: underline;}</style>
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -3898,7 +3898,13 @@ vertical-align: -.125em;
 </header>
 
 
-<p>Stuff about HubSpot… - api token - added properties</p>
+<p>The Ordering App interacts with HubSpot as a database, fetching data from it and storing new and updated data back into it. Unlike the <a href="../../architecture/azure/terramax-data/terramax-data.html">SQL database</a> however, front-end users can also directly interact with HubSpot without the app to mediate.</p>
+<p>On one hand, this means that HubSpot isn’t dependent on the app and would remain fully functional even if the app broke. On the other hand, it means the data is exposed and the app can’t fully gatekeep what gets entered there. Because the data is exposed, it’s important that the data be structured in a way that serves both the app’s programmatic use, and the workflow of users who interact with it directly.</p>
+<p>This section of the documentation aims to explain two main things:</p>
+<ul>
+<li>How data is structured within HubSpot: <a href="hubspot-data-structures.html">HubSpot Data Structure</a></li>
+<li>How the integrated app connects to that data: <a href="integrations.html">App Integrations</a></li>
+</ul>
 
 
 

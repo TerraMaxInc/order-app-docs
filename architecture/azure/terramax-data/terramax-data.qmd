@@ -3,11 +3,13 @@ title: "TerraMax Data"
 format: html
 ---
 
-This is an [Azure SQL Database](azure-sql.qmd) that stores data not suited to [HubSpot](../../hubspot/hubspot-overview.qmd)'s structural limitation'.  It wasn't possible within HubSpot's **Products** object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed.  Once in place, other uses have emerged, like logging transactions and storing Product history.
+`terramax-data` is an [Azure SQL Database](azure-sql.qmd) that stores data not suited to [HubSpot](../../hubspot/hubspot-overview.qmd)'s structural limitation'.  It wasn't possible within HubSpot's **Products** object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed.  Once in place, other uses have emerged, like logging transactions and storing Product history.
 
 HubSpot contains Product data that *mirrors* this SQL database data, in flattened form, for the sake of reporting within HubSpot.  It can be updated programmatically to synch with any changes made to the SQL database, using the `updateHSProducts` function in the HubSpot Service.
 
 The [HubSpot Service](../hubspot-service/hubspot-service.html) interfaces with this database when it needs to store or retrieve information.  The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function.  There are some tasks that require direct SQL queries to the database however, like [adding](../../../how-to/add-product.html) or [editing](../../../how-to/edit-product.html) products, or checking history.
+
+Though it uses the cheapest pricing tier (Basic), this is the only part of the ordering app system that **is no free**.  At the tie of writing, it cost $4.99/mo.  [See check costs](../../../how-to/check-costs.html).
 
 ## Sections:
 
@@ -19,3 +21,11 @@ The [HubSpot Service](../hubspot-service/hubspot-service.html) interfaces with t
     - The one table that logs edits to HubSpot, to prevent duplication and track usage
 - [Azure SQL Database](azure-sql.html):
     - A summary of the Azure Resource being used
+
+## In Azure Portal
+
+You can view and manage the database in the Azure Portal.  From the homepage when you log in, in the list of resources, you will see both `terramax-data` and `terramax-db-server`.  
+
+`terramax-db-server` is a *SQL Server* that hosts the database, and `terramax-data` is the database itself.  At present, the database uses the *Basic* price tier, because our needs are minimal.
+
+From within the `terramax-data` Resource Page, you can query the data itself directly through the `Query Editor`.  It will require you to authenticate either through SQL server or Microsoft Entra authentication.  I have been using Microsoft Entra auth.  In order ot be able to use Entra auth to wuery the daatabase, you need to be ....

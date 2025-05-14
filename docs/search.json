@@ -4,49 +4,35 @@
     "href": "reference/glossary.html",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's."
+    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
   },
   {
-    "objectID": "reference/glossary.html#application-permission",
-    "href": "reference/glossary.html#application-permission",
+    "objectID": "reference/glossary.html#basic-terms",
+    "href": "reference/glossary.html#basic-terms",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's."
+    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
   },
   {
-    "objectID": "reference/glossary.html#delegated-permission",
-    "href": "reference/glossary.html#delegated-permission",
+    "objectID": "reference/glossary.html#azure-terms",
+    "href": "reference/glossary.html#azure-terms",
     "title": "Glossary of Terms",
-    "section": "Delegated Permission",
-    "text": "Delegated Permission\nIn contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has."
+    "section": "Azure Terms",
+    "text": "Azure Terms\n\nApplication Permission\nIn contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's.\n\n\nDelegated Permission\nIn contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.\n\n\nTenant ID\nThe overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella."
   },
   {
-    "objectID": "reference/glossary.html#entity-table",
-    "href": "reference/glossary.html#entity-table",
+    "objectID": "reference/glossary.html#hubspot-terms",
+    "href": "reference/glossary.html#hubspot-terms",
     "title": "Glossary of Terms",
-    "section": "Entity Table",
-    "text": "Entity Table\nA database table that represents business entities, often with with complex relationships and properties, central to the data model."
+    "section": "HubSpot Terms",
+    "text": "HubSpot Terms\n\nAssociation\nA link between records.  The records might be of different object types, or the same object type.\n\n\nObject\nA collection of records and properties of the same type, like a spreadsheet collects rows that all have the same columns.\n\n\nProperty\nA single field that can contain a single value for that specific record, like a cell in a spreadsheet.  Every row will have one cell in each column, and every record will have one value for each property (though in some cases that value might be blank or 0).\n\n\nRecord\nA group of values that are all properties of a single thing.  In HubSpot, all records have a unique object_id, which can be used to allow one record to reference another for more complex data relationships, like associations."
   },
   {
-    "objectID": "reference/glossary.html#event-table",
-    "href": "reference/glossary.html#event-table",
+    "objectID": "reference/glossary.html#default-terms",
+    "href": "reference/glossary.html#default-terms",
     "title": "Glossary of Terms",
-    "section": "Event Table",
-    "text": "Event Table\nA database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur."
-  },
-  {
-    "objectID": "reference/glossary.html#lookup-table",
-    "href": "reference/glossary.html#lookup-table",
-    "title": "Glossary of Terms",
-    "section": "Lookup Table",
-    "text": "Lookup Table\nA database table that contains a fixed set of reference values for other tables to ensure consistent data entry."
-  },
-  {
-    "objectID": "reference/glossary.html#tenant-id",
-    "href": "reference/glossary.html#tenant-id",
-    "title": "Glossary of Terms",
-    "section": "Tenant ID",
-    "text": "Tenant ID\nThe overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella."
+    "section": "Other Terms",
+    "text": "Other Terms\n\nEntity Table\nA database table that represents business entities, often with with complex relationships and properties, central to the data model.\n\n\nEvent Table\nA database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.\n\n\nLookup Table\nA database table that contains a fixed set of reference values for other tables to ensure consistent data entry."
   },
   {
     "objectID": "how-to/how-to-contents.html",
@@ -154,144 +140,109 @@
     "text": "After completing these steps, the new function should be available to use within the rest of the ordering-app code, and to users when you next deploy an app update"
   },
   {
-    "objectID": "architecture/github/github-overview.html",
-    "href": "architecture/github/github-overview.html",
-    "title": "GitHub Account",
+    "objectID": "architecture/hubspot/integrations.html",
+    "href": "architecture/hubspot/integrations.html",
+    "title": "Integrations",
     "section": "",
-    "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
+    "text": "The Azure FUnction app HubSpot Service connects to HubSpot through an integration, also named HubSpot Service for clarity.\nHubSpot allows such external applications to interact with their data using the HubSpot API. Such external applications may be:\nBoth types of apps work by accessing the API, and are listed together in the Connected Apps section of Integrations:"
   },
   {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html",
-    "href": "architecture/azure/terramax-data/terramax-data.html",
-    "title": "TerraMax Data",
+    "objectID": "architecture/hubspot/integrations.html#private-apps",
+    "href": "architecture/hubspot/integrations.html#private-apps",
+    "title": "Integrations",
+    "section": "Private Apps",
+    "text": "Private Apps\nIn HubSpot, setting up a Private App Integration is called “creating a Private App.” This doesn’t involve building or hosting the app inside HubSpot, but rather setting up a secure access point for the real app, which is hosted and running elsewhere.\nThis can be seen like a sort of outlet. You give this outlet a name, an icon, a description, and you define what HubSpot resources it exposes to anything that plugs into it, and HubSpot automatically generates an API key for it. This key is given to the actual app, which is hosted and running elsewhere, so it can use the key like a password to plug into the outlet and make use of the resources it offers.\n\nView or Edit Integration\nNote: HubSpot changes their layout often, si instructions and screenshots of menus may become out-of-date quickly\nThe integration for the HubSpot Service can be viewed or modified in HubSpot by going to:\n\nSettings &gt; Account Management &gt; Integrations &gt; Private Apps\n\n\n\n\nHubSpot Private Apps\n\n\nFrom there you can view all private app integrations, as well as the overall API usage. Because our account is in the Professional Tier, we have a limit of 625,000 api calls per day for all connected apps combined. Currently we average in the low 100s, so we would need to scale significatly for this limit to matter.\nIf you open the specific app, you can view:\n\nAuth - shows API key and defined scopes\nLogs - tracks usage over the past month\nEdit App - change name, icon, description, scopes"
+  },
+  {
+    "objectID": "architecture/hubspot/hubspot-data-structures.html",
+    "href": "architecture/hubspot/hubspot-data-structures.html",
+    "title": "HubSpot Native Data Structures",
     "section": "",
-    "text": "This is an Azure SQL Database that stores data not suited to HubSpot‘s structural limitation’. It wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history."
+    "text": "HubSpot uses a relational database model, in which the four main data structures are Object, Property, Record and Associations."
   },
   {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html#sections",
-    "href": "architecture/azure/terramax-data/terramax-data.html#sections",
-    "title": "TerraMax Data",
-    "section": "Sections:",
-    "text": "Sections:\n\nProduct Data:\n\nThe six tables that make up the structure of Product data and how the relate\n\nProduct History and Backup:\n\nThe two tables that store historical product data and can be used for backup\n\nHubSpot Transaction Log:\n\nThe one table that logs edits to HubSpot, to prevent duplication and track usage\n\nAzure SQL Database:\n\nA summary of the Azure Resource being used"
+    "objectID": "architecture/hubspot/hubspot-data-structures.html#properties",
+    "href": "architecture/hubspot/hubspot-data-structures.html#properties",
+    "title": "HubSpot Native Data Structures",
+    "section": "Properties",
+    "text": "Properties\nA property is like a column in a spreadsheet; a single field that can contain a single value for that specific row or record. Every row will have one cell in each column, and every record will have one value for each property–though in some cases that value might be blank or 0.\nWhen creating or editing a property in HubSpot, the interface describes the types by their input method rather than by the nature of the data itself. Under the hood, all data is stored as a String, and the property type tells HubSpot how to translate it for display. This is most important to know when dealing with it directly in its raw form in the HubSpot Service, but it’s useful to understand when using HubSpot, too.\n\n\n\nHubSpot Data Type\nRaw Data Type\nFunctional Data Type\nLimitations and Notes\n\n\n\n\nSingle-line text\nraw string\ntext\n65,536 characters, does not allow line breaks.\n\n\nMulti-line text\nraw string\ntext\n65,536 characters, allows line breaks but they may not work in all tools.\n\n\nRich text\nstring of html\nrich text\n64 KB, Allows text with stylization, color, fonts and images. Cannot be used in all tools.\n\n\nPhone number\nstring\nformatted phone string\nStandardizes format and validation according to country code.\n\n\nNumber\nstring of numbers\ninteger or decimal\nOptionally formats them for decimal, percentage, currency, or scientific notation. Formated numbers can have 20 digits, and unformatted 38.\n\n\nDate picker\nstring of date in Unix Time format\nstring of date in ISO 8601 format\nHubSpot’s internal database uses Unix, as do some older versions of the API. The v3 API used by the HubSpot Service uses ISO 8601 format, with the time set to midnight/0, and the Unix is entirely invisible.\n\n\nDate and time picker\nstring of date and time in Unix Time format\nstring of date in ISO 8601 format\nHubSpot’s internal database uses Unix, as do some older versions of the API. The v3 API used by the HubSpot Service uses ISO 8601 format, and the Unix is entirely invisible.\n\n\nSingle checkbox\nstring of boolean values\nBoolean\n“true” or “false”.\n\n\nMultiple checkboxes\nstring of ; separated enumeration values\nset of Enumeration values\nOne or many of several pre-defined options, stores values and displays labels. This comes closest to a functional array within HubSpot Object properties, but is limited by the fact that all values must be pre-defined and equally available to all records, and can’t be filtered by other properties.\n\n\nRadio select\nstring of an enumeration value\nsingle Enumeration value\nOne of several pre-defined options, stores value and displays label. Same function as dropdown.\n\n\nDropdown select\nstring of an enumeration value\nsingle Enumeration value\nOne of several pre-defined options, stores value and displays label. Same function as Radio select.\n\n\nCalculation\nstring of result\nvalue derived from record\nCalcluated from properties of the single record, cannot be used in all tools. Stores and displays the calculated result, the equation itself is in the property’s metadata and not individual records.\n\n\nRollup\nstring of result\nvalue aggregated from associations\nCalculated from properties of associated records, cannot be used in all tools. Stores and displays the calculated result, the equation itself is in the property’s metadata and not individual records.\n\n\nProperty sync\ncopied string\nsnapshot of reference\nStores a copy of the value from a property on another record at the time of syncing. Not dynamically updated when the referenced value changes.\n\n\nFile\nstring of file url\nlink\nActual file stored elsewhere and the property holds a link to the file location.\n\n\nHubSpot user\nstring of user id\nOwner record\nUses the id to get readable user name directly from the Owner Object Record.\n\n\n\nProperties cannot be true arrays; one property field cannot contain more than one value except in the case of Multiple Checkboxes, but that type is extremely limited.\nIf a Contact has a property like Phone Number, it can only contain one phone number. To add a second phone number as a property, you’d need to create a second property, Phone Number 2, which would be an entirely separate property and not searchable together with the first Phone Number property.\nIf you instead tried to use Multiple Checkboxes for Phone Number, then you would have to enter all possible phone number values into the property type in advance, and require users to select the desired phone numbers from the entire list of all phone numbers for all Contacts or Companies.\nThe best way to give a Record multiple values of the same type is with Associations."
   },
   {
-    "objectID": "architecture/azure/terramax-data/backup.html",
-    "href": "architecture/azure/terramax-data/backup.html",
-    "title": "Backup",
+    "objectID": "architecture/hubspot/hubspot-data-structures.html#records",
+    "href": "architecture/hubspot/hubspot-data-structures.html#records",
+    "title": "HubSpot Native Data Structures",
+    "section": "Records",
+    "text": "Records\nA record is like a row in a spreadsheet; it represents a group of values that are all properties of a single thing. In HubSpot, all records have a unique object_id, which can be used to allow one record to reference another for more complex data relationships, like associations."
+  },
+  {
+    "objectID": "architecture/hubspot/hubspot-data-structures.html#objects",
+    "href": "architecture/hubspot/hubspot-data-structures.html#objects",
+    "title": "HubSpot Native Data Structures",
+    "section": "Objects",
+    "text": "Objects\nAn object is like the spreadsheet itself; it is a collection of records and properties of the same type, like spreadsheets collect rows and columns. You might have a spreadsheet of orders with columns for customer and date and shipping address, and another spreadsheet of products with columns for name and qty and price.\nThe Ordering App makes use of six HubSpot Objects:\n\n\n\n\n\n\n\nObject Name\nPurpose\n\n\n\n\nOwner\nA HubSpot user with their own distinct account\n\n\nContact\nAn individual person who may be associated with companies, or directly with deals.\n\n\nCompany\nAn organization that may be associated with many contacts, or with deals.\n\n\nDeal\nA record of an ongoing or completed transaction that associates an individual order with a contacts, companies, line items, and a deal owner.\n\n\nProduct\nAn item that can be purchased by a customer (contact or company). The Product catalog in HubSpot represents the current, general information about a product. It can only have one price, but that price can be overridden when used to create a line item.\n\n\nLine Item\nA snapshot of the specific information about a product being purchased by a customer in a particular, associated deal. If information about the product change later, the data in the line item will remain the same. The default price of the product can be overridden when creating a line item, which is how this project manages the needs of TerraMax’s 3-tiered pricing system.\n\n\n\nRead more about these Objects here: - Owners - Contacts and Companies - Deals - Products and Line Items"
+  },
+  {
+    "objectID": "architecture/hubspot/hubspot-data-structures.html#associations",
+    "href": "architecture/hubspot/hubspot-data-structures.html#associations",
+    "title": "HubSpot Native Data Structures",
+    "section": "Associations",
+    "text": "Associations\nAssociations are links between records. The records might be of different object types, or the same object type. This is where the real power of a relational database lies; one record can have many associations, and each associated record can then also have associations of its own, thus making it possible to build a variety of complex data relationships. This is also the most fragile part of the data system, however, because the data structure must be set up well from the beginning and then followed consistently in order to work.\nThere are some default associations that come built in to HubSpot, and there is also capacity to designate our own custom associations. Even in the case of default associations, however, users must implement them consistently in order for them to work.\n\nDefault Associations\n\nContact to Company\nDeal to Contact\nDeal to Company\nDeal to Line Item\n\n\n\nCustom Associations\n\nDeal to Deal, for Prepay"
+  },
+  {
+    "objectID": "architecture/hubspot/deals.html",
+    "href": "architecture/hubspot/deals.html",
+    "title": "Deals Object",
     "section": "",
-    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the event a SQL query goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields.\n-Skus_history containsa ll other fields in Skus using the same column names. The combination of backup_event_id and sku should also be unique within the tables."
+    "text": "Stuff about deals…"
   },
   {
-    "objectID": "architecture/azure/terramax-data/backup.html#actions",
-    "href": "architecture/azure/terramax-data/backup.html#actions",
-    "title": "Backup",
-    "section": "Actions",
-    "text": "Actions\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
-  },
-  {
-    "objectID": "architecture/azure/ordering-app/static-web-apps.html",
-    "href": "architecture/azure/ordering-app/static-web-apps.html",
-    "title": "Azure Static Web Apps Overview",
+    "objectID": "architecture/hubspot/auth-tab.html",
+    "href": "architecture/hubspot/auth-tab.html",
+    "title": "HubSpot Private App Auth",
     "section": "",
-    "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
+    "text": "The Auth tab for a Private App contains all the critical data that affects how the integration connects with the external HubSpot Service app."
   },
   {
-    "objectID": "architecture/azure/hubspot-service/receiveOrder.html",
-    "href": "architecture/azure/hubspot-service/receiveOrder.html",
-    "title": "ReceiveOrder Function",
+    "objectID": "architecture/hubspot/auth-tab.html#access-token",
+    "href": "architecture/hubspot/auth-tab.html#access-token",
+    "title": "HubSpot Private App Auth",
+    "section": "Access Token",
+    "text": "Access Token\nThis is the secret value that the external app uses as a password to access the integration. Because it allows external access to private HubSpot data, it is important to keep this value sercet. If you think it has been compromised, you can ask HubSpot to auto-generate a new one by selecting Rotate.\nThis value corresponds with the HUBSPOT_ACCESS_TOKEN and should be copy/pasted and stored in two other locations:\n\nthe local codebase’s .env file, to make testing in dev possible\nthe HubSpot Service’s Environmental Variables in the Azure Portal"
+  },
+  {
+    "objectID": "architecture/hubspot/auth-tab.html#client-secret",
+    "href": "architecture/hubspot/auth-tab.html#client-secret",
+    "title": "HubSpot Private App Auth",
+    "section": "Client Secret",
+    "text": "Client Secret\nHubSpot generates a Client Secret automatically, but this project does not currently make any use of it."
+  },
+  {
+    "objectID": "architecture/hubspot/auth-tab.html#scopes",
+    "href": "architecture/hubspot/auth-tab.html#scopes",
+    "title": "HubSpot Private App Auth",
+    "section": "Scopes",
+    "text": "Scopes\nScopes define what HubSpot resources the connected app may access, and how. The current scopes defined for the HubSpot Service are:\n\n\n\n\n\n\n\nScope Name\nPurpose\n\n\n\n\ncrm.objects.contacts.read\nread records from Contacts\n\n\ncrm.objects.contacts.write\nadd, edit or delete records from Contacts\n\n\ncrm.objects.companies.read\nread records from Companies\n\n\ncrm.objects.companies.write\nadd, edit or delete records from Companies\n\n\ncrm.objects.deals.read\nread records from Deals\n\n\ncrm.objects.deals.write\nadd, edit or delete records from Deals\n\n\ncrm.objects.line_items.read\nread records from Line Items\n\n\ncrm.objects.line_items.write\nadd, edit or delete records from Line Items\n\n\ne-commerce\nread, add, edit or delete records from Products"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/transactions.html",
+    "href": "architecture/azure/terramax-data/transactions.html",
+    "title": "Hubspot Transactions Logging",
     "section": "",
-    "text": "The major weight-bearing write function that does all the things."
+    "text": "hubspot_transactions is an Event Table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
   },
   {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service-registration.html",
-    "href": "architecture/azure/hubspot-service/hubspot-service-registration.html",
-    "title": "HubSpot Service Registration",
-    "section": "",
-    "text": "All Apps have to be registered in Entra…"
+    "objectID": "architecture/azure/terramax-data/transactions.html#ids",
+    "href": "architecture/azure/terramax-data/transactions.html#ids",
+    "title": "Hubspot Transactions Logging",
+    "section": "IDs",
+    "text": "IDs\nThere are a number of IDs tracked in this table, which serve different purposes.\nThe idempotency id is the first line of defense in preventing the creation of duplicate Deals in HubSpot. Once a Deal is successfully written to HubSpot it is assigned an object id, but that only happens at the end of the first save. It is potentially possible that this HubSpot-based id might fail to be passed back to the client app, and the user might attempt to save again and create a duplticate. To head off this danger, the idempotency id is generated in the client app as soon as a user starts a new order. It is saved in the hubspot_transactions log so that the hubspot_service can check the id of an incoming deal against the log and ensure that it’s not a duplicate. This id is also saved to a custom property in HubSpot as part of the Deal’s data, so it can be used for reference in future edits to thet Deal.\nThe transaction id exists not to prevent the creation of duplicate Deals, but duplicate actions done for a Deal. Most especially, it’s intended to prevent sending duplicate emails to Dave when the Deal is closed/won. This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.\nThe dealID is the object id assigned to a Deal by HubSpot when first saved to their database. This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save."
   },
   {
-    "objectID": "architecture/azure/entra/entra-overview.html",
-    "href": "architecture/azure/entra/entra-overview.html",
-    "title": "Microsoft Entra Overview",
-    "section": "",
-    "text": "Stuff about Entra…"
-  },
-  {
-    "objectID": "architecture/azure/azure-overview.html",
-    "href": "architecture/azure/azure-overview.html",
-    "title": "Azure Overview",
-    "section": "",
-    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same Tenant ID as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure. They can be viewed and managed through the Azure Portal."
-  },
-  {
-    "objectID": "architecture/azure/azure-overview.html#portal",
-    "href": "architecture/azure/azure-overview.html#portal",
-    "title": "Azure Overview",
-    "section": "Azure Portal",
-    "text": "Azure Portal\nLogging in to the Azure Portal should take you to the home page. There you should see a row of icons of Azure Services, like Static Web Apps and Azure Functions, and below that a list of current resources.\n\n\n\nAzure Portal Home Screen\n\n\nMost of the icons in the row of Services will take you to a page that displays all current resources of the service type. You can also create new recources, either within the page dedicated to the specific type, or by clicking on the Create a resource plus sign button in the home screen.\nOther services of note in the top row are:\n\nMicrosoft Entra: manages identity across all accounts within the TerraMax organization. The App Registration section is important for managing security and communication between the Ordering App and HubSpot Service.\nCost Management: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached. See how to check costs\n\nBelow the row of services, you should see a list of current resouces."
-  },
-  {
-    "objectID": "architecture/azure/azure-overview.html#project-specific-resources",
-    "href": "architecture/azure/azure-overview.html#project-specific-resources",
-    "title": "Azure Overview",
-    "section": "Project-Specific Resources",
-    "text": "Project-Specific Resources\nCore components of this project include:\n\nOrdering App (terramax-ordering-app): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.\n\nHosted in Azure Static Web Apps\nWritten in React + Typescript\nUses Microsoft Entra ID authentication via MSAL, allowing only TerraMax users to log in\n\nHubSpot Service (terramax-hubspot-service): a backend API that connects the Ordering App to both an internal product database, and HubSpot’s records of customers and sales.\n\nHosted in Azure Functions\nWritten in Typescript\nUses Microsoft Entra ID to validate incoming requests and restrict access to approved applications\n\nTerraMax Data (terramax-data): a SQL database that holds the masterlist of product information, and a log of transactions that have passed through the server app.\n\nHosted in Azure SQL database\nAccessed only through the server app, not directly by the client\n\n\nOther relevant resources:\n\nterramax-hubspot-service-app-insights\n\nApplication Insights instance connected to the terramax-hubspot-serviceFunction App, which logs data about the app’s use.\n\nterramax-db-server\n\nLogical SQL Server that contains the terramax-data database. Azure requires a server to exist, even if it only hosts a single DB.\n\nTestResourceGroup\n\nThe main Resource Group that contains all parts of the project in Azure. The name comes from its origin during the beginning phase of the project, but to rename and restructure would require recreating resources.\n\nASP-TestResourceGroup-b475\n\nThe App Service Plan associated with the Function App terramax-hubspot-service. It defines the underlying compute environment, and was auto-generated (and named) by Azure.\n\ntestresourcegroup8e0c\n\nThe storage account automatically created to support the Function App terramax-hubspot-service, used for things like\n\nordering-app_group\n\nAn organizational group that Azure auto-generated, not structurally important. It overlaps imperfectly with the TestResourceGroup"
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/azure-functions.html",
-    "href": "architecture/azure/hubspot-service/azure-functions.html",
-    "title": "Azure Fnctions",
-    "section": "",
-    "text": "Azure Functions is a hosting service for backend apps…"
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html",
-    "title": "HubSpot Service",
-    "section": "",
-    "text": "The HubSpot Service is the intermediary that connects the user-facing Ordering App to the HubSpot Accout. Because a client application isn’t sufficiently secure to hold the hubspot api token, a backend service was needed to manage authentication and API requests securely.\nThis is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables in Azure Functions."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#environmental-variables",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#environmental-variables",
-    "title": "HubSpot Service",
-    "section": "Environmental Variables",
-    "text": "Environmental Variables\nEnvironmental variables store important padd data separately from the code for two main reasons: - Security: sentitive information like API tokens should not be hard-coded where it can be exposed. - Configurability: values that might change over time, like email addresses, can be updated without modifying and redeploying code.\nThe HubSpot Sercive uses two sets of these variables, depending on the location: - A local .env file for developement - Azure functions environmental variables for production\nThis is the full list of environmental variables found in Azure that correspond of variables in the .env file:"
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#email-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#email-settings",
-    "title": "HubSpot Service",
-    "section": "Email Settings:",
-    "text": "Email Settings:\nThe app uses these variables to control who is notified when an order is submitted.\n\n\n\n\n\n\n\nVariable\nPurpose\n\n\n\n\nTARGET_EMAIL\nPrimary recipient who will process the order when closed/won.\n\n\nMANAGER_EMAILS\nCSV list of additional recipients who should be notified when an order is closed/won, beyond the “TARGET_EMAIL”.\n\n\nADMIN_EMAIL\nFilters out test orders sent by the\n\n\nadministrator from from being emailed to the TARGET or MANAGERS.\n\n\n\nSENDER_EMAIL\nEmail address that appears as the sender of automated emails sent by the app."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#authentication-and-environment-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#authentication-and-environment-settings",
-    "title": "HubSpot Service",
-    "section": "Authentication and Environment Settings",
-    "text": "Authentication and Environment Settings\n\n\n\nVariable\nPurpose\n\n\n\n\nAZURE_FUNCTIONS_ENVIRONMENT\nTells the app whetherit’s running in “Production” or “Development”.\n\n\nAZURE_SQL_CONNECTION_STRING\nGives credentials and connection information to access the SQL database.\n\n\nCLIENT_ID\nIdentifies the registered Azure app. This must match the Application (client) ID of the terramax-hubspot-service-registration in Entra, or else authentication will fail.\n\n\nCLIENT_SECRET\nSecret key used to authenticate the backend (terramax-hubspot-service) directly to Microsoft Graph using Application Permission. Needed in order to send emails from a fixed address independent of who calls the api. Secret needs to be updated every six months, and the current one will expire on 8/30/25.\n\n\nHUBSPOT_API_TOKEN\nToken used to authenticate API requests to TerraMax’s HubSpot account.\n\n\nTENANT_ID\nTenant ID identifies the TerraMax Microsoft tenant for authentication purposes."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#system-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#system-settings",
-    "title": "HubSpot Service",
-    "section": "System Settings:",
-    "text": "System Settings:\nThese variables were auto-generated by Azure and do not appear in the .env file:\n\nAPPINSIGHTS_INSTRUMENTATIONKEY - Key for sending telemetry data to Azure Application Insights.\nAPPLICATIONINSIGHTS_CONNECTION_STRING - Connection string for the Application Insights resource.\nAzureWebJobsStorage - Storage account used internally by Azure Functions (for function state).\nFUNCTIONS_EXTENSION_VERSION - Specifies the version of the Azure Functions runtime.\nFUNCTIONS_WORKER_RUNTIME - Defines the language worker used (“node” for Node.js apps).\nMICROSOFT_PROVIDER_AUTHENTICATION_SECRET - Secret used internally for Microsoft authentication flows.\nWEBSITE_AUTH_AAD_ALLOWED_TENANTS - Lists tenants allowed to authenticate if AAD authentication is enabled.\nWEBSITE_NODE_DEFAULT_VERSION - Specifies the Node.js version used by the app.\nWEBSITE_RUN_FROM_PACKAGE - Indicates whether the app is deployed via a package file."
-  },
-  {
-    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
-    "href": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
-    "title": "HubSpot Service",
-    "section": "Other settings",
-    "text": "Other settings"
-  },
-  {
-    "objectID": "architecture/azure/terramax-data/azure-sql.html",
-    "href": "architecture/azure/terramax-data/azure-sql.html",
-    "title": "Azure SQL Database",
-    "section": "",
-    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
+    "objectID": "architecture/azure/terramax-data/transactions.html#table-structure",
+    "href": "architecture/azure/terramax-data/transactions.html#table-structure",
+    "title": "Hubspot Transactions Logging",
+    "section": "Table Structure",
+    "text": "Table Structure\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\neventID\nPK, int, not null\nAuto-generated id for the record.\n\n\nidempotencyID\nvarchar(255), null\nId for the Deal generated in the client app.\n\n\ntransactionID\nvarchar(255), null\nId for the transaction generated in the client app.\n\n\nuserEmail\nvarchar(255), null\nEmail of the user attempting the transaction, scraped from their auth credentials.\n\n\ncreatedAt\ndatetime2(7), null\nDate and time of the transaction.\n\n\ntransaction_status\nvarchar(100), null\nHTTP status code for the success of the transaction as a whole.\n\n\ntransaction_message\nvarchar(max), null\nMessage sent back to describe the success of the transaction as a whole.\n\n\ndeal_status\nvarchar(100), null\nHTTP status code for the success of writing the Deal to HubSpot.\n\n\nlineitems_status\nvarchar(100), null\nHTTP status code for the success of writing the LineItems to HubSpot.\n\n\nemail_status\nvarchar(100), null\nHTTP status code for the success of sending an email.\n\n\ndealID\nvarchar(255), null\nThe object id assigned to the deal by HubSpot."
   },
   {
     "objectID": "architecture/azure/terramax-data/product-structure.html",
@@ -322,32 +273,193 @@
     "text": "See Also\n\nAdd New Product\nEdit Product Information"
   },
   {
-    "objectID": "architecture/azure/terramax-data/transactions.html",
-    "href": "architecture/azure/terramax-data/transactions.html",
-    "title": "Hubspot Transactions Logging",
+    "objectID": "architecture/azure/terramax-data/azure-sql.html",
+    "href": "architecture/azure/terramax-data/azure-sql.html",
+    "title": "Azure SQL Database",
     "section": "",
-    "text": "hubspot_transactions is an Event Table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
+    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
   },
   {
-    "objectID": "architecture/azure/terramax-data/transactions.html#ids",
-    "href": "architecture/azure/terramax-data/transactions.html#ids",
-    "title": "Hubspot Transactions Logging",
-    "section": "IDs",
-    "text": "IDs\nThere are a number of IDs tracked in this table, which serve different purposes.\nThe idempotency id is the first line of defense in preventing the creation of duplicate Deals in HubSpot. Once a Deal is successfully written to HubSpot it is assigned an object id, but that only happens at the end of the first save. It is potentially possible that this HubSpot-based id might fail to be passed back to the client app, and the user might attempt to save again and create a duplticate. To head off this danger, the idempotency id is generated in the client app as soon as a user starts a new order. It is saved in the hubspot_transactions log so that the hubspot_service can check the id of an incoming deal against the log and ensure that it’s not a duplicate. This id is also saved to a custom property in HubSpot as part of the Deal’s data, so it can be used for reference in future edits to thet Deal.\nThe transaction id exists not to prevent the creation of duplicate Deals, but duplicate actions done for a Deal. Most especially, it’s intended to prevent sending duplicate emails to Dave when the Deal is closed/won. This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.\nThe dealID is the object id assigned to a Deal by HubSpot when first saved to their database. This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save."
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html",
+    "title": "HubSpot Service",
+    "section": "",
+    "text": "The HubSpot Service is the intermediary that connects the user-facing Ordering App to the HubSpot Accout. Because a client application isn’t sufficiently secure to hold the hubspot api token, a backend service was needed to manage authentication and API requests securely.\nThis is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables for security and configurability."
   },
   {
-    "objectID": "architecture/azure/terramax-data/transactions.html#table-structure",
-    "href": "architecture/azure/terramax-data/transactions.html#table-structure",
-    "title": "Hubspot Transactions Logging",
-    "section": "Table Structure",
-    "text": "Table Structure\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\neventID\nPK, int, not null\nAuto-generated id for the record.\n\n\nidempotencyID\nvarchar(255), null\nId for the Deal generated in the client app.\n\n\ntransactionID\nvarchar(255), null\nId for the transaction generated in the client app.\n\n\nuserEmail\nvarchar(255), null\nEmail of the user attempting the transaction, scraped from their auth credentials.\n\n\ncreatedAt\ndatetime2(7), null\nDate and time of the transaction.\n\n\ntransaction_status\nvarchar(100), null\nHTTP status code for the success of the transaction as a whole.\n\n\ntransaction_message\nvarchar(max), null\nMessage sent back to describe the success of the transaction as a whole.\n\n\ndeal_status\nvarchar(100), null\nHTTP status code for the success of writing the Deal to HubSpot.\n\n\nlineitems_status\nvarchar(100), null\nHTTP status code for the success of writing the LineItems to HubSpot.\n\n\nemail_status\nvarchar(100), null\nHTTP status code for the success of sending an email.\n\n\ndealID\nvarchar(255), null\nThe object id assigned to the deal by HubSpot."
+    "objectID": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
+    "href": "architecture/azure/hubspot-service/hubspot-service.html#other-settings",
+    "title": "HubSpot Service",
+    "section": "Other settings",
+    "text": "Other settings"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/environmental-variables.html",
+    "href": "architecture/azure/hubspot-service/environmental-variables.html",
+    "title": "HubSpot Service Environmental Variables",
+    "section": "",
+    "text": "Environmental variables in Azure Functions are pieces of data necessary to the functioning of the app that are not hard-coded into the app itself for two main reasons:\nThe HubSpot Service uses two sets of these variables, depending on the location:\nThis is the full list of environmental variables found in Azure that correspond of variables in the .env file:"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/environmental-variables.html#email-settings",
+    "href": "architecture/azure/hubspot-service/environmental-variables.html#email-settings",
+    "title": "HubSpot Service Environmental Variables",
+    "section": "Email Settings",
+    "text": "Email Settings\nThe app uses these variables to control who is notified when an order is submitted.\n\n\n\n\n\n\n\nVariable\nPurpose\n\n\n\n\nTARGET_EMAIL\nPrimary recipient who will process the order when closed/won.\n\n\nMANAGER_EMAILS\nCSV list of additional recipients who should be notified when an order is closed/won, beyond the “TARGET_EMAIL”.\n\n\nADMIN_EMAIL\nFilters out test orders sent by the administrator from from being emailed to the TARGET or MANAGERS.\n\n\nSENDER_EMAIL\nEmail address that appears as the sender of automated emails sent by the app."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/environmental-variables.html#authentication-and-environment-settings",
+    "href": "architecture/azure/hubspot-service/environmental-variables.html#authentication-and-environment-settings",
+    "title": "HubSpot Service Environmental Variables",
+    "section": "Authentication and Environment Settings",
+    "text": "Authentication and Environment Settings\nThe app uses these variables to provide credentials and access other resources, and to tell whether it’s running in\n\n\n\nVariable\nPurpose\n\n\n\n\nAZURE_FUNCTIONS_ENVIRONMENT\nTells the app whether it’s running in “Production” or “Development”.\n\n\nAZURE_SQL_CONNECTION_STRING\nGives credentials and connection information to access the SQL database.\n\n\nCLIENT_ID\nIdentifies the registered Azure app. This must match the Application (client) ID of the terramax-hubspot-service-registration in Entra, or else authentication will fail.\n\n\nCLIENT_SECRET\nSecret key used to authenticate the backend (terramax-hubspot-service) directly to Microsoft Graph using Application Permission. Needed in order to send emails from a fixed address independent of who calls the api. Secret needs to be updated every six months, and the current one will expire on 8/30/25.\n\n\nHUBSPOT_API_TOKEN\nToken used to authenticate API requests to TerraMax’s HubSpot account.\n\n\nTENANT_ID\nTenant ID identifies the TerraMax Microsoft tenant for authentication purposes."
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/environmental-variables.html#system-settings",
+    "href": "architecture/azure/hubspot-service/environmental-variables.html#system-settings",
+    "title": "HubSpot Service Environmental Variables",
+    "section": "System Settings",
+    "text": "System Settings\nThese variables were auto-generated by Azure and do not appear in the .env file:\n\n\n\n\n\n\n\nVariable\nPurpose\n\n\n\n\nAPPINSIGHTS_INSTRUMENTATIONKEY\nKey for sending telemetry data to Azure Application Insights.\n\n\nAPPLICATIONINSIGHTS_CONNECTION_STRING\nConnection string for the Application Insights resource.\n\n\nAzureWebJobsStorage\nStorage account used internally by Azure Functions (for function state).\n\n\nFUNCTIONS_EXTENSION_VERSION\nSpecifies the version of the Azure Functions runtime.\n\n\nFUNCTIONS_WORKER_RUNTIME\nDefines the language worker used (“node” for Node.js apps).\n\n\nMICROSOFT_PROVIDER_AUTHENTICATION_SECRET\nSecret used internally for Microsoft authentication flows.\n\n\nWEBSITE_AUTH_AAD_ALLOWED_TENANTS\nLists tenants allowed to authenticate if AAD authentication is enabled.\n\n\nWEBSITE_NODE_DEFAULT_VERSION\nSpecifies the Node.js version used by the app.\n\n\nWEBSITE_RUN_FROM_PACKAGE\nIndicates whether the app is deployed via a package file."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html",
+    "href": "architecture/azure/azure-overview.html",
+    "title": "Azure Overview",
+    "section": "",
+    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same Tenant ID as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure. They can be viewed and managed through the Azure Portal."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#portal",
+    "href": "architecture/azure/azure-overview.html#portal",
+    "title": "Azure Overview",
+    "section": "Azure Portal",
+    "text": "Azure Portal\nLogging in to the Azure Portal should take you to the home page. There you should see a row of icons of Azure Services, like Static Web Apps and Azure Functions, and below that a list of current resources.\n\n\n\nAzure Portal Home Screen\n\n\nMost of the icons in the row of Services will take you to a page that displays all current resources of the service type. You can also create new recources, either within the page dedicated to the specific type, or by clicking on the Create a resource plus sign button in the home screen.\nOther services of note in the top row are:\n\nMicrosoft Entra: manages identity across all accounts within the TerraMax organization. The App Registration section is important for managing security and communication between the Ordering App and HubSpot Service.\nCost Management: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached. See how to check costs\n\nBelow the row of services, you should see a list of current resouces."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#project-specific-resources",
+    "href": "architecture/azure/azure-overview.html#project-specific-resources",
+    "title": "Azure Overview",
+    "section": "Project-Specific Resources",
+    "text": "Project-Specific Resources\nCore components of this project include:\n\nOrdering App (terramax-ordering-app): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.\n\nHosted in Azure Static Web Apps\nWritten in React + Typescript\nUses Microsoft Entra ID authentication via MSAL, allowing only TerraMax users to log in\n\nHubSpot Service (terramax-hubspot-service): a backend API that connects the Ordering App to both an internal product database, and HubSpot’s records of customers and sales.\n\nHosted in Azure Functions\nWritten in Typescript\nUses Microsoft Entra ID to validate incoming requests and restrict access to approved applications\n\nTerraMax Data (terramax-data): a SQL database that holds the masterlist of product information, and a log of transactions that have passed through the server app.\n\nHosted in Azure SQL database\nAccessed only through the server app, not directly by the client\n\n\nOther relevant resources:\n\nterramax-hubspot-service-app-insights\n\nApplication Insights instance connected to the terramax-hubspot-serviceFunction App, which logs data about the app’s use.\n\nterramax-db-server\n\nLogical SQL Server that contains the terramax-data database. Azure requires a server to exist, even if it only hosts a single DB.\n\nTestResourceGroup\n\nThe main Resource Group that contains all parts of the project in Azure. The name comes from its origin during the beginning phase of the project, but to rename and restructure would require recreating resources.\n\nASP-TestResourceGroup-b475\n\nThe App Service Plan associated with the Function App terramax-hubspot-service. It defines the underlying compute environment, and was auto-generated (and named) by Azure.\n\ntestresourcegroup8e0c\n\nThe storage account automatically created to support the Function App terramax-hubspot-service, used for things like\n\nordering-app_group\n\nAn organizational group that Azure auto-generated, not structurally important. It overlaps imperfectly with the TestResourceGroup"
+  },
+  {
+    "objectID": "architecture/azure/entra/entra-overview.html",
+    "href": "architecture/azure/entra/entra-overview.html",
+    "title": "Microsoft Entra Overview",
+    "section": "",
+    "text": "Stuff about Entra…"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/azure-functions.html",
+    "href": "architecture/azure/hubspot-service/azure-functions.html",
+    "title": "Azure Fnctions",
+    "section": "",
+    "text": "Azure Functions is a hosting service for backend apps…"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/hubspot-service-registration.html",
+    "href": "architecture/azure/hubspot-service/hubspot-service-registration.html",
+    "title": "HubSpot Service Registration",
+    "section": "",
+    "text": "All Apps have to be registered in Entra…"
+  },
+  {
+    "objectID": "architecture/azure/hubspot-service/receiveOrder.html",
+    "href": "architecture/azure/hubspot-service/receiveOrder.html",
+    "title": "ReceiveOrder Function",
+    "section": "",
+    "text": "The major weight-bearing write function that does all the things."
+  },
+  {
+    "objectID": "architecture/azure/ordering-app/static-web-apps.html",
+    "href": "architecture/azure/ordering-app/static-web-apps.html",
+    "title": "Azure Static Web Apps Overview",
+    "section": "",
+    "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/backup.html",
+    "href": "architecture/azure/terramax-data/backup.html",
+    "title": "Backup",
+    "section": "",
+    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the event a SQL query goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields.\n-Skus_history containsa ll other fields in Skus using the same column names. The combination of backup_event_id and sku should also be unique within the tables."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/backup.html#actions",
+    "href": "architecture/azure/terramax-data/backup.html#actions",
+    "title": "Backup",
+    "section": "Actions",
+    "text": "Actions\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/terramax-data.html",
+    "href": "architecture/azure/terramax-data/terramax-data.html",
+    "title": "TerraMax Data",
+    "section": "",
+    "text": "terramax-data is an Azure SQL Database that stores data not suited to HubSpot‘s structural limitation’. It wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history.\nThough it uses the cheapest pricing tier (Basic), this is the only part of the ordering app system that is no free. At the tie of writing, it cost $4.99/mo. See check costs."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#sections",
+    "href": "architecture/azure/terramax-data/terramax-data.html#sections",
+    "title": "TerraMax Data",
+    "section": "Sections:",
+    "text": "Sections:\n\nProduct Data:\n\nThe six tables that make up the structure of Product data and how the relate\n\nProduct History and Backup:\n\nThe two tables that store historical product data and can be used for backup\n\nHubSpot Transaction Log:\n\nThe one table that logs edits to HubSpot, to prevent duplication and track usage\n\nAzure SQL Database:\n\nA summary of the Azure Resource being used"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#in-azure-portal",
+    "href": "architecture/azure/terramax-data/terramax-data.html#in-azure-portal",
+    "title": "TerraMax Data",
+    "section": "In Azure Portal",
+    "text": "In Azure Portal\nYou can view and manage the database in the Azure Portal. From the homepage when you log in, in the list of resources, you will see both terramax-data and terramax-db-server.\nterramax-db-server is a SQL Server that hosts the database, and terramax-data is the database itself. At present, the database uses the Basic price tier, because our needs are minimal.\nFrom within the terramax-data Resource Page, you can query the data itself directly through the Query Editor. It will require you to authenticate either through SQL server or Microsoft Entra authentication. I have been using Microsoft Entra auth. In order ot be able to use Entra auth to wuery the daatabase, you need to be …."
+  },
+  {
+    "objectID": "architecture/github/github-overview.html",
+    "href": "architecture/github/github-overview.html",
+    "title": "GitHub Account",
+    "section": "",
+    "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
+  },
+  {
+    "objectID": "architecture/hubspot/contacts-and-companies.html",
+    "href": "architecture/hubspot/contacts-and-companies.html",
+    "title": "Contacts and Companies Objects",
+    "section": "",
+    "text": "Stuff about Contacts and Companies…"
+  },
+  {
+    "objectID": "architecture/hubspot/edit-app.html",
+    "href": "architecture/hubspot/edit-app.html",
+    "title": "Edit HubSpot Private App",
+    "section": "",
+    "text": "Nearly all edits you might want to make will be from the Auth section.\nIn the Basic Info section you can change the app’s name, give it a logo/icon, and write a description. These things will appear in the Private Apps page to help you distinguish this app from others, but are otherwise cosmetic and don’t affect the functioning. You can change them without upsetting the way the app integrates."
+  },
+  {
+    "objectID": "architecture/hubspot/edit-app.html#edit-scopes",
+    "href": "architecture/hubspot/edit-app.html#edit-scopes",
+    "title": "Edit HubSpot Private App",
+    "section": "Edit Scopes",
+    "text": "Edit Scopes\nEditing scopes is more consequential. If you delete any scopes, the app may cease to function."
   },
   {
     "objectID": "architecture/hubspot/hubspot-overview.html",
     "href": "architecture/hubspot/hubspot-overview.html",
     "title": "HubSpot",
     "section": "",
-    "text": "Stuff about HubSpot… - api token - added properties"
+    "text": "The Ordering App interacts with HubSpot as a database, fetching data from it and storing new and updated data back into it. Unlike the SQL database however, front-end users can also directly interact with HubSpot without the app to mediate.\nOn one hand, this means that HubSpot isn’t dependent on the app and would remain fully functional even if the app broke. On the other hand, it means the data is exposed and the app can’t fully gatekeep what gets entered there. Because the data is exposed, it’s important that the data be structured in a way that serves both the app’s programmatic use, and the workflow of users who interact with it directly.\nThis section of the documentation aims to explain two main things:\n\nHow data is structured within HubSpot: HubSpot Data Structure\nHow the integrated app connects to that data: App Integrations"
+  },
+  {
+    "objectID": "architecture/hubspot/logs-tab.html",
+    "href": "architecture/hubspot/logs-tab.html",
+    "title": "HubSpot Private App Logs",
+    "section": "",
+    "text": "HubSpot tracks all calls to its API and saves them for a month. By default they are sorted chronologically, and include both successful and failed calls.\nIt logs what api endpoint was called, when, with what method, and the status code.\nAlone, it’s of limited use in trouble-shooting problems. It does not track anything about the user who made a call, or much detail about why a call failed beyond the status code, or what data was returned or actions performed as a result of the call. Moreover, calls that fail in the Ordering App or HubSpot Service will never get far enough to be logged in HubSpot, because it is the last stage in the chain of communication:\n\nOrdering App &gt; HubSpot Service &gt; HubSpot\n\nThis log is more useful in conjuction with HubSpot Sercive App Insights in Azure, which also captures calls that fail in the Azure Functions layer, and with local console logs when running the Ordering App in dev.\nIt is, however, a more immediately user-friendly tool than the other two. Even alone, it can be useful just to monitoring usage, checking for recent errors at the HubSpot layer, and verifying that new or changed calls are working.\n\n\n\nLogs Tab"
+  },
+  {
+    "objectID": "architecture/hubspot/products-and-lineitems.html",
+    "href": "architecture/hubspot/products-and-lineitems.html",
+    "title": "Products and Line Items",
+    "section": "",
+    "text": "Stuff about products and line items…"
   },
   {
     "objectID": "how-to/add-product.html",
@@ -357,11 +469,11 @@
     "text": "The list of Products is effectively stored in two locations: - The master list in the TerraMax Data SQL Database - The Products object in HubSpot\nBoth locations need to be updated, but you should start with the TerraMax Data SQL database. The structure of the data in the SQL db is more complex, and there is a function in the HubSpot Service that will synch the HubSpot version to match the SQL version.\nAdding and manipulating data in the TerraMax Data SQL Database can be done either through VSCode using the SQL SERVER extension, or directly in the Azure Portal. This guide assumes that you are able to use at least one of those tools."
   },
   {
-    "objectID": "how-to/add-product.html#backup-current-data",
-    "href": "how-to/add-product.html#backup-current-data",
+    "objectID": "how-to/add-product.html#backup-current-data-if-needed",
+    "href": "how-to/add-product.html#backup-current-data-if-needed",
     "title": "Add Product",
-    "section": "1. Backup Current Data",
-    "text": "1. Backup Current Data\n\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history, so that you can recover the current data if anything goes wrong.\n\nEXEC Backup_Products_And_Skus;"
+    "section": "1. Backup Current Data, if Needed",
+    "text": "1. Backup Current Data, if Needed\n\nBackups should be run immeditately AFTER changes are made, so if you are confident that this has been done correctly ans the backups are up-to-date, there’s no need to do it now. But if you’re not confident, better safe than sorry:\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history, so that you can recover the current data if anything goes wrong.\n\nEXEC Backup_Products_And_Skus;"
   },
   {
     "objectID": "how-to/add-product.html#add-new-properties-to-supporting-tables",
@@ -390,6 +502,13 @@
     "title": "Add Product",
     "section": "5. Sync HubSpot Products",
     "text": "5. Sync HubSpot Products\n\nOpen the hubspot-service project in VSCode and run the project locally wuth npm start.\nWhen the terminal displays a list of all Functions, ctrl + click on UpdateHSProducts. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted."
+  },
+  {
+    "objectID": "how-to/add-product.html#backup-updated-data",
+    "href": "how-to/add-product.html#backup-updated-data",
+    "title": "Add Product",
+    "section": "6. Backup Updated Data",
+    "text": "6. Backup Updated Data\n\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history. This creates a snapshot of the new state of the data, so that you can recover it if anything goes wrong in the following steps.\n\nEXEC Backup_Products_And_Skus;"
   },
   {
     "objectID": "how-to/deploy-hubspot-service-update.html",
@@ -424,7 +543,7 @@
     "href": "how-to/edit-product.html#backup-current-data",
     "title": "Edit Product (Price)",
     "section": "1. Backup Current Data",
-    "text": "1. Backup Current Data\n\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history, so that you can recover the current data if anything goes wrong.\n\nEXEC Backup_Products_And_Skus;"
+    "text": "1. Backup Current Data\n\nBackups should be run immeditately AFTER changes are made, so if you are confident that this has been done correctly and the backups are up-to-date, there’s no need to do it now. But if you’re not confident, better safe than sorry:\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history, so that you can recover the current data if anything goes wrong in the following steps.\n\nEXEC Backup_Products_And_Skus;"
   },
   {
     "objectID": "how-to/edit-product.html#get-the-sku-number-for-the-target-record-in-table-skus",
@@ -446,6 +565,13 @@
     "title": "Edit Product (Price)",
     "section": "4. Sync HubSpot Products",
     "text": "4. Sync HubSpot Products\n\nOpen the hubspot-service project in VSCode and run the project locally wuth npm start.\nWhen the terminal displays a list of all Functions, ctrl + click on UpdateHSProducts. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted."
+  },
+  {
+    "objectID": "how-to/edit-product.html#backup-updated-data",
+    "href": "how-to/edit-product.html#backup-updated-data",
+    "title": "Edit Product (Price)",
+    "section": "5. Backup Updated Data",
+    "text": "5. Backup Updated Data\n\nRun the stored procedure Backup_Products_And_Skus to save the current state of the Products and Skus tables to Products_history and Skus_history. This creates a snapshot of the new state of the data, so that you can recover it if anything goes wrong.\n\nEXEC Backup_Products_And_Skus;"
   },
   {
     "objectID": "index.html",

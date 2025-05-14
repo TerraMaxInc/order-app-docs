@@ -3834,7 +3834,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}</style>
+<style type="text/css">a.glossary-term {border-bottom: 1px dotted #999;text-decoration: none;cursor: help;color: inherit;position: relative;}a.glossary-term:hover {color: #05a;border-bottom-color: #05a;}h3 {color: #517699;font-size: medium;text-decoration: underline;}</style>
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -3917,6 +3917,7 @@ vertical-align: -.125em;
   <li><a href="#get-the-sku-number-for-the-target-record-in-table-skus" id="toc-get-the-sku-number-for-the-target-record-in-table-skus" class="nav-link" data-scroll-target="#get-the-sku-number-for-the-target-record-in-table-skus">2. Get the <em>sku</em> Number for the Target Record in Table Skus</a></li>
   <li><a href="#update-the-target-record-in-table-skus" id="toc-update-the-target-record-in-table-skus" class="nav-link" data-scroll-target="#update-the-target-record-in-table-skus">3. Update the Target Record in Table Skus</a></li>
   <li><a href="#sync-hubspot-products" id="toc-sync-hubspot-products" class="nav-link" data-scroll-target="#sync-hubspot-products">4. Sync HubSpot Products</a></li>
+  <li><a href="#backup-updated-data" id="toc-backup-updated-data" class="nav-link" data-scroll-target="#backup-updated-data">5. Backup Updated Data</a></li>
   </ul>
 </nav>
     </div>
@@ -3950,7 +3951,8 @@ vertical-align: -.125em;
 <section id="backup-current-data" class="level2">
 <h2 class="anchored" data-anchor-id="backup-current-data">1. Backup Current Data</h2>
 <ul>
-<li>Run the <em>stored procedure</em> <code>Backup_Products_And_Skus</code> to save the current state of the <code>Products</code> and <code>Skus</code> tables to <code>Products_history</code> and <code>Skus_history</code>, so that you can recover the current data if anything goes wrong.</li>
+<li>Backups should be run immeditately AFTER changes are made, so if you are confident that this has been done correctly and the backups are up-to-date, there’s no need to do it now. But if you’re not confident, better safe than sorry:</li>
+<li>Run the <em>stored procedure</em> <code>Backup_Products_And_Skus</code> to save the current state of the <code>Products</code> and <code>Skus</code> tables to <code>Products_history</code> and <code>Skus_history</code>, so that you can recover the current data if anything goes wrong in the following steps.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">EXEC</span> Backup_Products_And_Skus;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -3969,6 +3971,13 @@ vertical-align: -.125em;
 <li>Open the hubspot-service project in VSCode and run the project locally wuth <code>npm start</code>.</li>
 <li>When the terminal displays a list of all Functions, ctrl + click on <code>UpdateHSProducts</code>. This function will do all the work of checking the HubSpot products database against the Skus and Products data in the TerraMax SQL Database, find any discrepancies, and update HubSpot to match the SQL. It should also open a browser window that will display the results of the operation, and list how many products were added, updated, and deleted.</li>
 </ul>
+</section>
+<section id="backup-updated-data" class="level2">
+<h2 class="anchored" data-anchor-id="backup-updated-data">5. Backup Updated Data</h2>
+<ul>
+<li>Run the <em>stored procedure</em> <code>Backup_Products_And_Skus</code> to save the current state of the <code>Products</code> and <code>Skus</code> tables to <code>Products_history</code> and <code>Skus_history</code>. This creates a snapshot of the new state of the data, so that you can recover it if anything goes wrong.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">EXEC</span> Backup_Products_And_Skus;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

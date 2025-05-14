@@ -1,0 +1,20 @@
+---
+title: HubSpot Private App Logs
+format: html
+---
+
+HubSpot tracks all calls to its @api and saves them for a month.  By default they are sorted chronologically, and include both successful and failed calls.
+
+It logs what api endpoint was called, when, with what method, and the status code.  
+
+Alone, it's of limited use in trouble-shooting problems.  It does *not* track anything about the user who made a call, or much detail about why a call failed beyond the status code, or what data was returned or actions performed as a result of the call.  Moreover, calls that fail in the Ordering App or HubSpot Service will never get far enough to be logged in HubSpot, because it is the last stage in the chain of communication:
+
+- [Ordering App](../azure/ordering-app/ordering-app.html) > [HubSpot Service](../azure/hubspot-service/hubspot-service.html) > [HubSpot](hubspot-overview.html)
+
+This log is more useful in conjuction with [HubSpot Sercive App Insights](../azure/hubspot-service/app-insights.html) in Azure, which also captures calls that fail in the Azure Functions layer, and with local console logs when running the Ordering App in dev.
+
+It is, however, a more immediately user-friendly tool than the other two.  Even alone, it can be useful just to monitoring usage, checking for recent errors at the HubSpot layer, and verifying that new or changed calls are working.
+
+![Logs Tab](images/hubspot-service-logs.jpg)
+
+

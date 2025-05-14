@@ -1,15 +1,44 @@
 [
     {
+        "term": "API",
+        "key": "api",
+        "definition": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.",
+        "category": "basic"
+    },
+    {
         "term": "Application Permission",
         "key": "application-permission",
         "definition": "In contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's.",
-        "category": "default"
+        "category": "azure"
+    },
+    {
+        "term": "Array",
+        "key": "array",
+        "definition": "A collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.",
+        "category": "basic"
+    },
+    {
+        "term": "Association",
+        "key": "hs-association",
+        "definition": "A link between records.  The records might be of different object types, or the same object type.",
+        "category": "hubspot"
+    },
+    {
+        "term": "Boolean",
+        "key": "boolean",
+        "definition": "A true/false value.  Maybe also be called 'bit' and be represented with 1/0.",
+        "category": "basic"
     },
     {
         "term": "Delegated Permission",
         "key": "delegated-permission",
         "definition": "In contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.",
-        "category": "default"
+        "category": "azure"
+    },{
+        "term": "Development",
+        "key": "development",
+        "definition": "An application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'",
+        "category": "basic"
     },
     {
         "term": "Entity Table",
@@ -18,10 +47,22 @@
         "category": "default"
     },
     {
+        "term": "Enumeration",
+        "key": "enumeration",
+        "definition": "A data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.",
+        "category": "basic"
+    },
+    {
         "term": "Event Table",
         "key": "event-table",
         "definition": "A database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.",
         "category": "default"
+    },
+    {
+        "term": "ISO 8601",
+        "key": "iso-8601",
+        "definition": "A standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'",
+        "category": "basic"
     },
     {
         "term": "Lookup Table",
@@ -30,9 +71,45 @@
         "category": "default"
     },
     {
+        "term": "Object",
+        "key": "hs-object",
+        "definition": "A collection of records and properties of the same type, like a spreadsheet collects rows that all have the same columns.",
+        "category": "hubspot"
+    },
+    {
+        "term": "Production",
+        "key": "production",
+        "definition": "An application running 'in production' is an application that is live and being used.  Contrasted with 'development.'",
+        "category":"basic"
+    },
+    {
+        "term": "Property",
+        "key": "hs-property",
+        "definition": "A single field that can contain a single value for that specific record, like a cell in a spreadsheet.  Every row will have one cell in each column, and every record will have one value for each property (though in some cases that value might be blank or 0).",
+        "category": "hubspot"
+    },
+    {
+        "term": "Record",
+        "key": "hs-record",
+        "definition": "A group of values that are all properties of a single thing.  In HubSpot, all records have a unique object_id, which can be used to allow one record to reference another for more complex data relationships, like associations.",
+        "category": "hubspot"
+    },
+    {
+        "term": "String",
+        "key": "string",
+        "definition": "A data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).",
+        "category": "basic"
+    },
+    {
         "term": "Tenant ID",
         "key": "tenant-id",
         "definition": "The overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.",
-        "category": "default"
+        "category": "azure"
+    },
+    {
+        "term": "Unix Time",
+        "key": "unix-time",
+        "definition": "A way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'.",
+        "category": "basic"
     }
 ]

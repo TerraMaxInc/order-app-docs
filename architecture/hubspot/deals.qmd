@@ -1,0 +1,6 @@
+---
+title: Deals Object
+format: html
+---
+
+Stuff about deals...

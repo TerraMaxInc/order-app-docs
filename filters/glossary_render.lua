@@ -22,18 +22,38 @@ function Pandoc(doc)
     file:close()
     local glossary = json.decode(contents)
 
-    local blocks = {}
+    local basicBlocks = { pandoc.Header(2, { pandoc.Str("Basic Terms") }, pandoc.Attr("basic-terms", {}, {})) }
+    local azureBlocks = { pandoc.Header(2, { pandoc.Str("Azure Terms") }, pandoc.Attr("azure-terms", {}, {})) }
+    local hubspotBlocks = { pandoc.Header(2, { pandoc.Str("HubSpot Terms") }, pandoc.Attr("hubspot-terms", {}, {})) }
+    local defaultBlocks = { pandoc.Header(2, { pandoc.Str("Other Terms") }, pandoc.Attr("default-terms", {}, {})) }
 
     for _, entry in pairs(glossary) do
         local term = entry.term or "(unknown)"
         local key = entry.key or term:lower():gsub("%s+", "-")
         local def = entry.definition or "(no definition)"
+        local cat = entry.category or "default"
 
-        io.stderr:write("term: " .. term .. ", key: " .. key .. ", def: " .. def)
+        local blocks = {
+            pandoc.Header(3, { pandoc.Str(term) }, pandoc.Attr(key, {}, {})),
+            pandoc.Para({ pandoc.Str(def) })
+        }
 
-        table.insert(blocks, pandoc.Header(2, { pandoc.Str(term) }, pandoc.Attr(key, {}, {})))
-        table.insert(blocks, pandoc.Para({ pandoc.Str(def) }))
+        if cat == "basic" then
+            for _, b in ipairs(blocks) do table.insert(basicBlocks, b) end
+        elseif cat == "azure" then
+            for _, b in ipairs(blocks) do table.insert(azureBlocks, b) end
+        elseif cat == "hubspot" then
+            for _, b in ipairs(blocks) do table.insert(hubspotBlocks, b) end
+        else
+            for _, b in ipairs(blocks) do table.insert(defaultBlocks, b) end
+        end
     end
 
-    return pandoc.Pandoc(blocks, doc.meta)
+    local allBlocks = {}
+    for _, b in ipairs(basicBlocks) do table.insert(allBlocks, b) end
+    for _, b in ipairs(azureBlocks) do table.insert(allBlocks, b) end
+    for _, b in ipairs(hubspotBlocks) do table.insert(allBlocks, b) end
+    for _, b in ipairs(defaultBlocks) do table.insert(allBlocks, b) end
+
+    return pandoc.Pandoc(allBlocks, doc.meta)
 end

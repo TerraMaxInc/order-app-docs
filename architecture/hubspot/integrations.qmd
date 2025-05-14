@@ -1,0 +1,43 @@
+---
+title: Integrations
+format: html
+---
+
+The Azure FUnction app [HubSpot Service](../azure/hubspot-service/hubspot-service.html) connects to HubSpot through an *integration*, also named **HubSpot Service** for clarity.
+
+HubSpot allows such external applications to interact with their data using the HubSpot @api.  Such external applications may be:
+
+- **Public Apps** - public commercial tools like Quickbooks or Microsoft Teams
+- **Private Apps** - internal tools like the HubSpot Service
+
+Both types of apps work by accessing the API, and are listed together in the **Connected Apps** section of Integrations:
+![Connected Apps](images/hubspot-connected-apps.jpg)
+
+## Private Apps
+
+In HubSpot, setting up a Private App Integration is called "creating a Private App."  This doesn't involve building or hosting the app *inside* HubSpot, but rather setting up a *secure access point* for the real app, which is hosted and running elsewhere.
+
+This can be seen like a sort of outlet.  You give this outlet a name, an icon, a description, and you define what HubSpot resources it exposes to anything that plugs into it, and HubSpot automatically generates an `API key` for it.  This key is given to the *actual* app, which is hosted and running elsewhere, so it can use the key like a password to plug into the outlet and make use of the resources it offers.
+
+### View or Edit Integration
+*Note: HubSpot changes their layout often, si instructions and screenshots of menus may become out-of-date quickly*
+
+The integration for the HubSpot Service can be viewed or modified in HubSpot by going to:
+
+- Settings > Account Management > Integrations > Private Apps
+
+![HubSpot Private Apps](images/hubspot-private-apps.jpg)
+
+From there you can view all private app integrations, as well as the overall API usage.  Because our account is in the Professional Tier, we have a limit of 625,000 api calls per day for all connected apps combined.  Currently we average in the low 100s, so we would need to scale *significatly* for this limit to matter.
+
+If you open the specific app, you can view:
+
+- [Auth](auth-tab.html) - shows API key and defined scopes
+- [Logs](logs-tab.html) - tracks usage over the past month
+- [Edit App](edit-app.html) - change name, icon, description, scopes
+
+
+
+
+
+
