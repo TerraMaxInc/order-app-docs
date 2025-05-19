@@ -1,0 +1,169 @@
+---
+title: Scaffold New PWA with MSAL
+format: html
+---
+
+This one is just for my own reference, to remember what I did.
+
+## 1. Create App
+
+- In a command prompt in the **repos** folder, run `npm create vite@latest`.  Don't create a new folder--this process will do that for you.
+- Select **React** and **Typescript** when prompted.
+- cd into the project, then open it in VSCode with `code .`
+- In the VSCode terminal, run `npm install` to fill out the default dependencies
+
+## 2.  Add MSAL
+
+- `npm install @azure/msal-browser`
+- `npm install @azure/msal-react`
+
+## 3. Add PWA
+
+- Run `npm install vite-plugin-pwa --save-dev`
+
+- Manually add to the package.json file:
+
+```json
+"engines": {
+  "node": ">=18.0.0"
+}
+```
+
+- Change the default vite.congic.ts file from something like this:
+
+```ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+```
+
+to something like this:
+
+```ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: "Product Manager",
+        description: "A PWA for managing Products and generating the Pricelist PDF",
+        theme_color: "#ffffff",
+        display: 'standalone',
+        start_url: "/",
+        icons: [
+          {
+            src: "/favicon.svg",
+            sizes: "150x150",
+            type: "image/svg+xml",
+            purpose: "any",
+          },
+        ]
+      },
+      devOptions: {
+        enabled: true
+      }
+    })
+  ],
+})
+```
+
+## 4. Create App in Azure Static Web Apps
+
+- From VSCode, in the terminal, run:
+    - `az login`
+    
+
+
+## 5. Create App Registration in Entra
+
+
+## 6. Add authConfig
+
+- in the **src** folder add a file `authConfig.ts` and add something like this:
+
+```ts
+import { LogLevel } from "@azure/msal-browser";
+import { cache } from "react";
+
+/**
+ * Configuration object to be passed to MAL instance on creation
+ * For a full list of MSAL.js configuration parameters, visit:
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
+ */
+
+const TENANT_ID = ""
+const FUNCTIONS_APP_ID = ""
+const CLIENT_ID = ""
+const FUNCTIONS_BASE_ENDPOINT = ""
+
+const REDIRECT_URI = window.location.hostname === "localhost"
+    ? "http://localhost:5173"
+    : ""
+
+const AUTHORITY = `https://login.microsoftonline.com/${TENANT_ID}`;
+
+export const msalConfig = {
+    auth: {
+        clientId: CLIENT_ID,
+        authority: AUTHORITY,
+        redirectUri: REDIRECT_URI || window.location.origin,
+    },
+    cache: {
+        cacheLocation: "localStorage", // configures where your cache will be stored
+        storeAuthStateInCookie: false, // set to true if you're having issues on IE11 or Edge
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback: (level: LogLevel, message: string, containsPii: boolean) => {
+                if(containsPii) {
+                    return;
+                }
+                switch (level) {
+                     case LogLevel.Error:
+                        console.error(message);
+                        return;
+                    case LogLevel.Info:
+                        console.info(message);
+                        return;
+                    case LogLevel.Verbose:
+                        console.debug(message);
+                        return;
+                    case LogLevel.Warning:
+                        console.warn(message);
+                        return;
+                    default:
+                        return;
+                }
+            }
+        }
+    }
+};
+
+/**
+ * Scopes you add here will be prompted for user consent during sign-in.
+ * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
+ * For more information about OIDC scopes, visit:
+ * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
+ */
+
+export const loginRequest = {
+    scopes: [
+        `api://${FUNCTIONS_APP_ID}/api.AllSkus`
+    ],
+    audience: `api://${FUNCTIONS_APP_ID}`,
+}
+
+export const functionsConfig = {
+    skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,
+}
+```

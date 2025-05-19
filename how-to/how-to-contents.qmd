@@ -12,4 +12,5 @@ format: html
 - [Check Costs](check-costs.html)
 - [Deploy hubspot-service Update](deploy-hubspot-service-update.html)
 - [Deploy ordering-app Update](deploy-ordering-app-update.html)
-- [Edit Product (Price)](edit-product.qmd)
+- [Edit Product (Price)](edit-product.html)
+- [Scaffold New PWA with MSAL](scaffold-pwa-with-msal.html)

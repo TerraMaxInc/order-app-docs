@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>TerraMax Data – Ordering App Project Docs</title>
+<title>Scaffold New PWA with MSAL – Ordering App Project Docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,6 +18,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -1667,7 +1701,7 @@ async function fuseSearch(query, fuse, fuseOptions) {
   return results;
 }
 </script>
-<meta name="quarto:offset" content="../../../">
+<meta name="quarto:offset" content="../">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
   bubbles: true,
@@ -4719,7 +4753,7 @@ vertical-align: -.125em;
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ordering App Project Docs</span>
     </a>
   </div>
@@ -4730,7 +4764,7 @@ vertical-align: -.125em;
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -4739,37 +4773,37 @@ vertical-align: -.125em;
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-azure">    
         <li>
-    <a class="dropdown-item" href="../../../architecture/azure/azure-overview.html">
+    <a class="dropdown-item" href="../architecture/azure/azure-overview.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../architecture/azure/ordering-app/ordering-app.html">
+    <a class="dropdown-item" href="../architecture/azure/ordering-app/ordering-app.html">
  <span class="dropdown-text">Ordering App</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../architecture/azure/hubspot-service/hubspot-service.html">
+    <a class="dropdown-item" href="../architecture/azure/hubspot-service/hubspot-service.html">
  <span class="dropdown-text">HubSpot Service</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../architecture/azure/terramax-data/terramax-data.html">
+    <a class="dropdown-item" href="../architecture/azure/terramax-data/terramax-data.html">
  <span class="dropdown-text">SQL Database</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../architecture/github/github-overview.html"> 
+    <a class="nav-link" href="../architecture/github/github-overview.html"> 
 <span class="menu-text">Github</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../architecture/hubspot/hubspot-overview.html"> 
+    <a class="nav-link" href="../architecture/hubspot/hubspot-overview.html"> 
 <span class="menu-text">HubSpot</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../how-to/how-to-contents.html"> 
+    <a class="nav-link" href="../how-to/how-to-contents.html"> 
 <span class="menu-text">How-to’s</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../reference/glossary.html"> 
+    <a class="nav-link" href="../reference/glossary.html"> 
 <span class="menu-text">Glossary</span></a>
   </li>  
 </ul>
@@ -4788,8 +4822,10 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sections" id="toc-sections" class="nav-link active" data-scroll-target="#sections">Sections:</a></li>
-  <li><a href="#in-azure-portal" id="toc-in-azure-portal" class="nav-link" data-scroll-target="#in-azure-portal">In Azure Portal</a></li>
+  <li><a href="#create-app" id="toc-create-app" class="nav-link active" data-scroll-target="#create-app">1. Create App</a></li>
+  <li><a href="#add-msal" id="toc-add-msal" class="nav-link" data-scroll-target="#add-msal">2. Add MSAL</a></li>
+  <li><a href="#add-pwa" id="toc-add-pwa" class="nav-link" data-scroll-target="#add-pwa">3. Add PWA</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">4.</a></li>
   </ul>
 </nav>
     </div>
@@ -4798,7 +4834,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">TerraMax Data</h1>
+<h1 class="title">Scaffold New PWA with MSAL</h1>
 </div>
 
 
@@ -4815,36 +4851,77 @@ vertical-align: -.125em;
 </header>
 
 
-<p><code>terramax-data</code> is an <a href="../../../architecture/azure/terramax-data/azure-sql.html">Azure SQL Database</a> that stores data not suited to <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot</a>‘s structural limitation’. It wasn’t possible within HubSpot’s <strong>Products</strong> object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.</p>
-<p>HubSpot contains Product data that <em>mirrors</em> this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the <code>updateHSProducts</code> function in the HubSpot Service.</p>
-<p>The <a href="../hubspot-service/hubspot-service.html">HubSpot Service</a> interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like <a href="../../../how-to/add-product.html">adding</a> or <a href="../../../how-to/edit-product.html">editing</a> products, or checking history.</p>
-<p>Though it uses the cheapest pricing tier (Basic), this is the only part of the ordering app system that <strong>is no free</strong>. At the tie of writing, it cost $4.99/mo. <a href="../../../how-to/check-costs.html">See check costs</a>.</p>
-<section id="sections" class="level2">
-<h2 class="anchored" data-anchor-id="sections">Sections:</h2>
+<p>This one is just for my own reference, to remember what I did.</p>
+<section id="create-app" class="level2">
+<h2 class="anchored" data-anchor-id="create-app">1. Create App</h2>
 <ul>
-<li><a href="product-structure.html">Product Data</a>:
-<ul>
-<li>The six tables that make up the structure of Product data and how the relate</li>
-</ul></li>
-<li><a href="backup.html">Product History and Backup</a>:
-<ul>
-<li>The two tables that store historical product data and can be used for backup</li>
-</ul></li>
-<li><a href="transactions.html">HubSpot Transaction Log</a>:
-<ul>
-<li>The one table that logs edits to HubSpot, to prevent duplication and track usage</li>
-</ul></li>
-<li><a href="azure-sql.html">Azure SQL Database</a>:
-<ul>
-<li>A summary of the Azure Resource being used</li>
-</ul></li>
+<li>In a command prompt in the <strong>repos</strong> folder, run <code>npm create vite@latest</code>. Don’t create a new folder–this process will do that for you.</li>
+<li>Select <strong>React</strong> and <strong>Typescript</strong> when prompted.</li>
+<li>cd into the project, then open it in VSCode with <code>code .</code></li>
+<li>In the VSCode terminal, run <code>npm install</code> to fill out the default dependencies</li>
 </ul>
 </section>
-<section id="in-azure-portal" class="level2">
-<h2 class="anchored" data-anchor-id="in-azure-portal">In Azure Portal</h2>
-<p>You can view and manage the database in the Azure Portal. From the homepage when you log in, in the list of resources, you will see both <code>terramax-data</code> and <code>terramax-db-server</code>.</p>
-<p><code>terramax-db-server</code> is a <em>SQL Server</em> that hosts the database, and <code>terramax-data</code> is the database itself. At present, the database uses the <em>Basic</em> price tier, because our needs are minimal.</p>
-<p>From within the <code>terramax-data</code> Resource Page, you can query the data itself directly through the <code>Query Editor</code>. It will require you to authenticate either through SQL server or Microsoft Entra authentication. I have been using Microsoft Entra auth. In order ot be able to use Entra auth to wuery the daatabase, you need to be ….</p>
+<section id="add-msal" class="level2">
+<h2 class="anchored" data-anchor-id="add-msal">2. Add MSAL</h2>
+<ul>
+<li><code>npm install @azure/msal-browser</code></li>
+<li><code>npm install @azure/msal-react</code></li>
+</ul>
+</section>
+<section id="add-pwa" class="level2">
+<h2 class="anchored" data-anchor-id="add-pwa">3. Add PWA</h2>
+<ul>
+<li>Manually add to the package.json file:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;engines&quot;:</span> <span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;node&quot;</span><span class="fu">:</span> <span class="st">&quot;&gt;=18.0.0&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><code>npm install vite-plugin-pwa --save-dev</code></p></li>
+<li><p>Change the default vite.congic.ts file from something like this:</p></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { defineConfig } <span class="im">from</span> <span class="st">&#39;vite&#39;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> react <span class="im">from</span> <span class="st">&#39;@vitejs/plugin-react&#39;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">// https://vite.dev/config/</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="fu">defineConfig</span>({</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  plugins<span class="op">:</span> [<span class="fu">react</span>()]<span class="op">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to something like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { defineConfig } <span class="im">from</span> <span class="st">&#39;vite&#39;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> react <span class="im">from</span> <span class="st">&#39;@vitejs/plugin-react&#39;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { VitePWA } <span class="im">from</span> <span class="st">&#39;vite-plugin-pwa&#39;</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// https://vite.dev/config/</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="fu">defineConfig</span>({</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  plugins<span class="op">:</span> [</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">react</span>()<span class="op">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">VitePWA</span>({</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      registerType<span class="op">:</span> <span class="st">&#39;autoUpdate&#39;</span><span class="op">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      manifest<span class="op">:</span> {</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        name<span class="op">:</span> <span class="st">&quot;Product Manager&quot;</span><span class="op">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        description<span class="op">:</span> <span class="st">&quot;A PWA for managing Products and generating the Pricelist PDF&quot;</span><span class="op">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        theme_color<span class="op">:</span> <span class="st">&quot;#ffffff&quot;</span><span class="op">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        display<span class="op">:</span> <span class="st">&#39;standalone&#39;</span><span class="op">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        start_url<span class="op">:</span> <span class="st">&quot;/&quot;</span><span class="op">,</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        icons<span class="op">:</span> [</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>          {</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            src<span class="op">:</span> <span class="st">&quot;/favicon.svg&quot;</span><span class="op">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            sizes<span class="op">:</span> <span class="st">&quot;150x150&quot;</span><span class="op">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            type<span class="op">:</span> <span class="st">&quot;image/svg+xml&quot;</span><span class="op">,</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            purpose<span class="op">:</span> <span class="st">&quot;any&quot;</span><span class="op">,</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>          }<span class="op">,</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      devOptions<span class="op">:</span> {</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        enabled<span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">4.</h2>
 
 
 </section>
