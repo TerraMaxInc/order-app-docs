@@ -9,9 +9,6 @@ website:
   title: "Ordering App Project Docs"
   navbar:
     left:
-      - href: index.html  # Point to the rendered .html file, not .qmd
-        text: Home
-      # - href: architecture/azure/azure-overview.html
       - text: Azure
         menu:
           - text: Overview

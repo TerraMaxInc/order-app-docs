@@ -4,3 +4,14 @@ format: html
 ---
 
 Stuff about products and line items...
+
+## Products
+Most up-to-date data about products
+
+## Line Items
+Snapshot of Products
+Association to Deals
+
+## Pricing Limitations
+
+## Relationship to SQL Database

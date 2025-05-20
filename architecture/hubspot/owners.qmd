@@ -3,3 +3,11 @@ title: Owner Properties
 format: html
 ---
 
+Owners are...
+
+## Roles
+
+## Deals
+
+## Contacts and Customers
+

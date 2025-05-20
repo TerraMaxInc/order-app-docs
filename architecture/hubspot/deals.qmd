@@ -3,4 +3,15 @@ title: Deals Object
 format: html
 ---
 
-Stuff about deals...
+Stupid definition
+Center of the associations web
+
+## App Interface
+
+## Associations
+With Contact and Company
+With Line Items
+With other Deals
+
+## Prepay
+A mess

@@ -1,0 +1,23 @@
+---
+title: PDF Service
+format: html
+---
+
+The PDF Service is a backend application with a single HTTP POST endpoint that receives an *HTML document string* and returns it as a *PDF document binary*.
+
+It is a **Node.js** application, containerized with **Docker**, which runs a headless instance of Chromium using **Puppeteer**.  The image is saved in the **GitHub Container Registry** under my personal account, and the app is hosted in **Azure Containterized Apps**.
+
+My goal for this service was to produce *consistent* PDF documents for all users, across all devices.  For this reason, I wanted the service to be a back-end, server-side process, rather than something that ran client-side.  Although client-side offers more convenient options, it also can mean for variable results in output.
+
+Running this service from the server, however presented challenges.  A full browser engine in necessary to render HTML with complex layouts and CSS styling, but could not be run from Azure Functions.  Being a @serverless environment, Functions does not have the file system access or libraries needed to run Chromium.  But running a full server just to convert a few PDFs a day would be overkill.
+
+
+
+## Puppeteer with Headless Chromium
+Puppeteer is a javascript library library that allows for remote management of a headless Chromium or Firefox browser.
+
+
+## Containerization with Docker
+
+
+## GitHub Container Registry and Azure Containerized Apps

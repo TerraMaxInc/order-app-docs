@@ -95,6 +95,12 @@
         "category": "hubspot"
     },
     {
+        "term": "Serverless",
+        "key": "serverless",
+        "definition": "In the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.",
+        "category": "basic"
+    },
+    {
         "term": "String",
         "key": "string",
         "definition": "A data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).",

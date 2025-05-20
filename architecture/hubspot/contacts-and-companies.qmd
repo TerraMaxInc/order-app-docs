@@ -3,4 +3,19 @@ title: Contacts and Companies Objects
 format: html
 ---
 
-Stuff about Contacts and Companies...
+The Contacts and Companies @hs-object in HubSpot have similar and interrelated roles.  They both can, at times, be considered the "customer" who made an Order.  The distinction between the two is sometimes a matter of intuitive categories, but sometimes more about how to manipulate certain behavior out the the data structure.
+
+## Contact
+Definition
+Properties
+
+## Company
+Definittion
+Properties
+
+## Associations
+Between them
+With Deals
+
+## Multiple Addresses
+
