@@ -4,14 +4,14 @@
     "href": "reference/glossary.html",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
+    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nIn the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
   },
   {
     "objectID": "reference/glossary.html#basic-terms",
     "href": "reference/glossary.html#basic-terms",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
+    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nIn the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
   },
   {
     "objectID": "reference/glossary.html#azure-terms",
@@ -60,14 +60,49 @@
     "href": "how-to/scaffold-pwa-with-msal.html#add-pwa",
     "title": "Scaffold New PWA with MSAL",
     "section": "3. Add PWA",
-    "text": "3. Add PWA\n\nManually add to the package.json file:\n\n\"engines\": {\n  \"node\": \"&gt;=18.0.0\"\n}\n\nnpm install vite-plugin-pwa --save-dev\nChange the default vite.congic.ts file from something like this:\n\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vite.dev/config/\nexport default defineConfig({\n  plugins: [react()],\n})\nto something like this:\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\nimport { VitePWA } from 'vite-plugin-pwa';\n\n// https://vite.dev/config/\nexport default defineConfig({\n  plugins: [\n    react(),\n    VitePWA({\n      registerType: 'autoUpdate',\n      manifest: {\n        name: \"Product Manager\",\n        description: \"A PWA for managing Products and generating the Pricelist PDF\",\n        theme_color: \"#ffffff\",\n        display: 'standalone',\n        start_url: \"/\",\n        icons: [\n          {\n            src: \"/favicon.svg\",\n            sizes: \"150x150\",\n            type: \"image/svg+xml\",\n            purpose: \"any\",\n          },\n        ]\n      },\n      devOptions: {\n        enabled: true\n      }\n    })\n  ],\n})"
+    "text": "3. Add PWA\n\nRun npm install vite-plugin-pwa --save-dev\nManually add to the package.json file:\n\n\"engines\": {\n  \"node\": \"&gt;=18.0.0\"\n}\n\nChange the default vite.congic.ts file from something like this:\n\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vite.dev/config/\nexport default defineConfig({\n  plugins: [react()],\n})\nto something like this:\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\nimport { VitePWA } from 'vite-plugin-pwa';\n\n// https://vite.dev/config/\nexport default defineConfig({\n  plugins: [\n    react(),\n    VitePWA({\n      registerType: 'autoUpdate',\n      manifest: {\n        name: \"Product Manager\",\n        description: \"A PWA for managing Products and generating the Pricelist PDF\",\n        theme_color: \"#ffffff\",\n        display: 'standalone',\n        start_url: \"/\",\n        icons: [\n          {\n            src: \"/favicon.svg\",\n            sizes: \"150x150\",\n            type: \"image/svg+xml\",\n            purpose: \"any\",\n          },\n        ]\n      },\n      devOptions: {\n        enabled: true\n      }\n    })\n  ],\n})"
   },
   {
-    "objectID": "how-to/scaffold-pwa-with-msal.html#section",
-    "href": "how-to/scaffold-pwa-with-msal.html#section",
+    "objectID": "how-to/scaffold-pwa-with-msal.html#create-app-in-azure-static-web-apps",
+    "href": "how-to/scaffold-pwa-with-msal.html#create-app-in-azure-static-web-apps",
     "title": "Scaffold New PWA with MSAL",
-    "section": "4.",
-    "text": "4."
+    "section": "4. Create App in Azure Static Web Apps",
+    "text": "4. Create App in Azure Static Web Apps\n\nFrom the Azure Portal, Create Static Web App\nIn the Basics tab:\n\nResourceGroup: TestResourceGroup\nHosting plan: Free: for hobby or personal projects\nDeployment details: GitHub\n\nUsing the Organization GitHub is hard, so I use a clone from my account and a special branch called “deploy”\n\nBuild Details:\n\nApp location: /\nApi location:\nOutput location: dist (it will default to “build”, but this is wrong)\n\n\nIn the Deployment configuration tab:\n\nDeployment authorization policy: GitHub\n\nIn the Review + create tab: click Create.\n\nIt will auto-generate a random url. Copy/save this for the next step."
+  },
+  {
+    "objectID": "how-to/scaffold-pwa-with-msal.html#create-app-registration-in-entra",
+    "href": "how-to/scaffold-pwa-with-msal.html#create-app-registration-in-entra",
+    "title": "Scaffold New PWA with MSAL",
+    "section": "5. Create App Registration in Entra",
+    "text": "5. Create App Registration in Entra\nThis is necessary for the MSAL login to work.\n\nGo to Entra &gt; App Registration and click New registration\nGive it a different name than the app you’re registering. This is a differect object that will have a different id. I like ot name them app-name-registration\nSupported account types: Single tenant (for internal-only projects)\nRedirect URI:\n\nSingle-page application (SPA), with the random url from the previous step\n\nRegister, then make some final edits by going to Redirect URIs\n\nAdd another platform: Single-page application (SPA), http://localhost:3000\nUnder “Select the tokens you would like to be issued by the authorization endpoint” Select both Access tokens and ID tokens\nSave changes\n\nAdd yourself as an Owner buy going to Manage &gt; Owners and clicking Add owners"
+  },
+  {
+    "objectID": "how-to/scaffold-pwa-with-msal.html#create-permissions-to-access-api",
+    "href": "how-to/scaffold-pwa-with-msal.html#create-permissions-to-access-api",
+    "title": "Scaffold New PWA with MSAL",
+    "section": "6. Create Permissions to Access API",
+    "text": "6. Create Permissions to Access API\n\nFirst add the app to the API’s list of client apps:\n\nFind the terramax-hubspot-service-registration in Entra’s list of App registrations\nGo to Manage &gt; Expose an API and at the bottom click Add a client application and paste in this apps’s registration id from #5\n\nThen add the permissions to the app’s registration:\n\nGo back it the app’s registration, then go to Manage &gt; API Permission and click Add a permission\nSelect My APIs and terramax-hubspot-servive-registration\nOpen the api section and check the permissions you want to give the app, along with the user_impersonation\nClick the checkmark to Grant admin consent for TerraMax, Inc.\n\nThen add the client app to the API’s CORS Configuration:\n\nLeave Entra and go to the API app, not the registration.\nGo to API &gt; CORS\nUnder allowed origins, add the randomly generated url from #4 and Save\n\nAND (this never fucking ends) add the app as an identity provider:\n\nIn the same API app section as the CORS stuff, go to Settings &gt; Authentication\nUnder Identity Provider, there is probably already one line item with “Microsoft” as the Identity provider (unless you make a new Function App). This will also be under Microsoft, click on Edit for the existing Microsoft identity provider.\nWithin, the Application (client) ID should be the ID of the server-side, API app registration, because words don’t mean anything in this nightmare circus. Below is a list of Allowed token audiences, which includes both the registration IDs of the server-side app and the client-side app/s that access it. HERE is where you add the ID for the new app’s registration. It should be api:// + the new app’s registration client ID.\na few lines below there is a single, grayed-out looking box labeled Allowed client applications, which looks like it contains only one value but in fact contains a semi-colon separated LIST of values. Click the edit pencil and add the new app’s registration id into a new line in the popup."
+  },
+  {
+    "objectID": "how-to/scaffold-pwa-with-msal.html#add-authconfig",
+    "href": "how-to/scaffold-pwa-with-msal.html#add-authconfig",
+    "title": "Scaffold New PWA with MSAL",
+    "section": "7. Add authConfig",
+    "text": "7. Add authConfig\n\nin the src folder add a file authConfig.ts and add something like this:\n\nimport { LogLevel } from \"@azure/msal-browser\";\nimport { cache } from \"react\";\n\n/**\n * Configuration object to be passed to MAL instance on creation\n * For a full list of MSAL.js configuration parameters, visit:\n * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md\n */\n\nconst TENANT_ID = // the tenant id is the same across all apps, and can be found in Entra's TerraMax, Inc overview in the Azure Portal\nconst FUNCTIONS_APP_ID = // the application (client) id the terramax-hubspot-service-registration\nconst CLIENT_ID = // the application (client) id in the registration you created in #5\nconst FUNCTIONS_BASE_ENDPOINT = // https://terramax-hubspot-service.azurewebsites.net/api/\n\nconst REDIRECT_URI = window.location.hostname === \"localhost\"\n    ? \"http://localhost:5173\"\n    : // the randomly-generated url from #4\n\nconst AUTHORITY = `https://login.microsoftonline.com/${TENANT_ID}`;\n\nexport const msalConfig = {\n    auth: {\n        clientId: CLIENT_ID,\n        authority: AUTHORITY,\n        redirectUri: REDIRECT_URI || window.location.origin,\n    },\n    cache: {\n        cacheLocation: \"localStorage\", // configures where your cache will be stored\n        storeAuthStateInCookie: false, // set to true if you're having issues on IE11 or Edge\n    },\n    system: {\n        loggerOptions: {\n            loggerCallback: (level: LogLevel, message: string, containsPii: boolean) =&gt; {\n                if(containsPii) {\n                    return;\n                }\n                switch (level) {\n                     case LogLevel.Error:\n                        console.error(message);\n                        return;\n                    case LogLevel.Info:\n                        console.info(message);\n                        return;\n                    case LogLevel.Verbose:\n                        console.debug(message);\n                        return;\n                    case LogLevel.Warning:\n                        console.warn(message);\n                        return;\n                    default:\n                        return;\n                }\n            }\n        }\n    }\n};\n\n/**\n * Scopes you add here will be prompted for user consent during sign-in.\n * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.\n * For more information about OIDC scopes, visit:\n * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes\n */\n\nexport const loginRequest = {\n    scopes: [\n        `api://${FUNCTIONS_APP_ID}/api.AllSkus`\n    ],\n    audience: `api://${FUNCTIONS_APP_ID}`,\n}\n\nexport const functionsConfig = {\n    skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,\n}"
+  },
+  {
+    "objectID": "how-to/scaffold-pwa-with-msal.html#wrap-main.tsx-with-msal",
+    "href": "how-to/scaffold-pwa-with-msal.html#wrap-main.tsx-with-msal",
+    "title": "Scaffold New PWA with MSAL",
+    "section": "8. Wrap main.tsx with Msal",
+    "text": "8. Wrap main.tsx with Msal\nGenerated code something like this:\nimport { StrictMode } from 'react'\nimport { createRoot } from 'react-dom/client'\nimport './index.css'\nimport App from './App.tsx'\n\ncreateRoot(document.getElementById('root')!).render(\n  &lt;StrictMode&gt;\n    &lt;App /&gt;\n  &lt;/StrictMode&gt;,\n)\nChange to something like this:\nimport { StrictMode } from 'react'\nimport { createRoot } from 'react-dom/client'\nimport './index.css'\nimport App from './App.tsx'\nimport { PublicClientApplication } from '@azure/msal-browser'\nimport { msalConfig } from './authConfig.ts'\nimport { MsalProvider } from '@azure/msal-react'\n\nconst msalInstance = new PublicClientApplication(msalConfig);\n\ncreateRoot(document.getElementById('root')!).render(\n  &lt;StrictMode&gt;\n    &lt;MsalProvider instance={msalInstance}&gt;\n      &lt;App /&gt;\n    &lt;/MsalProvider&gt;\n  &lt;/StrictMode&gt;,\n)"
+  },
+  {
+    "objectID": "how-to/scaffold-pwa-with-msal.html#add-api-permissions",
+    "href": "how-to/scaffold-pwa-with-msal.html#add-api-permissions",
+    "title": "Scaffold New PWA with MSAL",
+    "section": "9. ADd API Permissions",
+    "text": "9. ADd API Permissions"
   },
   {
     "objectID": "how-to/edit-product.html",
@@ -189,6 +224,34 @@
     "text": "Stuff about products and line items…"
   },
   {
+    "objectID": "architecture/hubspot/products-and-lineitems.html#products",
+    "href": "architecture/hubspot/products-and-lineitems.html#products",
+    "title": "Products and Line Items",
+    "section": "Products",
+    "text": "Products\nMost up-to-date data about products"
+  },
+  {
+    "objectID": "architecture/hubspot/products-and-lineitems.html#line-items",
+    "href": "architecture/hubspot/products-and-lineitems.html#line-items",
+    "title": "Products and Line Items",
+    "section": "Line Items",
+    "text": "Line Items\nSnapshot of Products Association to Deals"
+  },
+  {
+    "objectID": "architecture/hubspot/products-and-lineitems.html#pricing-limitations",
+    "href": "architecture/hubspot/products-and-lineitems.html#pricing-limitations",
+    "title": "Products and Line Items",
+    "section": "Pricing Limitations",
+    "text": "Pricing Limitations"
+  },
+  {
+    "objectID": "architecture/hubspot/products-and-lineitems.html#relationship-to-sql-database",
+    "href": "architecture/hubspot/products-and-lineitems.html#relationship-to-sql-database",
+    "title": "Products and Line Items",
+    "section": "Relationship to SQL Database",
+    "text": "Relationship to SQL Database"
+  },
+  {
     "objectID": "architecture/hubspot/logs-tab.html",
     "href": "architecture/hubspot/logs-tab.html",
     "title": "HubSpot Private App Logs",
@@ -221,7 +284,35 @@
     "href": "architecture/hubspot/contacts-and-companies.html",
     "title": "Contacts and Companies Objects",
     "section": "",
-    "text": "Stuff about Contacts and Companies…"
+    "text": "The Contacts and Companies Object in HubSpot have similar and interrelated roles. They both can, at times, be considered the “customer” who made an Order. The distinction between the two is sometimes a matter of intuitive categories, but sometimes more about how to manipulate certain behavior out the the data structure."
+  },
+  {
+    "objectID": "architecture/hubspot/contacts-and-companies.html#contact",
+    "href": "architecture/hubspot/contacts-and-companies.html#contact",
+    "title": "Contacts and Companies Objects",
+    "section": "Contact",
+    "text": "Contact\nDefinition Properties"
+  },
+  {
+    "objectID": "architecture/hubspot/contacts-and-companies.html#company",
+    "href": "architecture/hubspot/contacts-and-companies.html#company",
+    "title": "Contacts and Companies Objects",
+    "section": "Company",
+    "text": "Company\nDefinittion Properties"
+  },
+  {
+    "objectID": "architecture/hubspot/contacts-and-companies.html#associations",
+    "href": "architecture/hubspot/contacts-and-companies.html#associations",
+    "title": "Contacts and Companies Objects",
+    "section": "Associations",
+    "text": "Associations\nBetween them With Deals"
+  },
+  {
+    "objectID": "architecture/hubspot/contacts-and-companies.html#multiple-addresses",
+    "href": "architecture/hubspot/contacts-and-companies.html#multiple-addresses",
+    "title": "Contacts and Companies Objects",
+    "section": "Multiple Addresses",
+    "text": "Multiple Addresses"
   },
   {
     "objectID": "architecture/github/github-overview.html",
@@ -231,39 +322,60 @@
     "text": "Stuff about the Github account…. - Github actions - how these docs are hosted"
   },
   {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html",
-    "href": "architecture/azure/terramax-data/terramax-data.html",
-    "title": "TerraMax Data",
+    "objectID": "architecture/azure/terramax-data/transactions.html",
+    "href": "architecture/azure/terramax-data/transactions.html",
+    "title": "Hubspot Transactions Logging",
     "section": "",
-    "text": "terramax-data is an Azure SQL Database that stores data not suited to HubSpot‘s structural limitation’. It wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history.\nThough it uses the cheapest pricing tier (Basic), this is the only part of the ordering app system that is no free. At the tie of writing, it cost $4.99/mo. See check costs."
+    "text": "hubspot_transactions is an Event Table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
   },
   {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html#sections",
-    "href": "architecture/azure/terramax-data/terramax-data.html#sections",
-    "title": "TerraMax Data",
-    "section": "Sections:",
-    "text": "Sections:\n\nProduct Data:\n\nThe six tables that make up the structure of Product data and how the relate\n\nProduct History and Backup:\n\nThe two tables that store historical product data and can be used for backup\n\nHubSpot Transaction Log:\n\nThe one table that logs edits to HubSpot, to prevent duplication and track usage\n\nAzure SQL Database:\n\nA summary of the Azure Resource being used"
+    "objectID": "architecture/azure/terramax-data/transactions.html#ids",
+    "href": "architecture/azure/terramax-data/transactions.html#ids",
+    "title": "Hubspot Transactions Logging",
+    "section": "IDs",
+    "text": "IDs\nThere are a number of IDs tracked in this table, which serve different purposes.\nThe idempotency id is the first line of defense in preventing the creation of duplicate Deals in HubSpot. Once a Deal is successfully written to HubSpot it is assigned an object id, but that only happens at the end of the first save. It is potentially possible that this HubSpot-based id might fail to be passed back to the client app, and the user might attempt to save again and create a duplticate. To head off this danger, the idempotency id is generated in the client app as soon as a user starts a new order. It is saved in the hubspot_transactions log so that the hubspot_service can check the id of an incoming deal against the log and ensure that it’s not a duplicate. This id is also saved to a custom property in HubSpot as part of the Deal’s data, so it can be used for reference in future edits to thet Deal.\nThe transaction id exists not to prevent the creation of duplicate Deals, but duplicate actions done for a Deal. Most especially, it’s intended to prevent sending duplicate emails to Dave when the Deal is closed/won. This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.\nThe dealID is the object id assigned to a Deal by HubSpot when first saved to their database. This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save."
   },
   {
-    "objectID": "architecture/azure/terramax-data/terramax-data.html#in-azure-portal",
-    "href": "architecture/azure/terramax-data/terramax-data.html#in-azure-portal",
-    "title": "TerraMax Data",
-    "section": "In Azure Portal",
-    "text": "In Azure Portal\nYou can view and manage the database in the Azure Portal. From the homepage when you log in, in the list of resources, you will see both terramax-data and terramax-db-server.\nterramax-db-server is a SQL Server that hosts the database, and terramax-data is the database itself. At present, the database uses the Basic price tier, because our needs are minimal.\nFrom within the terramax-data Resource Page, you can query the data itself directly through the Query Editor. It will require you to authenticate either through SQL server or Microsoft Entra authentication. I have been using Microsoft Entra auth. In order ot be able to use Entra auth to wuery the daatabase, you need to be …."
+    "objectID": "architecture/azure/terramax-data/transactions.html#table-structure",
+    "href": "architecture/azure/terramax-data/transactions.html#table-structure",
+    "title": "Hubspot Transactions Logging",
+    "section": "Table Structure",
+    "text": "Table Structure\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\neventID\nPK, int, not null\nAuto-generated id for the record.\n\n\nidempotencyID\nvarchar(255), null\nId for the Deal generated in the client app.\n\n\ntransactionID\nvarchar(255), null\nId for the transaction generated in the client app.\n\n\nuserEmail\nvarchar(255), null\nEmail of the user attempting the transaction, scraped from their auth credentials.\n\n\ncreatedAt\ndatetime2(7), null\nDate and time of the transaction.\n\n\ntransaction_status\nvarchar(100), null\nHTTP status code for the success of the transaction as a whole.\n\n\ntransaction_message\nvarchar(max), null\nMessage sent back to describe the success of the transaction as a whole.\n\n\ndeal_status\nvarchar(100), null\nHTTP status code for the success of writing the Deal to HubSpot.\n\n\nlineitems_status\nvarchar(100), null\nHTTP status code for the success of writing the LineItems to HubSpot.\n\n\nemail_status\nvarchar(100), null\nHTTP status code for the success of sending an email.\n\n\ndealID\nvarchar(255), null\nThe object id assigned to the deal by HubSpot."
   },
   {
-    "objectID": "architecture/azure/terramax-data/backup.html",
-    "href": "architecture/azure/terramax-data/backup.html",
-    "title": "Backup",
+    "objectID": "architecture/azure/terramax-data/product-structure.html",
+    "href": "architecture/azure/terramax-data/product-structure.html",
+    "title": "Product Data Structure",
     "section": "",
-    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the event a SQL query goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields.\n-Skus_history containsa ll other fields in Skus using the same column names. The combination of backup_event_id and sku should also be unique within the tables."
+    "text": "The structure of Product data in the TerraMax SQL Database is more complex than the flattened Product object in HubSpot. It involves six tables, four of which are simple Lookup Table types, and two of which are Entity Table types that assemble the data into more complex objects.\nThis database differentiates between the Sku: the item a customer purchases with a specific size and price, and the Product: the actual material inside the item. One Product may come in multiple sizes, and thus have mutliple skus. The Applications, Crops, and Types tables are associated with the Product table, and the Sizes table is associated with the Skus table."
   },
   {
-    "objectID": "architecture/azure/terramax-data/backup.html#actions",
-    "href": "architecture/azure/terramax-data/backup.html#actions",
-    "title": "Backup",
-    "section": "Actions",
-    "text": "Actions\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
+    "objectID": "architecture/azure/terramax-data/product-structure.html#entity-tables",
+    "href": "architecture/azure/terramax-data/product-structure.html#entity-tables",
+    "title": "Product Data Structure",
+    "section": "Entity Tables",
+    "text": "Entity Tables\n\nSkus\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nsku\nPK, int, not null\nUnique identifier for the record/sku.\n\n\nproduct_id\nFK, int, not null\nForeign key that associates with the Products table. The product contained in the sku.\n\n\nsize\nFK, varchar(255), not null\nForeign key that associates with the Sizes table. The volume or weight of the product.\n\n\ndistributor_price\ndecimal(8,3)\nThe price distributors, the lowest possible price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\ndealer_price\ndecimal(8,3)\nThe price for dealers, the middle price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\nmsrp\ndecimal(8,3)\nManufacturer suggested retail price, usually twice the distributor price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\n\n\nProducts\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nid\nPK, int, not null\nUnique identifier for the product.\n\n\nname\nvarchar(255), not null\nFull name that will display in the client app.\n\n\ntype\nFK, varchar(255), not null\nForeign key that associates with the Types table. Actual values are just “Liquid” and “Dry”.\n\n\ncrop\nFK, varchar(255), not null\nForeign key that associates with the Crops table. List of crops.\n\n\napplication\nFK, varchar(255), null\nForeign key that associates with the Applications table. Values like “ST” and “IF”.\n\n\ngreen\nbit, null\nBoolean value where 1/true = green and 0/false = conventional."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/product-structure.html#lookup-tables",
+    "href": "architecture/azure/terramax-data/product-structure.html#lookup-tables",
+    "title": "Product Data Structure",
+    "section": "Lookup Tables",
+    "text": "Lookup Tables\n\nApplications\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\napplication\nPK, varchar(255), not null\nAbbreviations of application types: ST, IF, etc\n\n\n\n\nCrops\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\ncrop\nPK, varchar(255), not null\nSingular form of the crop name and the primary key.\n\n\nplural\nvarchar(255), null\nPlural form of the crop name.\n\n\n\n\nSizes\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nsize\nPK, varchar(255), not null\nFull text of size that will appear in the app: 5 lbs, 2.5 gal, etc.\n\n\n\n\nTypes\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\ntype\nPK, varchar(255), not null\n“Liquid” or “Dry”."
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/product-structure.html#see-also",
+    "href": "architecture/azure/terramax-data/product-structure.html#see-also",
+    "title": "Product Data Structure",
+    "section": "See Also",
+    "text": "See Also\n\nAdd New Product\nEdit Product Information"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/azure-sql.html",
+    "href": "architecture/azure/terramax-data/azure-sql.html",
+    "title": "Azure SQL Database",
+    "section": "",
+    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
   },
   {
     "objectID": "architecture/azure/ordering-app/static-web-apps.html",
@@ -306,6 +418,13 @@
     "title": "Azure Overview",
     "section": "",
     "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same Tenant ID as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure. They can be viewed and managed through the Azure Portal."
+  },
+  {
+    "objectID": "architecture/azure/azure-overview.html#quick-links",
+    "href": "architecture/azure/azure-overview.html#quick-links",
+    "title": "Azure Overview",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nEntra\nHubSpot Service\nOrdering App\nPDF Service\nTerraMax Data\nTerraMax App Images Storage Account"
   },
   {
     "objectID": "architecture/azure/azure-overview.html#portal",
@@ -364,60 +483,123 @@
     "text": "Other settings"
   },
   {
-    "objectID": "architecture/azure/terramax-data/azure-sql.html",
-    "href": "architecture/azure/terramax-data/azure-sql.html",
-    "title": "Azure SQL Database",
+    "objectID": "architecture/azure/pdf-service/pdf-service.html",
+    "href": "architecture/azure/pdf-service/pdf-service.html",
+    "title": "PDF Service",
     "section": "",
-    "text": "An Azure SQL Database is one of many database options available in Azure. It’s a cloud-based, fully managed, relational database. I felt this was the best option for the project because it offers all the function of a traditional SQL database in the cloud, while Microsoft takes care of the nitty-gitty database management like hosting and maintenance."
+    "text": "The PDF Service is a backend application with a single HTTP POST endpoint that receives an HTML document string and returns it as a PDF document binary.\nIt is a Node.js application, containerized with Docker, which runs a headless instance of Chromium using Puppeteer. The image is saved in the GitHub Container Registry under my personal account, and the app is hosted in Azure Containterized Apps.\nMy goal for this service was to produce consistent PDF documents for all users, across all devices. For this reason, I wanted the service to be a back-end, server-side process, rather than something that ran client-side. Although client-side offers more convenient options, it also can mean for variable results in output.\nRunning this service from the server, however presented challenges. A full browser engine in necessary to render HTML with complex layouts and CSS styling, but could not be run from Azure Functions. Being a Serverless environment, Functions does not have the file system access or libraries needed to run Chromium. But running a full server just to convert a few PDFs a day would be overkill."
   },
   {
-    "objectID": "architecture/azure/terramax-data/product-structure.html",
-    "href": "architecture/azure/terramax-data/product-structure.html",
-    "title": "Product Data Structure",
+    "objectID": "architecture/azure/pdf-service/pdf-service.html#puppeteer-with-headless-chromium",
+    "href": "architecture/azure/pdf-service/pdf-service.html#puppeteer-with-headless-chromium",
+    "title": "PDF Service",
+    "section": "Puppeteer with Headless Chromium",
+    "text": "Puppeteer with Headless Chromium\nPuppeteer is a javascript library library that allows for remote management of a headless Chromium or Firefox browser."
+  },
+  {
+    "objectID": "architecture/azure/pdf-service/pdf-service.html#containerization-with-docker",
+    "href": "architecture/azure/pdf-service/pdf-service.html#containerization-with-docker",
+    "title": "PDF Service",
+    "section": "Containerization with Docker",
+    "text": "Containerization with Docker"
+  },
+  {
+    "objectID": "architecture/azure/pdf-service/pdf-service.html#github-container-registry-and-azure-containerized-apps",
+    "href": "architecture/azure/pdf-service/pdf-service.html#github-container-registry-and-azure-containerized-apps",
+    "title": "PDF Service",
+    "section": "GitHub Container Registry and Azure Containerized Apps",
+    "text": "GitHub Container Registry and Azure Containerized Apps"
+  },
+  {
+    "objectID": "architecture/azure/terramax-data/backup.html",
+    "href": "architecture/azure/terramax-data/backup.html",
+    "title": "Backup",
     "section": "",
-    "text": "The structure of Product data in the TerraMax SQL Database is more complex than the flattened Product object in HubSpot. It involves six tables, four of which are simple Lookup Table types, and two of which are Entity Table types that assemble the data into more complex objects.\nThis database differentiates between the Sku: the item a customer purchases with a specific size and price, and the Product: the actual material inside the item. One Product may come in multiple sizes, and thus have mutliple skus. The Applications, Crops, and Types tables are associated with the Product table, and the Sizes table is associated with the Skus table."
+    "text": "Azure SQL database maintains restore points of data, but retrieving it requires creating a duplicate database, which is a nuisance. This may be useful to have in some worst-case scenario, but for day-to-day safety and convenience, the TerraMax Data SQL Database has internal tables to track change history for the Products and Skus tables.\nThese history tables can be used both for restoring pervious data in the event a SQL query goes wrong and damages data, and to simply view the state of the data in the past. The tables both mirror the data structure of the working tables Products and Skus with added fields.\n-Skus_history containsa ll other fields in Skus using the same column names. The combination of backup_event_id and sku should also be unique within the tables."
   },
   {
-    "objectID": "architecture/azure/terramax-data/product-structure.html#entity-tables",
-    "href": "architecture/azure/terramax-data/product-structure.html#entity-tables",
-    "title": "Product Data Structure",
-    "section": "Entity Tables",
-    "text": "Entity Tables\n\nSkus\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nsku\nPK, int, not null\nUnique identifier for the record/sku.\n\n\nproduct_id\nFK, int, not null\nForeign key that associates with the Products table. The product contained in the sku.\n\n\nsize\nFK, varchar(255), not null\nForeign key that associates with the Sizes table. The volume or weight of the product.\n\n\ndistributor_price\ndecimal(8,3)\nThe price distributors, the lowest possible price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\ndealer_price\ndecimal(8,3)\nThe price for dealers, the middle price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\nmsrp\ndecimal(8,3)\nManufacturer suggested retail price, usually twice the distributor price. Can be null here, but should not be left null for long or it will cause errors in the app.\n\n\n\n\nProducts\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nid\nPK, int, not null\nUnique identifier for the product.\n\n\nname\nvarchar(255), not null\nFull name that will display in the client app.\n\n\ntype\nFK, varchar(255), not null\nForeign key that associates with the Types table. Actual values are just “Liquid” and “Dry”.\n\n\ncrop\nFK, varchar(255), not null\nForeign key that associates with the Crops table. List of crops.\n\n\napplication\nFK, varchar(255), null\nForeign key that associates with the Applications table. Values like “ST” and “IF”.\n\n\ngreen\nbit, null\nBoolean value where 1/true = green and 0/false = conventional."
+    "objectID": "architecture/azure/terramax-data/backup.html#actions",
+    "href": "architecture/azure/terramax-data/backup.html#actions",
+    "title": "Backup",
+    "section": "Actions",
+    "text": "Actions\nThese history tables can be managed via stored procedures: - Backup_Products_And_Skus: to be run before making changes to the Products or Skus tables, saves the current state of data to these history tables"
   },
   {
-    "objectID": "architecture/azure/terramax-data/product-structure.html#lookup-tables",
-    "href": "architecture/azure/terramax-data/product-structure.html#lookup-tables",
-    "title": "Product Data Structure",
-    "section": "Lookup Tables",
-    "text": "Lookup Tables\n\nApplications\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\napplication\nPK, varchar(255), not null\nAbbreviations of application types: ST, IF, etc\n\n\n\n\nCrops\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\ncrop\nPK, varchar(255), not null\nSingular form of the crop name and the primary key.\n\n\nplural\nvarchar(255), null\nPlural form of the crop name.\n\n\n\n\nSizes\n\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\nsize\nPK, varchar(255), not null\nFull text of size that will appear in the app: 5 lbs, 2.5 gal, etc.\n\n\n\n\nTypes\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\ntype\nPK, varchar(255), not null\n“Liquid” or “Dry”."
-  },
-  {
-    "objectID": "architecture/azure/terramax-data/product-structure.html#see-also",
-    "href": "architecture/azure/terramax-data/product-structure.html#see-also",
-    "title": "Product Data Structure",
-    "section": "See Also",
-    "text": "See Also\n\nAdd New Product\nEdit Product Information"
-  },
-  {
-    "objectID": "architecture/azure/terramax-data/transactions.html",
-    "href": "architecture/azure/terramax-data/transactions.html",
-    "title": "Hubspot Transactions Logging",
+    "objectID": "architecture/azure/terramax-data/terramax-data.html",
+    "href": "architecture/azure/terramax-data/terramax-data.html",
+    "title": "TerraMax Data",
     "section": "",
-    "text": "hubspot_transactions is an Event Table which stores logs of all transactions processed by the receiveOrder function: the function which writes Deals to HubSpot. Most duplication-prevention happens on the client-side by keeping track of the state of a Deal, but the transaction log serves as an extra, server-side check. It can also be used to review user activity and monitor for failure events."
+    "text": "terramax-data is an Azure SQL Database that stores data not suited to HubSpot‘s structural limitation’. It wasn’t possible within HubSpot’s Products object to incorporate our three pricing tiers without awkward work-arounds, and so an external database was needed. Once in place, other uses have emerged, like logging transactions and storing Product history.\nHubSpot contains Product data that mirrors this SQL database data, in flattened form, for the sake of reporting within HubSpot. It can be updated programmatically to synch with any changes made to the SQL database, using the updateHSProducts function in the HubSpot Service.\nThe HubSpot Service interfaces with this database when it needs to store or retrieve information. The front end user never interacts with it directly, and syncing HubSpot Products with the Products data in the database is done via an Azure Function. There are some tasks that require direct SQL queries to the database however, like adding or editing products, or checking history.\nThough it uses the cheapest pricing tier (Basic), this is the only part of the ordering app system that is no free. At the tie of writing, it cost $4.99/mo. See check costs."
   },
   {
-    "objectID": "architecture/azure/terramax-data/transactions.html#ids",
-    "href": "architecture/azure/terramax-data/transactions.html#ids",
-    "title": "Hubspot Transactions Logging",
-    "section": "IDs",
-    "text": "IDs\nThere are a number of IDs tracked in this table, which serve different purposes.\nThe idempotency id is the first line of defense in preventing the creation of duplicate Deals in HubSpot. Once a Deal is successfully written to HubSpot it is assigned an object id, but that only happens at the end of the first save. It is potentially possible that this HubSpot-based id might fail to be passed back to the client app, and the user might attempt to save again and create a duplticate. To head off this danger, the idempotency id is generated in the client app as soon as a user starts a new order. It is saved in the hubspot_transactions log so that the hubspot_service can check the id of an incoming deal against the log and ensure that it’s not a duplicate. This id is also saved to a custom property in HubSpot as part of the Deal’s data, so it can be used for reference in future edits to thet Deal.\nThe transaction id exists not to prevent the creation of duplicate Deals, but duplicate actions done for a Deal. Most especially, it’s intended to prevent sending duplicate emails to Dave when the Deal is closed/won. This value is also generated in the client-app, not on starting a new deal but at key points in processing, so that when a user makes sufficient changes to the Deal they will get a new transaction id and be able to save again.\nThe dealID is the object id assigned to a Deal by HubSpot when first saved to their database. This is the most important value, the one that most fundamentally defines the record, but it cannot be accessed or predicted until after the first successful save."
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#sections",
+    "href": "architecture/azure/terramax-data/terramax-data.html#sections",
+    "title": "TerraMax Data",
+    "section": "Sections:",
+    "text": "Sections:\n\nProduct Data:\n\nThe six tables that make up the structure of Product data and how the relate\n\nProduct History and Backup:\n\nThe two tables that store historical product data and can be used for backup\n\nHubSpot Transaction Log:\n\nThe one table that logs edits to HubSpot, to prevent duplication and track usage\n\nAzure SQL Database:\n\nA summary of the Azure Resource being used"
   },
   {
-    "objectID": "architecture/azure/terramax-data/transactions.html#table-structure",
-    "href": "architecture/azure/terramax-data/transactions.html#table-structure",
-    "title": "Hubspot Transactions Logging",
-    "section": "Table Structure",
-    "text": "Table Structure\n\n\n\n\n\n\n\n\nColumn\nData Type\nPurpose\n\n\n\n\neventID\nPK, int, not null\nAuto-generated id for the record.\n\n\nidempotencyID\nvarchar(255), null\nId for the Deal generated in the client app.\n\n\ntransactionID\nvarchar(255), null\nId for the transaction generated in the client app.\n\n\nuserEmail\nvarchar(255), null\nEmail of the user attempting the transaction, scraped from their auth credentials.\n\n\ncreatedAt\ndatetime2(7), null\nDate and time of the transaction.\n\n\ntransaction_status\nvarchar(100), null\nHTTP status code for the success of the transaction as a whole.\n\n\ntransaction_message\nvarchar(max), null\nMessage sent back to describe the success of the transaction as a whole.\n\n\ndeal_status\nvarchar(100), null\nHTTP status code for the success of writing the Deal to HubSpot.\n\n\nlineitems_status\nvarchar(100), null\nHTTP status code for the success of writing the LineItems to HubSpot.\n\n\nemail_status\nvarchar(100), null\nHTTP status code for the success of sending an email.\n\n\ndealID\nvarchar(255), null\nThe object id assigned to the deal by HubSpot."
+    "objectID": "architecture/azure/terramax-data/terramax-data.html#in-azure-portal",
+    "href": "architecture/azure/terramax-data/terramax-data.html#in-azure-portal",
+    "title": "TerraMax Data",
+    "section": "In Azure Portal",
+    "text": "In Azure Portal\nYou can view and manage the database in the Azure Portal. From the homepage when you log in, in the list of resources, you will see both terramax-data and terramax-db-server.\nterramax-db-server is a SQL Server that hosts the database, and terramax-data is the database itself. At present, the database uses the Basic price tier, because our needs are minimal.\nFrom within the terramax-data Resource Page, you can query the data itself directly through the Query Editor. It will require you to authenticate either through SQL server or Microsoft Entra authentication. I have been using Microsoft Entra auth. In order ot be able to use Entra auth to wuery the daatabase, you need to be …."
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html",
+    "title": "Storage Account terramaxappimages",
+    "section": "",
+    "text": "This is an Azure Storage Account for storing images to be used in the various apps in this project.\nHere is a summary of the settings I used at creation, and the reasoning for why:"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#basics",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#basics",
+    "title": "Storage Account terramaxappimages",
+    "section": "Basics",
+    "text": "Basics\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nSubscription\nAzure subscription 1\n✅ Fine\n\n\nResource Group\nTestResourceGroup\n✅ Fine (you can rename it later if needed)\n\n\nLocation\nCentral US\n✅ Good choice (low latency if your app is US-based)\n\n\nStorage Account Name\nterramaxappimages\n✅ Clear and purpose-specific\n\n\nPrimary Service\nAzure Blob Storage / Data Lake Gen 2\n✅ Blob Storage is exactly what you want"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#performance-and-replication",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#performance-and-replication",
+    "title": "Storage Account terramaxappimages",
+    "section": "Performance and Replication",
+    "text": "Performance and Replication\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nPerformance\nStandard\n✅ Cheaper tier, perfect for static files\n\n\nReplication\nLRS (Locally-redundant)\n✅ Cheapest, fine for non-critical assets"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#advanced",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#advanced",
+    "title": "Storage Account terramaxappimages",
+    "section": "Advanced",
+    "text": "Advanced\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nHierarchical namespace\nDisabled\n✅ Good — needed only for advanced file systems (not images)\n\n\nSFTP / NFS / Cross-tenant replication\nAll Disabled\n✅ Correct — not needed\n\n\nAccess Tier\nCool\n✅ Cost-optimized for infrequently accessed files (suitable if you rarely change these)\n\n\nLarge file shares\nEnabled\n✅ Doesn’t hurt; ignored unless you use file shares, which you’re not"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#security",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#security",
+    "title": "Storage Account terramaxappimages",
+    "section": "Security",
+    "text": "Security\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nSecure transfer\nEnabled\n✅ Recommended default\n\n\nBlob anonymous access\nEnabled\n✅ You want public access — this is required\n\n\nStorage account key access\nEnabled\n✅ Makes it easier to use from code if needed\n\n\nEntra (Azure AD) auth in portal\nDisabled\n✅ Fine — you don’t want to complicate access\n\n\nTLS 1.2\n✅ Still industry standard"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#networking",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#networking",
+    "title": "Storage Account terramaxappimages",
+    "section": "Networking",
+    "text": "Networking\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nPublic endpoint (all networks)\n✅ What you need for public image hosting\n\n\n\nMicrosoft network routing\n✅ Recommended — more stable, no real downside here"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#data-protection",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#data-protection",
+    "title": "Storage Account terramaxappimages",
+    "section": "Data Protection",
+    "text": "Data Protection\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nBlob/Container/File soft delete\nEnabled (7 days)\n✅ Good safety net if you accidentally delete something\n\n\nPoint-in-time restore / Change feed / Versioning\nDisabled\n✅ Fine — you’re not dealing with transactional data or version control"
+  },
+  {
+    "objectID": "architecture/azure/terramaxappimages/terramaxappimages.html#encryption",
+    "href": "architecture/azure/terramaxappimages/terramaxappimages.html#encryption",
+    "title": "Storage Account terramaxappimages",
+    "section": "Encryption",
+    "text": "Encryption\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nEncryption type\nMicrosoft-managed keys\n✅ Perfectly fine for non-sensitive image content\n\n\nInfra encryption\nDisabled\n✅ Not needed"
   },
   {
     "objectID": "architecture/hubspot/auth-tab.html",
@@ -452,7 +634,28 @@
     "href": "architecture/hubspot/deals.html",
     "title": "Deals Object",
     "section": "",
-    "text": "Stuff about deals…"
+    "text": "Stupid definition Center of the associations web"
+  },
+  {
+    "objectID": "architecture/hubspot/deals.html#app-interface",
+    "href": "architecture/hubspot/deals.html#app-interface",
+    "title": "Deals Object",
+    "section": "App Interface",
+    "text": "App Interface"
+  },
+  {
+    "objectID": "architecture/hubspot/deals.html#associations",
+    "href": "architecture/hubspot/deals.html#associations",
+    "title": "Deals Object",
+    "section": "Associations",
+    "text": "Associations\nWith Contact and Company With Line Items With other Deals"
+  },
+  {
+    "objectID": "architecture/hubspot/deals.html#prepay",
+    "href": "architecture/hubspot/deals.html#prepay",
+    "title": "Deals Object",
+    "section": "Prepay",
+    "text": "Prepay\nA mess"
   },
   {
     "objectID": "architecture/hubspot/hubspot-data-structures.html",
@@ -502,6 +705,34 @@
     "title": "Integrations",
     "section": "Private Apps",
     "text": "Private Apps\nIn HubSpot, setting up a Private App Integration is called “creating a Private App.” This doesn’t involve building or hosting the app inside HubSpot, but rather setting up a secure access point for the real app, which is hosted and running elsewhere.\nThis can be seen like a sort of outlet. You give this outlet a name, an icon, a description, and you define what HubSpot resources it exposes to anything that plugs into it, and HubSpot automatically generates an API key for it. This key is given to the actual app, which is hosted and running elsewhere, so it can use the key like a password to plug into the outlet and make use of the resources it offers.\n\nView or Edit Integration\nNote: HubSpot changes their layout often, si instructions and screenshots of menus may become out-of-date quickly\nThe integration for the HubSpot Service can be viewed or modified in HubSpot by going to:\n\nSettings &gt; Account Management &gt; Integrations &gt; Private Apps\n\n\n\n\nHubSpot Private Apps\n\n\nFrom there you can view all private app integrations, as well as the overall API usage. Because our account is in the Professional Tier, we have a limit of 625,000 api calls per day for all connected apps combined. Currently we average in the low 100s, so we would need to scale significatly for this limit to matter.\nIf you open the specific app, you can view:\n\nAuth - shows API key and defined scopes\nLogs - tracks usage over the past month\nEdit App - change name, icon, description, scopes"
+  },
+  {
+    "objectID": "architecture/hubspot/owners.html",
+    "href": "architecture/hubspot/owners.html",
+    "title": "Owner Properties",
+    "section": "",
+    "text": "Owners are…"
+  },
+  {
+    "objectID": "architecture/hubspot/owners.html#roles",
+    "href": "architecture/hubspot/owners.html#roles",
+    "title": "Owner Properties",
+    "section": "Roles",
+    "text": "Roles"
+  },
+  {
+    "objectID": "architecture/hubspot/owners.html#deals",
+    "href": "architecture/hubspot/owners.html#deals",
+    "title": "Owner Properties",
+    "section": "Deals",
+    "text": "Deals"
+  },
+  {
+    "objectID": "architecture/hubspot/owners.html#contacts-and-customers",
+    "href": "architecture/hubspot/owners.html#contacts-and-customers",
+    "title": "Owner Properties",
+    "section": "Contacts and Customers",
+    "text": "Contacts and Customers"
   },
   {
     "objectID": "how-to/add-new-function.html",

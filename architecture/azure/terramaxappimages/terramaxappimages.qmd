@@ -1,0 +1,65 @@
+---
+title: Storage Account `terramaxappimages`
+format: html
+---
+
+This is an Azure Storage Account for storing images to be used in the various apps in this project.  
+
+Here is a summary of the settings I used at creation, and the reasoning for why:
+
+## Basics
+
+| Setting                  | Value                                | Notes                                               |
+| ------------------------ | ------------------------------------ | --------------------------------------------------- |
+| **Subscription**         | Azure subscription 1                 | ✅ Fine                                              |
+| **Resource Group**       | TestResourceGroup                    | ✅ Fine (you can rename it later if needed)          |
+| **Location**             | Central US                           | ✅ Good choice (low latency if your app is US-based) |
+| **Storage Account Name** | terramaxappimages                    | ✅ Clear and purpose-specific                        |
+| **Primary Service**      | Azure Blob Storage / Data Lake Gen 2 | ✅ Blob Storage is exactly what you want             |
+
+## Performance and Replication
+
+| Setting         | Value                   | Notes                                    |
+| --------------- | ----------------------- | ---------------------------------------- |
+| **Performance** | Standard                | ✅ Cheaper tier, perfect for static files |
+| **Replication** | LRS (Locally-redundant) | ✅ Cheapest, fine for non-critical assets |
+
+## Advanced
+
+| Setting                                   | Value        | Notes                                                                                  |
+| ----------------------------------------- | ------------ | -------------------------------------------------------------------------------------- |
+| **Hierarchical namespace**                | Disabled     | ✅ Good — needed only for advanced file systems (not images)                            |
+| **SFTP / NFS / Cross-tenant replication** | All Disabled | ✅ Correct — not needed                                                                 |
+| **Access Tier**                           | Cool         | ✅ Cost-optimized for infrequently accessed files (suitable if you rarely change these) |
+| **Large file shares**                     | Enabled      | ✅ Doesn’t hurt; ignored unless you use file shares, which you're not                   |
+
+## Security
+
+| Setting                             | Value                     | Notes                                        |
+| ----------------------------------- | ------------------------- | -------------------------------------------- |
+| **Secure transfer**                 | Enabled                   | ✅ Recommended default                        |
+| **Blob anonymous access**           | Enabled                   | ✅ You want public access — this is required  |
+| **Storage account key access**      | Enabled                   | ✅ Makes it easier to use from code if needed |
+| **Entra (Azure AD) auth in portal** | Disabled                  | ✅ Fine — you don't want to complicate access |
+| **TLS 1.2**                         | ✅ Still industry standard |                                              |
+
+## Networking
+
+| Setting                            | Value                                              | Notes |
+| ---------------------------------- | -------------------------------------------------- | ----- |
+| **Public endpoint (all networks)** | ✅ What you need for public image hosting           |       |
+| **Microsoft network routing**      | ✅ Recommended — more stable, no real downside here |       |
+
+## Data Protection
+
+| Setting                                              | Value            | Notes                                                                  |
+| ---------------------------------------------------- | ---------------- | ---------------------------------------------------------------------- |
+| **Blob/Container/File soft delete**                  | Enabled (7 days) | ✅ Good safety net if you accidentally delete something                 |
+| **Point-in-time restore / Change feed / Versioning** | Disabled         | ✅ Fine — you're not dealing with transactional data or version control |
+
+## Encryption
+
+| Setting              | Value                  | Notes                                            |
+| -------------------- | ---------------------- | ------------------------------------------------ |
+| **Encryption type**  | Microsoft-managed keys | ✅ Perfectly fine for non-sensitive image content |
+| **Infra encryption** | Disabled               | ✅ Not needed                                     |

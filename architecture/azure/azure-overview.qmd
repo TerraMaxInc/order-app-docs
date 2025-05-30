@@ -7,6 +7,15 @@ Azure is a cloud platform owned by Microsoft that offers a variety of online res
 
 This project uses Azure to host several components in a secure and centralized way, allowing them to share the same security infrastructure.  They can be viewed and managed through the **Azure Portal**.
 
+## Quick Links
+
+- [Entra](entra/entra-overview.html)
+- [HubSpot Service](hubspot-service/hubspot-service.html)
+- [Ordering App](ordering-app/ordering-app.html)
+- [PDF Service](pdf-service/pdf-service.html)
+- [TerraMax Data](terramax-data/terramax-data.html)
+- [TerraMax App Images Storage Account](terramaxappimages/terramaxappimages.html)
+
 ---
 
 ## Azure Portal {#portal}

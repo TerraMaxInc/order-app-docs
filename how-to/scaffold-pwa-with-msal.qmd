@@ -79,15 +79,59 @@ export default defineConfig({
 
 ## 4. Create App in Azure Static Web Apps
 
-- From VSCode, in the terminal, run:
-    - `az login`
-    
+- From the Azure Portal, *Create Static Web App*
 
+- In the Basics tab:
+  - ResourceGroup: TestResourceGroup
+  - Hosting plan: Free: for hobby or personal projects
+  - Deployment details: GitHub
+    - Using the Organization GitHub is hard, so I use a clone from my account and a special branch called "deploy"
+  - Build Details: 
+    - App location: /
+    - Api location: 
+    - Output location: dist (it will default to "build", but this is wrong)
+
+- In the Deployment configuration tab:
+  - Deployment authorization policy: GitHub
+
+- In the Review + create tab: click Create.
+  - It will auto-generate a random url.  Copy/save this for the next step.
 
 ## 5. Create App Registration in Entra
+This is necessary for the MSAL login to work.
 
+- Go to *Entra* > *App Registration*  and click *New registration*
+- Give it a *different name* than the app you're registering.  This is a differect object that will have a different id.  I like ot name them *app-name-registration*
+- Supported account types: Single tenant (for internal-only projects)
+- Redirect URI: 
+  - Single-page application (SPA), with the random url from the previous step
+- Register, then make some final edits by going to *Redirect URIs*
+  - Add another platform: Single-page application (SPA), http://localhost:3000
+  - Under "Select the tokens you would like to be issued by the authorization endpoint" Select both *Access tokens* and *ID tokens*
+  - Save changes
+- Add yourself as an Owner buy going to *Manage > Owners* and clicking *Add owners*
 
-## 6. Add authConfig
+## 6. Create Permissions to Access API
+
+- First add the app to the API's list of client apps:
+  - Find the `terramax-hubspot-service-registration` in Entra's list of App registrations
+  - Go to *Manage > Expose an API* and at the bottom click *Add a client application* and paste in this apps's registration id from #5
+- Then add the permissions to the app's registration:
+  - Go back it the app's registration, then go to *Manage > API Permission* and click *Add a permission*
+  - Select *My APIs* and *terramax-hubspot-servive-registration*
+  - Open the `api` section and check the permissions you want to give the app, **along with the `user_impersonation`**
+  - Click the checkmark to *Grant admin consent for TerraMax, Inc.*
+- Then add the client app to the API's CORS Configuration:
+  - Leave Entra and go to the API app, *not* the registration.
+  - Go to *API* > *CORS*
+  - Under allowed origins, add the randomly generated url from #4 and *Save*
+- AND (this never fucking ends) add the app as an identity provider:
+  - In the same API app section as the CORS stuff, go to *Settings* > *Authentication* 
+  - Under Identity Provider, there is probably already one line item with "Microsoft" as the Identity provider (unless you make a new Function App).  This will also be under Microsoft, click on *Edit* for the existing Microsoft identity provider.
+  - Within, the *Application (client) ID* should be the ID of the *server-side, API app registration*, because words don't mean anything in this nightmare circus.  Below is a list of *Allowed token audiences*, which includes both the registration IDs of the server-side app and the client-side app/s that access it.  HERE is where you add the ID for the new app's *registration*.  It should be `api://` + the new app's registration client ID.
+  - a few lines below there is a single, grayed-out looking box labeled *Allowed client applications*, which looks like it contains only one value but in fact contains a semi-colon separated LIST of values.  Click the edit pencil and add the new app's registration id into a new line in the popup.
+
+## 7. Add authConfig
 
 - in the **src** folder add a file `authConfig.ts` and add something like this:
 
@@ -101,14 +145,14 @@ import { cache } from "react";
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
  */
 
-const TENANT_ID = ""
-const FUNCTIONS_APP_ID = ""
-const CLIENT_ID = ""
-const FUNCTIONS_BASE_ENDPOINT = ""
+const TENANT_ID = // the tenant id is the same across all apps, and can be found in Entra's TerraMax, Inc overview in the Azure Portal
+const FUNCTIONS_APP_ID = // the application (client) id the terramax-hubspot-service-registration
+const CLIENT_ID = // the application (client) id in the registration you created in #5
+const FUNCTIONS_BASE_ENDPOINT = // https://terramax-hubspot-service.azurewebsites.net/api/
 
 const REDIRECT_URI = window.location.hostname === "localhost"
     ? "http://localhost:5173"
-    : ""
+    : // the randomly-generated url from #4
 
 const AUTHORITY = `https://login.microsoftonline.com/${TENANT_ID}`;
 
@@ -167,3 +211,45 @@ export const functionsConfig = {
     skusEndpoint: `${FUNCTIONS_BASE_ENDPOINT}AllSkus`,
 }
 ```
+
+## 8. Wrap main.tsx with Msal
+
+Generated code something like this:
+
+```tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
+
+Change to something like this:
+
+```tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+import { PublicClientApplication } from '@azure/msal-browser'
+import { msalConfig } from './authConfig.ts'
+import { MsalProvider } from '@azure/msal-react'
+
+const msalInstance = new PublicClientApplication(msalConfig);
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <MsalProvider instance={msalInstance}>
+      <App />
+    </MsalProvider>
+  </StrictMode>,
+)
+
+```
+
+## 9. ADd API Permissions
