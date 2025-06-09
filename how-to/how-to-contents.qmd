@@ -14,3 +14,4 @@ format: html
 - [Deploy ordering-app Update](deploy-ordering-app-update.html)
 - [Edit Product (Price)](edit-product.html)
 - [Scaffold New PWA with MSAL](scaffold-pwa-with-msal.html)
+- [Updated PDF Converter](update-pdf-converter.html)

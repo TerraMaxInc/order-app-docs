@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>How-Tos – Ordering App Project Docs</title>
+<title>Update PDF Converter – Ordering App Project Docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3851,7 +3851,7 @@ vertical-align: -.125em;
 <span class="menu-text">HubSpot</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../how-to/how-to-contents.html" aria-current="page"> 
+    <a class="nav-link" href="../how-to/how-to-contents.html"> 
 <span class="menu-text">How-to’s</span></a>
   </li>  
   <li class="nav-item">
@@ -3869,15 +3869,21 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#build-the-image-locally" id="toc-build-the-image-locally" class="nav-link active" data-scroll-target="#build-the-image-locally">1. Build the Image Locally</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How-Tos</h1>
+<h1 class="title">Update PDF Converter</h1>
 </div>
 
 
@@ -3894,21 +3900,22 @@ vertical-align: -.125em;
 </header>
 
 
-<!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render docs/how-to/how-to-contents.qmd 
--->
+<p>This one is just for my own reference, to remember what I did. It assumes that you already made whatever the updates are in the app code itself.</p>
+<section id="build-the-image-locally" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-image-locally">1. Build the Image Locally</h2>
 <ul>
-<li><a href="add-new-function.html">Add New Function</a></li>
-<li><a href="add-product.html">Add Product</a></li>
-<li><a href="check-costs.html">Check Costs</a></li>
-<li><a href="deploy-hubspot-service-update.html">Deploy hubspot-service Update</a></li>
-<li><a href="deploy-ordering-app-update.html">Deploy ordering-app Update</a></li>
-<li><a href="edit-product.html">Edit Product (Price)</a></li>
-<li><a href="scaffold-pwa-with-msal.html">Scaffold New PWA with MSAL</a></li>
-<li><a href="update-pdf-converter.html">Updated PDF Converter</a></li>
+<li>From an <strong>Ubuntu</strong> terminal within the root of the project, run:
+<ul>
+<li><code>docker build -t ghcr.io/terramaxinc/pdf-service .</code></li>
+</ul></li>
+<li>The <code>-t</code> tags it with a name.</li>
+<li><code>ghcr.io/terramaxinc/</code> is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing <code>terramaxinc</code> with your account name.</li>
+<li>The <code>pdf-serive</code> can be anything you want; it’ll be th ename of the image that’s produced, and is not tied to the current name of the project.</li>
+<li>the “.” at the end means to build from the current directory.</li>
 </ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

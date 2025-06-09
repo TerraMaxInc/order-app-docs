@@ -1,0 +1,15 @@
+---
+title: Update PDF Converter
+format: html
+---
+
+This one is just for my own reference, to remember what I did.  It assumes that you already made whatever the updates are in the app code itself.
+
+## 1. Build the Image Locally
+
+- From an **Ubuntu** terminal within the root of the project, run:
+    - `docker build -t ghcr.io/terramaxinc/pdf-service .`
+- The `-t` tags it with a name.
+- `ghcr.io/terramaxinc/` is necessary for it to be pushed to the TerraMaxInc github packages later.  It must be all lower case, even though the account shows upper case letters.  You can also use your own account instead buy replacing `terramaxinc` with your account name.
+- The `pdf-serive` can be anything you want; it'll be th ename of the image that's produced, and is not tied to the current name of the project.
+- the "." at the end means to build from the current directory.
