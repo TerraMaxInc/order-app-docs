@@ -102,7 +102,7 @@
     "href": "how-to/add-new-function.html",
     "title": "Adding a New Function",
     "section": "",
-    "text": "This guide walks through all the necessary steps to add a new Azure Function to the hubspot-service backend and make it accessible to the client app.\nThis is NOT a guide to writing Azure Functions, but to integrating them into the existing app."
+    "text": "This guide walks through all the necessary steps to add a new Azure Function to the hubspot-service backend and make it accessible to the client app.\nThis is NOT a guide to writing Azure Functions, but to integrating them into the existing app.\nIt assumes that you have installed the Azure Functions Extension for VS Code and are logged in. If you have the extension but are not logged in, go to the command palette and fine Azure: Sign In."
   },
   {
     "objectID": "how-to/add-new-function.html#create-function-in-hubspot-service-codebase",

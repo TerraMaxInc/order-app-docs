@@ -11,6 +11,8 @@ This guide walks through all the necessary steps to add a new Azure Function to 
 
 This is NOT a guide to writing Azure Functions, but to integrating them into the existing app.
 
+It assumes that you have installed the Azure Functions Extension for VS Code and are logged in.  If you have the extension but are not logged in, go to the command palette and fine `Azure: Sign In`.
+
 
 ---
 
