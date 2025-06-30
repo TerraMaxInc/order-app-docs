@@ -5,11 +5,40 @@ format: html
 
 This one is just for my own reference, to remember what I did.  It assumes that you already made whatever the updates are in the app code itself.
 
-## 1. Build the Image Locally
+## 1. Build the @docker-image Locally
 
 - From an **Ubuntu** terminal within the root of the project, run:
-    - `docker build -t ghcr.io/terramaxinc/pdf-service .`
-- The `-t` tags it with a name.
-- `ghcr.io/terramaxinc/` is necessary for it to be pushed to the TerraMaxInc github packages later.  It must be all lower case, even though the account shows upper case letters.  You can also use your own account instead buy replacing `terramaxinc` with your account name.
-- The `pdf-serive` can be anything you want; it'll be the name of the image that's produced, and is not tied to the current name of the project.
-- the "." at the end means to build from the current directory.
+    - `docker build -t ghcr.io/terramaxinc/pdf-service3 .`
+    - The `-t` tags it with a name.  
+    - `ghcr.io/terramaxinc/` is necessary for it to be pushed to the TerraMaxInc github packages later.  It must be all lower case, even though the account shows upper case letters.  You can also use your own account instead buy replacing `terramaxinc` with your account name.
+    - The `pdf-serive` can be anything you want; it'll be the name of the image that's produced, and is not tied to the current name of the project.
+        - This will functionally be its location AND name in the registry, later.  If you don't increment up the version but reuse the exact same tag as something already in the registry, it will overwrite and replace it--but NOT automatically update the Azure Container app to know how to *use* it.  That is not a valid update strategy.  Better to upload multiple versions, so you can roll back quickly if an update sucks.
+    - the "." at the end means to build from the current directory.
+
+## 2. Get a Personal Access Token to push to GHCR
+
+- Step 3 requires a "PAT" (Personal Access Token) and I am assuming that you don't have one ready you can reuse.  The token is tempoaray and will till out after a month, so the container image isn't tied to the token that it was uploaded with; you can update or delete images later with new tokens.  To create one:
+    - Go to `https://github.com/settings/tokens` (don't bother trying to find it organically, it's futile).  If you're logged in, it will show the settings for your *personal accout*.  This is fine; you can't make a token for the org account anyway.  It's a matter of permissions for your account, not of using the org accont directly.
+    - Select **tokens (classic)** from **Personal access tokens**, then click the little **Generate new token** dropdown thing and select **Generate new token (classic)**.  Again.  You might find some resources, like chatGPT when it's in the wrong mood, will tell you that the *fine-grained tokens* are better.  This is a cursed lie; they won't work for this.
+    - The  Notes section is optional, but the only thing that will distinguish this token from others when you're done, so don't skip it.
+    - Under **Scopes**, you need **write:packages** and **read:packages**, and optionally **delete:packages** if you're going to delete images in this round of activities.
+    - Click the green **Generate token** button.  When the token is created and the page updates, copy the token and save it somewhere.  It will last a month, but they'll never let you see and copy it again.
+
+## 3. Push Image to GitHub @Container Registry
+
+- Log into GHCR with the new token.  In that Ubuntu terminal, enter:
+    -`echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stndin`
+
+    - replace THAT_NEW_PAT with the token you copied
+    - replace YOUR_GITHUB_USERNAME with your personal account username, not the org one
+    
+    - `echo THAT_NEW_PAT` tells it to use the THAT_NEW_PAT value exactly as is in the next part
+    - `docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stndin` tells it to log in to GHCR, with your username, and the tale the password from the echoed part and not fuss with trying to login via an actual password.  This is apparently much more secure than the password anyway.
+    - hopefully, it will tell you "Login Succeeded"
+- Push the image to GCHR.  It should alreadybe tagged as needed in step 1:
+    - `docker push ghcr.io/terramaxinc/pdf-service3:latest`
+    - you should be able to confirm it worked by looking at it in the target location's **packages**
+
+## 4. Update the Azure App to use the New Version
+
+- 

@@ -3874,7 +3874,10 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#build-the-image-locally" id="toc-build-the-image-locally" class="nav-link active" data-scroll-target="#build-the-image-locally">1. Build the Image Locally</a></li>
+  <li><a href="#build-the-docker-image-locally" id="toc-build-the-docker-image-locally" class="nav-link active" data-scroll-target="#build-the-docker-image-locally">1. Build the Image Locally</a></li>
+  <li><a href="#get-a-personal-access-token-to-push-to-ghcr" id="toc-get-a-personal-access-token-to-push-to-ghcr" class="nav-link" data-scroll-target="#get-a-personal-access-token-to-push-to-ghcr">2. Get a Personal Access Token to push to GHCR</a></li>
+  <li><a href="#push-image-to-github-container-registry" id="toc-push-image-to-github-container-registry" class="nav-link" data-scroll-target="#push-image-to-github-container-registry">3. Push Image to GitHub <span class="citation" data-cites="Container">@Container</span> Registry</a></li>
+  <li><a href="#update-the-azure-app-to-use-the-new-version" id="toc-update-the-azure-app-to-use-the-new-version" class="nav-link" data-scroll-target="#update-the-azure-app-to-use-the-new-version">4. Update the Azure App to use the New Version</a></li>
   </ul>
 </nav>
     </div>
@@ -3901,17 +3904,58 @@ vertical-align: -.125em;
 
 
 <p>This one is just for my own reference, to remember what I did. It assumes that you already made whatever the updates are in the app code itself.</p>
-<section id="build-the-image-locally" class="level2">
-<h2 class="anchored" data-anchor-id="build-the-image-locally">1. Build the Image Locally</h2>
+<section id="build-the-docker-image-locally" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-docker-image-locally">1. Build the <a href="../reference/glossary.html#docker-image" class="glossary-term" title="A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It&#39;s like a class, that is intstantiated into a container.">Image</a> Locally</h2>
 <ul>
 <li>From an <strong>Ubuntu</strong> terminal within the root of the project, run:
 <ul>
-<li><code>docker build -t ghcr.io/terramaxinc/pdf-service .</code></li>
-</ul></li>
-<li>The <code>-t</code> tags it with a name.</li>
+<li><code>docker build -t ghcr.io/terramaxinc/pdf-service3 .</code></li>
+<li>The <code>-t</code> tags it with a name.<br>
+</li>
 <li><code>ghcr.io/terramaxinc/</code> is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing <code>terramaxinc</code> with your account name.</li>
-<li>The <code>pdf-serive</code> can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.</li>
+<li>The <code>pdf-serive</code> can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.
+<ul>
+<li>This will functionally be its location AND name in the registry, later. If you don’t increment up the version but reuse the exact same tag as something already in the registry, it will overwrite and replace it–but NOT automatically update the Azure Container app to know how to <em>use</em> it. That is not a valid update strategy. Better to upload multiple versions, so you can roll back quickly if an update sucks.</li>
+</ul></li>
 <li>the “.” at the end means to build from the current directory.</li>
+</ul></li>
+</ul>
+</section>
+<section id="get-a-personal-access-token-to-push-to-ghcr" class="level2">
+<h2 class="anchored" data-anchor-id="get-a-personal-access-token-to-push-to-ghcr">2. Get a Personal Access Token to push to GHCR</h2>
+<ul>
+<li>Step 3 requires a “PAT” (Personal Access Token) and I am assuming that you don’t have one ready you can reuse. The token is tempoaray and will till out after a month, so the container image isn’t tied to the token that it was uploaded with; you can update or delete images later with new tokens. To create one:
+<ul>
+<li>Go to <code>https://github.com/settings/tokens</code> (don’t bother trying to find it organically, it’s futile). If you’re logged in, it will show the settings for your <em>personal accout</em>. This is fine; you can’t make a token for the org account anyway. It’s a matter of permissions for your account, not of using the org accont directly.</li>
+<li>Select <strong>tokens (classic)</strong> from <strong>Personal access tokens</strong>, then click the little <strong>Generate new token</strong> dropdown thing and select <strong>Generate new token (classic)</strong>. Again. You might find some resources, like chatGPT when it’s in the wrong mood, will tell you that the <em>fine-grained tokens</em> are better. This is a cursed lie; they won’t work for this.</li>
+<li>The Notes section is optional, but the only thing that will distinguish this token from others when you’re done, so don’t skip it.</li>
+<li>Under <strong>Scopes</strong>, you need <strong>write:packages</strong> and <strong>read:packages</strong>, and optionally <strong>delete:packages</strong> if you’re going to delete images in this round of activities.</li>
+<li>Click the green <strong>Generate token</strong> button. When the token is created and the page updates, copy the token and save it somewhere. It will last a month, but they’ll never let you see and copy it again.</li>
+</ul></li>
+</ul>
+</section>
+<section id="push-image-to-github-container-registry" class="level2">
+<h2 class="anchored" data-anchor-id="push-image-to-github-container-registry">3. Push Image to GitHub <span class="citation" data-cites="Container">@Container</span> Registry</h2>
+<ul>
+<li><p>Log into GHCR with the new token. In that Ubuntu terminal, enter: -<code>echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stndin</code></p>
+<ul>
+<li><p>replace THAT_NEW_PAT with the token you copied</p></li>
+<li><p>replace YOUR_GITHUB_USERNAME with your personal account username, not the org one</p></li>
+<li><p><code>echo THAT_NEW_PAT</code> tells it to use the THAT_NEW_PAT value exactly as is in the next part</p></li>
+<li><p><code>docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stndin</code> tells it to log in to GHCR, with your username, and the tale the password from the echoed part and not fuss with trying to login via an actual password. This is apparently much more secure than the password anyway.</p></li>
+<li><p>hopefully, it will tell you “Login Succeeded”</p></li>
+</ul></li>
+<li><p>Push the image to GCHR. It should alreadybe tagged as needed in step 1:</p>
+<ul>
+<li><code>docker push ghcr.io/terramaxinc/pdf-service3:latest</code></li>
+<li>you should be able to confirm it worked by looking at it in the target location’s <strong>packages</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="update-the-azure-app-to-use-the-new-version" class="level2">
+<h2 class="anchored" data-anchor-id="update-the-azure-app-to-use-the-new-version">4. Update the Azure App to use the New Version</h2>
+<ul>
+<li></li>
 </ul>
 
 

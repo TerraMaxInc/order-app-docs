@@ -49,11 +49,32 @@
     "text": "This one is just for my own reference, to remember what I did. It assumes that you already made whatever the updates are in the app code itself."
   },
   {
-    "objectID": "how-to/update-pdf-converter.html#build-the-image-locally",
-    "href": "how-to/update-pdf-converter.html#build-the-image-locally",
+    "objectID": "how-to/update-pdf-converter.html#build-the-docker-image-locally",
+    "href": "how-to/update-pdf-converter.html#build-the-docker-image-locally",
     "title": "Update PDF Converter",
     "section": "1. Build the Image Locally",
-    "text": "1. Build the Image Locally\n\nFrom an Ubuntu terminal within the root of the project, run:\n\ndocker build -t ghcr.io/terramaxinc/pdf-service .\n\nThe -t tags it with a name.\nghcr.io/terramaxinc/ is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing terramaxinc with your account name.\nThe pdf-serive can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.\nthe “.” at the end means to build from the current directory."
+    "text": "1. Build the Image Locally\n\nFrom an Ubuntu terminal within the root of the project, run:\n\ndocker build -t ghcr.io/terramaxinc/pdf-service3 .\nThe -t tags it with a name.\n\nghcr.io/terramaxinc/ is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing terramaxinc with your account name.\nThe pdf-serive can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.\n\nThis will functionally be its location AND name in the registry, later. If you don’t increment up the version but reuse the exact same tag as something already in the registry, it will overwrite and replace it–but NOT automatically update the Azure Container app to know how to use it. That is not a valid update strategy. Better to upload multiple versions, so you can roll back quickly if an update sucks.\n\nthe “.” at the end means to build from the current directory."
+  },
+  {
+    "objectID": "how-to/update-pdf-converter.html#get-a-personal-access-token-to-push-to-ghcr",
+    "href": "how-to/update-pdf-converter.html#get-a-personal-access-token-to-push-to-ghcr",
+    "title": "Update PDF Converter",
+    "section": "2. Get a Personal Access Token to push to GHCR",
+    "text": "2. Get a Personal Access Token to push to GHCR\n\nStep 3 requires a “PAT” (Personal Access Token) and I am assuming that you don’t have one ready you can reuse. The token is tempoaray and will till out after a month, so the container image isn’t tied to the token that it was uploaded with; you can update or delete images later with new tokens. To create one:\n\nGo to https://github.com/settings/tokens (don’t bother trying to find it organically, it’s futile). If you’re logged in, it will show the settings for your personal accout. This is fine; you can’t make a token for the org account anyway. It’s a matter of permissions for your account, not of using the org accont directly.\nSelect tokens (classic) from Personal access tokens, then click the little Generate new token dropdown thing and select Generate new token (classic). Again. You might find some resources, like chatGPT when it’s in the wrong mood, will tell you that the fine-grained tokens are better. This is a cursed lie; they won’t work for this.\nThe Notes section is optional, but the only thing that will distinguish this token from others when you’re done, so don’t skip it.\nUnder Scopes, you need write:packages and read:packages, and optionally delete:packages if you’re going to delete images in this round of activities.\nClick the green Generate token button. When the token is created and the page updates, copy the token and save it somewhere. It will last a month, but they’ll never let you see and copy it again."
+  },
+  {
+    "objectID": "how-to/update-pdf-converter.html#push-image-to-github-container-registry",
+    "href": "how-to/update-pdf-converter.html#push-image-to-github-container-registry",
+    "title": "Update PDF Converter",
+    "section": "3. Push Image to GitHub @Container Registry",
+    "text": "3. Push Image to GitHub @Container Registry\n\nLog into GHCR with the new token. In that Ubuntu terminal, enter: -echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stndin\n\nreplace THAT_NEW_PAT with the token you copied\nreplace YOUR_GITHUB_USERNAME with your personal account username, not the org one\necho THAT_NEW_PAT tells it to use the THAT_NEW_PAT value exactly as is in the next part\ndocker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stndin tells it to log in to GHCR, with your username, and the tale the password from the echoed part and not fuss with trying to login via an actual password. This is apparently much more secure than the password anyway.\nhopefully, it will tell you “Login Succeeded”\n\nPush the image to GCHR. It should alreadybe tagged as needed in step 1:\n\ndocker push ghcr.io/terramaxinc/pdf-service3:latest\nyou should be able to confirm it worked by looking at it in the target location’s packages"
+  },
+  {
+    "objectID": "how-to/update-pdf-converter.html#update-the-azure-app-to-use-the-new-version",
+    "href": "how-to/update-pdf-converter.html#update-the-azure-app-to-use-the-new-version",
+    "title": "Update PDF Converter",
+    "section": "4. Update the Azure App to use the New Version",
+    "text": "4. Update the Azure App to use the New Version"
   },
   {
     "objectID": "how-to/setup-docker-ide.html",
@@ -116,7 +137,7 @@
     "href": "how-to/how-to-contents.html",
     "title": "How-Tos",
     "section": "",
-    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update\nEdit Product (Price)\nScaffold New PWA with MSAL\nTest PDF Converter Locally\nUpdated PDF Converter"
+    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update\nEdit Product (Price)\nScaffold New PWA with MSAL\nSet up Docker IDE\nTest PDF Converter Locally\nUpdated PDF Converter"
   },
   {
     "objectID": "how-to/deploy-ordering-app-update.html",
