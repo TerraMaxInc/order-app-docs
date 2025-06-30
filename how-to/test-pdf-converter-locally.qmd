@@ -1,0 +1,35 @@
+---
+title: Test PDF Converter Locally
+format: html
+---
+
+For my own reference, because the Docker environment is less familiar than the other technologies in this project.
+
+All terminal commands in this section should be run from the **Ubuntu** termiinal
+
+## 1. Check that Docker is running
+
+- `docker version`
+
+## 2. Build the Docker @docker-image
+
+- In the same folder as the projct's Dockerfile, run: `docker build -t pdf-service .`
+
+## 3. Run the @docker-container Locally
+
+- `docker run -p 3000:3000 pdf-service`
+
+
+## Other docker commands
+
+- `docker image ls` - to view all current docker images
+
+- `docker ps` - to view all currently running containers
+
+- `docker ps -a` - to view all containers, running and stopped
+
+- `docker stop dreamy-nobel` - to stop a running container; replace **dreamy-nobel** with the NAME
+
+- `docker rm 6ce830b8abca` - to remove the container; replace **6ce830b8abca** with the CONTAINER ID
+
+- `docker rmi 88d328d33a81` - to remove the image; replace **88d328d33a81** with the IMAGE ID, or the TAG if there is one

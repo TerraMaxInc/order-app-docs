@@ -30,11 +30,18 @@
         "category": "basic"
     },
     {
+        "term": "Container",
+        "key": "docker-container",
+        "definition": "A container is a self-contained, isolated, independent process that has everything it needs to run anywhere.",
+        "category": "docker"
+    },
+    {
         "term": "Delegated Permission",
         "key": "delegated-permission",
         "definition": "In contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.",
         "category": "azure"
-    },{
+    },
+    {
         "term": "Development",
         "key": "development",
         "definition": "An application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'",
@@ -57,6 +64,12 @@
         "key": "event-table",
         "definition": "A database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.",
         "category": "default"
+    },
+    {
+        "term": "Image",
+        "key": "docker-image",
+        "definition": "A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It's like a class, that is intstantiated into a container.",
+        "category": "docker"
     },
     {
         "term": "ISO 8601",

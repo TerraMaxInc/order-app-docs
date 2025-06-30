@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Update PDF Converter – Ordering App Project Docs</title>
+<title>Test PDF Converter Locally – Ordering App Project Docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3874,7 +3874,10 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#build-the-image-locally" id="toc-build-the-image-locally" class="nav-link active" data-scroll-target="#build-the-image-locally">1. Build the Image Locally</a></li>
+  <li><a href="#check-that-docker-is-running" id="toc-check-that-docker-is-running" class="nav-link active" data-scroll-target="#check-that-docker-is-running">1. Check that Docker is running</a></li>
+  <li><a href="#build-the-docker-docker-image" id="toc-build-the-docker-docker-image" class="nav-link" data-scroll-target="#build-the-docker-docker-image">2. Build the Docker Image</a></li>
+  <li><a href="#run-the-docker-container-locally" id="toc-run-the-docker-container-locally" class="nav-link" data-scroll-target="#run-the-docker-container-locally">3. Run the Container Locally</a></li>
+  <li><a href="#other-docker-commands" id="toc-other-docker-commands" class="nav-link" data-scroll-target="#other-docker-commands">Other docker commands</a></li>
   </ul>
 </nav>
     </div>
@@ -3883,7 +3886,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Update PDF Converter</h1>
+<h1 class="title">Test PDF Converter Locally</h1>
 </div>
 
 
@@ -3900,18 +3903,35 @@ vertical-align: -.125em;
 </header>
 
 
-<p>This one is just for my own reference, to remember what I did. It assumes that you already made whatever the updates are in the app code itself.</p>
-<section id="build-the-image-locally" class="level2">
-<h2 class="anchored" data-anchor-id="build-the-image-locally">1. Build the Image Locally</h2>
+<p>For my own reference, because the Docker environment is less familiar than the other technologies in this project.</p>
+<p>All terminal commands in this section should be run from the <strong>Ubuntu</strong> termiinal</p>
+<section id="check-that-docker-is-running" class="level2">
+<h2 class="anchored" data-anchor-id="check-that-docker-is-running">1. Check that Docker is running</h2>
 <ul>
-<li>From an <strong>Ubuntu</strong> terminal within the root of the project, run:
+<li><code>docker version</code></li>
+</ul>
+</section>
+<section id="build-the-docker-docker-image" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-docker-docker-image">2. Build the Docker <a href="../reference/glossary.html#docker-image" class="glossary-term" title="A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It&#39;s like a class, that is intstantiated into a container.">Image</a></h2>
 <ul>
-<li><code>docker build -t ghcr.io/terramaxinc/pdf-service .</code></li>
-</ul></li>
-<li>The <code>-t</code> tags it with a name.</li>
-<li><code>ghcr.io/terramaxinc/</code> is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing <code>terramaxinc</code> with your account name.</li>
-<li>The <code>pdf-serive</code> can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.</li>
-<li>the “.” at the end means to build from the current directory.</li>
+<li>In the same folder as the projct’s Dockerfile, run: <code>docker build -t pdf-service .</code></li>
+</ul>
+</section>
+<section id="run-the-docker-container-locally" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-docker-container-locally">3. Run the <a href="../reference/glossary.html#docker-container" class="glossary-term" title="A container is a self-contained, isolated, independent process that has everything it needs to run anywhere.">Container</a> Locally</h2>
+<ul>
+<li><code>docker run -p 3000:3000 pdf-service</code></li>
+</ul>
+</section>
+<section id="other-docker-commands" class="level2">
+<h2 class="anchored" data-anchor-id="other-docker-commands">Other docker commands</h2>
+<ul>
+<li><p><code>docker image ls</code> - to view all current docker images</p></li>
+<li><p><code>docker ps</code> - to view all currently running containers</p></li>
+<li><p><code>docker ps -a</code> - to view all containers, running and stopped</p></li>
+<li><p><code>docker stop dreamy-nobel</code> - to stop a running container; replace <strong>dreamy-nobel</strong> with the NAME</p></li>
+<li><p><code>docker rm 6ce830b8abca</code> - to remove the container; replace <strong>6ce830b8abca</strong> with the CONTAINER ID</p></li>
+<li><p><code>docker rmi 88d328d33a81</code> - to remove the image; replace <strong>88d328d33a81</strong> with the IMAGE ID, or the TAG if there is one</p></li>
 </ul>
 
 

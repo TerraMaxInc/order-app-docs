@@ -1,0 +1,57 @@
+---
+title: Set Up Docker, Ubuntu, and WSL in your IDE
+format: html
+---
+
+Another one just for me.
+
+## 1. Install WSL and Ubuntu
+
+- In any terminal, run `wsl --install`.  This will install both WSL and Ubuntu.
+
+- Create your default Unix user and password when prompted.
+
+## 2. Install Required Packages
+
+- In the Ubuntu terminal, run: `sudo apt update` and enter the password you created when prompted
+
+- Run: `sudo apt install -y ca-certificates curl gnupg lsb-release`
+
+## 3. Add Docker's Official GPG Key
+
+- Run `sudo mkdir -p /etc/apt/keyrings`, and then on the lext line `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`
+
+## 4. Add Docker's APT Repository
+
+- Run: 
+    `echo \`
+    `"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \`
+    `https://download.docker.com/linux/ubuntu \`
+    `$(lsb_release -cs) stable" | \`
+    `sudo tee /etc/apt/sources.list.d/docker.list > /dev/null` 
+
+## 5. Install Docker Engine
+
+- Run `sudo apt update`
+
+- Run `sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+
+## 6. Test 
+
+- To make sure it worked, run `sudo docker run hello-world`
+
+## Trouble-shooting
+
+- The error **docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?** indicates that the docker daemon is not running.  To start the daemon: `sudo service docker start` and then retry.
+
+- If That fails with error **Sudo is disabled on this machine. To enable it, go to the Developer Settings page in the Settings app** then go to:
+
+    Settings > System > For developers
+
+    - **Enable sudo** should be near the bottom of the list.  If it's set to **Off**, turn it to **On**, then retry.  You may need to repeat earlier steps.
+
+- If you try to run `docker system df` and get:
+
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.50/system/df": dial unix /var/run/docker.sock: connect: permission denied
+
+You can add the needed permissions with: `sudo usermod -aG docker $USER`, and then restarting the terminal

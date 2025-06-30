@@ -25,6 +25,7 @@ function Pandoc(doc)
     local basicBlocks = { pandoc.Header(2, { pandoc.Str("Basic Terms") }, pandoc.Attr("basic-terms", {}, {})) }
     local azureBlocks = { pandoc.Header(2, { pandoc.Str("Azure Terms") }, pandoc.Attr("azure-terms", {}, {})) }
     local hubspotBlocks = { pandoc.Header(2, { pandoc.Str("HubSpot Terms") }, pandoc.Attr("hubspot-terms", {}, {})) }
+    local dockerBlocks = { pandoc.Header(2, { pandoc.Str("Docker Terms") }, pandoc.Attr("docker-terms", {}, {})) }
     local defaultBlocks = { pandoc.Header(2, { pandoc.Str("Other Terms") }, pandoc.Attr("default-terms", {}, {})) }
 
     for _, entry in pairs(glossary) do
@@ -44,6 +45,8 @@ function Pandoc(doc)
             for _, b in ipairs(blocks) do table.insert(azureBlocks, b) end
         elseif cat == "hubspot" then
             for _, b in ipairs(blocks) do table.insert(hubspotBlocks, b) end
+        elseif cat == "docker" then
+            for _, b in ipairs(blocks) do table.insert(dockerBlocks, b) end
         else
             for _, b in ipairs(blocks) do table.insert(defaultBlocks, b) end
         end
@@ -53,6 +56,7 @@ function Pandoc(doc)
     for _, b in ipairs(basicBlocks) do table.insert(allBlocks, b) end
     for _, b in ipairs(azureBlocks) do table.insert(allBlocks, b) end
     for _, b in ipairs(hubspotBlocks) do table.insert(allBlocks, b) end
+    for _, b in ipairs(dockerBlocks) do table.insert(allBlocks, b) end
     for _, b in ipairs(defaultBlocks) do table.insert(allBlocks, b) end
 
     return pandoc.Pandoc(allBlocks, doc.meta)

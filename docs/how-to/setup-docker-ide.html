@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Update PDF Converter – Ordering App Project Docs</title>
+<title>Set Up Docker, Ubuntu, and WSL in your IDE – Ordering App Project Docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3874,7 +3874,13 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#build-the-image-locally" id="toc-build-the-image-locally" class="nav-link active" data-scroll-target="#build-the-image-locally">1. Build the Image Locally</a></li>
+  <li><a href="#install-wsl-and-ubuntu" id="toc-install-wsl-and-ubuntu" class="nav-link active" data-scroll-target="#install-wsl-and-ubuntu">1. Install WSL and Ubuntu</a></li>
+  <li><a href="#install-required-packages" id="toc-install-required-packages" class="nav-link" data-scroll-target="#install-required-packages">2. Install Required Packages</a></li>
+  <li><a href="#add-dockers-official-gpg-key" id="toc-add-dockers-official-gpg-key" class="nav-link" data-scroll-target="#add-dockers-official-gpg-key">3. Add Docker’s Official GPG Key</a></li>
+  <li><a href="#add-dockers-apt-repository" id="toc-add-dockers-apt-repository" class="nav-link" data-scroll-target="#add-dockers-apt-repository">4. Add Docker’s APT Repository</a></li>
+  <li><a href="#install-docker-engine" id="toc-install-docker-engine" class="nav-link" data-scroll-target="#install-docker-engine">5. Install Docker Engine</a></li>
+  <li><a href="#test" id="toc-test" class="nav-link" data-scroll-target="#test">6. Test</a></li>
+  <li><a href="#trouble-shooting" id="toc-trouble-shooting" class="nav-link" data-scroll-target="#trouble-shooting">Trouble-shooting</a></li>
   </ul>
 </nav>
     </div>
@@ -3883,7 +3889,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Update PDF Converter</h1>
+<h1 class="title">Set Up Docker, Ubuntu, and WSL in your IDE</h1>
 </div>
 
 
@@ -3900,19 +3906,59 @@ vertical-align: -.125em;
 </header>
 
 
-<p>This one is just for my own reference, to remember what I did. It assumes that you already made whatever the updates are in the app code itself.</p>
-<section id="build-the-image-locally" class="level2">
-<h2 class="anchored" data-anchor-id="build-the-image-locally">1. Build the Image Locally</h2>
+<p>Another one just for me.</p>
+<section id="install-wsl-and-ubuntu" class="level2">
+<h2 class="anchored" data-anchor-id="install-wsl-and-ubuntu">1. Install WSL and Ubuntu</h2>
 <ul>
-<li>From an <strong>Ubuntu</strong> terminal within the root of the project, run:
-<ul>
-<li><code>docker build -t ghcr.io/terramaxinc/pdf-service .</code></li>
-</ul></li>
-<li>The <code>-t</code> tags it with a name.</li>
-<li><code>ghcr.io/terramaxinc/</code> is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing <code>terramaxinc</code> with your account name.</li>
-<li>The <code>pdf-serive</code> can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.</li>
-<li>the “.” at the end means to build from the current directory.</li>
+<li><p>In any terminal, run <code>wsl --install</code>. This will install both WSL and Ubuntu.</p></li>
+<li><p>Create your default Unix user and password when prompted.</p></li>
 </ul>
+</section>
+<section id="install-required-packages" class="level2">
+<h2 class="anchored" data-anchor-id="install-required-packages">2. Install Required Packages</h2>
+<ul>
+<li><p>In the Ubuntu terminal, run: <code>sudo apt update</code> and enter the password you created when prompted</p></li>
+<li><p>Run: <code>sudo apt install -y ca-certificates curl gnupg lsb-release</code></p></li>
+</ul>
+</section>
+<section id="add-dockers-official-gpg-key" class="level2">
+<h2 class="anchored" data-anchor-id="add-dockers-official-gpg-key">3. Add Docker’s Official GPG Key</h2>
+<ul>
+<li>Run <code>sudo mkdir -p /etc/apt/keyrings</code>, and then on the lext line <code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</code></li>
+</ul>
+</section>
+<section id="add-dockers-apt-repository" class="level2">
+<h2 class="anchored" data-anchor-id="add-dockers-apt-repository">4. Add Docker’s APT Repository</h2>
+<ul>
+<li>Run: <code>echo \</code> <code>&quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \</code> <code>https://download.docker.com/linux/ubuntu \</code> <code>$(lsb_release -cs) stable&quot; | \</code> <code>sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</code></li>
+</ul>
+</section>
+<section id="install-docker-engine" class="level2">
+<h2 class="anchored" data-anchor-id="install-docker-engine">5. Install Docker Engine</h2>
+<ul>
+<li><p>Run <code>sudo apt update</code></p></li>
+<li><p>Run <code>sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></p></li>
+</ul>
+</section>
+<section id="test" class="level2">
+<h2 class="anchored" data-anchor-id="test">6. Test</h2>
+<ul>
+<li>To make sure it worked, run <code>sudo docker run hello-world</code></li>
+</ul>
+</section>
+<section id="trouble-shooting" class="level2">
+<h2 class="anchored" data-anchor-id="trouble-shooting">Trouble-shooting</h2>
+<ul>
+<li><p>The error <strong>docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</strong> indicates that the docker daemon is not running. To start the daemon: <code>sudo service docker start</code> and then retry.</p></li>
+<li><p>If That fails with error <strong>Sudo is disabled on this machine. To enable it, go to the Developer Settings page in the Settings app</strong> then go to:</p>
+<p>Settings &gt; System &gt; For developers</p>
+<ul>
+<li><strong>Enable sudo</strong> should be near the bottom of the list. If it’s set to <strong>Off</strong>, turn it to <strong>On</strong>, then retry. You may need to repeat earlier steps.</li>
+</ul></li>
+<li><p>If you try to run <code>docker system df</code> and get:</p></li>
+</ul>
+<p>permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get “http://%2Fvar%2Frun%2Fdocker.sock/v1.50/system/df”: dial unix /var/run/docker.sock: connect: permission denied</p>
+<p>You can add the needed permissions with: <code>sudo usermod -aG docker $USER</code>, and then restarting the terminal</p>
 
 
 </section>

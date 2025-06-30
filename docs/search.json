@@ -28,6 +28,13 @@
     "text": "HubSpot Terms\n\nAssociation\nA link between records.  The records might be of different object types, or the same object type.\n\n\nObject\nA collection of records and properties of the same type, like a spreadsheet collects rows that all have the same columns.\n\n\nProperty\nA single field that can contain a single value for that specific record, like a cell in a spreadsheet.  Every row will have one cell in each column, and every record will have one value for each property (though in some cases that value might be blank or 0).\n\n\nRecord\nA group of values that are all properties of a single thing.  In HubSpot, all records have a unique object_id, which can be used to allow one record to reference another for more complex data relationships, like associations."
   },
   {
+    "objectID": "reference/glossary.html#docker-terms",
+    "href": "reference/glossary.html#docker-terms",
+    "title": "Glossary of Terms",
+    "section": "Docker Terms",
+    "text": "Docker Terms\n\nContainer\nA container is a self-contained, isolated, independent process that has everything it needs to run anywhere.\n\n\nImage\nA container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It's like a class, that is intstantiated into a container."
+  },
+  {
     "objectID": "reference/glossary.html#default-terms",
     "href": "reference/glossary.html#default-terms",
     "title": "Glossary of Terms",
@@ -46,14 +53,70 @@
     "href": "how-to/update-pdf-converter.html#build-the-image-locally",
     "title": "Update PDF Converter",
     "section": "1. Build the Image Locally",
-    "text": "1. Build the Image Locally\n\nFrom an Ubuntu terminal within the root of the project, run:\n\ndocker build -t ghcr.io/terramaxinc/pdf-service .\n\nThe -t tags it with a name.\nghcr.io/terramaxinc/ is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing terramaxinc with your account name.\nThe pdf-serive can be anything you want; it’ll be th ename of the image that’s produced, and is not tied to the current name of the project.\nthe “.” at the end means to build from the current directory."
+    "text": "1. Build the Image Locally\n\nFrom an Ubuntu terminal within the root of the project, run:\n\ndocker build -t ghcr.io/terramaxinc/pdf-service .\n\nThe -t tags it with a name.\nghcr.io/terramaxinc/ is necessary for it to be pushed to the TerraMaxInc github packages later. It must be all lower case, even though the account shows upper case letters. You can also use your own account instead buy replacing terramaxinc with your account name.\nThe pdf-serive can be anything you want; it’ll be the name of the image that’s produced, and is not tied to the current name of the project.\nthe “.” at the end means to build from the current directory."
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html",
+    "href": "how-to/setup-docker-ide.html",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "",
+    "text": "Another one just for me."
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#install-wsl-and-ubuntu",
+    "href": "how-to/setup-docker-ide.html#install-wsl-and-ubuntu",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "1. Install WSL and Ubuntu",
+    "text": "1. Install WSL and Ubuntu\n\nIn any terminal, run wsl --install. This will install both WSL and Ubuntu.\nCreate your default Unix user and password when prompted."
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#install-required-packages",
+    "href": "how-to/setup-docker-ide.html#install-required-packages",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "2. Install Required Packages",
+    "text": "2. Install Required Packages\n\nIn the Ubuntu terminal, run: sudo apt update and enter the password you created when prompted\nRun: sudo apt install -y ca-certificates curl gnupg lsb-release"
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#add-dockers-official-gpg-key",
+    "href": "how-to/setup-docker-ide.html#add-dockers-official-gpg-key",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "3. Add Docker’s Official GPG Key",
+    "text": "3. Add Docker’s Official GPG Key\n\nRun sudo mkdir -p /etc/apt/keyrings, and then on the lext line curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg"
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#add-dockers-apt-repository",
+    "href": "how-to/setup-docker-ide.html#add-dockers-apt-repository",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "4. Add Docker’s APT Repository",
+    "text": "4. Add Docker’s APT Repository\n\nRun: echo \\ \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \\ https://download.docker.com/linux/ubuntu \\ $(lsb_release -cs) stable\" | \\ sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null"
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#install-docker-engine",
+    "href": "how-to/setup-docker-ide.html#install-docker-engine",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "5. Install Docker Engine",
+    "text": "5. Install Docker Engine\n\nRun sudo apt update\nRun sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#test",
+    "href": "how-to/setup-docker-ide.html#test",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "6. Test",
+    "text": "6. Test\n\nTo make sure it worked, run sudo docker run hello-world"
+  },
+  {
+    "objectID": "how-to/setup-docker-ide.html#trouble-shooting",
+    "href": "how-to/setup-docker-ide.html#trouble-shooting",
+    "title": "Set Up Docker, Ubuntu, and WSL in your IDE",
+    "section": "Trouble-shooting",
+    "text": "Trouble-shooting\n\nThe error docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running? indicates that the docker daemon is not running. To start the daemon: sudo service docker start and then retry.\nIf That fails with error Sudo is disabled on this machine. To enable it, go to the Developer Settings page in the Settings app then go to:\nSettings &gt; System &gt; For developers\n\nEnable sudo should be near the bottom of the list. If it’s set to Off, turn it to On, then retry. You may need to repeat earlier steps.\n\nIf you try to run docker system df and get:\n\npermission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get “http://%2Fvar%2Frun%2Fdocker.sock/v1.50/system/df”: dial unix /var/run/docker.sock: connect: permission denied\nYou can add the needed permissions with: sudo usermod -aG docker $USER, and then restarting the terminal"
   },
   {
     "objectID": "how-to/how-to-contents.html",
     "href": "how-to/how-to-contents.html",
     "title": "How-Tos",
     "section": "",
-    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update\nEdit Product (Price)\nScaffold New PWA with MSAL\nUpdated PDF Converter"
+    "text": "Add New Function\nAdd Product\nCheck Costs\nDeploy hubspot-service Update\nDeploy ordering-app Update\nEdit Product (Price)\nScaffold New PWA with MSAL\nTest PDF Converter Locally\nUpdated PDF Converter"
   },
   {
     "objectID": "how-to/deploy-ordering-app-update.html",
@@ -852,6 +915,41 @@
     "title": "Scaffold New PWA with MSAL",
     "section": "9. ADd API Permissions",
     "text": "9. ADd API Permissions"
+  },
+  {
+    "objectID": "how-to/test-pdf-converter-locally.html",
+    "href": "how-to/test-pdf-converter-locally.html",
+    "title": "Test PDF Converter Locally",
+    "section": "",
+    "text": "For my own reference, because the Docker environment is less familiar than the other technologies in this project.\nAll terminal commands in this section should be run from the Ubuntu termiinal"
+  },
+  {
+    "objectID": "how-to/test-pdf-converter-locally.html#check-that-docker-is-running",
+    "href": "how-to/test-pdf-converter-locally.html#check-that-docker-is-running",
+    "title": "Test PDF Converter Locally",
+    "section": "1. Check that Docker is running",
+    "text": "1. Check that Docker is running\n\ndocker version"
+  },
+  {
+    "objectID": "how-to/test-pdf-converter-locally.html#build-the-docker-docker-image",
+    "href": "how-to/test-pdf-converter-locally.html#build-the-docker-docker-image",
+    "title": "Test PDF Converter Locally",
+    "section": "2. Build the Docker Image",
+    "text": "2. Build the Docker Image\n\nIn the same folder as the projct’s Dockerfile, run: docker build -t pdf-service ."
+  },
+  {
+    "objectID": "how-to/test-pdf-converter-locally.html#run-the-docker-container-locally",
+    "href": "how-to/test-pdf-converter-locally.html#run-the-docker-container-locally",
+    "title": "Test PDF Converter Locally",
+    "section": "3. Run the Container Locally",
+    "text": "3. Run the Container Locally\n\ndocker run -p 3000:3000 pdf-service"
+  },
+  {
+    "objectID": "how-to/test-pdf-converter-locally.html#other-docker-commands",
+    "href": "how-to/test-pdf-converter-locally.html#other-docker-commands",
+    "title": "Test PDF Converter Locally",
+    "section": "Other docker commands",
+    "text": "Other docker commands\n\ndocker image ls - to view all current docker images\ndocker ps - to view all currently running containers\ndocker ps -a - to view all containers, running and stopped\ndocker stop dreamy-nobel - to stop a running container; replace dreamy-nobel with the NAME\ndocker rm 6ce830b8abca - to remove the container; replace 6ce830b8abca with the CONTAINER ID\ndocker rmi 88d328d33a81 - to remove the image; replace 88d328d33a81 with the IMAGE ID, or the TAG if there is one"
   },
   {
     "objectID": "index.html",
