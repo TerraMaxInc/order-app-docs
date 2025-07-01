@@ -5,6 +5,8 @@ format: html
 
 This one is just for my own reference, to remember what I did.  It assumes that you already made whatever the updates are in the app code itself.
 
+Note: The PAT needs to be manually rotated every month!  This sux, but seems inescapable.
+
 ## 1. Build the @docker-image Locally
 
 - From an **Ubuntu** terminal within the root of the project, run:
