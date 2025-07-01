@@ -14,6 +14,7 @@ format: html
 - [Deploy ordering-app Update](deploy-ordering-app-update.html)
 - [Edit Product (Price)](edit-product.html)
 - [Scaffold New PWA with MSAL](scaffold-pwa-with-msal.html)
+- [Set up Azure CLI](setup-az-cli.html)
 - [Set up Docker IDE](setup-docker-ide.html)
 - [Test PDF Converter Locally](test-pdf-converter-locally.html)
 - [Updated PDF Converter](update-pdf-converter.html)

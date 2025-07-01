@@ -1,0 +1,18 @@
+---
+title: Setup Azure CLI
+format: html
+---
+
+Some other parts of this tutorial will require you to have the Azure CLI installed, so you can run bash commands with `az`.  
+
+This is a somehwat miscellanous set of commands to help you if you're having issues.
+
+- `az version` - to see what version you're using, and also what extenions are currently included.  For some parts of this tutorial, you will need the "containerapp" extension.
+
+## Container App
+From an Ubuntu terminal (since containerized apps use docker, which uses Linux):
+- `az extension add --name containerapp` to add the containerapp extension. 
+    - as of the time of writing this was still in "preview" and throws up some warnings, but it is sitll more workable than the Azure Portal. 
+- `az containerapp --help` to view available commands for the containerapp extension
+- `az containerapp registry --help` to view available commands to manage registry information
+- `az containerapp registry set --help` to view required and optional arguments for adding or updating a registry's details

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>How-Tos – Ordering App Project Docs</title>
+<title>Setup Azure CLI – Ordering App Project Docs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3851,7 +3851,7 @@ vertical-align: -.125em;
 <span class="menu-text">HubSpot</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../how-to/how-to-contents.html" aria-current="page"> 
+    <a class="nav-link" href="../how-to/how-to-contents.html"> 
 <span class="menu-text">How-to’s</span></a>
   </li>  
   <li class="nav-item">
@@ -3869,15 +3869,21 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#container-app" id="toc-container-app" class="nav-link active" data-scroll-target="#container-app">Container App</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How-Tos</h1>
+<h1 class="title">Setup Azure CLI</h1>
 </div>
 
 
@@ -3894,24 +3900,17 @@ vertical-align: -.125em;
 </header>
 
 
-<!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render docs/how-to/how-to-contents.qmd 
--->
+<p>Some other parts of this tutorial will require you to have the Azure CLI installed, so you can run bash commands with <code>az</code>.</p>
+<p>This is a somehwat miscellanous set of commands to help you if you’re having issues.</p>
 <ul>
-<li><a href="add-new-function.html">Add New Function</a></li>
-<li><a href="add-product.html">Add Product</a></li>
-<li><a href="check-costs.html">Check Costs</a></li>
-<li><a href="deploy-hubspot-service-update.html">Deploy hubspot-service Update</a></li>
-<li><a href="deploy-ordering-app-update.html">Deploy ordering-app Update</a></li>
-<li><a href="edit-product.html">Edit Product (Price)</a></li>
-<li><a href="scaffold-pwa-with-msal.html">Scaffold New PWA with MSAL</a></li>
-<li><a href="setup-az-cli.html">Set up Azure CLI</a></li>
-<li><a href="setup-docker-ide.html">Set up Docker IDE</a></li>
-<li><a href="test-pdf-converter-locally.html">Test PDF Converter Locally</a></li>
-<li><a href="update-pdf-converter.html">Updated PDF Converter</a></li>
+<li><code>az version</code> - to see what version you’re using, and also what extenions are currently included. For some parts of this tutorial, you will need the “containerapp” extension.</li>
 </ul>
+<section id="container-app" class="level2">
+<h2 class="anchored" data-anchor-id="container-app">Container App</h2>
+<p>From an Ubuntu terminal (since containerized apps use docker, which uses Linux): - <code>az extension add --name containerapp</code> to add the containerapp extension. - as of the time of writing this was still in “preview” and throws up some warnings, but it is sitll more workable than the Azure Portal. - <code>az containerapp --help</code> to view available commands for the containerapp extension - <code>az containerapp registry --help</code> to view available commands to manage registry information - <code>az containerapp registry set --help</code> to view required and optional arguments for adding or updating a registry’s details</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

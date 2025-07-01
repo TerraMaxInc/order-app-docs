@@ -41,4 +41,17 @@ This one is just for my own reference, to remember what I did.  It assumes that 
 
 ## 4. Update the Azure App to use the New Version
 
-- 
+- The Azure Portal is extremely limited for this, and it's easier to use the Azure cli.  
+- From an Ubuntu terminal, assuming you're already logged in, enter:
+    - `az containerapp registry set  \`
+      `--name pdf-service \`
+      `--resource-group TestResourceGroup \`
+      `--server ghcr.io \`
+      `--username YOUR_USERNAME \`
+      `--password "THAT_NEW PAT" \` (inside quotes)
+- If that succeeds, next enter:
+    - `as containerapp update \`
+      `--name pdf-service \`
+      `--resource-group TestResourceGroup \`
+      `--image ghcr.io/terramacinc/pdf-service3`
+- If it's successful, you should be able to see the results in the Portal.
