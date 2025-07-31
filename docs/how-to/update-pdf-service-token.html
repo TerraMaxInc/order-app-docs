@@ -3924,7 +3924,19 @@ vertical-align: -.125em;
 <li><p>Once logged in, update the token in Azure with thie script below. <em>DO put the token inside quotation marks.</em></p>
 <p><code>az containerapp registry set --name pdf-service --resource-group TestResourceGroup --server ghcr.io --username terramaxchris --password &quot;NEW_TOKEN_VALUE&quot;</code></p></li>
 <li><p>If it works, it should return something like:</p>
-<p><code>Command group &#39;containerapp registry&#39; is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus</code> <code>The behavior of this command has been altered by the following extension: containerapp</code> <code>Updating existing registry.</code> <code>[</code> <code>{</code> <code>&quot;identity&quot;: &quot;&quot;,</code> <code>&quot;passwordSecretRef&quot;: &quot;ghcrio-terramaxchris&quot;,</code> <code>&quot;server&quot;: &quot;ghcr.io&quot;,</code> <code>&quot;username&quot;: &quot;terramaxchris&quot;</code> <code>}</code> <code>]</code></p></li>
+<ul>
+<li><code>Command group &#39;containerapp registry&#39; is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus</code></li>
+<li><code>The behavior of this command has been altered by the following extension: containerapp</code></li>
+<li><code>Updating existing registry.</code></li>
+<li><code>[</code></li>
+<li><code>{</code></li>
+<li><code>&quot;identity&quot;: &quot;&quot;,</code></li>
+<li><code>&quot;passwordSecretRef&quot;: &quot;ghcrio-terramaxchris&quot;,</code></li>
+<li><code>&quot;server&quot;: &quot;ghcr.io&quot;,</code></li>
+<li><code>&quot;username&quot;: &quot;terramaxchris&quot;</code></li>
+<li><code>}</code></li>
+<li><code>]</code></li>
+</ul></li>
 </ul>
 
 

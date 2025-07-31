@@ -27,14 +27,14 @@ When the token gets close to expiry, you will start getting warning emails about
 
 - If it works, it should return something like:
 
-    `Command group 'containerapp registry' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus`
-    `The behavior of this command has been altered by the following extension: containerapp`
-    `Updating existing registry.`
-    `[`
-        `{`
-            `"identity": "",`
-            `"passwordSecretRef": "ghcrio-terramaxchris",`
-            `"server": "ghcr.io",`
-            `"username": "terramaxchris"`
-        `}`
-    `]`
+    - `Command group 'containerapp registry' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus`
+    - `The behavior of this command has been altered by the following extension: containerapp`
+    - `Updating existing registry.`
+    - `[`
+    - ` {`
+    - `     "identity": "",`
+    - `     "passwordSecretRef": "ghcrio-terramaxchris",`
+    - `     "server": "ghcr.io",`
+    - `     "username": "terramaxchris"`
+    - ` }`
+    - `]`
