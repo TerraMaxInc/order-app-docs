@@ -1,0 +1,40 @@
+---
+title: Update PDF-Service Token
+format: html
+---
+
+The PDF-Service app requires an active token to access the github container registry, because it fetches the image to rebuild the app from scratch every time it's called.  The ghcr tokens only last a month, and must be refreshed regularly.  This is probabaly the most regular maintenance task that this whole app ecosystem requires.
+
+When the token gets close to expiry, you will start getting warning emails about it from github.  From these, you can follow to link to create a new, equivalent token, which then needs to be re-entered into Azure.
+
+## 1. Regenerate Token
+
+- Follow the link in the warning email to open a GitHub Page that prompts you to "Regenerate personal access token (classic)".  There will ne a new expiration date shown, and a green button to "Regenerate token."  Click the green button.
+
+## 2. Copy Token
+
+- When you click the green button, you will be taken to a page "Edit personal access token (classic)" where you can edit settings.  At the **top** of this page in a light blue box is the token itself.  Copy this and paste/save it somewhere else; once you leave the page you won't be allowed to see the token again, you can only generate new replacements.
+
+## 3. Add to Container App via az cli
+
+- The portal is a mess and won't work, don't even torture yourself.  Instead go to an **Ubuntu** terminal, and make sure you're logged in to Azure by entering 
+
+    `az login`
+
+- Once logged in, update the token in Azure with thie script below.  *DO put the token inside quotation marks.*
+
+    `az containerapp registry set --name pdf-service --resource-group TestResourceGroup --server ghcr.io --username terramaxchris --password "NEW_TOKEN_VALUE"`
+
+- If it works, it should return something like:
+
+    `Command group 'containerapp registry' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus`
+    `The behavior of this command has been altered by the following extension: containerapp`
+    `Updating existing registry.`
+    `[`
+        `{`
+            `"identity": "",`
+            `"passwordSecretRef": "ghcrio-terramaxchris",`
+            `"server": "ghcr.io",`
+            `"username": "terramaxchris"`
+        `}`
+    `]`

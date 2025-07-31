@@ -18,3 +18,4 @@ format: html
 - [Set up Docker IDE](setup-docker-ide.html)
 - [Test PDF Converter Locally](test-pdf-converter-locally.html)
 - [Updated PDF Converter](update-pdf-converter.html)
+- [Update PDF Service Token](update-pdf-service-token.html)
