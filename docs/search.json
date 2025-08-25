@@ -32,7 +32,7 @@
     "href": "reference/glossary.html#docker-terms",
     "title": "Glossary of Terms",
     "section": "Docker Terms",
-    "text": "Docker Terms\n\nContainer\nA container is a self-contained, isolated, independent process that has everything it needs to run anywhere.\n\n\nImage\nA container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It's like a class, that is intstantiated into a container."
+    "text": "Docker Terms\n\nContainer\nA container is a self-contained, isolated, independent process that has everything it needs to run anywhere.\n\n\nContainer Registry\nStorage for a containerized application image, needed in order to run and use a containerized app in the cloud.  The PDF-Service uses the Github Container Registry (ghcr).\n\n\nImage\nA container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It's like a class, that is intstantiated into a container."
   },
   {
     "objectID": "reference/glossary.html#default-terms",
@@ -1005,7 +1005,7 @@
     "href": "how-to/update-pdf-service-token.html",
     "title": "Update PDF-Service Token",
     "section": "",
-    "text": "The PDF-Service app requires an active token to access the github container registry, because it fetches the image to rebuild the app from scratch every time it’s called. The ghcr tokens only last a month, and must be refreshed regularly. This is probabaly the most regular maintenance task that this whole app ecosystem requires.\nWhen the token gets close to expiry, you will start getting warning emails about it from github. From these, you can follow to link to create a new, equivalent token, which then needs to be re-entered into Azure."
+    "text": "The PDF-Service app requires an active token to access the github Container Registry, because it fetches the Image to rebuild the app from scratch every time it’s called. The ghcr tokens expire (I like to set them to last 90 days), and must be refreshed regularly. This is probabaly the most regular maintenance task that this whole app ecosystem requires.\nWhen the token gets close to expiry, you will start getting warning emails about it from github. From these, you can follow to link to create a new, equivalent token, which then needs to be re-entered into Azure."
   },
   {
     "objectID": "how-to/update-pdf-service-token.html#regenerate-token",
@@ -1031,21 +1031,21 @@
   {
     "objectID": "maintenance/tokens.html",
     "href": "maintenance/tokens.html",
-    "title": "Ordering App Project Docs",
+    "title": "Token Management",
     "section": "",
-    "text": "title: Token Management\n\n\nformat: html\nThis project involves a lot of tokens that the various components use to access each other. Some of these expire and need to be manually refreshed."
+    "text": "This project involves a lot of tokens that the various components use to access each other. Some of these expire and need to be manually refreshed."
   },
   {
     "objectID": "maintenance/tokens.html#pdf-service",
     "href": "maintenance/tokens.html#pdf-service",
-    "title": "Ordering App Project Docs",
+    "title": "Token Management",
     "section": "PDF-Service",
-    "text": "PDF-Service\nThe PDF Service uses a PAT (Personal Access Token) gtom GitHub to access the app’s Container Image from the GitHub Container Registry. Because we use the free tier that doesn’t run continuously, and so the app has to cold start, Azure does need consistent, up-to-date access to fetch the image from the registry every time. The PAT, however, expires by default after only a month.\nTo update this token, see Update PDF Converter"
+    "text": "PDF-Service\nThe PDF Service uses a PAT (Personal Access Token) gtom GitHub to access the app’s Container Image from the GitHub Container Registry. Because we use the free tier that doesn’t run continuously, and so the app has to cold start, Azure does need consistent, up-to-date access to fetch the image from the registry every time. The PAT, however, expires by default after only a month.\nTo update this token, see Update PDF-Service Token"
   },
   {
     "objectID": "maintenance/tokens.html#hubspot-service",
     "href": "maintenance/tokens.html#hubspot-service",
-    "title": "Ordering App Project Docs",
+    "title": "Token Management",
     "section": "HubSpot Service",
     "text": "HubSpot Service\nThe backend HubSpot Service app uses a token from HubSpot to connect directly to data within our HubSpot account."
   }

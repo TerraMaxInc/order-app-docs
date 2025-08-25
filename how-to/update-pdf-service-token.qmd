@@ -3,7 +3,7 @@ title: Update PDF-Service Token
 format: html
 ---
 
-The PDF-Service app requires an active token to access the github container registry, because it fetches the image to rebuild the app from scratch every time it's called.  The ghcr tokens only last a month, and must be refreshed regularly.  This is probabaly the most regular maintenance task that this whole app ecosystem requires.
+The PDF-Service app requires an active token to access the github @container-registry, because it fetches the @docker-image to rebuild the app from scratch every time it's called.  The ghcr tokens expire (I like to set them to last 90 days), and must be refreshed regularly.  This is probabaly the most regular maintenance task that this whole app ecosystem requires.
 
 When the token gets close to expiry, you will start getting warning emails about it from github.  From these, you can follow to link to create a new, equivalent token, which then needs to be re-entered into Azure.
 

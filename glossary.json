@@ -36,6 +36,12 @@
         "category": "docker"
     },
     {
+        "term": "Container Registry",
+        "key": "container-registry",
+        "definition": "Storage for a containerized application image, needed in order to run and use a containerized app in the cloud.  The PDF-Service uses the Github Container Registry (ghcr).",
+        "category": "docker"
+    },
+    {
         "term": "Delegated Permission",
         "key": "delegated-permission",
         "definition": "In contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.",
