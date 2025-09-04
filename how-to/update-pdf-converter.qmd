@@ -10,11 +10,12 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
 ## 1. Build the @docker-image Locally
 
 - From an **Ubuntu** terminal within the root of the project, run:
-    - `docker build -t ghcr.io/terramaxchris/pdf-service .`
+    - `docker build -t ghcr.io/terramaxchris/pdf-service:2.1.1 .`
     - The `-t` tags it with a name.  
     - `ghcr.io/terramaxchris/` is necessary for it to be pushed to your github packages later.  It must be all lower case, even though the account shows upper case letters.  In theory you can also use `terramaxinc`, except not unless we upgrade to a paid account.  
     - The `pdf-serive` can be anything you want; it'll be the name of the image that's produced, and is not tied to the current name of the project.
         - This will functionally be its location AND name in the registry, later.  If you don't increment up the version but reuse the exact same tag as something already in the registry, it will overwrite and replace it--but NOT automatically update the Azure Container app to know how to *use* it.  That is not a valid update strategy.  
+        - Keep updating the `:2.1.1` part, so you can better tell updates apart from eachother in the ghcr
     - the "." at the end means to build from the current directory.
 
 ## 2. Get a Personal Access Token to push to GHCR
@@ -38,7 +39,7 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
     - `docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin` tells it to log in to GHCR, with your username, and the tale the password from the echoed part and not fuss with trying to login via an actual password.  This is apparently much more secure than the password anyway.
     - hopefully, it will tell you "Login Succeeded"
 - Push the image to GCHR.  It should alreadybe tagged as needed in step 1:
-    - `docker push ghcr.io/terramaxinc/pdf-service3:latest`
+    - `docker push ghcr.io/terramaxinc/pdf-service:2.1.1`
     - you should be able to confirm it worked by looking at it in the target location's **packages**
 
 ## 4. Update the Azure App to use the New Version
@@ -55,5 +56,5 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
     - `az containerapp update \`
     -  `--name pdf-service \`
     -  `--resource-group TestResourceGroup \`
-    -  `--image ghcr.io/terramacinc/pdf-service3`
+    -  `--image ghcr.io/terramacinc/pdf-service:2.1.1`
 - If it's successful, you should be able to see the results in the Portal.

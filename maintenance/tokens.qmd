@@ -5,16 +5,16 @@ format: html
 
 This project involves a lot of tokens that the various components use to access each other.  Some of these expire and need to be manually refreshed.
 
-## Terramax-Hubspot-Service
-The HubSpot Service uses a Client Secret to gain permission to send emails on its own behalf from the `tech@terramax.com` email, which expires every 6 months.  This value is generated from the `terramax-bubspot-service-registration` in Entra app registions, under Certificates & Secrets.  When the old Secret expires, go there and reate a new one, then paste the new value into the 'CLIENT_SECRET' env variable in both the `terramax-hubspot-service` app in Azure in prod, and in the code .env file so it will work locally in dev.
-
-Since this backend app services both the odering app and the product manager, keeping it updated is sufficient for both the two client apps.
-
 ## PDF-Service
 The PDF Service uses a PAT (Personal Access Token) from GitHub to access the app's @docker-container @docker-image from the GitHub Container Registry.  Because we use the free tier that doesn't run continuously, and so the app has to cold start, Azure *does* need consistent, up-to-date access to fetch the image from the registry every time.  The PAT, however, expires by default after only a month. 
 
 To update this token, see [Update PDF-Service Token](../how-to/update-pdf-service-token.html)
 
 ## HubSpot Service
+### 1. HubSpot Token
 The backend [HubSpot Service](../architecture/azure/hubspot-service/hubspot-service.html) app uses a token from HubSpot to connect directly to data within our [HubSpot](../architecture/hubspot/hubspot-overview.html) account.
 
+### 2. Mail Daemon Client Secret
+The HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the `tech@terramax.com` email.   This "secret" expires every 6 months.  The value is generated from the `terramax-bubspot-service-registration` in Entra app registions, under Certificates & Secrets.  When the old Secret expires, go there and reate a new one, then paste the new value into the 'CLIENT_SECRET' env variable in both the `terramax-hubspot-service` app in Azure in prod, and in the code .env file so it will work locally in dev.
+
+Since this backend app services both the odering app and the product manager, keeping it updated is sufficient for both the two client apps.

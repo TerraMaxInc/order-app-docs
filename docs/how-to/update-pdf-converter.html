@@ -3910,7 +3910,7 @@ vertical-align: -.125em;
 <ul>
 <li>From an <strong>Ubuntu</strong> terminal within the root of the project, run:
 <ul>
-<li><code>docker build -t ghcr.io/terramaxchris/pdf-service .</code></li>
+<li><code>docker build -t ghcr.io/terramaxchris/pdf-service:2.1.1 .</code></li>
 <li>The <code>-t</code> tags it with a name.<br>
 </li>
 <li><code>ghcr.io/terramaxchris/</code> is necessary for it to be pushed to your github packages later. It must be all lower case, even though the account shows upper case letters. In theory you can also use <code>terramaxinc</code>, except not unless we upgrade to a paid account.<br>
@@ -3919,6 +3919,7 @@ vertical-align: -.125em;
 <ul>
 <li>This will functionally be its location AND name in the registry, later. If you don’t increment up the version but reuse the exact same tag as something already in the registry, it will overwrite and replace it–but NOT automatically update the Azure Container app to know how to <em>use</em> it. That is not a valid update strategy.<br>
 </li>
+<li>Keep updating the <code>:2.1.1</code> part, so you can better tell updates apart from eachother in the ghcr</li>
 </ul></li>
 <li>the “.” at the end means to build from the current directory.</li>
 </ul></li>
@@ -3950,7 +3951,7 @@ vertical-align: -.125em;
 </ul></li>
 <li><p>Push the image to GCHR. It should alreadybe tagged as needed in step 1:</p>
 <ul>
-<li><code>docker push ghcr.io/terramaxinc/pdf-service3:latest</code></li>
+<li><code>docker push ghcr.io/terramaxinc/pdf-service:2.1.1</code></li>
 <li>you should be able to confirm it worked by looking at it in the target location’s <strong>packages</strong></li>
 </ul></li>
 </ul>
@@ -3974,7 +3975,7 @@ vertical-align: -.125em;
 <li><code>az containerapp update \</code></li>
 <li><code>--name pdf-service \</code></li>
 <li><code>--resource-group TestResourceGroup \</code></li>
-<li><code>--image ghcr.io/terramacinc/pdf-service3</code></li>
+<li><code>--image ghcr.io/terramacinc/pdf-service:2.1.1</code></li>
 </ul></li>
 <li>If it’s successful, you should be able to see the results in the Portal.</li>
 </ul>
