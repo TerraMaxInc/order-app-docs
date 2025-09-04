@@ -14,6 +14,8 @@ This repository contains all documentation for the Order App project, which cons
 
 This app allows end users to create and edit Deals in HubSpot via the ordering-app's interface, which is more streamlined and intuitive for TerraMax business needs, and to automate emailing Work Orders to production as part of the entry process.
 
+![Basic Diagram](images/diagram_basic.png)
+
 ---
 
 ## Quick Links
