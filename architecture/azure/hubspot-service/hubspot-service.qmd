@@ -7,9 +7,10 @@ The **HubSpot Service** is the intermediary that connects the user-facing [Order
 
 This is a Node.js app written in Typescript, and hosted in Azure Functions.  It makes heavy use of the environmental variables for security and configurability. 
 
-- [Azure Functions](azure-functions.html)
+- [Azure Functions](../azure-services/azure-functions.html)
 - [Environmental Variables](environmental-variables.html)
 - [HubSpot Integration](../../hubspot/integrations.html)
+- [App Insights](../azure-services/app-insights.html)
 
 
 ## Other settings

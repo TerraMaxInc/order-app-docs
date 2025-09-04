@@ -102,6 +102,12 @@
         "category":"basic"
     },
     {
+        "term": "Progressive Web App",
+        "key": "pwa",
+        "definition": "A web page with application-like functionality that can be downloaded to a device to have its own icon",
+        "category": "basic"
+    },
+    {
         "term": "Property",
         "key": "hs-property",
         "definition": "A single field that can contain a single value for that specific record, like a cell in a spreadsheet.  Every row will have one cell in each column, and every record will have one value for each property (though in some cases that value might be blank or 0).",

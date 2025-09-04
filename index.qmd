@@ -1,20 +1,31 @@
-<!-- To regenerate the Markdown version of this file, enter in the terminal:
-    quarto render index.qmd 
--->
-
 ---
 title: "Ordering App System Docs"
 format: html
 ---
 
-This repository contains all documentation for the Order App project, which consists of two main parts:
+This repository contains all documentation for the interconnecting projects in Azure that handle ordering and product information for use by the sales team.
 
-- **ordering-app**: A React PWA for end users, hosted in Azure Static Web Apps
-- **hubspot-service**: An Azure Functions backend that communicates with HubSpot
-
-This app allows end users to create and edit Deals in HubSpot via the ordering-app's interface, which is more streamlined and intuitive for TerraMax business needs, and to automate emailing Work Orders to production as part of the entry process.
+The project connects with HubSpot via an api to fetch and edit data, and uses GitHub to store code, perform certain management functions, and to host this Documentation, but all the custom applications at the heart of it are hosted in Azure, under the terramaxinc tenant.
 
 ![Basic Diagram](images/diagram_basic.png)
+
+The front-end user can interact with fours things directly: this Documentation page, HubSpot, and two client @pwa : 
+    - The [Ordering App](architecture/azure/ordering-app/ordering-app.html), which the allows users to view and edit Deal data in HubSpot through an interface that is better adapted to TerraMax business needs, and automates emailing Work Orders to production as part of the entry process.
+
+    - The [Product Manager App](architecture/azure/product-manager/product-manager.html), which allows users to quickly look up Product information, and to build and email themselves customized Price Lists.
+
+These apps are served by a network of backend services:
+    - The [HubSpot Service](architecture/azure/hubspot-service/hubspot-service.html), an [Azure Functions App](architecture/azure/azure-services/azure-functions.html) which acts as a middle man between the client apps and all other data and services.
+
+    - The [PDF Service](architecture/azure/pdf-service/pdf-service.html), a @container app that receives an html document and returns it as a PDF document.
+
+    - The [SQL Products Database](architecture/azure/terramax-data/terramax-data.html), a relational database of data about TerraMax products, so that all apps and services can refer to this single source of truth and will never have conflicting data.
+
+    - The [App Images](architecture/azure/terramaxappimages/terramaxappimages.html) storage account, which stores images for use in the Price List.
+
+GitHub is used to store the codebase and versioning progress, to store and host this Documentation page, to store the @container @image for the PDF Service, and to update the PWA applications through *GitHub Actions*.
+
+Many of these connections rely on *access tokens* or *client secrets*, some of which expire and require [Management](maintenance/tokens.html)
 
 ---
 
