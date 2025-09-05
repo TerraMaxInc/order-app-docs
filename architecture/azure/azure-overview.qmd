@@ -77,14 +77,15 @@ Other relevant resources:
 
 ## Quick Links
 
-General Azure Services:
+### General Azure Services:
 
 - [Azure Portal](azure-services/azure-portal.html)
 - [Entra ID](azure-services/entra-overview.html)
 - [Azure Static WebApps](azure-services/static-web-apps.html)
 - [Azure Functions](azure-services/azure-functions.html)
 - [Azure Insights](azure-services/app-insights.html)
-Specific Project Components
+
+### Specific Project Components:
 
 - [Ordering App](ordering-app/ordering-app.html)
 - [Product Manager](product-manager/product-manager.html)
