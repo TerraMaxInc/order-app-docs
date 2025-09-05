@@ -15,3 +15,6 @@ This is a Node.js app written in Typescript, and hosted in Azure Functions.  It 
 
 ## Other settings
 
+
+## Application Insights
+This app has an [Application Insights](../azure-services/app-insights.html) resource under the name `terramax-hubspot-service-app-insights` where you can view activity logs and try to trouble-shoot errors.

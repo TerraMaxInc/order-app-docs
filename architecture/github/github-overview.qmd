@@ -3,6 +3,29 @@ title: "GitHub Account"
 format: html
 ---
 
-Stuff about the Github account....
-- Github actions
-- how these docs are hosted
+GitHub is a platform for storing, managing, and sharing code.  It's useful in general as a cloud-based location so that code can be accessed from different devices, but moreso for tracking *versions* of code.  In the event that an update has unanticipated problems, you can use GitHub to rollback to a pervious working version.
+
+## Personal vs Organization Account
+TerraMax as a company has a GitHub account that hosts the codebase for our website.  This seemed like the appropriate place to store code for other TerraMax projects as well.  Not all GitHub functions have been possible to do in the Organization account however; some things are free to do with personal accounts, but would require a paid Organization account.
+
+The organization account is `terramaxinc` and the personal account I have been using is `terramaxchris`.  If someone else were to take over these projects for me, the processes that rely on my personal account would need to be transfered to someone else.  These are:
+
+- Updating the [Ordering App](../azure/ordering-app/ordering-app.html) and [Product Manager](../azure/product-manager/product-manager.html) through GitHub Actions:
+    - [Update Ordering App](../../how-to/deploy-ordering-app-update.html)
+- Updating the [PDF Service](../azure/pdf-service/pdf-service.html) @docker-image in the GitHub Image Repository
+    - [Update PDF Service](../../how-to/update-pdf-converter.html)
+
+## GitHub Actions
+The [Static Web Apps](../azure/azure-services/static-web-apps.html) in this project update using *GitHub Actions*.  This requires the project code for the app to have a .yml file, located in `.github > workflows`, that describes the update workflow.  These files were auto-generated during the initial setup, but did require a certain amount of correcting.  It's a hassle to fix them, and I strongly recommended to not mess with them.
+
+Deployment is a matter of pushing an update to a particular designated branch (in this project, "deploy").  This triggers the GitHub Action to follow the instructions in the .yml file, and update the live app accordingly.
+
+This has to be done from a personal account rather than the Organization account, unless we decide to upgrade to a paid version.
+
+## GitHub Image Repository
+The containerized [PDF Service](../azure/pdf-service/pdf-service.html) uses the GitHub Image Repository instead of Docker, because the GitHub one is free.  
+
+This has to be done from a personal account rather than the Organization account, unless we decide to upgrade to a paid version.
+
+## Documentation
+This Documentation is hosted in the `terramaxinc` organization GitHub account.  Because we're using the free version, we can only publish it as a public site, and so sentitive details should not be saved here.

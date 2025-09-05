@@ -17,4 +17,4 @@ The backend [HubSpot Service](../architecture/azure/hubspot-service/hubspot-serv
 ### 2. Mail Daemon Client Secret
 The HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the `tech@terramax.com` email.   This "secret" expires every 6 months, and without an active none of the client apps can send emails.  
 
-To update this token, se [Update Mail Daemon Secret](../how-to/update-mail-daemon-secret.html)
+To update this token, see [Update Mail Daemon Secret](../how-to/update-mail-daemon-secret.html)

@@ -1,0 +1,13 @@
+---
+title: "Azure Static Web Apps Overview"
+format: html
+---
+
+*Azure Static Web Apps* is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt.  Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.
+
+This is well suited to components like the [Ordering App](../ordering-app/ordering-app.html) and [Product Manager](../product-manager/product-manager.html).  These front-end apps are @pwa, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and don't need a traditional server.  For retrieving or procesing data, these app call the backend [HubSpot Service](../hubspot-service/hubspot-service.html) to do the heavy lifting not suited for client-side applications.
+
+## Updating Through GitHub Actions
+The only easily-accessible way to push an update to *Static Web Apps* is through *GitHub Actions*.
+- [GitHub](../../github/github-overview.html)
+- [Updating the Ordering App](../ordering-app/ordering-app.html)

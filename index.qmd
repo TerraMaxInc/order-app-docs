@@ -8,6 +8,7 @@ This repository contains all documentation for the interconnecting projects in A
 The project connects with HubSpot via an api to fetch and edit data, and uses GitHub to store code, perform certain management functions, and to host this Documentation, but all the custom applications at the heart of it are hosted in Azure, under the terramaxinc tenant.
 
 ![Diagram of General Structure](images/diagram_basic.png)
+
 ---
 
 ## Summary

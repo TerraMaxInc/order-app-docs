@@ -3881,8 +3881,17 @@ vertical-align: -.125em;
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#personal-vs-organization-account" id="toc-personal-vs-organization-account" class="nav-link active" data-scroll-target="#personal-vs-organization-account">Personal vs Organization Account</a></li>
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">GitHub Actions</a></li>
+  <li><a href="#github-image-repository" id="toc-github-image-repository" class="nav-link" data-scroll-target="#github-image-repository">GitHub Image Repository</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -3906,9 +3915,39 @@ vertical-align: -.125em;
 </header>
 
 
-<p>Stuff about the Github account…. - Github actions - how these docs are hosted</p>
+<p>GitHub is a platform for storing, managing, and sharing code. It’s useful in general as a cloud-based location so that code can be accessed from different devices, but moreso for tracking <em>versions</em> of code. In the event that an update has unanticipated problems, you can use GitHub to rollback to a pervious working version.</p>
+<section id="personal-vs-organization-account" class="level2">
+<h2 class="anchored" data-anchor-id="personal-vs-organization-account">Personal vs Organization Account</h2>
+<p>TerraMax as a company has a GitHub account that hosts the codebase for our website. This seemed like the appropriate place to store code for other TerraMax projects as well. Not all GitHub functions have been possible to do in the Organization account however; some things are free to do with personal accounts, but would require a paid Organization account.</p>
+<p>The organization account is <code>terramaxinc</code> and the personal account I have been using is <code>terramaxchris</code>. If someone else were to take over these projects for me, the processes that rely on my personal account would need to be transfered to someone else. These are:</p>
+<ul>
+<li>Updating the <a href="../azure/ordering-app/ordering-app.html">Ordering App</a> and <a href="../azure/product-manager/product-manager.html">Product Manager</a> through GitHub Actions:
+<ul>
+<li><a href="../../how-to/deploy-ordering-app-update.html">Update Ordering App</a></li>
+</ul></li>
+<li>Updating the <a href="../azure/pdf-service/pdf-service.html">PDF Service</a> <a href="../../reference/glossary.html#docker-image" class="glossary-term" title="A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It&#39;s like a class, that is intstantiated into a container.">Image</a> in the GitHub Image Repository
+<ul>
+<li><a href="../../how-to/update-pdf-converter.html">Update PDF Service</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="github-actions" class="level2">
+<h2 class="anchored" data-anchor-id="github-actions">GitHub Actions</h2>
+<p>The <a href="../azure/azure-services/static-web-apps.html">Static Web Apps</a> in this project update using <em>GitHub Actions</em>. This requires the project code for the app to have a .yml file, located in <code>.github &gt; workflows</code>, that describes the update workflow. These files were auto-generated during the initial setup, but did require a certain amount of correcting. It’s a hassle to fix them, and I strongly recommended to not mess with them.</p>
+<p>Deployment is a matter of pushing an update to a particular designated branch (in this project, “deploy”). This triggers the GitHub Action to follow the instructions in the .yml file, and update the live app accordingly.</p>
+<p>This has to be done from a personal account rather than the Organization account, unless we decide to upgrade to a paid version.</p>
+</section>
+<section id="github-image-repository" class="level2">
+<h2 class="anchored" data-anchor-id="github-image-repository">GitHub Image Repository</h2>
+<p>The containerized <a href="../azure/pdf-service/pdf-service.html">PDF Service</a> uses the GitHub Image Repository instead of Docker, because the GitHub one is free.</p>
+<p>This has to be done from a personal account rather than the Organization account, unless we decide to upgrade to a paid version.</p>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>This Documentation is hosted in the <code>terramaxinc</code> organization GitHub account. Because we’re using the free version, we can only publish it as a public site, and so sentitive details should not be saved here.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

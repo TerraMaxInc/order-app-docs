@@ -1,0 +1,12 @@
+---
+title: "Microsoft Entra Overview"
+format: html
+---
+
+Entra ID (formerly called Azure Active Directory) is Microsoft's could-based identity and access management (IAM) service.  It manages authentication and authorization across Microsoft products, from Azure to SharePoint to individual user accounts and emails.  Within this project, it's an important part of how custom apps function within the Azure cloud space.
+
+Three of the custom applications that are hosted in Azure also have an app registration in Entra:
+- The [Ordering App](../ordering-app/ordering-app.html)
+- The [Product Manager](../product-manager/product-manager.html)
+- The [HubSpot Service](../hubspot-service/hubspot-service.html)
+
