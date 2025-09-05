@@ -655,7 +655,7 @@
     "href": "architecture/azure/azure-overview.html#quick-links",
     "title": "Azure Overview",
     "section": "Quick Links",
-    "text": "Quick Links\nGeneral Azure Services: - Azure Portal - Entra ID - Azure Static WebApps - Azure Functions - Azure Insights Specific Project Components - Ordering App - Product Manager - HubSpot Service - PDF Service - TerraMax Data - TerraMax App Images Storage Account"
+    "text": "Quick Links\nGeneral Azure Services:\n\nAzure Portal\nEntra ID\nAzure Static WebApps\nAzure Functions\nAzure Insights Specific Project Components\nOrdering App\nProduct Manager\nHubSpot Service\nPDF Service\nTerraMax Data\nTerraMax App Images Storage Account"
   },
   {
     "objectID": "architecture/azure/azure-services/azure-functions.html",
