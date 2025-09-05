@@ -15,6 +15,6 @@ To update this token, see [Update PDF-Service Token](../how-to/update-pdf-servic
 The backend [HubSpot Service](../architecture/azure/hubspot-service/hubspot-service.html) app uses a token from HubSpot to connect directly to data within our [HubSpot](../architecture/hubspot/hubspot-overview.html) account.  This token does not expire, and does not need ongoing maintenance.  
 
 ### 2. Mail Daemon Client Secret
-The HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the `tech@terramax.com` email.   This "secret" expires every 6 months.  The value is generated from the `terramax-hubspot-service-registration` in Entra app registions, under Certificates & Secrets.  When the old Secret expires, go there and reate a new one, then paste the new value into the 'CLIENT_SECRET' env variable in both the `terramax-hubspot-service` app in Azure in prod, and in the code .env file so it will work locally in dev.
+The HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the `tech@terramax.com` email.   This "secret" expires every 6 months, and without an active none of the client apps can send emails.  
 
-Since this backend app services both the odering app and the product manager, keeping it updated is sufficient for both the two client apps.
+To update this token, se [Update Mail Daemon Secret](../how-to/update-mail-daemon-secret.html)

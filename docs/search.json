@@ -60,7 +60,7 @@
     "href": "maintenance/tokens.html#hubspot-service",
     "title": "Token Management",
     "section": "HubSpot Service",
-    "text": "HubSpot Service\n\n1. HubSpot Token\nThe backend HubSpot Service app uses a token from HubSpot to connect directly to data within our HubSpot account. This token does not expire, and does not need ongoing maintenance.\n\n\n2. Mail Daemon Client Secret\nThe HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the tech@terramax.com email. This “secret” expires every 6 months. The value is generated from the terramax-hubspot-service-registration in Entra app registions, under Certificates & Secrets. When the old Secret expires, go there and reate a new one, then paste the new value into the ‘CLIENT_SECRET’ env variable in both the terramax-hubspot-service app in Azure in prod, and in the code .env file so it will work locally in dev.\nSince this backend app services both the odering app and the product manager, keeping it updated is sufficient for both the two client apps."
+    "text": "HubSpot Service\n\n1. HubSpot Token\nThe backend HubSpot Service app uses a token from HubSpot to connect directly to data within our HubSpot account. This token does not expire, and does not need ongoing maintenance.\n\n\n2. Mail Daemon Client Secret\nThe HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the tech@terramax.com email. This “secret” expires every 6 months, and without an active none of the client apps can send emails.\nTo update this token, se Update Mail Daemon Secret"
   },
   {
     "objectID": "how-to/update-pdf-service-token.html",
@@ -95,7 +95,42 @@
     "href": "how-to/update-mail-daemon-secret.html",
     "title": "Update Mail Daemon Client Secret",
     "section": "",
-    "text": "The HubSpot Service’s ability to send emails from the tech@terramax.com email requires extra permissions that had to be given by Coordinated. Technically, these permissions are granted to the app registration, and so for the actual app to use it, it needs to connect to them via the client secret.\nThe client secret is like an access token; the registration generates and provides it, and then the app holds onto it as an environmental variable so it can prove it has a right to the permissions listed in the registration. Client Secrets come with expiration dates, and need to be refreshed.\nWhen the HubSpot Service client secret gets close to expiry, you will recieve warning emails about it. If it expires, thhen the app and the backend service it provides to connect the Ordering App and Product Manager App"
+    "text": "The HubSpot Service’s ability to send emails from the tech@terramax.com email requires extra permission that had to be given by Coordinated. Technically, this permission is granted to the app registration, and so for the actual app to use it, it needs to connect via the client secret.\nThe client secret is like an access token; the registration generates and provides it, and then the app holds onto it as an environmental variable so it can prove it has a right to the permissions listed in the registration. Client Secrets come with expiration dates, and need to be refreshed.\nWhen the HubSpot Service client secret gets close to expiry, you should recieve warning emails about it. If it expires, then the backend HubSpot Service won’t be able to send emails, and the Ordering App and Product Manager App that depend on it will not be able to perform all their functions correctly."
+  },
+  {
+    "objectID": "how-to/update-mail-daemon-secret.html#find-terramax-hubspot-service-registration-in-the-azure-portal",
+    "href": "how-to/update-mail-daemon-secret.html#find-terramax-hubspot-service-registration-in-the-azure-portal",
+    "title": "Update Mail Daemon Client Secret",
+    "section": "1. Find terramax-hubspot-service-registration in the Azure Portal",
+    "text": "1. Find terramax-hubspot-service-registration in the Azure Portal\n\nIn the Azure Portal, go to:\n\nEntra &gt; App registrations &gt; terramax-hubspot-service-registration"
+  },
+  {
+    "objectID": "how-to/update-mail-daemon-secret.html#find-the-expired-client-secret",
+    "href": "how-to/update-mail-daemon-secret.html#find-the-expired-client-secret",
+    "title": "Update Mail Daemon Client Secret",
+    "section": "2. Find the Expired Client Secret",
+    "text": "2. Find the Expired Client Secret\n\nIn the App Registration, you should see a warning with a direct link like this: \nYou can also find the Client Secret by going to:\n\nManage &gt; Certificates & Secrets"
+  },
+  {
+    "objectID": "how-to/update-mail-daemon-secret.html#create-new-client-secret",
+    "href": "how-to/update-mail-daemon-secret.html#create-new-client-secret",
+    "title": "Update Mail Daemon Client Secret",
+    "section": "3. Create New Client Secret",
+    "text": "3. Create New Client Secret\n\nIn Secrets & Certificates you should see the expired Secret. You can’t renew it directly, you can to make a new one instead. Click the New client secret button \nGive it a description like the previous secret, set the expiration, and click Add\nCopy the secret so you can paste it into the app’s environmental variables"
+  },
+  {
+    "objectID": "how-to/update-mail-daemon-secret.html#add-new-secret-to-terramax-hubspot-service-in-azure",
+    "href": "how-to/update-mail-daemon-secret.html#add-new-secret-to-terramax-hubspot-service-in-azure",
+    "title": "Update Mail Daemon Client Secret",
+    "section": "4. Add New Secret to terramax-hubspot-service in Azure",
+    "text": "4. Add New Secret to terramax-hubspot-service in Azure\n\nLeave Entra and go back to the main Azure Portal page, and find terramax-hubspot-service in the list of Resources\nGo to Settings &gt; Environmental Variables and find CLIENT_SECRET \nSelect CLIENT_SECRET, and pasted the new value into the Value field \nClick Apply"
+  },
+  {
+    "objectID": "how-to/update-mail-daemon-secret.html#add-new-secret-to-codebase-.env-file",
+    "href": "how-to/update-mail-daemon-secret.html#add-new-secret-to-codebase-.env-file",
+    "title": "Update Mail Daemon Client Secret",
+    "section": "5. Add New Secret to Codebase .env File",
+    "text": "5. Add New Secret to Codebase .env File\n\nOpen hubspot-service in VSCode and open the .env file at the root of the project\nFind the CLIENT_SECRET variable in .env, and replace the old value with the new one"
   },
   {
     "objectID": "how-to/setup-docker-ide.html",
@@ -525,6 +560,13 @@
     "text": "GitHub Container Registry and Azure Containerized Apps"
   },
   {
+    "objectID": "architecture/azure/ordering-app/ordering-app.html",
+    "href": "architecture/azure/ordering-app/ordering-app.html",
+    "title": "Ordering App Overview",
+    "section": "",
+    "text": "Stuff about the ordering app…"
+  },
+  {
     "objectID": "architecture/azure/hubspot-service/hubspot-service.html",
     "href": "architecture/azure/hubspot-service/hubspot-service.html",
     "title": "HubSpot Service",
@@ -628,6 +670,13 @@
     "title": "Azure Static Web Apps Overview",
     "section": "",
     "text": "Azure Static Web Apps is a hosting service for front-end apps, usually built in frameworks like React, Vue, or plain HTML/CSS/Javascipt. Unlike general services like Azure App Service, it is designed specifically to serve only static files, and optionally connect to backend APIs like Azure Functions.\nThis is well suited to the Ordering App component of the project. The front-end app itself is a Progressive Web App, bundled as static files (HTML, Javascript, CSS) that can run entirely in the browser and doesn’t need a traditional server. For retrieving or procesing data, the app calls the HubSpot Service."
+  },
+  {
+    "objectID": "architecture/azure/product-manager/product-manager.html",
+    "href": "architecture/azure/product-manager/product-manager.html",
+    "title": "Product Manager App",
+    "section": "",
+    "text": "Stuff about the product manager app…"
   },
   {
     "objectID": "architecture/azure/terramax-data/backup.html",
@@ -1047,7 +1096,14 @@
     "href": "index.html",
     "title": "Ordering App System Docs",
     "section": "",
-    "text": "This repository contains all documentation for the interconnecting projects in Azure that handle ordering and product information for use by the sales team.\nThe project connects with HubSpot via an api to fetch and edit data, and uses GitHub to store code, perform certain management functions, and to host this Documentation, but all the custom applications at the heart of it are hosted in Azure, under the terramaxinc tenant.\nThe front-end user can interact with fours things directly: this Documentation page, HubSpot, and two client Progressive Web App : - The Ordering App, which the allows users to view and edit Deal data in HubSpot through an interface that is better adapted to TerraMax business needs, and automates emailing Work Orders to production as part of the entry process.\nThese apps are served by a network of backend services: - The HubSpot Service, an Azure Functions App which acts as a middle man between the client apps and all other data and services.\nGitHub is used to store the codebase and versioning progress, to store and host this Documentation page, to store the @container @image for the PDF Service, and to update the PWA applications through GitHub Actions.\nMany of these connections rely on access tokens or client secrets, some of which expire and require Management"
+    "text": "This repository contains all documentation for the interconnecting projects in Azure that handle ordering and product information for use by the sales team.\nThe project connects with HubSpot via an api to fetch and edit data, and uses GitHub to store code, perform certain management functions, and to host this Documentation, but all the custom applications at the heart of it are hosted in Azure, under the terramaxinc tenant."
+  },
+  {
+    "objectID": "index.html#summary",
+    "href": "index.html#summary",
+    "title": "Ordering App System Docs",
+    "section": "Summary",
+    "text": "Summary\nThe front-end user can interact with fours things directly: this Documentation page, HubSpot, and two client Progressive Web App :\n\nThe Ordering App, which the allows users to view and edit Deal data in HubSpot through an interface that is better adapted to TerraMax business needs, and automates emailing Work Orders to production as part of the entry process.\nThe Product Manager App, which allows users to quickly look up Product information, and to build and email themselves customized Price Lists.\n\nThese apps are served by a network of backend services:\n\nThe HubSpot Service, an Azure Functions App which acts as a middle man between the client apps and all other data and services.\nThe PDF Service, a Container app that receives an html document and returns it as a PDF document.\nThe SQL Products Database, a relational database of data about TerraMax products, so that all apps and services can refer to this single source of truth and will never have conflicting data.\nThe App Images storage account, which stores images for use in the Price List.\n\nGitHub is used to store the codebase and versioning progress, to store and host this Documentation page, to store the Container Image for the PDF Service, and to update the PWA applications through GitHub Actions.\nMany of these connections rely on access tokens or client secrets, some of which expire and require Management.\nThe Ordering App, Product Manager App, and HubSpot Service also have App Registrations in Entra, Microsoft’s identity access management solution. These registrations are involved in managing permissions between apps and services, and are closely linked to the actual hosted applications themselves but are separate entities with separate ids."
   },
   {
     "objectID": "index.html#quick-links",
@@ -1075,6 +1131,6 @@
     "href": "notes.html#scripts",
     "title": "Ordering App Project Docs",
     "section": "Scripts",
-    "text": "Scripts\nTo regenerate ALL the Markdown versions, enter in the terminal:\n    quarto render\n\nTo regenerate the Markdown version of one file file, enter in the terminal:\n    quarto render index.qmd"
+    "text": "Scripts\nTo regenerate ALL the Markdown versions, enter in the terminal:\n    quarto render\n\nTo regenerate the Markdown version of one file file, enter in the terminal:\n    quarto render index.qmd \n    quarto maintenance\\tokens.qmd"
   }
 ]

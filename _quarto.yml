@@ -15,10 +15,16 @@ website:
             href: architecture/azure/azure-overview.html
           - text: Ordering App
             href: architecture/azure/ordering-app/ordering-app.html
+          - text: Product Manager App
+            href: architecture/azure/product-manager/product-manager.html
           - text: HubSpot Service
             href: architecture/azure/hubspot-service/hubspot-service.html
+          - text: PDF Service
+            href: architecture/azure/pdf-service/pdf-service.html
           - text: SQL Database
             href: architecture/azure/terramax-data/terramax-data.html
+          - text: App Images
+            href: architecture/azure/terramaxappimages/terramaxappimages.html
       - href: architecture/github/github-overview.html
         text: Github
       - href: architecture/hubspot/hubspot-overview.html

@@ -9,3 +9,4 @@
 
     To regenerate the Markdown version of one file file, enter in the terminal:
         quarto render index.qmd 
+        quarto maintenance\tokens.qmd
