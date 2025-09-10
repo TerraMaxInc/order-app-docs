@@ -3,19 +3,23 @@ title: "Azure Overview"
 format: html
 ---
 
-Azure is a cloud platform owned by Microsoft that offers a variety of online resources.  TerraMax has a single Azure account, which uses the same @tenant-id as the TerraMax *Microsoft 365* account (which supplies resources like Word, Excel and SharePoint).  This means that both the Azure and Microsoft 365 accounts are part of the same *organization*, share access to user identities and security settings, and are both managed through [Microsoft Entra ID](azure-services/entra-overview.html).
+Azure is a cloud platform owned by Microsoft that offers a variety of online resources.  In order to use the resources, you need to start a subscription to be responsible for payment and to serve as a general container for all the specific desired resources like a *Static Web App* or *SQL dababase*.  The subscription will belong to a @tenant, but one *Tenant* could potentially have many Azure subscriptions.
 
-This project uses Azure to host several components in a secure and centralized way, allowing them to share the same Entra security infrastructure.  
+TerraMax currently has a single Azure subscription, **Azure subscription 1**, which belongs to the same *Tenant* as the TerraMax *Microsoft 365* account (which supplies resources like Word, Excel and SharePoint).  This means that both the Azure and Microsoft 365 accounts are part of the same *organization*, share access to user identities and security settings, and are both managed through [Microsoft Entra ID](azure-services/entra-overview.html).
 
-![Azure components diagram](../../images/Azure_diagram.png)
+This project uses Azure to host several resources in a secure and centralized way, allowing them to share the same Entra security infrastructure and recongnize the same set of TerraMax users.  All resources belong to the same single Azure subscription, are billed through the same subscription.  All these resources and all their costs could be deleted together all at once by canceling the subscription, without affecting the rest of the *Tenant* (user emails, SharePoint, etc).
+
+![Azure resources diagram](../../images/Azure_diagram.png)
 
 ---
 
 ## Azure Portal
 
-The online [Azure Portal](azure-services/azure-portal.html) gives you an overview of the Azure account. 
+The online [Azure Portal](azure-services/azure-portal.html) allows you to view and manage the subscription, from creating and deleting resources to managing settings to billing.
 
-Each individual component that's hosted in Azure can viewed in the Portal, and most management tasks (changing settings, updating environmental variables, checking usage and error logs, etc) can be done here as well.
+Many tasks can be done either through the Azure Portal or the Azure @cli, but some are better suited to one or the other.  The Portal is best for a high-level overview of all resources, for viewing/managing *app registrations* in *Entra ID*, and for viewing/managing billing through the *Cost Management* tool.
+
+Each individual resource that's hosted in Azure can viewed in the Portal, and most management tasks (changing settings, updating environmental variables, checking usage and error logs, etc) can be done here as well.
 
 *Entra ID* is accessed through the Portal, which lets you view and manage the *app registrations*, which are separate objects associated with their respective apps that contain information about identity and permissions.  
 
@@ -77,7 +81,7 @@ Other relevant resources:
 
 ## Quick Links
 
-### General Azure Services:
+### General Azure Services
 
 - [Azure Portal](azure-services/azure-portal.html)
 - [Entra ID](azure-services/entra-overview.html)
@@ -85,7 +89,7 @@ Other relevant resources:
 - [Azure Functions](azure-services/azure-functions.html)
 - [Azure Insights](azure-services/app-insights.html)
 
-### Specific Project Components:
+### Specific Project Components
 
 - [Ordering App](ordering-app/ordering-app.html)
 - [Product Manager](product-manager/product-manager.html)

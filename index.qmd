@@ -40,6 +40,8 @@ The **Ordering App**, **Product Manager App**, and **HubSpot Service** also have
 - [Azure Overview](architecture/azure/azure-overview.html)
 - [HubSpot Overview](architecture/hubspot/hubspot-overview.html)
 - [Github Overview](architecture/github/github-overview.html)
+- [Miscellaneous](misc/misc-overview.html)
+- [Maintenance](maintenance/maintenance-overview.html)
 - [Glossary of Terms](reference/glossary.html)
 
 

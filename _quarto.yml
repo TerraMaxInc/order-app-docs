@@ -31,6 +31,10 @@ website:
         text: HubSpot
       - href: how-to/how-to-contents.html
         text: How-to's
+      - href: misc/misc-overview.html
+        text: Miscellaneous
+      - href: maintenance/maintenance-overview.html
+        text: Maintenance
       - href: reference/glossary.html
         text: Glossary
 

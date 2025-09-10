@@ -1,0 +1,9 @@
+---
+title: Miscellaneous
+format: html
+---
+
+Pages that don't fit into other categories:
+
+- [IDE Setup](ide.html)
+- [User Account Permissions](user-permissions.html)

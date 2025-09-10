@@ -1,0 +1,15 @@
+---
+title: "IDE Setup"
+format: html
+---
+
+The How-to's in this project assume that your @ide is setup the same way mine is.  Here is a rundown of what that entails:
+
+Visual Studio
+
+Azure @cli
+
+WSL and Ubuntu
+
+Docker
+

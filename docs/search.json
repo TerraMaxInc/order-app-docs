@@ -4,21 +4,21 @@
     "href": "reference/glossary.html",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA web page with application-like functionality that can be downloaded to a device to have its own icon\n\n\n\nIn the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
+    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nCommand Line Interface; a way of interactive with a computer program by typing into a terminal or console, instead of clicking through a Graphical User Interface\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nGraphical User Interface; a way of interacting with a computer program through graphical elements like icons, menus, buttons, and windows.  Contrasted with text-based interactions in a CLI.\n\n\n\nIntegrated Development Environment; the set of tools used to develop programs.  This project uses Visual Studio.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA web page with application-like functionality that can be downloaded to a device to have its own icon\n\n\n\nIn the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
   },
   {
     "objectID": "reference/glossary.html#basic-terms",
     "href": "reference/glossary.html#basic-terms",
     "title": "Glossary of Terms",
     "section": "",
-    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA web page with application-like functionality that can be downloaded to a device to have its own icon\n\n\n\nIn the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
+    "text": "An Application Programming Interface; a standardized way for one program to access the functions or data of another.\n\n\n\nA collection of values which are not labeled or distinguished from each other by anything other than their order in the sequence.  In this project an array may contain any number of elements, and all elements in the same array are of the same data type.\n\n\n\nA true/false value.  Maybe also be called 'bit' and be represented with 1/0.\n\n\n\nCommand Line Interface; a way of interactive with a computer program by typing into a terminal or console, instead of clicking through a Graphical User Interface\n\n\n\nAn application running running 'in development' is not live or available to front-end users.  It is likely in a special development environment separate from production resources.  Contrasted with 'production.'\n\n\n\nA data type with a fixed set of predefined values.  Variables of this type can only be assigned one of these values.\n\n\n\nGraphical User Interface; a way of interacting with a computer program through graphical elements like icons, menus, buttons, and windows.  Contrasted with text-based interactions in a CLI.\n\n\n\nIntegrated Development Environment; the set of tools used to develop programs.  This project uses Visual Studio.\n\n\n\nA standardized way of representing date and time, maintained by the International Organization for Standardization (ISO).  Midnight on January 1, 2010 would be represented as '2010-01-01T00:00:000Z'\n\n\n\nAn application running 'in production' is an application that is live and being used.  Contrasted with 'development.'\n\n\n\nA web page with application-like functionality that can be downloaded to a device to have its own icon\n\n\n\nIn the context of this project, a computing model in which code is called on and executed in isolated chunks without the cost or work of running a continuous server.  This environment does not allow for long-term background processes or memory, and limits access to the file system and native dependencies.\n\n\n\nA data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).\n\n\n\nA way of representing date and time as the number of non-leap seconds since midnight on January 1, 1970.  Midnight on January 1, 2010 would be represented as '126230400'."
   },
   {
     "objectID": "reference/glossary.html#azure-terms",
     "href": "reference/glossary.html#azure-terms",
     "title": "Glossary of Terms",
     "section": "Azure Terms",
-    "text": "Azure Terms\n\nApplication Permission\nIn contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's.\n\n\nDelegated Permission\nIn contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.\n\n\nTenant ID\nThe overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella."
+    "text": "Azure Terms\n\nApplication Permission\nIn contrast with delegated permission, the app acts on its own behalf and uses its own permissions, and does not require a user to be signed in.  This allows the app to perform background or system-side tasks, or--in the case of this project--to send emails from an address other than the user's.\n\n\nDelegated Permission\nIn contrast with application permission, the app acts on behalf of a signed-in user, and uses that user's credentials.  What the app can do is limited to what permissions the user has.\n\n\nTenant\nThe overarching organization identity and directory boundary that contains all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.\n\n\nTenant ID\nThe id associated with a Microsoft Entra Tenant identity, which contains all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella."
   },
   {
     "objectID": "reference/glossary.html#hubspot-terms",
@@ -42,25 +42,25 @@
     "text": "Other Terms\n\nEntity Table\nA database table that represents business entities, often with with complex relationships and properties, central to the data model.\n\n\nEvent Table\nA database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.\n\n\nLookup Table\nA database table that contains a fixed set of reference values for other tables to ensure consistent data entry."
   },
   {
-    "objectID": "maintenance/tokens.html",
-    "href": "maintenance/tokens.html",
-    "title": "Token Management",
+    "objectID": "misc/user-permissions.html",
+    "href": "misc/user-permissions.html",
+    "title": "User Account Permissions",
     "section": "",
-    "text": "This project involves a lot of tokens that the various components use to access each other. Some of these expire and need to be manually refreshed."
+    "text": "The How-to’s in this poject assume that your Microsoft Account has the same permissions as I do. Here’s a rundown of what those are, and what you need them for:"
   },
   {
-    "objectID": "maintenance/tokens.html#pdf-service",
-    "href": "maintenance/tokens.html#pdf-service",
-    "title": "Token Management",
-    "section": "PDF-Service",
-    "text": "PDF-Service\nThe PDF Service uses a PAT (Personal Access Token) from GitHub to access the app’s Container Image from the GitHub Container Registry. Because we use the free tier that doesn’t run continuously, and so the app has to cold start, Azure does need consistent, up-to-date access to fetch the image from the registry every time. The PAT, however, expires by default after only a month.\nTo update this token, see Update PDF-Service Token"
+    "objectID": "misc/ide.html",
+    "href": "misc/ide.html",
+    "title": "IDE Setup",
+    "section": "",
+    "text": "The How-to’s in this project assume that your IDE is setup the same way mine is. Here is a rundown of what that entails:\nVisual Studio\nAzure CLI\nWSL and Ubuntu\nDocker"
   },
   {
-    "objectID": "maintenance/tokens.html#hubspot-service",
-    "href": "maintenance/tokens.html#hubspot-service",
-    "title": "Token Management",
-    "section": "HubSpot Service",
-    "text": "HubSpot Service\n\n1. HubSpot Token\nThe backend HubSpot Service app uses a token from HubSpot to connect directly to data within our HubSpot account. This token does not expire, and does not need ongoing maintenance.\n\n\n2. Mail Daemon Client Secret\nThe HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the tech@terramax.com email. This “secret” expires every 6 months, and without an active none of the client apps can send emails.\nTo update this token, see Update Mail Daemon Secret"
+    "objectID": "maintenance/maintenance-overview.html",
+    "href": "maintenance/maintenance-overview.html",
+    "title": "Maintenance",
+    "section": "",
+    "text": "Tasks that need to be done to keep all this functional, even if you don’t want to change or update any of it.\n\nToken Management"
   },
   {
     "objectID": "how-to/update-pdf-service-token.html",
@@ -634,14 +634,14 @@
     "href": "architecture/azure/azure-overview.html",
     "title": "Azure Overview",
     "section": "",
-    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. TerraMax has a single Azure account, which uses the same Tenant ID as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra ID.\nThis project uses Azure to host several components in a secure and centralized way, allowing them to share the same Entra security infrastructure."
+    "text": "Azure is a cloud platform owned by Microsoft that offers a variety of online resources. In order to use the resources, you need to start a subscription to be responsible for payment and to serve as a general container for all the specific desired resources like a Static Web App or SQL dababase. The subscription will belong to a Tenant, but one Tenant could potentially have many Azure subscriptions.\nTerraMax currently has a single Azure subscription, Azure subscription 1, which belongs to the same Tenant as the TerraMax Microsoft 365 account (which supplies resources like Word, Excel and SharePoint). This means that both the Azure and Microsoft 365 accounts are part of the same organization, share access to user identities and security settings, and are both managed through Microsoft Entra ID.\nThis project uses Azure to host several resources in a secure and centralized way, allowing them to share the same Entra security infrastructure and recongnize the same set of TerraMax users. All resources belong to the same single Azure subscription, are billed through the same subscription. All these resources and all their costs could be deleted together all at once by canceling the subscription, without affecting the rest of the Tenant (user emails, SharePoint, etc)."
   },
   {
     "objectID": "architecture/azure/azure-overview.html#azure-portal",
     "href": "architecture/azure/azure-overview.html#azure-portal",
     "title": "Azure Overview",
     "section": "Azure Portal",
-    "text": "Azure Portal\nThe online Azure Portal gives you an overview of the Azure account.\nEach individual component that’s hosted in Azure can viewed in the Portal, and most management tasks (changing settings, updating environmental variables, checking usage and error logs, etc) can be done here as well.\nEntra ID is accessed through the Portal, which lets you view and manage the app registrations, which are separate objects associated with their respective apps that contain information about identity and permissions.\nThere is also a Cost Management tool in The Portal which lets you check costs, create budgets, and set warnings for if costs are likely to exceed budget."
+    "text": "Azure Portal\nThe online Azure Portal allows you to view and manage the subscription, from creating and deleting resources to managing settings to billing.\nMany tasks can be done either through the Azure Portal or the Azure CLI, but some are better suited to one or the other. The Portal is best for a high-level overview of all resources, for viewing/managing app registrations in Entra ID, and for viewing/managing billing through the Cost Management tool.\nEach individual resource that’s hosted in Azure can viewed in the Portal, and most management tasks (changing settings, updating environmental variables, checking usage and error logs, etc) can be done here as well.\nEntra ID is accessed through the Portal, which lets you view and manage the app registrations, which are separate objects associated with their respective apps that contain information about identity and permissions.\nThere is also a Cost Management tool in The Portal which lets you check costs, create budgets, and set warnings for if costs are likely to exceed budget."
   },
   {
     "objectID": "architecture/azure/azure-overview.html#project-components",
@@ -655,7 +655,7 @@
     "href": "architecture/azure/azure-overview.html#quick-links",
     "title": "Azure Overview",
     "section": "Quick Links",
-    "text": "Quick Links\n\nGeneral Azure Services:\n\nAzure Portal\nEntra ID\nAzure Static WebApps\nAzure Functions\nAzure Insights\n\n\n\nSpecific Project Components:\n\nOrdering App\nProduct Manager\nHubSpot Service\nPDF Service\nTerraMax Data\nTerraMax App Images Storage Account"
+    "text": "Quick Links\n\nGeneral Azure Services\n\nAzure Portal\nEntra ID\nAzure Static WebApps\nAzure Functions\nAzure Insights\n\n\n\nSpecific Project Components\n\nOrdering App\nProduct Manager\nHubSpot Service\nPDF Service\nTerraMax Data\nTerraMax App Images Storage Account"
   },
   {
     "objectID": "architecture/azure/azure-services/azure-functions.html",
@@ -1166,7 +1166,35 @@
     "href": "index.html#quick-links",
     "title": "Ordering App System Docs",
     "section": "Quick Links",
-    "text": "Quick Links\n\nHow-Tos\nToken Management\nAzure Overview\nHubSpot Overview\nGithub Overview\nGlossary of Terms"
+    "text": "Quick Links\n\nHow-Tos\nToken Management\nAzure Overview\nHubSpot Overview\nGithub Overview\nMiscellaneous\nMaintenance\nGlossary of Terms"
+  },
+  {
+    "objectID": "maintenance/tokens.html",
+    "href": "maintenance/tokens.html",
+    "title": "Token Management",
+    "section": "",
+    "text": "This project involves a lot of tokens that the various components use to access each other. Some of these expire and need to be manually refreshed."
+  },
+  {
+    "objectID": "maintenance/tokens.html#pdf-service",
+    "href": "maintenance/tokens.html#pdf-service",
+    "title": "Token Management",
+    "section": "PDF-Service",
+    "text": "PDF-Service\nThe PDF Service uses a PAT (Personal Access Token) from GitHub to access the app’s Container Image from the GitHub Container Registry. Because we use the free tier that doesn’t run continuously, and so the app has to cold start, Azure does need consistent, up-to-date access to fetch the image from the registry every time. The PAT, however, expires by default after only a month.\nTo update this token, see Update PDF-Service Token"
+  },
+  {
+    "objectID": "maintenance/tokens.html#hubspot-service",
+    "href": "maintenance/tokens.html#hubspot-service",
+    "title": "Token Management",
+    "section": "HubSpot Service",
+    "text": "HubSpot Service\n\n1. HubSpot Token\nThe backend HubSpot Service app uses a token from HubSpot to connect directly to data within our HubSpot account. This token does not expire, and does not need ongoing maintenance.\n\n\n2. Mail Daemon Client Secret\nThe HubSpot Service also uses a Client Secret to gain permission to send emails on its own behalf from the tech@terramax.com email. This “secret” expires every 6 months, and without an active none of the client apps can send emails.\nTo update this token, see Update Mail Daemon Secret"
+  },
+  {
+    "objectID": "misc/misc-overview.html",
+    "href": "misc/misc-overview.html",
+    "title": "Miscellaneous",
+    "section": "",
+    "text": "Pages that don’t fit into other categories:\n\nIDE Setup\nUser Account Permissions"
   },
   {
     "objectID": "notes.html",

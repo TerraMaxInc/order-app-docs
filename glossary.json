@@ -30,6 +30,12 @@
         "category": "basic"
     },
     {
+        "term": "CLI",
+        "key": "cli",
+        "definition": "Command Line Interface; a way of interactive with a computer program by typing into a terminal or console, instead of clicking through a Graphical User Interface",
+        "category": "basic"
+    },
+    {
         "term": "Container",
         "key": "docker-container",
         "definition": "A container is a self-contained, isolated, independent process that has everything it needs to run anywhere.",
@@ -70,6 +76,18 @@
         "key": "event-table",
         "definition": "A database table that records events of state changes over time, like historical snapshots or transactions logs, and will grow consistently as new events occur.",
         "category": "default"
+    },
+    {
+        "term": "GUI",
+        "key": "gui",
+        "definition": "Graphical User Interface; a way of interacting with a computer program through graphical elements like icons, menus, buttons, and windows.  Contrasted with text-based interactions in a CLI.",
+        "category": "basic"
+    },
+    {
+        "term": "IDE",
+        "key": "ide",
+        "definition": "Integrated Development Environment; the set of tools used to develop programs.  This project uses Visual Studio.",
+        "category": "basic"
     },
     {
         "term": "Image",
@@ -132,9 +150,15 @@
         "category": "basic"
     },
     {
+        "term": "Tenant",
+        "key": "tenant",
+        "definition": "The overarching organization identity and directory boundary that contains all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.",
+        "category": "azure"
+    },
+    {
         "term": "Tenant ID",
         "key": "tenant-id",
-        "definition": "The overarching organization identity that comprises all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.",
+        "definition": "The id associated with a Microsoft Entra Tenant identity, which contains all Microsoft accounts, Azure and Microsoft 365, under one TerraMax umbrella.",
         "category": "azure"
     },
     {
