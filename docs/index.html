@@ -3894,8 +3894,8 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#quick-links" id="toc-quick-links" class="nav-link" data-scroll-target="#quick-links">Quick Links</a></li>
+  <li><a href="#quick-links" id="toc-quick-links" class="nav-link active" data-scroll-target="#quick-links">Quick Links</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -3921,6 +3921,22 @@ vertical-align: -.125em;
 </header>
 
 
+<section id="quick-links" class="level2">
+<h2 class="anchored" data-anchor-id="quick-links">Quick Links</h2>
+<ul>
+<li><a href="how-to/how-to-contents.html">How-Tos</a></li>
+<li><a href="maintenance/tokens.html">Token Management</a></li>
+<li><a href="architecture/azure/azure-overview.html">Azure Overview</a></li>
+<li><a href="architecture/hubspot/hubspot-overview.html">HubSpot Overview</a></li>
+<li><a href="architecture/github/github-overview.html">Github Overview</a></li>
+<li><a href="misc/misc-overview.html">Miscellaneous</a></li>
+<li><a href="maintenance/maintenance-overview.html">Maintenance</a></li>
+<li><a href="reference/glossary.html">Glossary of Terms</a></li>
+</ul>
+<hr>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>This repository contains all documentation for the interconnecting projects in Azure that handle ordering and product information for use by the sales team.</p>
 <p>The project connects with HubSpot via an api to fetch and edit data, and uses GitHub to store code, perform certain management functions, and to host this Documentation, but all the custom applications at the heart of it are hosted in Azure, under the terramaxinc tenant.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -3929,9 +3945,6 @@ vertical-align: -.125em;
 <figcaption>Diagram of General Structure</figcaption>
 </figure>
 </div>
-<hr>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>The front-end user can interact with fours things directly: this Documentation page, HubSpot, and two client <a href="./reference/glossary.html#pwa" class="glossary-term" title="A web page with application-like functionality that can be downloaded to a device to have its own icon">Progressive Web App</a> :</p>
 <ul>
 <li>The <a href="architecture/azure/ordering-app/ordering-app.html">Ordering App</a>, which the allows users to view and edit Deal data in HubSpot through an interface that is better adapted to TerraMax business needs, and automates emailing Work Orders to production as part of the entry process.</li>
@@ -3947,20 +3960,6 @@ vertical-align: -.125em;
 <p>GitHub is used to store the codebase and versioning progress, to store and host this Documentation page, to store the <a href="./reference/glossary.html#docker-container" class="glossary-term" title="A container is a self-contained, isolated, independent process that has everything it needs to run anywhere.">Container</a> <a href="./reference/glossary.html#docker-image" class="glossary-term" title="A container image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container.  It&#39;s like a class, that is intstantiated into a container.">Image</a> for the PDF Service, and to update the PWA applications through <em>GitHub Actions</em>.</p>
 <p>Many of these connections rely on <em>access tokens</em> or <em>client secrets</em>, some of which expire and require <a href="maintenance/tokens.html">Management</a>.</p>
 <p>The <strong>Ordering App</strong>, <strong>Product Manager App</strong>, and <strong>HubSpot Service</strong> also have <em>App Registrations</em> in <a href="architecture/azure/entra/entra-overview.html">Entra</a>, Microsoft’s identity access management solution. These registrations are involved in managing permissions between apps and services, and are closely linked to the actual hosted applications themselves but are separate entities with separate ids.</p>
-<hr>
-</section>
-<section id="quick-links" class="level2">
-<h2 class="anchored" data-anchor-id="quick-links">Quick Links</h2>
-<ul>
-<li><a href="how-to/how-to-contents.html">How-Tos</a></li>
-<li><a href="maintenance/tokens.html">Token Management</a></li>
-<li><a href="architecture/azure/azure-overview.html">Azure Overview</a></li>
-<li><a href="architecture/hubspot/hubspot-overview.html">HubSpot Overview</a></li>
-<li><a href="architecture/github/github-overview.html">Github Overview</a></li>
-<li><a href="misc/misc-overview.html">Miscellaneous</a></li>
-<li><a href="maintenance/maintenance-overview.html">Maintenance</a></li>
-<li><a href="reference/glossary.html">Glossary of Terms</a></li>
-</ul>
 
 
 </section>

@@ -3,43 +3,70 @@ title: "Azure Overview"
 format: html
 ---
 
+<!-- quarto render architecture/azure/azure-overview.qmd -->
+
+## Quick Links
+
+### General Azure Services
+
+- [Azure Portal](azure-services/azure-portal.html)
+- [Entra ID](azure-services/entra-overview.html)
+- [Azure Static WebApps](azure-services/static-web-apps.html)
+- [Azure Functions](azure-services/azure-functions.html)
+- [Azure Insights](azure-services/app-insights.html)
+
+### Specific Project Resources
+
+- [Ordering App](ordering-app/ordering-app.html)
+- [Product Manager](product-manager/product-manager.html)
+- [HubSpot Service](hubspot-service/hubspot-service.html)
+- [PDF Service](pdf-service/pdf-service.html)
+- [TerraMax Data](terramax-data/terramax-data.html)
+- [TerraMax App Images Storage Account](terramaxappimages/terramaxappimages.html)
+
+---
+
+## Summary
+
 Azure is a cloud platform owned by Microsoft that offers a variety of online resources.  In order to use the resources, you need to start a subscription to be responsible for payment and to serve as a general container for all the specific desired resources like a *Static Web App* or *SQL dababase*.  The subscription will belong to a @tenant, but one *Tenant* could potentially have many Azure subscriptions.
 
 TerraMax currently has a single Azure subscription, **Azure subscription 1**, which belongs to the same *Tenant* as the TerraMax *Microsoft 365* account (which supplies resources like Word, Excel and SharePoint).  This means that both the Azure and Microsoft 365 accounts are part of the same *organization*, share access to user identities and security settings, and are both managed through [Microsoft Entra ID](azure-services/entra-overview.html).
 
-This project uses Azure to host several resources in a secure and centralized way, allowing them to share the same Entra security infrastructure and recongnize the same set of TerraMax users.  All resources belong to the same single Azure subscription, are billed through the same subscription.  All these resources and all their costs could be deleted together all at once by canceling the subscription, without affecting the rest of the *Tenant* (user emails, SharePoint, etc).
+This project uses Azure to host several resources in a secure and centralized way, allowing them to share the same Entra security infrastructure and recongnize the same set of TerraMax users.  All resources belong to the same single Azure subscription, and are billed through the same subscription.  All these resources and all their costs could be deleted together all at once by canceling the subscription, without affecting the rest of the *Tenant* (user emails, SharePoint, etc).
 
-![Azure resources diagram](../../images/Azure_diagram.png)
+App *registrations* are separate from the apps themselves.  These are identities *in Entra* that correlate to Azure resources, in order to allow those resources to use Entra security for things like logging in with known *Tenant* user emails.  These registrations have separate ids from the actual apps that they represent, and each app with a registration needs to keep track of the registration id in order to use Entra security.  If you were to delete the Azure subscription, the app registrations would be orphaned from the apps they represent, but they would remain in Entra until specifically deleted.
 
----
-
-## Azure Portal
-
-The online [Azure Portal](azure-services/azure-portal.html) allows you to view and manage the subscription, from creating and deleting resources to managing settings to billing.
-
-Many tasks can be done either through the Azure Portal or the Azure @cli, but some are better suited to one or the other.  The Portal is best for a high-level overview of all resources, for viewing/managing *app registrations* in *Entra ID*, and for viewing/managing billing through the *Cost Management* tool.
-
-Each individual resource that's hosted in Azure can viewed in the Portal, and most management tasks (changing settings, updating environmental variables, checking usage and error logs, etc) can be done here as well.
-
-*Entra ID* is accessed through the Portal, which lets you view and manage the *app registrations*, which are separate objects associated with their respective apps that contain information about identity and permissions.  
-
-There is also a *Cost Management* tool in The Portal which lets you check costs, create budgets, and set warnings for if costs are likely to exceed budget.
+![Azure resources diagram](../../images/azure-diagram.png)
 
 ---
 
-## Project Components
+## General Services
 
-Core components of this project include:
+These are types of Azure services that I consider relevant to the project. *Azure Functions*, *Azure Static Web Apps*, and *Azure App Insights* are services that I created specific instances of to use for specific apps.  *Azure Portal*, *Cost Management*, and *Entra ID* are more general, default aspects of the Microsoft ecosystem that I consider import to the project.
+
+- [Azure Portal](azure-services/azure-portal.html) allows you to view and manage the subscription, from creating and deleting resources, to managing settings, to billing.
+
+- [Cost Management](azure-services/cost-management.html) allows you to view the current and projected costs incured by the project resources, a breakdown of the cost of specific resources, and to set budget limits.
+
+- [Entra ID](azure-services/entra-overview.html) 
+
+---
+
+## Project Resources
+
+Core elements of this project include:
 
 - **Ordering App** ([`terramax-ordering-app`](ordering-app/ordering-app.html)): a user-facing web app that users can directly interact with to submit and manage Deals in HubSpot.  
     - Hosted in *Azure Static Web Apps*
     - Written in *React + Typescript*
     - Uses *Microsoft Entra ID authentication* via MSAL, allowing only TerraMax users to log in
+    - has an *App Registration* in Entra
 
 - **Product Manager App** ([`product-manager`](product-manager/product-manager.html)): a user-facing web app that allows users to quickly look up products and product data, and to create custom Price List PFDs.
     - Hosted in *Azure Static Web Apps*
     - Written in *React + Typescript*
     - Uses *Microsoft Entra ID authentication* via MSAL, allowing only TerraMax users to log in
+    - has an *App Registration* in Entra
 
 - **HubSpot Service** ([`terramax-hubspot-service`](hubspot-service/hubspot-service.html)): a backend app that connects the Ordering App to both an internal product database, and HubSpot's records of customers and sales.
     - Hosted in *Azure Functions*
@@ -47,6 +74,7 @@ Core components of this project include:
     - Uses the HubSpot api to access HubSpot data, and a connection string to access the Azure SQL database
     - Uses *Microsoft Entra ID* to validate incoming requests and restrict access to approved applications
     - Accessed through the @pwa clients, not directly by the user
+    - has an *App Registration* in Entra
 
 - **PDF Service** ([`pdf-service`](pdf-service/pdf-service.html)): a containerized backend app that recieves html documents and converts them to PDFs.
     - Hosted in *Azure Container Apps*
@@ -55,12 +83,12 @@ Core components of this project include:
     - Accessed only through the HubSpot Service app, not directly by the client
 
 - **TerraMax Data** ([`terramax-data`](terramax-data/terramax-data.html)): a SQL database that holds the masterlist of product information, and a log of transactions that have passed through the server app.
-    - Hosted in *Azure SQL database*
-    - Accessed only through the HubSpot Service app, not directly by the client
+    - Hosted in an *Azure SQL database* on the *Azure SQL Server* **TerraMax db Server**
+    - Accessed only through the HubSpot Service app (or directly in the Portal or @ide by admin) not directly by the client
 
-- **TerraMax App Images** ([`terramaxappimages`](terramaxappimages/terramaxappimages.html)): and Azure storage account that stores images for use in other components.
-    - Hosted in **
-    - Accessed only through the HubSpot Service app, not directly by the client
+- **TerraMax App Images** ([`terramaxappimages`](terramaxappimages/terramaxappimages.html)): an Azure storage account that stores images for use in other resources.
+    - Hosted in *Azure Storage Account* **TerraMax App Images**
+    - Accessed only through the HubSpot Service app (or directly in the Portal or @ide by admin) not directly by the client
 
 Other relevant resources:
 
@@ -76,24 +104,3 @@ Other relevant resources:
     - The storage account automatically created to support the Function App `terramax-hubspot-service`, used for things like 
 - `ordering-app_group`
     - An organizational group that Azure auto-generated, not structurally important.  It overlaps imperfectly with the `TestResourceGroup`
-
----
-
-## Quick Links
-
-### General Azure Services
-
-- [Azure Portal](azure-services/azure-portal.html)
-- [Entra ID](azure-services/entra-overview.html)
-- [Azure Static WebApps](azure-services/static-web-apps.html)
-- [Azure Functions](azure-services/azure-functions.html)
-- [Azure Insights](azure-services/app-insights.html)
-
-### Specific Project Components
-
-- [Ordering App](ordering-app/ordering-app.html)
-- [Product Manager](product-manager/product-manager.html)
-- [HubSpot Service](hubspot-service/hubspot-service.html)
-- [PDF Service](pdf-service/pdf-service.html)
-- [TerraMax Data](terramax-data/terramax-data.html)
-- [TerraMax App Images Storage Account](terramaxappimages/terramaxappimages.html)

@@ -1,0 +1,8 @@
+---
+title: "HubSpot Pipelines"
+format: html
+---
+
+<!-- quarto render architecture\hubspot\pipelines.qmd -->
+
+This is a stub

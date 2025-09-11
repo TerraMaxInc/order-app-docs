@@ -3,15 +3,26 @@ title: "Ordering App System Docs"
 format: html
 ---
 
+## Quick Links
+
+- [How-Tos](how-to/how-to-contents.html)
+- [Token Management](maintenance/tokens.html)
+- [Azure Overview](architecture/azure/azure-overview.html)
+- [HubSpot Overview](architecture/hubspot/hubspot-overview.html)
+- [Github Overview](architecture/github/github-overview.html)
+- [Miscellaneous](misc/misc-overview.html)
+- [Maintenance](maintenance/maintenance-overview.html)
+- [Glossary of Terms](reference/glossary.html)
+
+---
+
+## Summary
+
 This repository contains all documentation for the interconnecting projects in Azure that handle ordering and product information for use by the sales team.
 
 The project connects with HubSpot via an api to fetch and edit data, and uses GitHub to store code, perform certain management functions, and to host this Documentation, but all the custom applications at the heart of it are hosted in Azure, under the terramaxinc tenant.
 
 ![Diagram of General Structure](images/diagram_basic.png)
-
----
-
-## Summary
 
 The front-end user can interact with fours things directly: this Documentation page, HubSpot, and two client @pwa : 
 
@@ -30,19 +41,4 @@ GitHub is used to store the codebase and versioning progress, to store and host 
 Many of these connections rely on *access tokens* or *client secrets*, some of which expire and require [Management](maintenance/tokens.html).
 
 The **Ordering App**, **Product Manager App**, and **HubSpot Service** also have *App Registrations* in [Entra](architecture/azure/entra/entra-overview.html), Microsoft's identity access management solution.  These registrations are involved in managing permissions between apps and services, and are closely linked to the actual hosted applications themselves but are separate entities with separate ids.
-
----
-
-## Quick Links
-
-- [How-Tos](how-to/how-to-contents.html)
-- [Token Management](maintenance/tokens.html)
-- [Azure Overview](architecture/azure/azure-overview.html)
-- [HubSpot Overview](architecture/hubspot/hubspot-overview.html)
-- [Github Overview](architecture/github/github-overview.html)
-- [Miscellaneous](misc/misc-overview.html)
-- [Maintenance](maintenance/maintenance-overview.html)
-- [Glossary of Terms](reference/glossary.html)
-
-
 

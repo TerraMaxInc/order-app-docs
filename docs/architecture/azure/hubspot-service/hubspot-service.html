@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -3894,8 +3929,22 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#other-settings" id="toc-other-settings" class="nav-link active" data-scroll-target="#other-settings">Other settings</a></li>
-  <li><a href="#application-insights" id="toc-application-insights" class="nav-link" data-scroll-target="#application-insights">Application Insights</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a>
+  <ul class="collapse">
+  <li><a href="#fetching-data-for-the-ordering-app" id="toc-fetching-data-for-the-ordering-app" class="nav-link" data-scroll-target="#fetching-data-for-the-ordering-app">1. Fetching data for the <strong>Ordering App</strong></a></li>
+  <li><a href="#receiving-an-order-from-the-ordering-app" id="toc-receiving-an-order-from-the-ordering-app" class="nav-link" data-scroll-target="#receiving-an-order-from-the-ordering-app">2. Receiving an Order from the <strong>Ordering App</strong></a></li>
+  <li><a href="#fetching-data-for-the-product-manager" id="toc-fetching-data-for-the-product-manager" class="nav-link" data-scroll-target="#fetching-data-for-the-product-manager">3. Fetching data for the <strong>Product Manager</strong></a></li>
+  <li><a href="#creating-a-pdf-price-list-for-the-product-manager" id="toc-creating-a-pdf-price-list-for-the-product-manager" class="nav-link" data-scroll-target="#creating-a-pdf-price-list-for-the-product-manager">4. Creating a PDF Price List for the <strong>Product Manager</strong></a></li>
+  <li><a href="#editing-products-in-sql-database-admin-only" id="toc-editing-products-in-sql-database-admin-only" class="nav-link" data-scroll-target="#editing-products-in-sql-database-admin-only">5. Editing Products in SQL Database (admin only)</a></li>
+  </ul></li>
+  <li><a href="#list-of-all-api-functions" id="toc-list-of-all-api-functions" class="nav-link" data-scroll-target="#list-of-all-api-functions">List of All API Functions</a>
+  <ul class="collapse">
+  <li><a href="#addhsproducts" id="toc-addhsproducts" class="nav-link" data-scroll-target="#addhsproducts">addHSProducts</a></li>
+  <li><a href="#getallactives" id="toc-getallactives" class="nav-link" data-scroll-target="#getallactives">getAllActives</a></li>
+  <li><a href="#getallcompanies" id="toc-getallcompanies" class="nav-link" data-scroll-target="#getallcompanies">getAllCompanies</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -3921,22 +3970,117 @@ vertical-align: -.125em;
 </header>
 
 
-<p>The <strong>HubSpot Service</strong> is the intermediary that connects the user-facing <a href="../ordering-app/ordering-app.html">Ordering App</a> to the <a href="../../../architecture/hubspot/hubspot-overview.html">HubSpot Accout</a>. Because a client application isn’t sufficiently secure to hold the <code>hubspot api token</code>, a backend service was needed to manage authentication and API requests securely.</p>
-<p>This is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables for security and configurability.</p>
-<ul>
-<li><a href="../azure-services/azure-functions.html">Azure Functions</a></li>
-<li><a href="environmental-variables.html">Environmental Variables</a></li>
-<li><a href="../../hubspot/integrations.html">HubSpot Integration</a></li>
-<li><a href="../azure-services/app-insights.html">App Insights</a></li>
-</ul>
-<section id="other-settings" class="level2">
-<h2 class="anchored" data-anchor-id="other-settings">Other settings</h2>
+<!-- quarto render architecture/azure/hubspot-service/hubspot-service.qmd -->
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>The <strong>HubSpot Service</strong> is an intermediary backend app that connects the user-facing client apps <a href="../ordering-app/ordering-app.html">Ordering App</a> and <a href="../product-manager/product-manager.html">Product Manager</a> to a range of other services. It began to fascilitate communication between the <strong>Ordering App</strong> and the <a href="../../hubspot/hubspot-overview.html">TerraMax HubSpot Account</a>, because the client app couldn’t be sufficiently secure to hold the <em>hubspot api token</em>, but has since broadened in scope to connect both client apps to other services as well, including the <a href="../pdf-service/pdf-service.html">PDF Service</a> and <a href="../terramax-data/terramax-data.html">TerraMax Data SQL Database</a>.</p>
+<p>This is a Node.js app written in Typescript, and hosted in Azure Functions. It makes heavy use of the environmental variables for security and configurability. Because it connects numerous services, it has the most complex security needs and the largest set of tokens, secrets and connection strings to keep up to date.</p>
+<p>It has a dedicated <a href="../azure-services/app-insights.html">Azure Application Insights</a> for viewing activity logs, to help trouble shoot issues that can’t be tested from the client-side console logs or HubSpot logs.</p>
 </section>
-<section id="application-insights" class="level2">
-<h2 class="anchored" data-anchor-id="application-insights">Application Insights</h2>
-<p>This app has an <a href="../azure-services/app-insights.html">Application Insights</a> resource under the name <code>terramax-hubspot-service-app-insights</code> where you can view activity logs and try to trouble-shoot errors.</p>
+<section id="workflows" class="level2">
+<h2 class="anchored" data-anchor-id="workflows">Workflows</h2>
+<p>These are the ways that the client apps make use of the <strong>HubSpot Service</strong>. For all its inner complexity, the client apps only use it in a handful of ways.</p>
+<section id="fetching-data-for-the-ordering-app" class="level3">
+<h3 class="anchored" data-anchor-id="fetching-data-for-the-ordering-app">1. Fetching data for the <strong>Ordering App</strong></h3>
+<p>When an <strong>Ordering App</strong> user clicks the icon to reload data, it calls several separate functions in the HubSpot Service to fetch various sets of data. These are, in order:</p>
+<ul>
+<li>getAllOwners</li>
+<li>getAllContacts</li>
+<li>getAllCompanies</li>
+<li>getAllDeals</li>
+<li>getAllCrops</li>
+<li>getAllSkus</li>
+</ul>
+</section>
+<section id="receiving-an-order-from-the-ordering-app" class="level3">
+<h3 class="anchored" data-anchor-id="receiving-an-order-from-the-ordering-app">2. Receiving an Order from the <strong>Ordering App</strong></h3>
+<p>When an <strong>Ordering App</strong> user creates a new <em>Deal</em> or wants to cave changes to an existing on and clicks <em>Save Draft</em>, <em>Save &amp; Quote</em> or <em>Closed Won</em>, all three options send a POST query to the same api, with data in the body to express the different goals. The full data package may include:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    deal<span class="op">:</span> HS_Deal<span class="op">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    transactionId<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    lineItems<span class="op">:</span> HS_LineItem[]<span class="op">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    htmlDoc<span class="op">?:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    closed<span class="op">?:</span> <span class="dt">boolean</span><span class="op">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    toEmails<span class="op">?:</span> <span class="dt">string</span>[]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This data is sent to the function:</p>
+<ul>
+<li>ReceiveOrder</li>
+</ul>
+</section>
+<section id="fetching-data-for-the-product-manager" class="level3">
+<h3 class="anchored" data-anchor-id="fetching-data-for-the-product-manager">3. Fetching data for the <strong>Product Manager</strong></h3>
+<p>When a <strong>Product Manager</strong> user loads or reloads the app, the app automatically refreshes its data by calling the functions:</p>
+<ul>
+<li>getAllProductData</li>
+<li>getAllActives</li>
+</ul>
+</section>
+<section id="creating-a-pdf-price-list-for-the-product-manager" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-pdf-price-list-for-the-product-manager">4. Creating a PDF Price List for the <strong>Product Manager</strong></h3>
+<p>When a <strong>Product Manager</strong> user designs the Price List that they want and then clicks <em>Get Price Sheet</em>, the app sends a POST query to the api with this data package:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    htmlDoc<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    emailSubject<span class="op">:</span> <span class="st">&quot;PriceSheet PDF&quot;</span><span class="op">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    emailMessage<span class="op">:</span> <span class="vs">`&lt;p&gt;Hello,&lt;/p&gt;&lt;p&gt;Please find attatched the PriceSheet PDF that you requested.&lt;/p&gt;`</span><span class="op">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    compress<span class="op">:</span> <span class="dt">boolean</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This data is sent to the function:</p>
+<ul>
+<li>sendPDF</li>
+</ul>
+</section>
+<section id="editing-products-in-sql-database-admin-only" class="level3">
+<h3 class="anchored" data-anchor-id="editing-products-in-sql-database-admin-only">5. Editing Products in SQL Database (admin only)</h3>
+<p>When an admin user of <strong>Product Manager</strong> makes a change to the Product data model in the app and then clicks <em>Save Changes to Database</em>, the app sends a POST query to the api with an array of the updated products:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ts code-with-copy"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>{ products<span class="op">:</span> Product[] }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This data is sent to the function:</p>
+<pre><code>- updateProducts</code></pre>
+</section>
+</section>
+<section id="list-of-all-api-functions" class="level2">
+<h2 class="anchored" data-anchor-id="list-of-all-api-functions">List of All API Functions</h2>
+<section id="addhsproducts" class="level3">
+<h3 class="anchored" data-anchor-id="addhsproducts">addHSProducts</h3>
+<dl>
+<dt>Purpose</dt>
+<dd>
+This function retreives Product data from the projects’ Azure SQL database using the <strong>fetchSkus</strong> function, and the Products from the HubSpot Product library using the <strong>fetchHSProducts</strong> function, compares the two, and then updates the HubSpot Product Library to match the Azure SQL database.
+</dd>
+<dt>Parameters</dt>
+<dd>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul>
+</dd>
+<dt>Returns</dt>
+<dd>
+an HTTP response that verifies whether the update failed or succeeded, and a breakdown of the data that was posted if it succeeded
+</dd>
+</dl>
+<p>** Is not accessible to any client apps and is not in regular use, but was instrumental in building the HubSpot Product Library to match the SQL Database one, and can be used manually through an <a href="../../../reference/glossary.html#ide" class="glossary-term" title="Integrated Development Environment; the set of tools used to develop programs.  This project uses Visual Studio.">IDE</a> to sync the two in the event of future changes.</p>
+</section>
+<section id="getallactives" class="level3">
+<h3 class="anchored" data-anchor-id="getallactives">getAllActives</h3>
+<pre><code>- This function retreives the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.
+
+- returns an HTTP response containing both data objects &quot;actives&quot; and &quot;actives_products&quot;, or an error message</code></pre>
+</section>
+<section id="getallcompanies" class="level3">
+<h3 class="anchored" data-anchor-id="getallcompanies">getAllCompanies</h3>
+<pre><code>- </code></pre>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<p>tokens, keys &amp; connection string in env variables</p>
+<p>CORS</p>
+<p>App Insights</p>
+<p>list of functions</p>
+<p>workflows</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

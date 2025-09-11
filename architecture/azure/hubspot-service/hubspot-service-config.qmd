@@ -1,0 +1,8 @@
+---
+title: HubSpot Service Configuration Details
+format: html
+---
+
+<!-- quarto render architecture/azure/hubspot-service/hubspot-service-config.qmd -->
+
+This is a stub

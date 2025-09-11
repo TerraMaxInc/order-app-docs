@@ -3,18 +3,120 @@ title: "HubSpot Service"
 format: html
 ---
 
-The **HubSpot Service** is the intermediary that connects the user-facing [Ordering App](../ordering-app/ordering-app.html) to the [HubSpot Accout](../../hubspot/hubspot-overview.qmd). Because a client application isn't sufficiently secure to hold the `hubspot api token`, a backend service was needed to manage authentication and API requests securely.
+<!-- quarto render architecture/azure/hubspot-service/hubspot-service.qmd -->
 
-This is a Node.js app written in Typescript, and hosted in Azure Functions.  It makes heavy use of the environmental variables for security and configurability. 
+## Summary
 
-- [Azure Functions](../azure-services/azure-functions.html)
-- [Environmental Variables](environmental-variables.html)
-- [HubSpot Integration](../../hubspot/integrations.html)
-- [App Insights](../azure-services/app-insights.html)
+The **HubSpot Service** is an intermediary backend app that connects the user-facing client apps [Ordering App](../ordering-app/ordering-app.html) and [Product Manager](../product-manager/product-manager.html) to a range of other services.  It began to fascilitate communication between the **Ordering App** and the [TerraMax HubSpot Account](../../hubspot/hubspot-overview.html), because the client app couldn't be sufficiently secure to hold the *hubspot api token*, but has since broadened in scope to connect both client apps to other services as well, including the [PDF Service](../pdf-service/pdf-service.html) and [TerraMax Data SQL Database](../terramax-data/terramax-data.html).
+
+This is a Node.js app written in Typescript, and hosted in Azure Functions.  It makes heavy use of the environmental variables for security and configurability. Because it connects numerous services, it has the most complex security needs and the largest set of tokens, secrets and connection strings to keep up to date.  
+
+It has a dedicated [Azure Application Insights](../azure-services/app-insights.html) for viewing activity logs, to help trouble shoot issues that can't be tested from the client-side console logs or HubSpot logs.
+
+## Workflows
+These are the ways that the client apps make use of the **HubSpot Service**.  For all its inner complexity, the client apps only use it in a handful of ways.
+
+### 1. Fetching data for the **Ordering App**
+
+When an **Ordering App** user clicks the icon to reload data, it calls several separate functions in the HubSpot Service to fetch various sets of data.  These are, in order:
+
+- getAllOwners
+- getAllContacts
+- getAllCompanies
+- getAllDeals
+- getAllCrops
+- getAllSkus
+
+### 2. Receiving an Order from the **Ordering App**
+    
+When an **Ordering App** user creates a new *Deal* or wants to cave changes to an existing on and clicks *Save Draft*, *Save & Quote* or *Closed Won*, all three options send a POST query to the same api, with data in the body to express the different goals.  The full data package may include:
+```ts
+{
+    deal: HS_Deal,
+    transactionId: string,
+    lineItems: HS_LineItem[],
+    htmlDoc?: string,
+    closed?: boolean,
+    toEmails?: string[]
+}
+```
+This data is sent to the function:
+
+- ReceiveOrder
 
 
-## Other settings
+### 3. Fetching data for the **Product Manager**
+
+When a **Product Manager** user loads or reloads the app, the app automatically refreshes its data by calling the functions:
+
+- getAllProductData
+- getAllActives
+
+### 4. Creating a PDF Price List for the **Product Manager**
+
+When a **Product Manager** user designs the Price List that they want and then clicks *Get Price Sheet*, the app sends a POST query to the api with this data package:
+```ts
+{
+    htmlDoc: string,
+    emailSubject: "PriceSheet PDF",
+    emailMessage: `<p>Hello,</p><p>Please find attatched the PriceSheet PDF that you requested.</p>`,
+    compress: boolean
+}
+```
+This data is sent to the function:
+
+- sendPDF
+
+### 5. Editing Products in SQL Database (admin only)
+
+When an admin user of **Product Manager** makes a change to the Product data model in the app and then clicks *Save Changes to Database*, the app sends a POST query to the api with an array of the updated products:
+```ts
+{ products: Product[] }
+```
+This data is sent to the function:
+
+    - updateProducts
 
 
-## Application Insights
-This app has an [Application Insights](../azure-services/app-insights.html) resource under the name `terramax-hubspot-service-app-insights` where you can view activity logs and try to trouble-shoot errors.
+## List of All API Functions
+
+### addHSProducts
+
+Purpose
+: This function retreives Product data from the projects' Azure SQL database using the **fetchSkus** function, and the Products from the HubSpot Product library using the **fetchHSProducts** function, compares the two, and then updates the HubSpot Product Library to match the Azure SQL database.
+
+Parameters
+: - `request` - Incoming HTTP request object sent by users
+- `context` - Invocation context for logging and diagnostics
+
+Returns
+: an HTTP response that verifies whether the update failed or succeeded, and a breakdown of the data that was posted if it succeeded
+
+** Is not accessible to any client apps and is not in regular use, but was instrumental in building the HubSpot Product Library to match the SQL Database one, and can be used manually through an @ide to sync the two in the event of future changes.
+
+### getAllActives
+
+    - This function retreives the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.
+
+    - returns an HTTP response containing both data objects "actives" and "actives_products", or an error message
+
+### getAllCompanies
+
+    - 
+
+
+
+
+
+###
+
+tokens, keys & connection string in env variables
+
+CORS
+
+App Insights
+
+list of functions
+
+workflows
+

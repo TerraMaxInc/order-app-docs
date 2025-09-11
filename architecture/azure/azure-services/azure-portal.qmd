@@ -3,7 +3,35 @@ title: "Azure Portal"
 format: html
 ---
 
-Logging in to the Azure Portal should take you to the home page.  There you should see a row of icons of Azure Services, like *Static Web Apps* and *Azure Functions*, and below that a list of current resources.  
+<!-- quarto render architecture\azure\azure-services\azure-portal.qmd -->
+
+## Portal Summary
+
+The online [Azure Portal](azure-services/azure-portal.html) allows you to view and manage the subscription, from creating and deleting resources, to managing settings, to billing.
+
+Many tasks can be done either through the Azure Portal or the Azure @cli, but some are better suited to one or the other.  The Portal is best for a high-level overview of all resources, for viewing/managing *app registrations* in *Entra ID*, and for viewing/managing billing through the *Cost Management* tool.
+
+Other tasks to do with managing fine-grained settings of resources may sometimes be better handled through the *CLI*, and updating code is almost always better done through the *CLI* or at least in an @ide.  The specific recommendations will be given in the respective [How-To](../../how-to/how-to-contents.html) pages.
+
+## Finding Resources
+
+Logging in to the Azure Portal with the `tech@terramaxag.com` email should take you to a home page that looks like this:
+
+![Azure Portal Home](../../../images/tech-azure-home.png)
+
+Along the top is a row of icons representing common resource types; click on them to view all current instances of this type of resource, or to create a new one.  Click the *More services* arrow icon to see a more complete list of resource types.  If you scroll down to the bottom of the page, there should also be an icon for [Cost Management](cost-management.html) where you can [check costs](../../../how-to/check-costs.html).
+
+![Check Costs Icon](../../../images/check-cost-icon.png)
+
+Just below the *Azure services* icons, you can see a list of the actual *Resources* currently being used.  By default it only shows ones you have recently interacted with, so not everything will show up, and if you're logging in with a new account that hasn't used anything yet then it will appear empty.  Click on *See all* if what you need isn't showing up.
+
+
+
+
+
+.  There you should see a row of icons of Azure Services, like *Static Web Apps* and *Azure Functions*, and below that a list of current resources.  
+
+** **If you don't see the resources listed here, then you are likely logging in with an account that doesn't have all the necessary permissions.  See the list of account permissions [here](../../../misc/user-permissions.html).**
 
 ![Azure Portal Home Screen](../../../images/azure-portal-home.jpg)
 
@@ -15,4 +43,4 @@ Other services of note in the top row are:
 
 - **Cost Management**: lets you view the current and predicted costs of various resources, set spending limits, and set warnings for when those limits are reached. See [how to check costs](../../../how-to/check-costs.html)
 
-Below the row of services, you should see a list of current resouces.
+Below the row of services, you should see a list of current resouces.  This includes the actual core functional items like apps and databases, along with services and servers that support them, and even some groups that just organize them, some of which were auto-generated.

@@ -1,0 +1,8 @@
+---
+title: "HubSpot Service Internal Functions and Data Models"
+format: html
+---
+
+<!-- quarto render architecture/azure/hubspot-service/hubspot-service-internal.qmd -->
+
+This is a stub

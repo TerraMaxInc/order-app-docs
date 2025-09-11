@@ -1,0 +1,6 @@
+---
+title: "Cost Management"
+format: html
+---
+
+This is a stub

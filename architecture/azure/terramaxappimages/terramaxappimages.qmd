@@ -1,13 +1,37 @@
 ---
-title: Storage Account `terramaxappimages`
+title: TerraMax App Images Storage Account
 format: html
 ---
 
+<!-- quarto render architecture\azure\terramaxappimages\terramaxappimages.qmd -->
+
+## Overview
 This is an Azure Storage Account for storing images to be used in the various apps in this project.  
+
+You can view exisiting images or add more by going to the [Azure Portal](../azure-services/azure-portal.html) and clicking on the `terramaxappimages` item in the list of Resources:
+
+![`terramaxappimages` in the Azure Portal](../../../images/Portal_App_Images.png)
+
+In the lefthand menu, select `Data storage` > `Containers` and then clicking on `images` in the list of containers.  There is also a `$logs` container that was automatically generated as part of the resource.
+
+![`images` Container in the `terramaxappimages` Azure Storage Account](../../../images/app-images-container.png)
+
+If you click on `images`, you will see a list of image files currently being hosted in the Storage Account.  You can delete them, upload more images, or click on one at a time to view more details about the file or to copy the url for use elsewhere.  
+
+![Image List](../../../images/app-images-list.png)
+![Image Details](../../../images/app-images-details.png)
+
+The images themselves aren't displayed, but if you copy the url, open a new tab, and paste the url into the searchbar, then it will open a display of the image.
+
+![Viewing image in a new tab](../../../images/image-pasted-url.png)
+
+If you change the name o fthe image file, it will change url address, and anywhere that uses the image will need to be updated accordingly.
+
+## Settings
 
 Here is a summary of the settings I used at creation, and the reasoning for why:
 
-## Basics
+### Basics
 
 | Setting                  | Value                                | Notes                                               |
 | ------------------------ | ------------------------------------ | --------------------------------------------------- |
@@ -17,14 +41,14 @@ Here is a summary of the settings I used at creation, and the reasoning for why:
 | **Storage Account Name** | terramaxappimages                    | ✅ Clear and purpose-specific                        |
 | **Primary Service**      | Azure Blob Storage / Data Lake Gen 2 | ✅ Blob Storage is exactly what you want             |
 
-## Performance and Replication
+### Performance and Replication
 
 | Setting         | Value                   | Notes                                    |
 | --------------- | ----------------------- | ---------------------------------------- |
 | **Performance** | Standard                | ✅ Cheaper tier, perfect for static files |
 | **Replication** | LRS (Locally-redundant) | ✅ Cheapest, fine for non-critical assets |
 
-## Advanced
+### Advanced
 
 | Setting                                   | Value        | Notes                                                                                  |
 | ----------------------------------------- | ------------ | -------------------------------------------------------------------------------------- |
@@ -33,7 +57,7 @@ Here is a summary of the settings I used at creation, and the reasoning for why:
 | **Access Tier**                           | Cool         | ✅ Cost-optimized for infrequently accessed files (suitable if you rarely change these) |
 | **Large file shares**                     | Enabled      | ✅ Doesn’t hurt; ignored unless you use file shares, which you're not                   |
 
-## Security
+### Security
 
 | Setting                             | Value                     | Notes                                        |
 | ----------------------------------- | ------------------------- | -------------------------------------------- |
@@ -43,21 +67,21 @@ Here is a summary of the settings I used at creation, and the reasoning for why:
 | **Entra (Azure AD) auth in portal** | Disabled                  | ✅ Fine — you don't want to complicate access |
 | **TLS 1.2**                         | ✅ Still industry standard |                                              |
 
-## Networking
+### Networking
 
 | Setting                            | Value                                              | Notes |
 | ---------------------------------- | -------------------------------------------------- | ----- |
 | **Public endpoint (all networks)** | ✅ What you need for public image hosting           |       |
 | **Microsoft network routing**      | ✅ Recommended — more stable, no real downside here |       |
 
-## Data Protection
+### Data Protection
 
 | Setting                                              | Value            | Notes                                                                  |
 | ---------------------------------------------------- | ---------------- | ---------------------------------------------------------------------- |
 | **Blob/Container/File soft delete**                  | Enabled (7 days) | ✅ Good safety net if you accidentally delete something                 |
 | **Point-in-time restore / Change feed / Versioning** | Disabled         | ✅ Fine — you're not dealing with transactional data or version control |
 
-## Encryption
+### Encryption
 
 | Setting              | Value                  | Notes                                            |
 | -------------------- | ---------------------- | ------------------------------------------------ |
