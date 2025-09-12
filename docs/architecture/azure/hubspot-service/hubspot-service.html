@@ -3943,6 +3943,12 @@ vertical-align: -.125em;
   <li><a href="#addhsproducts" id="toc-addhsproducts" class="nav-link" data-scroll-target="#addhsproducts">addHSProducts</a></li>
   <li><a href="#getallactives" id="toc-getallactives" class="nav-link" data-scroll-target="#getallactives">getAllActives</a></li>
   <li><a href="#getallcompanies" id="toc-getallcompanies" class="nav-link" data-scroll-target="#getallcompanies">getAllCompanies</a></li>
+  <li><a href="#getallcontacts" id="toc-getallcontacts" class="nav-link" data-scroll-target="#getallcontacts">getAllContacts</a></li>
+  <li><a href="#getallcrops" id="toc-getallcrops" class="nav-link" data-scroll-target="#getallcrops">getAllCrops</a></li>
+  <li><a href="#getalldeals" id="toc-getalldeals" class="nav-link" data-scroll-target="#getalldeals">getAllDeals</a></li>
+  <li><a href="#getallhsproducts" id="toc-getallhsproducts" class="nav-link" data-scroll-target="#getallhsproducts">getAllHSProducts</a></li>
+  <li><a href="#getallowners" id="toc-getallowners" class="nav-link" data-scroll-target="#getallowners">getAllOwners</a></li>
+  <li><a href="#getallproductsdata" id="toc-getallproductsdata" class="nav-link" data-scroll-target="#getallproductsdata">getAllProductsData</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul></li>
   </ul>
@@ -4042,34 +4048,222 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="list-of-all-api-functions">List of All API Functions</h2>
 <section id="addhsproducts" class="level3">
 <h3 class="anchored" data-anchor-id="addhsproducts">addHSProducts</h3>
-<dl>
-<dt>Purpose</dt>
-<dd>
-This function retreives Product data from the projects’ Azure SQL database using the <strong>fetchSkus</strong> function, and the Products from the HubSpot Product library using the <strong>fetchHSProducts</strong> function, compares the two, and then updates the HubSpot Product Library to match the Azure SQL database.
-</dd>
-<dt>Parameters</dt>
-<dd>
+<ul>
+<li><p><strong>Purpose</strong> This function retrieves Product data from the projects’ Azure SQL database and the Products from the HubSpot Product library, compares the two, and then updates the HubSpot Product Library to match the Azure SQL database.</p></li>
+<li><p><strong>Parameters</strong></p>
 <ul>
 <li><code>request</code> - Incoming HTTP request object sent by users</li>
 <li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><p><strong>Returns</strong></p>
+<ul>
+<li><p>On Success:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">201</span> <span class="er">and</span> <span class="er">a</span> <span class="er">JSON</span> <span class="er">body</span> <span class="er">containing:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="er">message</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="er">products</span><span class="fu">:</span> <span class="er">ApiResponse&lt;SimplePublicObject&gt;</span> <span class="er">|</span> <span class="er">Object</span><span class="fu">,</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">HubSpot</span> <span class="er">response</span> <span class="er">object</span>  <span class="er">describing</span> <span class="er">created</span> <span class="er">Products</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">string</span> <span class="er">message</span> <span class="er">about</span> <span class="er">error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><p><strong>Note</strong> Not accessible to any client apps and not in regular use, but was instrumental in building the HubSpot Product Library to match the SQL Database one, and can be used manually through an <a href="../../../reference/glossary.html#ide" class="glossary-term" title="Integrated Development Environment; the set of tools used to develop programs.  This project uses Visual Studio.">IDE</a> to sync the two in the event of future changes.</p></li>
 </ul>
-</dd>
-<dt>Returns</dt>
-<dd>
-an HTTP response that verifies whether the update failed or succeeded, and a breakdown of the data that was posted if it succeeded
-</dd>
-</dl>
-<p>** Is not accessible to any client apps and is not in regular use, but was instrumental in building the HubSpot Product Library to match the SQL Database one, and can be used manually through an <a href="../../../reference/glossary.html#ide" class="glossary-term" title="Integrated Development Environment; the set of tools used to develop programs.  This project uses Visual Studio.">IDE</a> to sync the two in the event of future changes.</p>
 </section>
 <section id="getallactives" class="level3">
 <h3 class="anchored" data-anchor-id="getallactives">getAllActives</h3>
-<pre><code>- This function retreives the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.
-
-- returns an HTTP response containing both data objects &quot;actives&quot; and &quot;actives_products&quot;, or an error message</code></pre>
+<ul>
+<li><strong>Pursose</strong>
+<ul>
+<li>This function retrieves the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;actives&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>           </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Actives</span> <span class="er">table</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;actives_products&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span>   </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Joined</span> <span class="er">dataset</span> <span class="er">linking</span> <span class="er">Products</span> <span class="er">to</span> <span class="er">Actives</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span>                        </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">error.message</span> <span class="er">or</span> <span class="dt">&quot;unknown error&quot;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;AZURE_FUNCTIONS_ENVIRONMENT&quot;</span><span class="fu">:</span> <span class="er">string</span>   </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">&#39;Development&#39;</span> <span class="er">or</span> <span class="er">&#39;Production&#39;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
 </section>
 <section id="getallcompanies" class="level3">
 <h3 class="anchored" data-anchor-id="getallcompanies">getAllCompanies</h3>
-<pre><code>- </code></pre>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all companies from HubSpot, including Contact associations.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On Success:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">Company</span><span class="ot">[]</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">HubSpot</span> <span class="er">Company</span> <span class="er">objects</span> <span class="er">with</span> <span class="er">Contact</span> <span class="er">associations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span> <span class="er">|</span> <span class="er">object</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span> <span class="er">or</span> <span class="er">serialized</span> <span class="er">error</span> <span class="er">object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="getallcontacts" class="level3">
+<h3 class="anchored" data-anchor-id="getallcontacts">getAllContacts</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all contacts from HubSpot, including Company associations.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">Contact</span><span class="ot">[]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">HubSpot</span> <span class="er">Contact</span> <span class="er">objects</span> <span class="er">with</span> <span class="er">Company</span> <span class="er">associations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span> <span class="er">|</span> <span class="er">object</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span> <span class="er">or</span> <span class="er">serialized</span> <span class="er">error</span> <span class="er">object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="getallcrops" class="level3">
+<h3 class="anchored" data-anchor-id="getallcrops">getAllCrops</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all Crops from the Azure SQL database.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">Crop</span><span class="ot">[]</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Crops</span> <span class="er">table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">object</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Serialized</span> <span class="er">error</span> <span class="er">object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="getalldeals" class="level3">
+<h3 class="anchored" data-anchor-id="getalldeals">getAllDeals</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all Deals from HubSpot. It fetches pages of 100 at a time, and then concatenaates them into a single array. It includes the Contacts, Companies, and Deals associations (because Deals can be associated with other Deals, though this isn’t currently being used for anything int he client app).</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">Deal</span><span class="ot">[]</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">HubSpot</span> <span class="er">Deal</span> <span class="er">objects</span> <span class="er">with</span> <span class="er">Company,</span> <span class="er">Contact,</span> <span class="er">and</span> <span class="er">Deal</span> <span class="er">associations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">object</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Serialized</span> <span class="er">error</span> <span class="er">object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="getallhsproducts" class="level3">
+<h3 class="anchored" data-anchor-id="getallhsproducts">getAllHSProducts</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all products from the HubSpot Product Library.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">Product</span><span class="ot">[]</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">HubSpot</span> <span class="er">Product</span> <span class="er">objects</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span>  <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">object</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Serialized</span> <span class="er">error</span> <span class="er">object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Note</strong> Is not accessible to any client apps and is not in regular use, but was useful in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.</li>
+</ul>
+</section>
+<section id="getallowners" class="level3">
+<h3 class="anchored" data-anchor-id="getallowners">getAllOwners</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all owners from HubSpot with an additional “role” property from the app’s <a href="environmental-variables.html">Environmental Variables</a>, matched up based on user emails. To change user roles, see <a href="../../../how-to/change-hubspot-service-roles.html">Change HubSpot Service User Roles</a>.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li>an HTTP response containing the list of Products from HubSpot, or an error message</li>
+</ul></li>
+<li><strong>Note</strong> Is not accessible to any client apps and is not in regular use, but was valuable in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.</li>
+</ul>
+</section>
+<section id="getallproductsdata" class="level3">
+<h3 class="anchored" data-anchor-id="getallproductsdata">getAllProductsData</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves data from the Skus, Products, Crops, Sizes, Applications and Rate-Units, tables in the Azure SQL database terramax-data as they are; it does <em>not</em> combine them into a more complex data object.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><div class="sourceCode" id="cb19"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">a</span> <span class="er">JSON</span> <span class="er">body</span> <span class="er">containing:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      <span class="er">skus</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>         <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Skus</span> <span class="er">table</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      <span class="er">products</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>     <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Products</span> <span class="er">table</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      <span class="er">crops</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>        <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Crops</span> <span class="er">table</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="er">sizes</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>        <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Sizes</span> <span class="er">table</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="er">applications</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span> <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Applications</span> <span class="er">table</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="er">rate_units</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span>    <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Rate_units</span> <span class="er">table</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
 </section>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section"></h3>

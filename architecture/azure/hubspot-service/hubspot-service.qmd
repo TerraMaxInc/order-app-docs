@@ -82,30 +82,224 @@ This data is sent to the function:
 
 ### addHSProducts
 
-Purpose
-: This function retreives Product data from the projects' Azure SQL database using the **fetchSkus** function, and the Products from the HubSpot Product library using the **fetchHSProducts** function, compares the two, and then updates the HubSpot Product Library to match the Azure SQL database.
+- **Purpose**
+    This function retrieves Product data from the projects' Azure SQL database and the Products from the HubSpot Product library, compares the two, and then updates the HubSpot Product Library to match the Azure SQL database.
 
-Parameters
-: - `request` - Incoming HTTP request object sent by users
-- `context` - Invocation context for logging and diagnostics
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
 
-Returns
-: an HTTP response that verifies whether the update failed or succeeded, and a breakdown of the data that was posted if it succeeded
+- **Returns**
+    - On Success:
+    
+        ```json
+        {Object} HTTP response with status 201 and a JSON body containing:
+            {
+                message: string,
+                products: ApiResponse<SimplePublicObject> | Object, 
+                // HubSpot response object  describing created Products
+            }
+        ```
+    - On failure:
 
-** Is not accessible to any client apps and is not in regular use, but was instrumental in building the HubSpot Product Library to match the SQL Database one, and can be used manually through an @ide to sync the two in the event of future changes.
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // string message about error
+        ```
+
+- **Note** Not accessible to any client apps and not in regular use, but was instrumental in building the HubSpot Product Library to match the SQL Database one, and can be used manually through an @ide to sync the two in the event of future changes.
 
 ### getAllActives
 
-    - This function retreives the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.
+- **Pursose**
+    - This function retrieves the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.
 
-    - returns an HTTP response containing both data objects "actives" and "actives_products", or an error message
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body:
+            {
+                "actives": Array<Object>,           
+                // Raw rows from the Actives table
+                "actives_products": Array<Object>   
+                // Joined dataset linking Products to Actives
+            }
+        ```
+
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: 
+            {
+                "error": string,                        
+                // error.message or "unknown error"
+                "AZURE_FUNCTIONS_ENVIRONMENT": string   
+                // 'Development' or 'Production'
+            }
+        ```
 
 ### getAllCompanies
 
-    - 
+- **Purpose**
+    - This function retrieves a list of all companies from HubSpot, including Contact associations.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On Success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: Company[]
+        // Array of HubSpot Company objects with Contact associations
+        ```
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string | object
+        // Error message or serialized error object
+        ```
+
+### getAllContacts
+
+- **Purpose**
+    - This function retrieves a list of all contacts from HubSpot, including Company associations.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: Contact[]
+        // Array of HubSpot Contact objects with Company associations
+        ```
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string | object
+        // Error message or serialized error object
+        ```
+
+### getAllCrops
+
+- **Purpose**
+    - This function retrieves a list of all Crops from the Azure SQL database.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: Crop[]
+        // Raw rows from the Crops table
+        ```
+
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: object
+        // Serialized error object
+        ```
+
+### getAllDeals
+
+- **Purpose**
+    - This function retrieves a list of all Deals from HubSpot.  It fetches pages of 100 at a time, and then concatenaates them into a single array.  It includes the Contacts, Companies, and Deals associations (because Deals can be associated with other Deals, though this isn't currently being used for anything int he client app).
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: Deal[]
+        // Array of HubSpot Deal objects with Company, Contact, and Deal associations
+        ```
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: object
+        // Serialized error object
+        ```
+
+### getAllHSProducts
+
+- **Purpose**
+    - This function retrieves a list of all products from the HubSpot Product Library.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: Product[]
+        // Array of HubSpot Product objects
+        ```
+
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500  and JSON body: object
+        // Serialized error object
+        ```
+
+- **Note** Is not accessible to any client apps and is not in regular use, but was useful in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.
 
 
+### getAllOwners
 
+- **Purpose**
+    - This function retrieves a list of all owners from HubSpot with an additional "role" property from the app's [Environmental Variables](environmental-variables.html), matched up based on user emails.  To change user roles, see [Change HubSpot Service User Roles](../../../how-to/change-hubspot-service-roles.html).
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - an HTTP response containing the list of Products from HubSpot, or an error message
+
+- **Note** Is not accessible to any client apps and is not in regular use, but was valuable in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.
+
+### getAllProductsData
+
+- **Purpose**
+    - This function retrieves data from the Skus, Products, Crops, Sizes, Applications and Rate-Units, 
+    tables in the Azure SQL database terramax-data as they are; 
+    it does *not* combine them into a more complex data object.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - ```json
+    {Object} HTTP response with status 200 and a JSON body containing:
+        {
+        skus: Array<Object>,         // Rows from the Skus table
+        products: Array<Object>,     // Rows from the Products table
+        crops: Array<Object>,        // Rows from the Crops table
+        sizes: Array<Object>,        // Rows from the Sizes table
+        applications: Array<Object>, // Rows from the Applications table
+        rate_units: Array<Object>    // Rows from the Rate_units table
+        }
+    ```
 
 
 ###

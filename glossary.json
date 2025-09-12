@@ -146,7 +146,7 @@
     {
         "term": "String",
         "key": "string",
-        "definition": "A data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted matematically (phone numbers, zip codes, etc).",
+        "definition": "A data type consisting of a series of characters.  Often used for text, but may also be used for number sequences that should not be interpreted mathematically (phone numbers, zip codes, etc).",
         "category": "basic"
     },
     {

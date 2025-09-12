@@ -1,0 +1,51 @@
+---
+title: "Change HubSpot Service User Roles"
+format: html
+---
+
+<!-- quarto render how-to\change-hubspot-service-roles.qmd -->
+
+Both client apps, [Ordering App](../architecture/azure/ordering-app/ordering-app.html) and [Product Manager](../architecture/azure/product-manager/product-manager.html), modify what they show and allow a user to do based on [HubSpot Service Environmental Variables](../architecture/azure/hubspot-service/environmental-variables.html).
+
+The system has three roles:
+
+- Admin
+- Manager
+- User
+
+These are assigned to users by the HubSpot Service's `returnRole` function.  
+
+-  It first checks the variable **ADMIN_EMAIL** against the current user's email, and if they match then the user is given the *Admin* role.  At present, only one user can be assigned as admin here (as opposed to in HubSpot, or in the Azure subscription).
+- If a match is not found, it then checks whether the user's email is one of the emails in the variable **MANAGER_EMAILS**, and if a match is found then the user is assigned the role *Manager*.  There can currently be multiple managers; though the variable is a single string, multiple items are entered in a *comma separated list*.
+- If a match has not been found in either variable, then the user is assigned the role *User* by default.
+
+** **If this is a NEW user who has not been assigned a role, and you just want them to be a *User*, you don't need to do anything.**
+
+Thus in order to change a user's role, you need to add and/or remove their email from these Environmental Variables.  To do this:
+
+## 1. Go to HubSpot Service's Environmental Variables
+
+- Find `terramax-hubspot-service` in the Azure list of Resources
+- Go to Settings > Environmental variables
+![ADMIN_EMAIL and MANAGER_EMAILS in the Environmental Variables](images/AZ_env_emails.png)
+
+## 2. Edit Variables
+
+- **A.** Make user an *Admin*:
+    - If their email is currently in the **MANAGER_EMAILS** variable, remove it.  Make sure that the list remains a functional comma-separated string.
+    - Replace whatever email is currently in the **ADMIN_EMAIL** variable, and replace it with the user's email
+
+- **B.** Make user a *Manager*:
+    - If their email is currently the **ADMIN_EMAIL** variable, remove it or replace it with a different email.  A user can't be both a *Manager* AND an *Admin*, and the *Admin* role will override the *Manager* one.
+    - Add the email to the **MANAGER_EMAILS** variable.  Make sure that you format your work correctly so it remains a comma-separated string.
+
+- **C.** Make user a *User*:
+    - If their email is currently the **ADMIN_EMAIL** variable, remove it or replace it with a different email.
+    - If their email is currently in the **MANAGER_EMAILS** variable, remove it.  Make sure that the list remains a functional comma-separated string.
+
+![Editing ADMIN_EMAIL](images/AZ_env_edit_admin_email.png)
+
+---
+
+![Editing MANAGER_EMAILS](images/AZ_env_edit_manager_emails.png)
+

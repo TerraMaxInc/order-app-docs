@@ -7,6 +7,7 @@ format: html
 
 - [Add New Function](add-new-function.html)
 - [Add Product](add-product.html)
+- [Change HubSpot Service User Roles](change-hubspot-service-roles.html)
 - [Check Costs](check-costs.html)
 - [Deploy hubspot-service Update](deploy-hubspot-service-update.html)
 - [Deploy ordering-app Update](deploy-ordering-app-update.html)
