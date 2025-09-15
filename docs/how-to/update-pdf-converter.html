@@ -3961,15 +3961,16 @@ vertical-align: -.125em;
 <section id="push-image-to-github-container-registry" class="level2">
 <h2 class="anchored" data-anchor-id="push-image-to-github-container-registry">3. Push Image to GitHub <span class="citation" data-cites="Container">@Container</span> Registry</h2>
 <ul>
-<li><p>Log into GHCR with the new token. In that Ubuntu terminal, enter: -<code>echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin</code></p>
+<li>Log into GHCR with the new token. In that Ubuntu terminal, enter:
 <ul>
+<li><p><code>echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin</code></p></li>
 <li><p>replace THAT_NEW_PAT with the token you copied</p></li>
 <li><p>replace YOUR_GITHUB_USERNAME with your personal account username, not the org one</p></li>
 <li><p><code>echo THAT_NEW_PAT</code> tells it to use the THAT_NEW_PAT value exactly as is in the next part</p></li>
 <li><p><code>docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin</code> tells it to log in to GHCR, with your username, and the tale the password from the echoed part and not fuss with trying to login via an actual password. This is apparently much more secure than the password anyway.</p></li>
 <li><p>hopefully, it will tell you “Login Succeeded”</p></li>
 </ul></li>
-<li><p>Push the image to GCHR. It should alreadybe tagged as needed in step 1:</p>
+<li>Push the image to GCHR. It should alreadybe tagged as needed in step 1:
 <ul>
 <li><code>docker push ghcr.io/terramaxinc/pdf-service:2.1.1</code></li>
 <li>you should be able to confirm it worked by looking at it in the target location’s <strong>packages</strong></li>
@@ -3995,7 +3996,7 @@ vertical-align: -.125em;
 <li><code>az containerapp update \</code></li>
 <li><code>--name pdf-service \</code></li>
 <li><code>--resource-group TestResourceGroup \</code></li>
-<li><code>--image ghcr.io/terramacinc/pdf-service:2.1.1</code></li>
+<li><code>--image ghcr.io/terramaxchris/pdf-service:2.1.1</code></li>
 </ul></li>
 <li>If it’s successful, you should be able to see the results in the Portal.</li>
 </ul>

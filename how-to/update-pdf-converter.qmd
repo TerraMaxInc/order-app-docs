@@ -30,7 +30,7 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
 ## 3. Push Image to GitHub @Container Registry
 
 - Log into GHCR with the new token.  In that Ubuntu terminal, enter:
-    -`echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin`
+    - `echo THAT_NEW_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin`
 
     - replace THAT_NEW_PAT with the token you copied
     - replace YOUR_GITHUB_USERNAME with your personal account username, not the org one
@@ -56,5 +56,5 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
     - `az containerapp update \`
     -  `--name pdf-service \`
     -  `--resource-group TestResourceGroup \`
-    -  `--image ghcr.io/terramacinc/pdf-service:2.1.1`
+    -  `--image ghcr.io/terramaxchris/pdf-service:2.1.1`
 - If it's successful, you should be able to see the results in the Portal.
