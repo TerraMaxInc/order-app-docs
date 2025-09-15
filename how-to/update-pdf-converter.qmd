@@ -20,7 +20,7 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
 
 ## 2. Get a Personal Access Token to push to GHCR
 
-- Step 3 requires a "PAT" (Personal Access Token) and I am assuming that you don't have one ready you can reuse.  The token is tempoaray and will time out eventually (usually a month, you can set it to something else), so the container image isn't tied to the token that it was uploaded with; you can update or delete images later with new tokens.  To create one:
+- Step 3 requires a "PAT" (Personal Access Token).  If you have the current one saved somehwere then you can skip this step, but if you don't then you have ot create a new one; GitHb won't let you see it to recopy it.  To create one:
     - Go to `https://github.com/settings/tokens` (don't bother trying to find it organically, it's futile).  If you're logged in, it will show the settings for your *personal accout*.  This is fine; you can't make a token for the org account anyway.  It's a matter of permissions for your account, not of using the org accont directly.
     - Select **tokens (classic)** from **Personal access tokens**, then click the little **Generate new token** dropdown thing and select **Generate new token (classic)**.  Again.  You might find some resources, like chatGPT when it's in the wrong mood, will tell you that the *fine-grained tokens* are better.  This is a cursed lie; they won't work for this.
     - The  Notes section is optional, but the only thing that will distinguish this token from others when you're done, so don't skip it.
@@ -39,7 +39,7 @@ Note: The PAT needs to be manually rotated every month!  This sux, but seems ine
     - `docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin` tells it to log in to GHCR, with your username, and the tale the password from the echoed part and not fuss with trying to login via an actual password.  This is apparently much more secure than the password anyway.
     - hopefully, it will tell you "Login Succeeded"
 - Push the image to GCHR.  It should alreadybe tagged as needed in step 1:
-    - `docker push ghcr.io/terramaxinc/pdf-service:2.1.1`
+    - `docker push ghcr.io/terramaxchris/pdf-service:2.1.1`
     - you should be able to confirm it worked by looking at it in the target location's **packages**
 
 ## 4. Update the Azure App to use the New Version

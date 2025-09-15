@@ -3948,7 +3948,7 @@ vertical-align: -.125em;
 <section id="get-a-personal-access-token-to-push-to-ghcr" class="level2">
 <h2 class="anchored" data-anchor-id="get-a-personal-access-token-to-push-to-ghcr">2. Get a Personal Access Token to push to GHCR</h2>
 <ul>
-<li>Step 3 requires a “PAT” (Personal Access Token) and I am assuming that you don’t have one ready you can reuse. The token is tempoaray and will time out eventually (usually a month, you can set it to something else), so the container image isn’t tied to the token that it was uploaded with; you can update or delete images later with new tokens. To create one:
+<li>Step 3 requires a “PAT” (Personal Access Token). If you have the current one saved somehwere then you can skip this step, but if you don’t then you have ot create a new one; GitHb won’t let you see it to recopy it. To create one:
 <ul>
 <li>Go to <code>https://github.com/settings/tokens</code> (don’t bother trying to find it organically, it’s futile). If you’re logged in, it will show the settings for your <em>personal accout</em>. This is fine; you can’t make a token for the org account anyway. It’s a matter of permissions for your account, not of using the org accont directly.</li>
 <li>Select <strong>tokens (classic)</strong> from <strong>Personal access tokens</strong>, then click the little <strong>Generate new token</strong> dropdown thing and select <strong>Generate new token (classic)</strong>. Again. You might find some resources, like chatGPT when it’s in the wrong mood, will tell you that the <em>fine-grained tokens</em> are better. This is a cursed lie; they won’t work for this.</li>
@@ -3972,7 +3972,7 @@ vertical-align: -.125em;
 </ul></li>
 <li>Push the image to GCHR. It should alreadybe tagged as needed in step 1:
 <ul>
-<li><code>docker push ghcr.io/terramaxinc/pdf-service:2.1.1</code></li>
+<li><code>docker push ghcr.io/terramaxchris/pdf-service:2.1.1</code></li>
 <li>you should be able to confirm it worked by looking at it in the target location’s <strong>packages</strong></li>
 </ul></li>
 </ul>
