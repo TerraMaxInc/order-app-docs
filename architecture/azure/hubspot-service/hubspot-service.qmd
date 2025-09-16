@@ -273,9 +273,19 @@ This data is sent to the function:
     - `context` - Invocation context for logging and diagnostics
 
 - **Returns**
-    - an HTTP response containing the list of Products from HubSpot, or an error message
+    - On success:
 
-- **Note** Is not accessible to any client apps and is not in regular use, but was valuable in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.
+    ```json
+    {Object} HTTP response with status 200 and JSON body: Owners[]
+    // Array of HubSpot Owner objects with additional "role" property
+    ```
+    - On failure:
+
+    ```json
+    {Object} HTTP response with status 500 and JSON body: string
+    // Error message
+    ```
+
 
 ### getAllProductsData
 
