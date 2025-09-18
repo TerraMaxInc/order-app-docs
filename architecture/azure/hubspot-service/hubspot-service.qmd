@@ -112,7 +112,9 @@ This data is sent to the function:
 ### getAllActives
 
 - **Pursose**
-    - This function retrieves the basic dataset from the Actives table and a joined dataset that combines data from Actives, Products, and the Products_actives tables, so that products will be associated with their respective active ingredients.
+    - This function retrieves the basic dataset from the Actives table and a joined dataset that 
+    combines data from Actives, Products, and the Products_actives tables, 
+    so that products will be associated with their respective active ingredients.
 
 - **Parameters**
     - `request` - Incoming HTTP request object sent by users
@@ -216,7 +218,10 @@ This data is sent to the function:
 ### getAllDeals
 
 - **Purpose**
-    - This function retrieves a list of all Deals from HubSpot.  It fetches pages of 100 at a time, and then concatenaates them into a single array.  It includes the Contacts, Companies, and Deals associations (because Deals can be associated with other Deals, though this isn't currently being used for anything int he client app).
+    - This function retrieves a list of Deals from HubSpot; filtered to just those belonging to the user, unless they have a *Manager* or *Admin* role and then it returns all Deals.  The role is determined internally based on their access token and their role given in 
+    [HubSpot Service Environmental Variables](environmental-variables.html), and does not require additional parameters.  It fetches pages 
+    of 100 at a time, and then concatenaates them into a single array.  It includes the Contacts, Companies, and Deals associations 
+    (because Deals can be associated with other Deals, though this isn't currently being used for anything in the client app).
 
 - **Parameters**
     - `request` - Incoming HTTP request object sent by users
@@ -275,19 +280,20 @@ This data is sent to the function:
 - **Returns**
     - On success:
 
-    ```json
-    {Object} HTTP response with status 200 and JSON body: Owners[]
-    // Array of HubSpot Owner objects with additional "role" property
-    ```
+        ```json
+        {Object} HTTP response with status 200 and JSON body: Owners[]
+        // Array of HubSpot Owner objects with additional "role" property
+        ```
+
     - On failure:
 
-    ```json
-    {Object} HTTP response with status 500 and JSON body: string
-    // Error message
-    ```
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // Error message
+        ```
 
 
-### getAllProductsData
+### getAllProductData
 
 - **Purpose**
     - This function retrieves data from the Skus, Products, Crops, Sizes, Applications and Rate-Units, 
@@ -299,18 +305,311 @@ This data is sent to the function:
     - `context` - Invocation context for logging and diagnostics
 
 - **Returns**
-    - ```json
-    {Object} HTTP response with status 200 and a JSON body containing:
-        {
-        skus: Array<Object>,         // Rows from the Skus table
-        products: Array<Object>,     // Rows from the Products table
-        crops: Array<Object>,        // Rows from the Crops table
-        sizes: Array<Object>,        // Rows from the Sizes table
-        applications: Array<Object>, // Rows from the Applications table
-        rate_units: Array<Object>    // Rows from the Rate_units table
-        }
-    ```
+    - On success:
+    
+        ```json
+        {Object} HTTP response with status 200 and a JSON body:
+            {
+            "skus": Array<Object>,         // Raw rows from the Skus table
+            "products": Array<Object>,     // Raw rows from the Products table
+            "crops": Array<Object>,        // Raw rows from the Crops table
+            "sizes": Array<Object>,        // Raw rows from the Sizes table
+            "applications": Array<Object>, // Raw rows from the Applications table
+            "rate_units": Array<Object>    // Raw rows from the Rate_units table
+            }
+        ```
 
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+            {
+                "error": string, // Error emailMessage
+                "AZURE_FUNCTIONS_ENVIRONMENT": string // Production or Development
+            }
+        ```
+
+
+### getAllSkus
+
+- **Purpose**
+    - This function retrieves the basic dataset from the Skus table and a joined dataset from 
+    the Products table in the Azure SQL database, and combines them so that each Sku will also 
+    contain all the related Product information.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response object with status 200 and JSON body: SqlSku[]
+        // Array of joined dataset linking Skus to Products
+        ```
+
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+            {
+                "error": string, // Error emailMessage
+                "AZURE_FUNCTIONS_ENVIRONMENT": string // Production or Development
+            }
+        ```
+
+
+### getClient
+
+- **Purpose**
+    - This function parses the client's access token using the ParseClientFromToken function, 
+    and then returns it to the caller.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: client
+        // client object with email, name and role properties
+        ```
+
+    - On failure (unauthorized): 
+
+        ```json
+        {Object} HTTP response with status 401 and JSON body: string
+        // "Unauthorized: valid token not provided"
+        ```
+
+    - On failure (server error): 
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // Error message
+        ```
+
+- **Note** Accessible to Ordering App but not in regular use, but was useful during early development
+for testing how the token can be used to id the user, may have similar uses in the future.
+
+
+### getDealById
+
+- **Purpose**
+    - This function retrieves a single deal from HubSpot.  It takes "dealId" as a parameter, and then searches 
+    for a deal with a matching value in the property "hs_object_id".  The higher level "id" should also match, 
+    but doesn't seem to work with the searchApi.  This was a very early function that never needed later editing, so unlike most other 
+    HubSpot apis in this project which call on other internal functions to to the work, it fetches *directly* from HubSpot.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+        Must incluse query parameter:
+            - `dealId` (string) - The HubSpot ID of the Deal to be fetched
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body: dealData
+        // Deal object with associations from HubSpot
+        ```
+
+    - On failure (missing HubSpot API token):
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // "Internal Server Error: Missing HubSpot API token"
+        ```
+
+    - On failure (missing query param):
+
+        ```json
+        {Object} HTTP response with status 401 and JSON body: string
+        // "Error: Missing required query parameter: dealId"
+        ```
+
+    - On failure (server error):
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // Error message
+        ```
+
+- **Note**  Ordering App does have access but never actually ended up NEEDING it; this function is not in regular use.  
+But was useful in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin 
+utility for viewing HubSpot data directly.
+
+
+### getDealsByOwner
+
+- **Purpose** 
+    - This function retrieves all deals from HubSpot that belong to a particular Owner.  It takes "ownerId" as a parameter,
+    and then searches for deals with a matching value in the property "hubspot_owner_id" and returns all matches.
+    It fetches pages of 100 at a time, and then concatenaates them into a single array.  It was deprecated and replaced by 
+    a conditional in the more generic **getAllDeals** during development, and so is still in an earlier state; unlike most other 
+    HubSpot apis in this project which call on other internal functions to to the work, it fetches *directly* from HubSpot.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+        Must incluse query parameter:
+            - `ownerId` (string) - The hubspot_owner_id of the user who's Deals should be fetched
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and body: Deals[]
+        // Array of HubSpot Deal objects with Company, Contact and Line Item associations.
+        ```
+
+    - On failure (missing HubSpot API token):
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // "Internal Server Error: Missing HubSpot API token"
+        ```
+
+    - On failure (missing query param):
+
+        ```json
+        {Object} HTTP response with status 401 and JSON body: string
+        // "Error: Missing required query parameter: ownerId"
+        ```
+
+    - On failure (server error):
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // Error message
+        ```
+
+- **Note** Not accessible to any client app and not in regular use; deprecated and replaced by conditionals within the general **getAllDeals** function. Useful for testing, to check data manually.
+
+
+### getLineItemsByDeal
+
+- **Purpose**
+    - This function retrieves a list of all Line Items associated with a particular Deal from HubSpot, using the "dealId" it should receive as a parameter from the query.  It did everything it needed to early on and never needed much editing, so unlike most other 
+    HubSpot apis in this project which call on other internal functions to to the work, it fetches *directly* from HubSpot.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+        Must incluse query parameter:
+            - `dealId` (string) - The HubSpot Deal ID whose Line Items should be fetched
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and body: LineItems[]
+        // Array of LineItem objects
+        ```
+
+    - On failure (missing HubSpot API token):
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // "Internal Server Error: Missing HubSpot API token"
+        ```
+
+    - On failure (missing query param):
+
+        ```json
+        {Object} HTTP response with status 401 and JSON body: string
+        // "Error: Missing required query parameter: dealId"
+        ```
+
+    - On failure (server error):
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body: string
+        // Error message
+        ```
+    
+
+### getProductDataHistory
+
+- **Purpose**
+    - This function retrieves the basic datasets from the **Products_history** and **Skus_History** tables in the Azure SQL database.  Theses tables save previous states of the **Products** and **Skus** tables so that it's possible to roll back to a previous state if an update goes wrong.  This function is not yet in use, but I have ambitions to use it to make it possible to view past states in the **Product Manager App**, and to manage updates and rollbacks from a GUI there instead of through raw SQL.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body:
+        {
+            "skus_history": Array<Object>,
+            // Raw rows from the Skus_history table
+            "products_history": Array<Object>
+            // Raw rows from the Products_history table
+        }
+        ```
+
+    - On failure:
+
+        ```json
+        {Object} HTTP response with status 500 and JSON body:
+        {
+            "error": string, // Error message
+            "AZURE_FUNCTIONS_ENVIRONMENT": string //"Development" or "Production"
+        }
+        ```
+- **Note** Not YET in use, part of future plans for managing Product Data backups
+
+### receiveCompleteOrder
+
+- **Purpose**
+    - This function receives a JSON package of data about a completed HubSpot Deal, saves that data to HubSpot, and then sends an email to the user and to the addresses found in the environmental variables ADMIN_EMAIL and MANAGER_EMAILS.  It has conditional logic to differentiate between a new deal and a saved deal, so it can create or update in HubSpot as appropriate.  It returns a JSON object that describes the success of each element in the transaction, but NOT the data itself that was updated, so the client app can't use the response to update its own state.
+
+- **Parameters**
+    - `request` - Incoming HTTP request object sent by users
+        Body must include:
+
+            ```json
+                "deal": HS_Deal,
+                "lineItems": HS_LineItem[],
+                "htmlDoc": string
+            ```
+
+    - `context` - Invocation context for logging and diagnostics
+
+- **Returns**
+    - On success:
+
+        ```json
+        {Object} HTTP response with status 200 and JSON body:
+            {
+                "DealId": string | undefined,
+                "DealDataAdded": number,
+                "DealDataAddedMessage"?: string,
+                "LineItemDataAdded": number,
+                "LineItemDataAddedMessage"?: string,
+                "DealCompleted": number,
+                "DealCompletedMessage"?: string,
+                "EmailSent": number,
+                "EmailSentMessage"?: string,
+            }
+        ```
+
+    - On failure (validation):
+
+        ```json
+        {Object} HTTP response with status 400 and JSON body: string // Error message
+        ```
+
+    - 
+
+- **Note** Deprecated and replaced by conditional logic in the more general receiveOrder.  The Ordering App still has access, but does not use it.  It's only still here because I'm paranoid about deleting something that used to be critical.
 
 ###
 

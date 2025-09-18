@@ -3948,7 +3948,14 @@ vertical-align: -.125em;
   <li><a href="#getalldeals" id="toc-getalldeals" class="nav-link" data-scroll-target="#getalldeals">getAllDeals</a></li>
   <li><a href="#getallhsproducts" id="toc-getallhsproducts" class="nav-link" data-scroll-target="#getallhsproducts">getAllHSProducts</a></li>
   <li><a href="#getallowners" id="toc-getallowners" class="nav-link" data-scroll-target="#getallowners">getAllOwners</a></li>
-  <li><a href="#getallproductsdata" id="toc-getallproductsdata" class="nav-link" data-scroll-target="#getallproductsdata">getAllProductsData</a></li>
+  <li><a href="#getallproductdata" id="toc-getallproductdata" class="nav-link" data-scroll-target="#getallproductdata">getAllProductData</a></li>
+  <li><a href="#getallskus" id="toc-getallskus" class="nav-link" data-scroll-target="#getallskus">getAllSkus</a></li>
+  <li><a href="#getclient" id="toc-getclient" class="nav-link" data-scroll-target="#getclient">getClient</a></li>
+  <li><a href="#getdealbyid" id="toc-getdealbyid" class="nav-link" data-scroll-target="#getdealbyid">getDealById</a></li>
+  <li><a href="#getdealsbyowner" id="toc-getdealsbyowner" class="nav-link" data-scroll-target="#getdealsbyowner">getDealsByOwner</a></li>
+  <li><a href="#getlineitemsbydeal" id="toc-getlineitemsbydeal" class="nav-link" data-scroll-target="#getlineitemsbydeal">getLineItemsByDeal</a></li>
+  <li><a href="#getproductdatahistory" id="toc-getproductdatahistory" class="nav-link" data-scroll-target="#getproductdatahistory">getProductDataHistory</a></li>
+  <li><a href="#receivecompleteorder" id="toc-receivecompleteorder" class="nav-link" data-scroll-target="#receivecompleteorder">receiveCompleteOrder</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul></li>
   </ul>
@@ -4178,7 +4185,7 @@ vertical-align: -.125em;
 <ul>
 <li><strong>Purpose</strong>
 <ul>
-<li>This function retrieves a list of all Deals from HubSpot. It fetches pages of 100 at a time, and then concatenaates them into a single array. It includes the Contacts, Companies, and Deals associations (because Deals can be associated with other Deals, though this isn’t currently being used for anything int he client app).</li>
+<li>This function retrieves a list of Deals from HubSpot; filtered to just those belonging to the user, unless they have a <em>Manager</em> or <em>Admin</em> role and then it returns all Deals. The role is determined internally based on their access token and their role given in <a href="environmental-variables.html">HubSpot Service Environmental Variables</a>, and does not require additional parameters. It fetches pages of 100 at a time, and then concatenaates them into a single array. It includes the Contacts, Companies, and Deals associations (because Deals can be associated with other Deals, though this isn’t currently being used for anything in the client app).</li>
 </ul></li>
 <li><strong>Parameters</strong>
 <ul>
@@ -4234,13 +4241,17 @@ vertical-align: -.125em;
 </ul></li>
 <li><strong>Returns</strong>
 <ul>
-<li>an HTTP response containing the list of Products from HubSpot, or an error message</li>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">Owners</span><span class="ot">[]</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">HubSpot</span> <span class="er">Owner</span> <span class="er">objects</span> <span class="er">with</span> <span class="er">additional</span> <span class="er">&quot;role&quot;</span> <span class="er">property</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
-<li><strong>Note</strong> Is not accessible to any client apps and is not in regular use, but was valuable in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.</li>
 </ul>
 </section>
-<section id="getallproductsdata" class="level3">
-<h3 class="anchored" data-anchor-id="getallproductsdata">getAllProductsData</h3>
+<section id="getallproductdata" class="level3">
+<h3 class="anchored" data-anchor-id="getallproductdata">getAllProductData</h3>
 <ul>
 <li><strong>Purpose</strong>
 <ul>
@@ -4253,16 +4264,237 @@ vertical-align: -.125em;
 </ul></li>
 <li><strong>Returns</strong>
 <ul>
-<li><div class="sourceCode" id="cb19"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">a</span> <span class="er">JSON</span> <span class="er">body</span> <span class="er">containing:</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      <span class="er">skus</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>         <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Skus</span> <span class="er">table</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      <span class="er">products</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>     <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Products</span> <span class="er">table</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      <span class="er">crops</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>        <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Crops</span> <span class="er">table</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="er">sizes</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>        <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Sizes</span> <span class="er">table</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="er">applications</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span> <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Applications</span> <span class="er">table</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="er">rate_units</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span>    <span class="er">//</span> <span class="er">Rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Rate_units</span> <span class="er">table</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">a</span> <span class="er">JSON</span> <span class="er">body:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;skus&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>         <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Skus</span> <span class="er">table</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;products&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>     <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Products</span> <span class="er">table</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;crops&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>        <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Crops</span> <span class="er">table</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;sizes&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span>        <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Sizes</span> <span class="er">table</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;applications&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span> <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Applications</span> <span class="er">table</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;rate_units&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span>    <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Rate_units</span> <span class="er">table</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span> <span class="er">//</span> <span class="er">Error</span> <span class="er">emailMessage</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;AZURE_FUNCTIONS_ENVIRONMENT&quot;</span><span class="fu">:</span> <span class="er">string</span> <span class="er">//</span> <span class="er">Production</span> <span class="er">or</span> <span class="er">Development</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
+</ul>
+</section>
+<section id="getallskus" class="level3">
+<h3 class="anchored" data-anchor-id="getallskus">getAllSkus</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves the basic dataset from the Skus table and a joined dataset from the Products table in the Azure SQL database, and combines them so that each Sku will also contain all the related Product information.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">object</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">SqlSku</span><span class="ot">[]</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">joined</span> <span class="er">dataset</span> <span class="er">linking</span> <span class="er">Skus</span> <span class="er">to</span> <span class="er">Products</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span> <span class="er">//</span> <span class="er">Error</span> <span class="er">emailMessage</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;AZURE_FUNCTIONS_ENVIRONMENT&quot;</span><span class="fu">:</span> <span class="er">string</span> <span class="er">//</span> <span class="er">Production</span> <span class="er">or</span> <span class="er">Development</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="getclient" class="level3">
+<h3 class="anchored" data-anchor-id="getclient">getClient</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function parses the client’s access token using the ParseClientFromToken function, and then returns it to the caller.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">client</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">client</span> <span class="er">object</span> <span class="er">with</span> <span class="er">email,</span> <span class="er">name</span> <span class="er">and</span> <span class="er">role</span> <span class="er">properties</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (unauthorized):</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">401</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Unauthorized:</span> <span class="er">valid</span> <span class="er">token</span> <span class="er">not</span> <span class="er">provided&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (server error):</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Note</strong> Accessible to Ordering App but not in regular use, but was useful during early development for testing how the token can be used to id the user, may have similar uses in the future.</li>
+</ul>
+</section>
+<section id="getdealbyid" class="level3">
+<h3 class="anchored" data-anchor-id="getdealbyid">getDealById</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a single deal from HubSpot. It takes “dealId” as a parameter, and then searches for a deal with a matching value in the property “hs_object_id”. The higher level “id” should also match, but doesn’t seem to work with the searchApi. This was a very early function that never needed later editing, so unlike most other HubSpot apis in this project which call on other internal functions to to the work, it fetches <em>directly</em> from HubSpot.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users Must incluse query parameter: - <code>dealId</code> (string) - The HubSpot ID of the Deal to be fetched</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">dealData</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Deal</span> <span class="er">object</span> <span class="er">with</span> <span class="er">associations</span> <span class="er">from</span> <span class="er">HubSpot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (missing HubSpot API token):</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Internal</span> <span class="er">Server</span> <span class="er">Error:</span> <span class="er">Missing</span> <span class="er">HubSpot</span> <span class="er">API</span> <span class="er">token&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (missing query param):</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">401</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Error:</span> <span class="er">Missing</span> <span class="er">required</span> <span class="er">query</span> <span class="er">parameter:</span> <span class="er">dealId&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (server error):</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Note</strong> Ordering App does have access but never actually ended up NEEDING it; this function is not in regular use.<br>
+But was useful in early testing to better understand the HubSpot data structure, and may still have occasional dev/admin utility for viewing HubSpot data directly.</li>
+</ul>
+</section>
+<section id="getdealsbyowner" class="level3">
+<h3 class="anchored" data-anchor-id="getdealsbyowner">getDealsByOwner</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves all deals from HubSpot that belong to a particular Owner. It takes “ownerId” as a parameter, and then searches for deals with a matching value in the property “hubspot_owner_id” and returns all matches. It fetches pages of 100 at a time, and then concatenaates them into a single array. It was deprecated and replaced by a conditional in the more generic <strong>getAllDeals</strong> during development, and so is still in an earlier state; unlike most other HubSpot apis in this project which call on other internal functions to to the work, it fetches <em>directly</em> from HubSpot.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users Must incluse query parameter: - <code>ownerId</code> (string) - The hubspot_owner_id of the user who’s Deals should be fetched</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">body:</span> <span class="er">Deals</span><span class="ot">[]</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">HubSpot</span> <span class="er">Deal</span> <span class="er">objects</span> <span class="er">with</span> <span class="er">Company,</span> <span class="er">Contact</span> <span class="er">and</span> <span class="er">Line</span> <span class="er">Item</span> <span class="er">associations.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (missing HubSpot API token):</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Internal</span> <span class="er">Server</span> <span class="er">Error:</span> <span class="er">Missing</span> <span class="er">HubSpot</span> <span class="er">API</span> <span class="er">token&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (missing query param):</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">401</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Error:</span> <span class="er">Missing</span> <span class="er">required</span> <span class="er">query</span> <span class="er">parameter:</span> <span class="er">ownerId&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (server error):</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Note</strong> Not accessible to any client app and not in regular use; deprecated and replaced by conditionals within the general <strong>getAllDeals</strong> function. Useful for testing, to check data manually.</li>
+</ul>
+</section>
+<section id="getlineitemsbydeal" class="level3">
+<h3 class="anchored" data-anchor-id="getlineitemsbydeal">getLineItemsByDeal</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves a list of all Line Items associated with a particular Deal from HubSpot, using the “dealId” it should receive as a parameter from the query. It did everything it needed to early on and never needed much editing, so unlike most other HubSpot apis in this project which call on other internal functions to to the work, it fetches <em>directly</em> from HubSpot.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users Must incluse query parameter: - <code>dealId</code> (string) - The HubSpot Deal ID whose Line Items should be fetched</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">body:</span> <span class="er">LineItems</span><span class="ot">[]</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Array</span> <span class="er">of</span> <span class="er">LineItem</span> <span class="er">objects</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (missing HubSpot API token):</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Internal</span> <span class="er">Server</span> <span class="er">Error:</span> <span class="er">Missing</span> <span class="er">HubSpot</span> <span class="er">API</span> <span class="er">token&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (missing query param):</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">401</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">&quot;Error:</span> <span class="er">Missing</span> <span class="er">required</span> <span class="er">query</span> <span class="er">parameter:</span> <span class="er">dealId&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (server error):</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="getproductdatahistory" class="level3">
+<h3 class="anchored" data-anchor-id="getproductdatahistory">getProductDataHistory</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function retrieves the basic datasets from the <strong>Products_history</strong> and <strong>Skus_History</strong> tables in the Azure SQL database. Theses tables save previous states of the <strong>Products</strong> and <strong>Skus</strong> tables so that it’s possible to roll back to a previous state if an update goes wrong. This function is not yet in use, but I have ambitions to use it to make it possible to view past states in the <strong>Product Manager App</strong>, and to manage updates and rollbacks from a GUI there instead of through raw SQL.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><code>request</code> - Incoming HTTP request object sent by users</li>
+<li><code>context</code> - Invocation context for logging and diagnostics</li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;skus_history&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span><span class="fu">,</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Skus_history</span> <span class="er">table</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;products_history&quot;</span><span class="fu">:</span> <span class="er">Array&lt;Object&gt;</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Raw</span> <span class="er">rows</span> <span class="er">from</span> <span class="er">the</span> <span class="er">Products_history</span> <span class="er">table</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">500</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span> <span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;AZURE_FUNCTIONS_ENVIRONMENT&quot;</span><span class="fu">:</span> <span class="er">string</span> <span class="er">//</span><span class="st">&quot;Development&quot;</span> <span class="er">or</span> <span class="st">&quot;Production&quot;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Note</strong> Not YET in use, part of future plans for managing Product Data backups</li>
+</ul>
+</section>
+<section id="receivecompleteorder" class="level3">
+<h3 class="anchored" data-anchor-id="receivecompleteorder">receiveCompleteOrder</h3>
+<ul>
+<li><strong>Purpose</strong>
+<ul>
+<li>This function receives a JSON package of data about a completed HubSpot Deal, saves that data to HubSpot, and then sends an email to the user and to the addresses found in the environmental variables ADMIN_EMAIL and MANAGER_EMAILS. It has conditional logic to differentiate between a new deal and a saved deal, so it can create or update in HubSpot as appropriate. It returns a JSON object that describes the success of each element in the transaction, but NOT the data itself that was updated, so the client app can’t use the response to update its own state.</li>
+</ul></li>
+<li><strong>Parameters</strong>
+<ul>
+<li><p><code>request</code> - Incoming HTTP request object sent by users Body must include:</p>
+<pre><code>  ```json
+      &quot;deal&quot;: HS_Deal,
+      &quot;lineItems&quot;: HS_LineItem[],
+      &quot;htmlDoc&quot;: string
+  ```</code></pre></li>
+<li><p><code>context</code> - Invocation context for logging and diagnostics</p></li>
+</ul></li>
+<li><strong>Returns</strong>
+<ul>
+<li><p>On success:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">200</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;DealId&quot;</span><span class="fu">:</span> <span class="er">string</span> <span class="er">|</span> <span class="er">undefined</span><span class="fu">,</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;DealDataAdded&quot;</span><span class="fu">:</span> <span class="er">number</span><span class="fu">,</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;DealDataAddedMessage&quot;</span><span class="er">?</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;LineItemDataAdded&quot;</span><span class="fu">:</span> <span class="er">number</span><span class="fu">,</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;LineItemDataAddedMessage&quot;</span><span class="er">?</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;DealCompleted&quot;</span><span class="fu">:</span> <span class="er">number</span><span class="fu">,</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;DealCompletedMessage&quot;</span><span class="er">?</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;EmailSent&quot;</span><span class="fu">:</span> <span class="er">number</span><span class="fu">,</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;EmailSentMessage&quot;</span><span class="er">?</span><span class="fu">:</span> <span class="er">string</span><span class="fu">,</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>On failure (validation):</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">Object</span><span class="fu">}</span> <span class="er">HTTP</span> <span class="er">response</span> <span class="er">with</span> <span class="er">status</span> <span class="er">400</span> <span class="er">and</span> <span class="er">JSON</span> <span class="er">body:</span> <span class="er">string</span> <span class="er">//</span> <span class="er">Error</span> <span class="er">message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li></li>
+</ul></li>
+<li><strong>Note</strong> Deprecated and replaced by conditional logic in the more general receiveOrder. The Ordering App still has access, but does not use it. It’s only still here because I’m paranoid about deleting something that used to be critical.</li>
 </ul>
 </section>
 <section id="section" class="level3">
